@@ -1,0 +1,524 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="这是我的第一篇博客">
+  <meta name="author" content="huhu">
+  <meta name="keywords" content="">
+  <meta name="description" content="单调栈相关题目： 去除重复字母(使得去除重复字母之后，字符串的字典序最小)值栈  接雨水    方法一：每个地方能接的雨水是当前下标左右两边最大值（LeftMax and RightMax）的较小一个 –&gt;值栈 方法二：使用单调递减栈，维护top and left（单调栈的top下面的值） –&gt;下标栈   直方图最大矩阵面积（求离当前直方图左右两边第一个小于该直方图的下标，使用左边单调">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单调栈">
+<meta property="og:url" content="http://example.com/2021/11/13/leetcode/%E5%8D%95%E8%B0%83%E6%A0%88%E7%9B%B8%E5%85%B3/index.html">
+<meta property="og:site_name" content="Hello World">
+<meta property="og:description" content="单调栈相关题目： 去除重复字母(使得去除重复字母之后，字符串的字典序最小)值栈  接雨水    方法一：每个地方能接的雨水是当前下标左右两边最大值（LeftMax and RightMax）的较小一个 –&gt;值栈 方法二：使用单调递减栈，维护top and left（单调栈的top下面的值） –&gt;下标栈   直方图最大矩阵面积（求离当前直方图左右两边第一个小于该直方图的下标，使用左边单调">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-13T08:51:36.000Z">
+<meta property="article:modified_time" content="2022-02-14T08:03:13.989Z">
+<meta property="article:author" content="huhu">
+<meta property="article:tag" content="栈, 单调栈">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>单调栈 - Hello World</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hello World" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>HU&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="单调栈">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-13 16:51" pubdate>
+        2021年11月13日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.8k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">单调栈</h1>
+            
+            <div class="markdown-body">
+              <h3 id="单调栈相关题目："><a href="#单调栈相关题目：" class="headerlink" title="单调栈相关题目："></a>单调栈相关题目：</h3><ol>
+<li><p>去除重复字母(使得去除重复字母之后，字符串的字典序最小)<br>值栈</p>
+</li>
+<li><p>接雨水</p>
+</li>
+</ol>
+<ul>
+<li>方法一：每个地方能接的雨水是当前下标左右两边最大值（LeftMax and RightMax）的较小一个 –&gt;值栈</li>
+<li>方法二：使用单调递减栈，维护top and left（单调栈的top下面的值） –&gt;下标栈</li>
+</ul>
+<ol start="3">
+<li><p>直方图最大矩阵面积（求离当前直方图左右两边第一个小于该直方图的下标，使用左边单调递增+右边单调递增）注意边缘的节点，因此需要提前向栈push -1或者size<br>下标栈</p>
+</li>
+<li><p>以及围成矩形的最大面积 转为每行的直方图的最大面积<br>下标栈</p>
+</li>
+</ol>
+<h5 id="栈相关的题目："><a href="#栈相关的题目：" class="headerlink" title="栈相关的题目："></a>栈相关的题目：</h5><ol>
+<li><p>公式字符串求值</p>
+<ul>
+<li><p>可以遇到（）后进入递归，或者压入op栈中.注意（-15）这种要特别判断，if(s[i]==’-‘) &amp;&amp; if(i==0||s[i-1]==’(‘) 那么就循环获得一个负数（括号可以进入op栈中，也可以直接跳过）</p>
+</li>
+<li><p>在计算优先级的时候：可以不用传入两个判断，可以给每一个运算符一个分数</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">int grade( char op ) &#123;<br>    <span class="hljs-keyword">if</span> (op == <span class="hljs-string">&#x27;(&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span> (op == <span class="hljs-string">&#x27;+&#x27;</span> || op == <span class="hljs-string">&#x27;-&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">if</span> (op == <span class="hljs-string">&#x27;*&#x27;</span> || op == <span class="hljs-string">&#x27;/&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">3</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<p>2.逆波兰表达式</p>
+<p>3.滑动窗口的最大值，可以使用优先队列或者双向队列（单调递减）</p>
+<p>4.频率最高的k个字符，使用大小为k的最小堆，其实也是使用优先队列实现的堆，需要自定义排序方式</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">// 小顶堆</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">mycomparison</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(<span class="hljs-keyword">const</span> pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt;&amp; lhs, <span class="hljs-keyword">const</span> pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt;&amp; rhs)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> lhs.second &gt; rhs.second;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<ol start="5">
+<li><p>有的模拟题也是用栈的，比如文件的最长路径，栈中维护递增level的长度，如果当前的level&lt;栈顶的level那么弹栈；如果遇到当前是文件，那么统计栈中元素加起来的值和result比较取最大<br>这种题一般需要对token先进行划分，然后进行统计</p>
+</li>
+<li><p>移掉 K 位数字, 使用单调栈，如果当前的字符小于栈顶的元素，那么循环弹出。易错点：剩下的字符包含头部0元素，以及最后如何结果为空字符串的话，应该返回“0”而不是“”</p>
+</li>
+<li><p>下一个更大元素||<br>题意：找到每个元素后面，第一个大于当前元素的数</p>
+</li>
+</ol>
+<p>我的解法：从后往前，前面在进行判断的时候使用后面的nextid,可以跳过一些数，next[i]==-1表示没有比当前数更大的，next[i]==-2表示当前数还没有计算 nextid有值那么直接进行跳转nextid=next[nextid]</p>
+<p>官方题解：单调栈，但是因为是训练列表，所以需要遍历n+n-1个数据</p>
+<ol start="8">
+<li>子数组的最小值之和<br>这道题求每个数左边比他小的第一个数的下标，和右边第一个比他小于或等于的数的下标<br>使用单调递减栈<br>结果就是：arr[i]*(i-left[i]) * (right[i]-i)<br>注意为了处理两个数相同的情况，使用左边小于，右边小于等于！！！</li>
+</ol>
+<p>比如：1 2 4 8 1</p>
+<ol start="9">
+<li>最小栈<br>题目：如果用时间O(1)和空间O(1)的复杂度得到栈中的最小值<br>解决：原始的数据栈用来记录数据与min的差值 （value-min），同时用一个min变量记录当前栈的最小值;注意如果数值没有限制的话，差值的计算可能会溢出。<br>getmin()：始终返回min变量的值<br>void pop(): 如果栈顶元素小于0，那么说明当前栈顶元素就是min(如果需要返回栈顶元素只，那么返回min),同时更新min为min-stack.top();否则不更新min<br>void push(value): 当栈为空，直接压入value, 令min=value, push(0); 如果不为空，计算 value-min，并压入栈中; 如果小于0, 那么修改min为value, 否则min不变。</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> 设计一个有<span class="hljs-title">gitMin</span>的栈 &#123;</span><br><br>    <span class="hljs-keyword">private</span> Stack&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> Stack&lt;Integer&gt;();<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> min;<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (stack.<span class="hljs-built_in">isEmpty</span>()) &#123;<br>            min = x;<br>            stack.<span class="hljs-built_in">push</span>(<span class="hljs-number">0</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-comment">// 计算差值</span><br>            <span class="hljs-keyword">int</span> compare = x - min;<br>            stack.<span class="hljs-built_in">push</span>(compare);<br>            <span class="hljs-comment">// 如果差值小于0，显然 x 成为最小值，否则最小值不变</span><br>            min = compare &lt; <span class="hljs-number">0</span> ? x : min;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> top = stack.<span class="hljs-built_in">peek</span>();<br>        <span class="hljs-comment">// 如果top小于0，显然最小值也一并会被删除，此时更新最小值</span><br>        min = top &lt; <span class="hljs-number">0</span> ? (min - top) : min;<br>        stack.<span class="hljs-built_in">pop</span>();<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getMin</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> min;<br>    &#125;<br> &#125;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="括号相关的题目专题"><a href="#括号相关的题目专题" class="headerlink" title="括号相关的题目专题"></a>括号相关的题目专题</h4><p>总结: 一般来说括号相关的题使用栈解决，但是有的题目也使用动态规划解决。同时栈的方式也可以演变为更加简单的整数加减问题，不需要额外的空间。左括号出现那么+1， 右括号出现那么如果有左括号，那么左括号-1否则右括号+1</p>
+<p>678.有效的括号字符串， 因为*既可以当左括号，又可以当右括号，又可以当空白字符</p>
+<ul>
+<li><p>因此需要两个栈，当左括号栈为空的时候，从星号栈弹，否则从左括号栈弹、如果最后左括号不为空，那么比较信号栈顶和左括号栈顶下标，如果星号栈顶下标大，那么同时弹出，重复上述过程</p>
+</li>
+<li><p>如果是动态规划的话； 就是判断dp[i][j]是否为true, 判断标准是 如果i==’(‘而却j==’)’那么dp[i][j]=dp[i+1][j-1] 否则就遍历i 到j之间的每一个元素，dp[i][j]=dp[i][k]&amp;&amp;dp[k][j]<br>类似长度的动态规划（最长回文子串）<br>len==1 s[i]==’<em>‘ dp[i][i]=true<br>len==2 (s[i]==’(‘||s[i]==’</em>‘ ) &amp;&amp; (s[j]==’)’||s[j]==’*’)</p>
+</li>
+</ul>
+<ol start="22">
+<li>括号的生成，使用dfs， 左括号的数量应该时刻保持&gt;=右括号的数量， 因此可以使用每使用一个左括号，可使用的右括号数量+1， 左括号：n-&gt;0, 右括号：0-&gt;n</li>
+<li>最长有效括号（动态规划中也有总结）</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">longestValidParentheses</span><span class="hljs-params">(String s)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> maxans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[s.<span class="hljs-built_in">length</span>()];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; s.<span class="hljs-built_in">length</span>(); i++) &#123;<br>            <span class="hljs-keyword">if</span> (s.<span class="hljs-built_in">charAt</span>(i) == <span class="hljs-string">&#x27;)&#x27;</span>) &#123;<br>                <span class="hljs-keyword">if</span> (s.<span class="hljs-built_in">charAt</span>(i - <span class="hljs-number">1</span>) == <span class="hljs-string">&#x27;(&#x27;</span>) &#123;<br>                    dp[i] = (i &gt;= <span class="hljs-number">2</span> ? dp[i - <span class="hljs-number">2</span>] : <span class="hljs-number">0</span>) + <span class="hljs-number">2</span>;<br>                &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i - dp[i - <span class="hljs-number">1</span>] &gt; <span class="hljs-number">0</span> &amp;&amp; s.<span class="hljs-built_in">charAt</span>(i - dp[i - <span class="hljs-number">1</span>] - <span class="hljs-number">1</span>) == <span class="hljs-string">&#x27;(&#x27;</span>) &#123;<br>                    dp[i] = dp[i - <span class="hljs-number">1</span>] + ((i - dp[i - <span class="hljs-number">1</span>]) &gt;= <span class="hljs-number">2</span> ? dp[i - dp[i - <span class="hljs-number">1</span>] - <span class="hljs-number">2</span>] : <span class="hljs-number">0</span>) + <span class="hljs-number">2</span>;<br>                &#125;<br>                maxans = Math.<span class="hljs-built_in">max</span>(maxans, dp[i]);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> maxans;<br>    &#125;<br></code></pre></td></tr></table></figure>
+<p>** 301. 删除无效的括号：**<br>因为是需要知道删除后所有有效的情况，所以应该dfs</p>
+<p>solution: 先计算得到要删除的左右括号的数量，然后再dfs求所有合格的情况<br>使用dfs的两种剪枝技巧：</p>
+<ol>
+<li>不重复遍历相同的 if i!=cur &amp;&amp; char[i]==char[i-1] continue</li>
+<li>记录当前左括号和右括号的数量，只有左括号的数量大于等于右括号，再遍历需要这个右括号的这种情况，否则就不遍历这种情况</li>
+</ol>
+<p>注意这道题在进行递归的时候，不是一个字符一个字符的判断到底加不加当前的字符，而是使用一个循环，从当前字符遍历到最后一个字符，然后将当前字符前面和后面的字符串进行拼接， 然后仍然从当前遍历的下标，进入下一个循环<br>通过这种方式可以跳过一些重复的循环， 比如（（（）， 这种方式只需要移除一个（ ， 没必要每个进行判断</p>
+<ol start="768">
+<li>最多能完成排序的块 I/II<br>总结：==最大的元素标记了一个段==<br>I:无重复的元素：可以直接i==maxnum的时候res++<br>II: 有重复的元素<br>使用单调栈</li>
+<li>如果大于等于栈顶，直接入栈</li>
+<li>如果小于，那么将栈顶下面小于当前值的元素pop掉，然后压入原来的栈顶</li>
+</ol>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>一定要清楚是单调递增栈还是单调递减栈；判断是单减栈还是单增栈的关键：是弹出的元素对后面的结果不会有影响。同时要注意push的是下标还是值</p>
+<p>栈适合题目：括号相关，左右的第一个最大最小，表达式求值，模拟文件层数，树结构题目，数字数组（也可能用二分）操作。<br>括号是否匹配也可以转为整数加减问题</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/leetcode/">leetcode</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%A0%88-%E5%8D%95%E8%B0%83%E6%A0%88/">栈, 单调栈</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/11/13/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%A2%98%E5%9E%8B/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">动态规划</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/13/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/leetcode-%E5%8D%95%E8%B0%83%E6%A0%88%E7%9B%B8%E5%85%B3/">
+                        <span class="hidden-mobile">leetcode/单调栈相关</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

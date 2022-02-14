@@ -1,0 +1,469 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="这是我的第一篇博客">
+  <meta name="author" content="huhu">
+  <meta name="keywords" content="">
+  <meta name="description" content="前缀和 + hash题目汇总一定要注意先判断hash[presum-target]是否存在并更新结果，再更新hash[presum]++， 因为可能nums[i]&#x3D;0 例题：面试题 17.05.  字母与数字，要求字母和数字个数相同，那么就是将字母转为1， 数字转为-1的时候，前缀和为0的最长序列；另外使用这种思想是的”和等于 k 的最长子数组长度“ ”和等于k子数组“ ”1371. 每个元音包含">
+<meta property="og:type" content="article">
+<meta property="og:title" content="哈希相关">
+<meta property="og:url" content="http://example.com/2021/11/13/leetcode/%E5%93%88%E5%B8%8C%E7%9B%B8%E5%85%B3/index.html">
+<meta property="og:site_name" content="Hello World">
+<meta property="og:description" content="前缀和 + hash题目汇总一定要注意先判断hash[presum-target]是否存在并更新结果，再更新hash[presum]++， 因为可能nums[i]&#x3D;0 例题：面试题 17.05.  字母与数字，要求字母和数字个数相同，那么就是将字母转为1， 数字转为-1的时候，前缀和为0的最长序列；另外使用这种思想是的”和等于 k 的最长子数组长度“ ”和等于k子数组“ ”1371. 每个元音包含">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-13T11:58:31.000Z">
+<meta property="article:modified_time" content="2022-02-08T06:05:04.550Z">
+<meta property="article:author" content="huhu">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>哈希相关 - Hello World</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hello World" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>HU&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="哈希相关">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-13 19:58" pubdate>
+        2021年11月13日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.7k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      8 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">哈希相关</h1>
+            
+            <div class="markdown-body">
+              <h4 id="前缀和-hash题目汇总"><a href="#前缀和-hash题目汇总" class="headerlink" title="前缀和 + hash题目汇总"></a>前缀和 + hash题目汇总</h4><p>一定要注意先判断hash[presum-target]是否存在并更新结果，再更新hash[presum]++， 因为可能nums[i]=0</p>
+<p>例题：<br>面试题 17.05.  字母与数字，要求字母和数字个数相同，那么就是将字母转为1， 数字转为-1的时候，前缀和为0的最长序列；<br>另外使用这种思想是的”和等于 k 的最长子数组长度“ ”和等于k子数组“<br> ”1371. 每个元音包含偶数次的最长子字符串“:<br>题解：为了表明每个元音出现了偶数次，可以使用二进制数，如果一个位经过一轮之后仍然为当前的值，那么说明这个位出现了偶数次或者没出现过，<br>通过这种方法可以类推到特定字符出现k数次，那么就使用k进制；同时注意是每个元音出现偶数次，而不是元音总个数为偶数次，如果是第二种情况<br>可以使用元音为奇数表示，sum%2==0表示元音个数为偶数）</p>
+<ol>
+<li><p>连续的子数组和 注意这道题不是说连续的子数组为目标数，而是为目标数的倍数，但是仍然可以用这种方法来做，因为为目标数的倍数，意味着前缀和%该数得到的余数相同，因为可以用hash记录第一次出现该余数的下标，然后再次出现时，判断数组长度是否大于等于2， 一定要注意在开始的时候hash[0]=-1!!!</p>
+</li>
+<li><p>连续数组 相同的0和1的个数，其实也是前缀和，只不过遇到0变为-1</p>
+</li>
+<li><p>和相同的二元子数组<br>注意一定要先查找hash[presum-target]，更新hash[presum]++<br>主要是针对0的情况，如果先更新hash就会报错<br>注意最开始要设置hash[0]要为1</p>
+</li>
+<li><p>统计「优美子数组」<br>将奇数转为1， 偶数转为0， 然后求和为k的子数组个数</p>
+</li>
+</ol>
+<h4 id="hash-双指针"><a href="#hash-双指针" class="headerlink" title="hash + 双指针"></a>hash + 双指针</h4><p>一定要注意返回的是元素还是元素的下标，一个可以排序使用指针，一个不能使用指针<br>两数之和：用双指针只能针对已经排好序的数组，没有排好序的数组，但是要求要返回下标，那么就用hash (unordered_set)<br>三数之和<br>四数之和：三重循环，因此有是三个去重的部分，不要只去重最后一层循环，忘了i j 层循环的去重</p>
+<p>注意！！！</p>
+<ol>
+<li>hash方法是不能去重的，要去重只能使用循环+双指针；同时返回坐标不能用双指针，返回值才能使用双指针</li>
+<li>去重放在==target的if语句之内（==循环去重==），同时可以用一些剪枝策略，但是要记得四个数相加可能出现溢出，所以如果要剪枝，记得强转为long型<figure class="highlight c++"><figcaption><span>去重模板</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">while</span>(i &lt; j &amp;&amp; nums[i] == nums[++i]);<span class="hljs-keyword">while</span>(i &lt; j &amp;&amp; nums[j] == nums[--j]);<br><br></code></pre></td></tr></table></figure></li>
+<li>数组不一定是排好序的，因此需要先对数组进行排序</li>
+</ol>
+<p>变形：数组中的k-diff数对，这里只是换成了绝对值差，而不是目标值; 而且因为数组中存在重复的数字，因此需要先用set记录结果，然后再返回set.size<br>这道题也可以用排序+二分查找（找到目标的k+nums[i]），同时需要过滤掉已经找的数据</p>
+<p>拓展：<br>注意前面三个题是可能包含重复的元素，但是需要返回不重复的元组对，下面这个题是找出所有的元组对，因此是包含重复的元组对的<br>题目：三数之和的多种可能<br>解决方案：仍然是三数之和的方法的，但是在进行计算的时候如果arr[left]!=arr[right]那么res+=hash[left]<em>hash[right] (用while循环找到hash[left]，或者提前计算)<br>如果arr[left]==arr[right] res+=(right-left+1)</em>(right-left)/2</p>
+<h4 id="代码模板"><a href="#代码模板" class="headerlink" title="代码模板"></a>代码模板</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">int</span> size=nums.<span class="hljs-built_in">size</span>();<br><span class="hljs-built_in">sort</span>(nums.<span class="hljs-built_in">begin</span>(), nums.<span class="hljs-built_in">end</span>());<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;nums.<span class="hljs-built_in">size</span>()<span class="hljs-number">-3</span>;i++)&#123;<br>    <span class="hljs-keyword">while</span>(i<span class="hljs-number">-1</span>&gt;=<span class="hljs-number">0</span>&amp;&amp;nums[i]==nums[i<span class="hljs-number">-1</span>])&#123;<br>        <span class="hljs-keyword">continue</span>; <span class="hljs-comment">//去重</span><br>    &#125;<br>    <span class="hljs-keyword">if</span>((<span class="hljs-keyword">long</span>) nums[i]+nums[i+<span class="hljs-number">1</span>]+nums[i+<span class="hljs-number">2</span>]+nums[i+<span class="hljs-number">3</span>]&gt;target)&#123;<br>            <span class="hljs-keyword">break</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span>((<span class="hljs-keyword">long</span>) nums[i]+nums[size<span class="hljs-number">-3</span>]+nums[size<span class="hljs-number">-2</span>]+nums[size<span class="hljs-number">-1</span>]&gt;target)&#123;<br>            <span class="hljs-keyword">continue</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i+<span class="hljs-number">1</span>;j&lt;nums.<span class="hljs-built_in">size</span>()<span class="hljs-number">-2</span>;j++)&#123;<br>        <span class="hljs-keyword">if</span> (j &gt; i + <span class="hljs-number">1</span> &amp;&amp; nums[j] == nums[j - <span class="hljs-number">1</span>]) &#123;<br>                    <span class="hljs-keyword">continue</span>; <span class="hljs-comment">//去重</span><br>        &#125;<br>        <span class="hljs-keyword">if</span>((<span class="hljs-keyword">long</span>) nums[i]+nums[j]+nums[j+<span class="hljs-number">1</span>]+nums[j+<span class="hljs-number">2</span>]&gt;target)&#123;<br>                <span class="hljs-keyword">break</span>; <span class="hljs-comment">//注意是break不是continue</span><br>        &#125;<br>        <span class="hljs-keyword">if</span>((<span class="hljs-keyword">long</span>) nums[i]+nums[j]+nums[size<span class="hljs-number">-2</span>]+nums[size<span class="hljs-number">-1</span>]&gt;target)&#123;<br>                <span class="hljs-keyword">continue</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">int</span> k=j+<span class="hljs-number">1</span>, q=size<span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">int</span> find_num=target-nums[i]-nums[j];<br>        <span class="hljs-keyword">while</span>(k&lt;q)&#123;<br>            <span class="hljs-keyword">if</span>(nums[k]+nums[q]&gt;find_num)&#123;<br>                q--;<br>            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[k]+nums[q]&lt;find_num)&#123;<br>                k++;<br>            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[k]+nums[q]==find_num)&#123;<br>                res.<span class="hljs-built_in">push_back</span>(&#123;nums[i], nums[j], nums[q], nums[k]&#125;);<br>                k++;<br>                q--;<br>                <span class="hljs-keyword">while</span>(k&lt;q&amp;&amp;nums[k]==nums[k<span class="hljs-number">-1</span>])&#123;<br>                    k++;<br>                &#125;<br>                <span class="hljs-keyword">while</span>(k&lt;q&amp;&amp;nums[q]==nums[q+<span class="hljs-number">1</span>])&#123;<br>                q--;<br>                &#125;<br>            &#125;<br>        &#125;<br><br>        <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/4sum/solution/si-shu-zhi-he-by-leetcode-solution/">四数之和答案</a></p>
+</blockquote>
+<h4 id="hash-动态规划"><a href="#hash-动态规划" class="headerlink" title="hash+动态规划"></a>hash+动态规划</h4><ol>
+<li>最长定差子序列<br>转移方程： dp[arr[i]]=dp[arr[i]-diff]+1<br>因为不知道arr[i]的最大值，以及可能出现负数的下标， 所以直接使用hash，而不是数组<br>dp[x] 表示以 x 结尾的最长等差子序列的长度；</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/leetcode/">leetcode</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E7%AC%94%E8%AF%95/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">笔试</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/13/leetcode/%E5%9B%9E%E6%BA%AF_DFS_BFS/">
+                        <span class="hidden-mobile">回溯_DFS_BFS</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

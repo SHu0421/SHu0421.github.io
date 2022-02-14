@@ -1,0 +1,502 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="这是我的第一篇博客">
+  <meta name="author" content="huhu">
+  <meta name="keywords" content="">
+  <meta name="description" content="模板 参考链接：[二分查找专题]（https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_41221520&#x2F;article&#x2F;details&#x2F;108277801）   如果找左右边界2 4 4 4 4 5（第一个等于，最后一个等于），那么使用left&lt;right以及找左右边界，控制右边；找右边界，控制左边的口诀； 如果找第一个大于target,第一个大于等于target；小于target, 最后一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二分算法">
+<meta property="og:url" content="http://example.com/2021/11/13/leetcode/%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Hello World">
+<meta property="og:description" content="模板 参考链接：[二分查找专题]（https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_41221520&#x2F;article&#x2F;details&#x2F;108277801）   如果找左右边界2 4 4 4 4 5（第一个等于，最后一个等于），那么使用left&lt;right以及找左右边界，控制右边；找右边界，控制左边的口诀； 如果找第一个大于target,第一个大于等于target；小于target, 最后一个">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-13T09:21:34.000Z">
+<meta property="article:modified_time" content="2022-01-23T05:35:03.663Z">
+<meta property="article:author" content="huhu">
+<meta property="article:tag" content="二分">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>二分算法 - Hello World</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hello World" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>HU&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="二分算法">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-13 17:21" pubdate>
+        2021年11月13日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">二分算法</h1>
+            
+            <div class="markdown-body">
+              <h4 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h4><blockquote>
+<p>参考链接：[二分查找专题]（<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41221520/article/details/108277801%EF%BC%89">https://blog.csdn.net/qq_41221520/article/details/108277801）</a></p>
+</blockquote>
+<ol>
+<li>如果找左右边界2 4 4 4 4 5（第一个等于，最后一个等于），那么使用left&lt;right以及找左右边界，控制右边；找右边界，控制左边的口诀；</li>
+<li>如果找第一个大于target,第一个大于等于target；小于target, 最后一个小于等于target<br>那么使用常规二分算法，left&lt;=right 以及题目中有等号，等式中无，以及大于对应left=mid+1在前，小于对应right=mid-1在前的口诀</li>
+</ol>
+<p>这个是否能统一为一个：<br>就是第一个大于target,第一个大于等于target，转为左边界；目前看是可以的<br>小于target, 最后一个小于等于target，转换为右边界.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs C++">左右边界<br><span class="hljs-comment">//左边界</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">left_bound</span><span class="hljs-params">(<span class="hljs-keyword">int</span> left, <span class="hljs-keyword">int</span> right, <span class="hljs-keyword">int</span> arr, <span class="hljs-keyword">int</span> target)</span></span>&#123;<br>    <span class="hljs-keyword">while</span>(left&lt;right)&#123;<br>        <span class="hljs-keyword">int</span> mid=left+(right-left)/<span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">if</span>(arr[mid]&lt;target)&#123;<br>            left=mid+<span class="hljs-number">1</span>;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            right=mid;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> arr[left];<br>&#125;<br><br><span class="hljs-comment">//右边界</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">right_bound</span><span class="hljs-params">(<span class="hljs-keyword">int</span> left, <span class="hljs-keyword">int</span> right, <span class="hljs-keyword">int</span> arr, <span class="hljs-keyword">int</span> target)</span></span>&#123;<br>    <span class="hljs-keyword">while</span>(left&lt;right)&#123;<br>        <span class="hljs-keyword">int</span> mid=left+(right-left)/<span class="hljs-number">2</span>+<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span>(arr[mid]&lt;=target)&#123;<br>            left=mid;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            right=mid<span class="hljs-number">-1</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> arr[right];<br>&#125;<br><br><br>标准：<br><span class="hljs-keyword">while</span>(left&lt;=right)&#123;<br>    <span class="hljs-keyword">int</span> mid=(left+right)/<span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">if</span>(arr[mid]&lt;target)&#123;<br>        left=mid+<span class="hljs-number">1</span>;<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(arr[mid]&gt;target)&#123;<br>        right=mid<span class="hljs-number">-1</span>;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">return</span> mid;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><ol>
+<li>在数组中找到一个局部最小值（不一定要在排序数组中使用二分算法，只要能确定二分两侧的某一侧肯定存在你要找的内容，就可以使用二分查找。</li>
+</ol>
+<ol start="2">
+<li><p>寻找旋转排序数组中的最小值（一个是可能包含重复数据，一个是不包含重复数据）<br>两个都是arr可能经过一次旋转处理，可能没有<br>(1)不包含重复，那么比较中间的值和右边的值，如果小于则说明右边顺序没变，right=mid,否则，left=mid+1<br>(2)可能包含重复数据就是在不包含重复数据基础上 添加一个如果nums[r]==nums[mid]，那么r–,一直到右边不等于mid</p>
+<p> <strong>注意</strong>: 一定是右边的数和中间的数进行比较，因为要考虑没有旋转的这种情况</p>
+</li>
+<li><p>有序旋转数组中找到一个数 target<br>Solution:为了方便记忆，仍然使用右边的数和中间的数进行对比</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">while</span>(left&lt;=right)&#123;<br>    <span class="hljs-keyword">int</span> mid=left+(right-left)/<span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">if</span>(arr[mid]==target)&#123;<br>        <span class="hljs-keyword">return</span> arr[mid];<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">if</span>(arr[mid]==arr[right])&#123;<br>            right--;<br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(arr[mid]&lt;arr[right])&#123;<br>            <span class="hljs-keyword">if</span>(target&gt;arr[mid]&amp;&amp;target&lt;=arr[right])&#123;<br>                left=mid+<span class="hljs-number">1</span>;<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                right=mid<span class="hljs-number">-1</span>;<br>            &#125;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-keyword">if</span>(target&gt;=arr[left]&amp;&amp;target&lt;arr[mid])&#123;<br>                right=mid<span class="hljs-number">-1</span><br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                left=mid+<span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br></code></pre></td></tr></table></figure></li>
+<li><p>H指数 计数排序 O(n)（计数的数组应该为size+1, 每个index的数量，如果&gt;=n全部计算为count[n]）或者二分查找(O(logn))</p>
+</li>
+</ol>
+<ol start="5">
+<li><p>寻找排序矩阵中的第k个数<br>二分查找算法， 计算mid值，查找，大于等于这个数的数量，然后right=mid  如果数量小于这个数量， left=mid+1<br>注意抓住矩阵横向和纵向都是有序的特点<br>同时在计算小于k的数量的时候，是每列每列的计算（从左下角）,因为是mid对矩阵进行划分</p>
+</li>
+<li><p>蜡烛之间的盘子,可以直接使用vector自带的函数进行二分查找<br>lower_bound(vec.begin(), vec.end(), target)-vec.begin()</p>
+</li>
+<li><p>寻找右区间， 二分查找+hash</p>
+</li>
+<li><p>我的日程安排表I<br> 方法一：暴力算法<br> 方法二：使用map对key进行排序，之后使用二分查找，查找当前区间应该插入的位置<br> 两个考点：<br> 1.map的lower_bound and upper_bound</p>
+<ol start="2">
+<li>插入的时候使用mp[end]=start<br>查找的时候查找start所在的位置，这样的话就不用和左右两边进行对比，只需要对比一边就好了<br>方法三：使用二叉搜索树, 每个数节点，包含left,right指针，以及start,和end两个val</li>
+</ol>
+</li>
+</ol>
+<p>PS 我的日程安排II III都是使用边界计数来实现，就是mp[start]++ mp[end]–</p>
+<ol start="9">
+<li><p>在 D 天内送达包裹的能力<br>使用二分搜索，查找船最低的容量，使得能在days内完成传输<br>易错点：一定要记得left 应该为里面最大的val，而不是0</p>
+</li>
+<li><p>制作 m 束花所需的最少天数<br>二分查找天数的下限，使得至少能够制作要求的花束<br>PS: 一定要注意没有找到的情况下，应该返回-1</p>
+</li>
+</ol>
+<ol start="11">
+<li><p>同时运行 N 台电脑的最长时间(hard)<br>S=min(barries[i], mid)  S/mid&gt;=n<br>left=1, right=sum(barries)/n<br>也就是如果当前假设的值大于电池容量，电池就会被榨干，否则电池会被用掉mid (因此电池不会同时被多台电脑用，因此最多用掉假设t这么多的电量)</p>
+</li>
+<li><p> 转变数组后最接近目标值的数组和<br>第一种思路： 这道题使用二分，但是因为是找target更近的点，因此mid的和是大于target或者小于target都有可能，虽然整体上left和right应该向target靠拢，但是最终的结果应该有另外的变量记录。==/&lt;/&gt; target的时候都不是找到了最终结果，而是候选结果。</p>
+</li>
+</ol>
+<p>也就是结果和left/right的变化是两个逻辑，不在一条线上</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">if</span>(<span class="hljs-built_in">abs</span>(sum-target)&lt;dist)&#123;<br>    res=mid;<br>    dist=<span class="hljs-built_in">abs</span>(sum-target);<br>&#125;<br><span class="hljs-keyword">if</span>(<span class="hljs-built_in">abs</span>(sum-target)==dist)&#123;<br>    <span class="hljs-keyword">if</span>(res&gt;mid)&#123;<br>        res=mid;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>第二种思路: 要想确定差的绝对值最小，可以先求出比target大的最小值，结果必出在最小值和最小值-1，二选一，比较下即可</p>
+<h4 id="二分查找总结"><a href="#二分查找总结" class="headerlink" title="二分查找总结"></a>二分查找总结</h4><p>结果是整数<br>数组排好序<br>时间复杂度要求O(nlogn)<br>类似于一种缩小范围的随机查找</p>
+<p>寻找类型题，可以考虑二分，如果是最大最小题，可以试试动态规划或者二分算法</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/leetcode/">leetcode</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BA%8C%E5%88%86/">二分</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/11/13/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">滑动窗口</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/13/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%A2%98%E5%9E%8B/">
+                        <span class="hidden-mobile">动态规划</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,515 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="这是我的第一篇博客">
+  <meta name="author" content="huhu">
+  <meta name="keywords" content="">
+  <meta name="description" content="例题 最小覆盖子串（两个字符串） 不同字符的最小子序列（一个字符串） 窗口内的最大值，使用的是单调栈 未排序数组中，累加和为给定值的最长子数组   方法一： 滑动窗口    方法二： 使用hash记录一个sum出现的最早index,同时要记得压入hash[0]&#x3D;-1(PS: 累加和为给定值的子数组个数-&gt;hash)  补充问题1，正数和负数个数相等的最长子数组  将正数转为1，负数转为0，求">
+<meta property="og:type" content="article">
+<meta property="og:title" content="滑动窗口">
+<meta property="og:url" content="http://example.com/2021/11/13/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/index.html">
+<meta property="og:site_name" content="Hello World">
+<meta property="og:description" content="例题 最小覆盖子串（两个字符串） 不同字符的最小子序列（一个字符串） 窗口内的最大值，使用的是单调栈 未排序数组中，累加和为给定值的最长子数组   方法一： 滑动窗口    方法二： 使用hash记录一个sum出现的最早index,同时要记得压入hash[0]&#x3D;-1(PS: 累加和为给定值的子数组个数-&gt;hash)  补充问题1，正数和负数个数相等的最长子数组  将正数转为1，负数转为0，求">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-13T09:22:03.000Z">
+<meta property="article:modified_time" content="2022-02-01T06:47:18.487Z">
+<meta property="article:author" content="huhu">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>滑动窗口 - Hello World</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hello World" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>HU&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="滑动窗口">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-13 17:22" pubdate>
+        2021年11月13日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      9 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">滑动窗口</h1>
+            
+            <div class="markdown-body">
+              <h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><ol>
+<li>最小覆盖子串（两个字符串）</li>
+<li>不同字符的最小子序列（一个字符串）</li>
+<li>窗口内的最大值，使用的是单调栈</li>
+<li>未排序数组中，累加和为给定值的最长子数组</li>
+</ol>
+<ul>
+<li><p>方法一： 滑动窗口  </p>
+</li>
+<li><p>方法二： 使用hash记录一个sum出现的最早index,同时要记得压入hash[0]=-1<br>(PS: 累加和为给定值的子数组个数-&gt;hash)</p>
+</li>
+<li><p>补充问题1，正数和负数个数相等的最长子数组<br>  将正数转为1，负数转为0，求累加和为0最长子数组</p>
+</li>
+<li><p>补充问题2： 元素只有0和1的情况下，求0 和 1个数相等的最长子数组<br>  将0转为-1，1不变，求累加和为0的最长子数组</p>
+</li>
+</ul>
+<ol start="5">
+<li><p>未排序数组中，累加和小于等于给定值的最长子数组</p>
+</li>
+<li><p>和小于等于K的最长子数组  以及 和不小于k的最短子数组（滑动窗口）</p>
+</li>
+<li><p>至少有 K 个重复字符的最长子串<br>解决方案： </p>
+</li>
+</ol>
+<ul>
+<li><p>滑动窗口，遍历包括1-26个字符26种情况下（字符总数是1-26种任意一个，每个字符至少k个）的最大长度，当当前窗口包含的字符数大于遍历的这种情况的话，收缩窗口</p>
+</li>
+<li><p>分治算法，先统计当前字符串，每个字符的频率，然后以小于k 的字符的任意一个作为划分点（感觉也可以放在一个集合，判断字符是否在集合内），将当前字符分为多个段，然后递归求解</p>
+</li>
+</ul>
+<ol start="8">
+<li><p>等差数列的划分，求个数问题 每个窗口包含的等差数列的个数=左右指针差-1</p>
+</li>
+<li><p>找到字符串的所有异位词，注意这个是两个指针之间只能包含这个词</p>
+</li>
+</ol>
+<ul>
+<li>解法1：类似于needle数组，只有count==0判断right-left+1是否等于p.size() 然后收缩窗口，每次收缩的时候都需要重新判断 len是否相等</li>
+<li>解法2：维护一个和p 一样长度的窗口，如果当前字符频率数组==p的字符频率数组（vec1==vecb），那么说明找到一个异位词</li>
+</ul>
+<p>PS:类似的题 最小覆盖子串（可以包含其他字符）， 包含k个无重复字符的最长子串</p>
+<p>模板</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python">总结：count == <span class="hljs-number">0</span>的时候，先收缩不必要的字符再进行判断！！！！<br><span class="hljs-built_in">int</span> left=<span class="hljs-number">0</span>, right=<span class="hljs-number">0</span>;<br>        //right最好是包含这个字符<br><span class="hljs-keyword">while</span>(right&lt;len1)&#123;<br><br>    <span class="hljs-keyword">if</span>(needle[s[right]]&gt;<span class="hljs-number">0</span>)&#123;<br>        count--; <br>    &#125;<br>    needle[s[right]]--; //先减再判断<br>    <span class="hljs-keyword">if</span>(count==<span class="hljs-number">0</span>)&#123;<br>        //收缩字符<br>        <span class="hljs-keyword">while</span>(needle[s[left]]&lt;<span class="hljs-number">0</span>)&#123;<br>            needle[s[left]]++;<br>            left++;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(right-left+<span class="hljs-number">1</span>&lt;min_len)&#123;<br>            min_len = right - left+<span class="hljs-number">1</span>;<br>            start = left;<br>        &#125;<br>            needle[s[left]]++;<br>            count++;<br>            left++;<br>        &#125;<br>        <br>        right++;<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<ol start="10">
+<li><p>最少交换次数来组合所有的 1 II<br>固定滑动窗口len=数组中1的个数，然后滑动，查看窗口内能包含的最大1的个数<br>注意初始化max_len为第一个窗口的1的个数，而不是INT_MIN</p>
+</li>
+<li><p>水果成篮<br>题意是包含两种数据类型的最长子数组;使用typecnt， hash_cnt 和left right指针；当typecnt&lt;=2对窗口进行扩， 否则进行收缩<br>用滑动窗口<br>注意是hash[fruit[left]]++/–不是hash[left]++/–</p>
+</li>
+</ol>
+<ol start="12">
+<li><p>最大连续1的个数III<br>滑动窗口，当当前的0的个数比k大，就收缩窗口，否则扩展窗口</p>
+</li>
+<li><p>爱生气的书店老板<br>先将满意时的数据加起来，然后这些位置的值置为0，剩下的就是求滑动窗口的最大值</p>
+</li>
+<li><p>尽可能使字符串相等<br>这道题转化的题意是，使得子数组（连续的数）的和小于maxCost的最长子数组的长度<br>使用滑动窗口</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">while</span>(right&lt;size)&#123;<br>     sum+=dist[right];<br>     <span class="hljs-keyword">while</span>(sum&gt;maxCost&amp;&amp;left&lt;=right)&#123;<br>         sum-=dist[left];<br>         left++;<br>     &#125;<br>     res=<span class="hljs-built_in">max</span>(res, right-left+<span class="hljs-number">1</span>);<br>     right++;<br> &#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>另外一种方法是前缀和+二分，对于每个index, 二分找到前缀和大于等于presum[index]-maxCost的最小下标（lower_bound）</p>
+<ol start="13">
+<li><p>可获得的最大点数<br>题意：只能从两端取数据，取得k个数据的最大值<br>solution: 滑动窗口内元素之和的最小值, 其实也可以用区间dp解决，但是因为为造成三维dp[left][right][k]，因此会超出内存</p>
+</li>
+<li><p>最高频元素的频数<br>将整个数组进行排序，使用滑动窗口，枚举将窗口内所有的数转为右边界这个数的最长长度， l只会递增不会减少， r就是当前遍历的下标，因为之前的元素都已经转为num[r-1]，因此还需要消耗的数据只有(nums[r]-nums[r-1])*(r-l)</p>
+</li>
+<li><p>查找给定哈希值的子串<br>这个就是 字符串hash的一个例子，但是和常规的字符串hash不一样的是，字符串hash计算方式为<br>hash(s, p, m) = (val(s[0]) * p0 + val(s[1]) * p1 + … + val(s[k-1]) * pk-1) mod m.</p>
+</li>
+</ol>
+<p>但是因为除法不满足取余的恒等性质，如果正序的话就会导致需要减去第一个数然后/power+最后一个数的值，会发生错误<br>因此需要倒序，减去当前的值，乘以power再加上新元素的值。（乘法满足取余恒等）<br>solution: 从右到左，滑动窗口计算k字符串里面的hashvalue</p>
+<p>另一种解法，适用于任何长度的字符串，仍然需要反向计算<br>与标准的不同之处：sum[i] 从sum[i-1]变为从sum[i+1], 计算hash由hash[right]-hash[left]变为hash[left]-hash[right]<br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-substring-with-given-hash-value/solution/zi-fu-chuan-ha-xi-zi-fu-chuan-chu-li-cha-v809/">https://leetcode-cn.com/problems/find-substring-with-given-hash-value/solution/zi-fu-chuan-ha-xi-zi-fu-chuan-chu-li-cha-v809/</a></p>
+<p>PS:取模和乘法同一优先级：乘法都要在后面加一个%运算符， 减了一个元素，需要在取模前加上这个modulo；这道题也不能直接套用以前封装的的字符串哈希类，因为POWER 与 MOD 要互质(存在逆元) 才能调RK算法</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>涉及连续子数组的两种方法：1.滑动窗口 2.前缀和+hash<br>如果是小于等于K的最长，那么使用二分查找，查找大于等于sums[i]-target的第一个下标index（向前查找）i-index+1  lower_bound 最后返回时候判断一下是否&gt;=target<br>如果是大于等于K的最短，那么使用二分查找，查找大于等于sums[i]+target的第一个下标index（向后查找）index-i+1</p>
+<p>滑动串口count==0 先收缩再判断</p>
+<p>求子数组的个数，以及最长子数组， 可能使用滑动窗口(右边固定，左边每个都可以，子数组的所有个数)，可能使用hash+前缀和（和为k， 右边固定，左边部分可，部分不行），也可能两种都可以，注意区别。<br>如果固定了left到right之间的间距，一般用滑动窗口<br>而且区分子序列（不连续）， 子数组（连续）</p>
+<p>滑动窗口适合字符串/数组是连续场景，滑动窗口里面的字符是可能都需要，也能只需要子序列满足条件就可以</p>
+<p>如果字符串连续+长度固定，使用滑动窗口</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/leetcode/">leetcode</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/11/13/leetcode/%E6%8E%92%E5%BA%8F%E9%A2%98/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">排序算法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/13/leetcode/%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/">
+                        <span class="hidden-mobile">二分算法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

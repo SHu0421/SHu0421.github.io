@@ -1,0 +1,483 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="这是我的第一篇博客">
+  <meta name="author" content="huhu">
+  <meta name="keywords" content="">
+  <meta name="description" content="相关例题 摆动序列：使用贪心算法，或者动态规划 当前状态可以用前面的一个状态转移过来（可以证明得到，down是由up转移过来，up是由down转移过来），所以时间复杂度只有O(1)或者使用diff来进行理解，当前的diff一定要和前一个diff相反注意和最长上升子序列的区别，最长上升子序列，当前的状态不能从上一个状态转移过来，所以只能使用内外循环  其实摆动序列也属于动态规划  down[i],">
+<meta property="og:type" content="article">
+<meta property="og:title" content="贪心算法">
+<meta property="og:url" content="http://example.com/2021/11/13/leetcode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Hello World">
+<meta property="og:description" content="相关例题 摆动序列：使用贪心算法，或者动态规划 当前状态可以用前面的一个状态转移过来（可以证明得到，down是由up转移过来，up是由down转移过来），所以时间复杂度只有O(1)或者使用diff来进行理解，当前的diff一定要和前一个diff相反注意和最长上升子序列的区别，最长上升子序列，当前的状态不能从上一个状态转移过来，所以只能使用内外循环  其实摆动序列也属于动态规划  down[i],">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-13T09:22:53.000Z">
+<meta property="article:modified_time" content="2022-01-27T10:25:46.005Z">
+<meta property="article:author" content="huhu">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>贪心算法 - Hello World</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hello World" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>HU&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="贪心算法">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-13 17:22" pubdate>
+        2021年11月13日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      5 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">贪心算法</h1>
+            
+            <div class="markdown-body">
+              <h4 id="相关例题"><a href="#相关例题" class="headerlink" title="相关例题"></a>相关例题</h4><ol>
+<li>摆动序列：使用贪心算法，或者动态规划 当前状态可以用前面的一个状态转移过来（可以证明得到，down是由up转移过来，up是由down转移过来），所以时间复杂度只有O(1)<br>或者使用diff来进行理解，当前的diff一定要和前一个diff相反<br>注意和最长上升子序列的区别，最长上升子序列，当前的状态不能从上一个状态转移过来，所以只能使用内外循环</li>
+</ol>
+<p>其实摆动序列也属于动态规划  down[i], up[i]: 0-i之间的最后为up的最长序列，和最后为down的最长序列;一定要注意<br>down[i]=max(down[i-1], up[i-1]+1)//一定要记得和down[i-1]进行比较</p>
+<ol start="2">
+<li><p>最大子序列和</p>
+</li>
+<li><p>加油站</p>
+</li>
+<li><p>买卖股票最佳时机</p>
+</li>
+<li><p>跳跃游戏</p>
+</li>
+<li><p>区间相关的题目：主要是判断如何对区间进行排序（左区间还是右区间，遇到重叠该如何处理）</p>
+</li>
+<li><p>用最少数量的箭引爆气球: 先按照气球的右区间对气球的进行排序，如果遍历到的当前左区间小于end,那么continue；否则更新end, res++</p>
+</li>
+<li><p>划分字母区间，注意读懂题意: 是同一个字母最多出现在一个区间，而不是一个字母只出现在一个区间！！<br>用hash统计一个字母的最后位置，当当前遍历的位置==之前区间达到的最大位置，说明需要划分一个区间了</p>
+</li>
+<li><p>无重叠区间: 需要以右边界排序，在两个区间重叠的时候，保留右边界更小的区间</p>
+</li>
+<li><p>合并区间：以左边界进行排序，注意在修改vector back的右边界的时候可以不用pop_back 然后push_back可以直接使用vec.back()[1]=interval[i][1]</p>
+</li>
+<li><p>分割数组为连续子序列<br>关键点，每次往前往后看是否能凑齐一个最小合格序列<br>两种解法：</p>
+</li>
+</ol>
+<ul>
+<li><p>使用优先队列的方式，用一个map记录以x结尾的序列，同时这个序列需要根据长度从小到大进行排序，就是说相同的长度末尾，更倾向于将当前的x追加到长度更短的以x-1的序列上</p>
+</li>
+<li><p>如果使用贪心算法，那就是用两个hash表，一个表记录数据的个数，另外一个表记录以某一个数结尾的合格序列个数。每次都先凑齐一个合格序列，然后在判断后面的数， 首先看有没有x-1的合格序列，有就当前数-1， 否则从当前数开始从后面凑齐一个合格序列</p>
+</li>
+</ul>
+<ol start="12">
+<li><p>环形子数组的最大值<br>分为两种情况，一个区间加起来最大，或者左右两端加起来最大<br>那么就是 max(res1, total-res2) res1是中间加起来最大， res2的中间加起来最小<br>但是注意！！！ 当total==res2的时候，直接返回res1, 不应该返回max(res1, total-res2) </p>
+</li>
+<li><p> 使数组唯一的最小增量<br>有点偏向找规律，使得数组中数据各不相同的最小操作次数（加的次数）<br>方法一：可以将多余的数，变为它==后面==相同个数个没有vis的数，返回结果其实就是没有vis数之和-多余数之和<br>方法二：先排序，再依次遍历数组元素，若当前元素小于等于它前一个元素，则将其变为前一个数 +1。</p>
+</li>
+<li><p>吃苹果的最大数目<br>注意这个和跳跃问题不一样<br>[2,1,10] [2,10,1] 答案是4<br>第四天可以吃第2天产的苹果，如果是跳跃的话，答案为3<br>使用贪心+优先队列<br>最先吃掉最先腐烂的水果，在前n个水果，因为每天可能会产生新的水果，最先腐烂的水果会改变，所以i一天一天相加；在n之后因为不会产生新的水果，所以i+=min(水果个数，腐烂截止-当前天数</p>
+</li>
+</ol>
+<p>优先队列的一些操作：q.top(), q.push() q.pop()<br>注意不能直接修改优先队列元素的值，比如q.top().num– 的操作是错误</p>
+<h4 id="区间相关问题"><a href="#区间相关问题" class="headerlink" title="区间相关问题"></a>区间相关问题</h4><p>区间子数组个数 一共有n个数的子区间个数是1+2+3+…+n 也就是(1+n)*n/2<br>这道题是最大值在[left, right]的区间个数，可以找到每个数都是&lt;=right的区间个数-每个数都是&lt; left的区间个数</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>贪心算法就是知道当前能够如何优先选择，使得最后的结果不会比当前的结果差<br>常见的题型：区间，优先队列，背包其实也是一种贪心</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/leetcode/">leetcode</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/11/13/leetcode/%E4%BD%8D%E8%BF%90%E7%AE%97/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">位运算</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/13/leetcode/%E5%85%B6%E4%BB%96/">
+                        <span class="hidden-mobile">其他问题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

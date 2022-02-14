@@ -1,0 +1,502 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="这是我的第一篇博客">
+  <meta name="author" content="huhu">
+  <meta name="keywords" content="">
+  <meta name="description" content="python python GIL介绍  list tuple set的区别    python迭代器和生成器的区别是什么生成器本质上还是一个迭代器，也是用在迭代操作中，因此它有和迭代器一样的特性，唯一的区别在于实现方式上不一样，后者更加简洁；生成器只是在需要这个值再生成  迭代器迭代器对象要求支持迭代器协议的对象。在Python中，支持迭代器协议就是实现对象的__iter__()和next()方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编程语言">
+<meta property="og:url" content="http://example.com/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/index.html">
+<meta property="og:site_name" content="Hello World">
+<meta property="og:description" content="python python GIL介绍  list tuple set的区别    python迭代器和生成器的区别是什么生成器本质上还是一个迭代器，也是用在迭代操作中，因此它有和迭代器一样的特性，唯一的区别在于实现方式上不一样，后者更加简洁；生成器只是在需要这个值再生成  迭代器迭代器对象要求支持迭代器协议的对象。在Python中，支持迭代器协议就是实现对象的__iter__()和next()方">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/image-20220122202312622.png">
+<meta property="article:published_time" content="2021-11-13T12:11:07.000Z">
+<meta property="article:modified_time" content="2022-02-14T09:34:26.692Z">
+<meta property="article:author" content="huhu">
+<meta property="article:tag" content="python, C++">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/image-20220122202312622.png">
+  
+  <title>编程语言 - Hello World</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hello World" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>HU&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="编程语言">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-13 20:11" pubdate>
+        2021年11月13日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">编程语言</h1>
+            
+            <div class="markdown-body">
+              <h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><ol>
+<li><p>python GIL介绍</p>
+</li>
+<li><p>list tuple set的区别</p>
+</li>
+</ol>
+<ol start="3">
+<li><p>python迭代器和生成器的区别是什么<br>生成器本质上还是一个迭代器，也是用在迭代操作中，因此它有和迭代器一样的特性，唯一的区别在于实现方式上不一样，后者更加简洁；<br>生成器只是在需要这个值再生成</p>
+</li>
+<li><p>迭代器<br>迭代器对象要求支持迭代器协议的对象。在Python中，支持迭代器协议就是实现对象的__iter__()和next()方法。<br>其中__iter__()方法返回迭代器对象本身；next()方法返回容器的下一个元素，在结尾时引发StopIteration异常。<br>iter是可迭代对象，可迭代对象才能调用next函数</p>
+</li>
+</ol>
+<ol start="5">
+<li>生成器<br>生成器(generator)就是一个函数，它提供了一种实现迭代器协议的便捷方式。<br>生成器与普通函数的区别在于它包含 yield 表达式，并且不需要定义 <strong>iter</strong>()和__next__()。</li>
+</ol>
+<h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><h5 id="1-vector"><a href="#1-vector" class="headerlink" title="1.vector"></a>1.vector</h5><p>find(vector.begin(), vector.end(), target_val)!=vector.end() find函数返回的是一个迭代器</p>
+<p>vector.push_back(i)<br>vector.pop_back()</p>
+<p>vec1.swap(vec2)//进行vector1和vector2的交换<br>vec2(vec1.begin(), vec1.begin()+4)表示截取vector的一部分，并赋值给vec2,注意后面的值表示vec不需要 也就是左闭右开模式</p>
+<p>vector最后一个元素，vector.back()</p>
+<p>vector.insert(vec.begin()+pos, target); // 将target元素插入到pos位置</p>
+<p>auto pos=lower_bound(nums.begin(), nums.end(), target)<br>index = pos-nums.begin() //<br>lower_bound返回的是大于等于目标函数的数， upper_bound返回的是大于目标函数的数</p>
+<p>注意和set的lower_bound不一样的<br>set.lower_bound(targets) 返回一个迭代器</p>
+<p>mp的lower_bound也是不一样的<br>auto iter = mp.lower_bound(val)</p>
+<p>set和map中的元素都是排好序的</p>
+<h5 id="2-unordered-set-my-set"><a href="#2-unordered-set-my-set" class="headerlink" title="2.unordered_set my_set"></a>2.unordered_set my_set</h5><p>my_set.find(target_value)!=my_set.end() or my_set.count(target_value)!=0<br>my_set.insert(value)<br>my_set.erase(value)A</p>
+<p>unordered_set查找元素的两种方式：（1）umap.find(target)!=-1  (2) umap[target]<br>unordered_set在进行查找的时候可以直接使用unordered_set[target]即使是target不存在也不会报错，<br>但是在vector中查找某一个元素就需要vec.find(target)!=vec.end() </p>
+<h5 id="3-priority-queue-queue"><a href="#3-priority-queue-queue" class="headerlink" title="3. priority_queue / queue"></a>3. priority_queue / queue</h5><p>q.push()<br>q.pop()</p>
+<h5 id="4-set-insert-value-erase-value-push-pop"><a href="#4-set-insert-value-erase-value-push-pop" class="headerlink" title="4. set insert(value) erase(value) push pop"></a>4. set insert(value) erase(value) push pop</h5><p>遍历 for(auto iter=set.begin(); iter!=set.end(); iter++)</p>
+<p>用vector里面的元素初始化set unordered_set<int> nums_set(nums1.begin(), nums1.end());//其中nums1是vector</p>
+<h5 id="5-map"><a href="#5-map" class="headerlink" title="5.map"></a>5.map</h5><p>插入元素：map[key]=value; 或者map.insert(make_pair(key, value))<br>删除元素：map.erase(key)//注意不是remove</p>
+<p>查找元素：map.find(key)</p>
+<p>复制：hash.insert(hash1.begin(), hash1.end())<br>PS： vector的复制是 vec.assign(vec1.begin(), vec1.end())</p>
+<h5 id="6-其他语法"><a href="#6-其他语法" class="headerlink" title="6.其他语法"></a>6.其他语法</h5><p>判断字符是字母：isalpha()</p>
+<p>判断字符是数字：isdigit()</p>
+<p>判断字符是字母或数字：isalnum()</p>
+<p>同时注意c++中，字符用单引号表示，字符串用双引号表示</p>
+<p>注意c++中只有数组能够使用memset，在vector中不能使用</p>
+<h5 id="7-string"><a href="#7-string" class="headerlink" title="7.string"></a>7.string</h5><p>find函数 pos=s.find(target)  pos=s.find(target,0)<br>如果没有找到返回s.npos 或者string::npos</p>
+<p>原地移除数组上的元素，我们说到了数组上的元素，不能真正的删除，只能覆盖。array.erase(i)的时间复杂度是O(n)</p>
+<h5 id="8-set-数组-map的选择"><a href="#8-set-数组-map的选择" class="headerlink" title="8.set 数组 map的选择"></a>8.set 数组 map的选择</h5><p>主要是看数据的范围，如果数据返回不确定那么尽量选择map or set，如果确定是小写字母的话，也就是26个字母，可以使用数组<br>set包含 unordered_set（无序， 哈希表，不能重复， 查询和增删效率O(1)）, multiset（有序，红黑树，可以重复 O(nlogn)）, set(有序， 红黑树，不能重复， O(nlong))； map类似<br>三种都是只能erase和insert不能修改数值， map不能修改key但是可以修改value</p>
+<h5 id="9-stack"><a href="#9-stack" class="headerlink" title="9. stack"></a>9. stack</h5><p>栈的底层实现可以是vector, dequeue, list<br>栈只能获取最后一个元素，无法直接获取第一个元素<br>top()    返回栈顶元素的引用，类型为 T&amp;，如果栈为空，返回值未定义<br>pop()    栈顶元素出栈<br>size()    返回栈中元素的个数<br>empty()    栈中没有元素时返回 true<br>emplace()    使用传入的参数调用构造函数，在栈顶生成对象<br>push(const T&amp; obj)    将对象副本压入栈顶，通过调用底层容器的 push_back() 函数实现<br>push(T&amp;&amp; obj)    以移动对象的方式将对象压入栈，通过调用底层容器的有右值引用参数的 push_back() 函数实现<br>swap(stack<T> &amp; other_stack)    将当前栈中的元素和参数中的元素交换，参数所包含元素的类型必须和当前栈的相同，对于 stack 对象有一个特例化的全局函数 swap() 可以使用</p>
+<p>可以出一道面试题：栈里面的元素在内存中是连续分布的么？</p>
+<p>这个问题有两个陷阱：<br>陷阱1：栈是容器适配器，底层容器使用不同的容器，导致栈内数据在内存中是不是连续分布。<br>陷阱2：缺省情况下，默认底层容器是deque，那么deque的在内存中的数据分布是什么样的呢？答案是：不连续的，下文也会提到deque。</p>
+<h5 id="10-queue-队列"><a href="#10-queue-队列" class="headerlink" title="10.queue 队列"></a>10.queue 队列</h5><p>可以访问队列最后一个元素，但是无法pop最后一个元素<br>queue入队，如例：q.push(x); 将x 接到队列的末端。</p>
+<p>queue出队，如例：q.pop(); 弹出队列的第一个元素，注意，并不会返回被弹出元素的值。</p>
+<p>访问queue队首元素，如例：q.front()，即最早被压入队列的元素。</p>
+<p>访问queue队尾元素，如例：q.back()，即最后被压入队列的元素。</p>
+<p>判断queue队列空，如例：q.empty()，当队列空时，返回true。</p>
+<h5 id="pair"><a href="#pair" class="headerlink" title="pair"></a>pair</h5><p>pair&lt;int, int&gt; 访问元素不是用下标而是用first second; 创建一个pair用pair&lt;int, int&gt; res = make_pair&lt;a, b&gt;<br>或者用括号 pair&lt;int, int&gt; b(1, 2);</p>
+<h5 id="新建一个未知长度的数组"><a href="#新建一个未知长度的数组" class="headerlink" title="新建一个未知长度的数组"></a>新建一个未知长度的数组</h5><p>int *queue;<br>queue=new int[k+1] 主要是用于类构建动态数组的这种情况</p>
+<h4 id="向上取整"><a href="#向上取整" class="headerlink" title="向上取整"></a>向上取整</h4><p>(x+(b-1))/b*b</p>
+<h4 id="malloc和new的区别"><a href="#malloc和new的区别" class="headerlink" title="malloc和new的区别"></a>malloc和new的区别</h4><p><img src="%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/image-20220122202312622.png" srcset="/img/loading.gif" lazyload alt="image-20220122202312622"></p>
+<h4 id="hashMap原理"><a href="#hashMap原理" class="headerlink" title="hashMap原理"></a>hashMap原理</h4>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/">项目相关</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/python-C/">python, C++</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">机器学习</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E9%9D%A2%E8%AF%95/">
+                        <span class="hidden-mobile">面试</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
