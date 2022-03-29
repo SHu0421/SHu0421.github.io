@@ -17,15 +17,15 @@
   <meta name="description" content="这是我的第一篇博客">
   <meta name="author" content="huhu">
   <meta name="keywords" content="">
-  <meta name="description" content="求总数问题 回文字符串的个数 表达式为期望结果的总数(也是区间dp, dp[i][j][0]或者dp[i][j][1])因为不是表达式的个数，而是达到期望值的个数，因此要记录一个表达式的值，用三维数组 能够组成的二叉树的个数 打气球的最大分数(区间dp)虽然不是求个数，而是求最大，但是也是与当前状态的左右边界有关。因为最终结果和左右两边有关，因此都是枚举的长度+右边界，计算左边界，进行动态规划转移">
+  <meta name="description" content="求总数问题 回文字符串的个数 表达式为期望结果的总数 也是区间dp, dp[i][j][0]或者dp[i][j][1]) 因为不是表达式的个数，而是达到期望值的个数，因此要记录一个表达式的值，用三维数组   能够组成的二叉树的个数 打气球的最大分数(区间dp) 虽然不是求个数，而是求最大，但是也是与当前状态的左右边界有关。因为最终结果和左右两边有关，因此都是枚举的长度+右边界，计算左边界，进行动态">
 <meta property="og:type" content="article">
 <meta property="og:title" content="动态规划">
 <meta property="og:url" content="http://example.com/2021/11/13/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%A2%98%E5%9E%8B/index.html">
 <meta property="og:site_name" content="Hello World">
-<meta property="og:description" content="求总数问题 回文字符串的个数 表达式为期望结果的总数(也是区间dp, dp[i][j][0]或者dp[i][j][1])因为不是表达式的个数，而是达到期望值的个数，因此要记录一个表达式的值，用三维数组 能够组成的二叉树的个数 打气球的最大分数(区间dp)虽然不是求个数，而是求最大，但是也是与当前状态的左右边界有关。因为最终结果和左右两边有关，因此都是枚举的长度+右边界，计算左边界，进行动态规划转移">
+<meta property="og:description" content="求总数问题 回文字符串的个数 表达式为期望结果的总数 也是区间dp, dp[i][j][0]或者dp[i][j][1]) 因为不是表达式的个数，而是达到期望值的个数，因此要记录一个表达式的值，用三维数组   能够组成的二叉树的个数 打气球的最大分数(区间dp) 虽然不是求个数，而是求最大，但是也是与当前状态的左右边界有关。因为最终结果和左右两边有关，因此都是枚举的长度+右边界，计算左边界，进行动态">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-13T09:00:51.000Z">
-<meta property="article:modified_time" content="2022-02-13T05:30:38.148Z">
+<meta property="article:modified_time" content="2022-02-19T09:13:19.303Z">
 <meta property="article:author" content="huhu">
 <meta property="article:tag" content="dp">
 <meta name="twitter:card" content="summary_large_image">
@@ -207,7 +207,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      56 分钟
+      57 分钟
     </span>
   
 
@@ -239,19 +239,39 @@
             <h1 style="display: none">动态规划</h1>
             
             <div class="markdown-body">
-              <h4 id="求总数问题"><a href="#求总数问题" class="headerlink" title="求总数问题"></a>求总数问题</h4><ol>
+              <h3 id="求总数问题"><a href="#求总数问题" class="headerlink" title="求总数问题"></a>求总数问题</h3><ol>
 <li>回文字符串的个数</li>
-<li>表达式为期望结果的总数(也是区间dp, dp[i][j][0]或者dp[i][j][1])<br>因为不是表达式的个数，而是达到期望值的个数，因此要记录一个表达式的值，用三维数组</li>
+<li>表达式为期望结果的总数<ul>
+<li>也是区间dp, dp[i][j][0]或者dp[i][j][1])</li>
+<li>因为不是表达式的个数，而是达到期望值的个数，因此要记录一个表达式的值，用三维数组</li>
+</ul>
+</li>
 <li>能够组成的二叉树的个数</li>
-<li>打气球的最大分数(区间dp)<br>虽然不是求个数，而是求最大，但是也是与当前状态的左右边界有关。因为最终结果和左右两边有关，因此都是枚举的长度+右边界，计算左边界，进行动态规划<br>转移方程：考虑这个区间上最后一个气球的打破方式，即最后一个气球的打破位置。在左边右边和中间</li>
-<li>旋变字符串问题 (区间dp)<br>这道题不是求个数，而是求是否，但是仍然是需要枚举长度的问题，因为是两个字符串，所以应该有4个边，但是运用长度相等的信息，将思维坐标转为左边坐标+size, 成为三维问题<br>dp[start1][start2][len] 而且这道题有两个长度：一个是总字符串长度，一个是总字符串化为为两个旋变字符串的长度 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> size = <span class="hljs-number">2</span>; size &lt;= n; size++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> l1 = <span class="hljs-number">0</span>; l1 &lt;= n - size; l1++)&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> l2 = <span class="hljs-number">0</span>; l2 &lt;= n - size; l2++)&#123;<br>                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> leftPart = <span class="hljs-number">1</span>; leftPart &lt; size; leftPart++)&#123;<br>                    <span class="hljs-keyword">if</span>((dp[l1][l2][leftPart] &amp;&amp; dp[l1 + leftPart][l2 + leftPart][size - leftPart]) || <br>                        (dp[l1][l2 + size - leftPart][leftPart] &amp;&amp; dp[l1 + leftPart][l2][size - leftPart]))&#123;<br>                        dp[l1][l2][size] = <span class="hljs-literal">true</span>;      <span class="hljs-comment">// 只要有一个leftPart满足旋变串条件就可以break出去</span><br>                        <span class="hljs-keyword">break</span>;<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure></li>
-<li>数字字符串转为字母组合的总数<br>因为只是与之前的结果或者后面的结果有关，因此只需要从左到右枚举下标就可以了<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs C++">递推式<br><span class="hljs-comment">// 第 i 个字符只能单独转换为一个 字母</span><br><span class="hljs-comment">// dp[i-1] ：第 i 个字符单独转换的方案数</span><br>dp[i]=dp[i<span class="hljs-number">-1</span>];<br><span class="hljs-comment">// 第 i 个字符 可以和 第 i-1 个字符 共同转换为一个 字母</span><br><span class="hljs-comment">// dp[i-1] ：第 i 个字符单独转换的方案数</span><br><span class="hljs-comment">// dp[i-2] ：第 i 个字符，结合第 i-1 个字符组合转换为一个字母的方案数</span><br>dp[i]=dp[i<span class="hljs-number">-1</span>]+dp[i<span class="hljs-number">-2</span>];<br><span class="hljs-comment">//如果第i个字符不能单独存在那么</span><br>dp[i]=<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure></li>
-<li>组合总数IV，<br>总结：如果排序不同算不同的排列组合的话那么 target循环在外侧， nums总数循环在内侧<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=target;i++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;size;j++)&#123;<br>            <span class="hljs-keyword">if</span>(i&gt;=nums[j]&amp;&amp;dp[i - nums[j]] &lt; INT_MAX - dp[i])&#123;<br>                dp[i]+=dp[i-nums[j]];<br>            &#125;<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
-如果排序不同算相同的排列祝贺的话那么， target循环在内侧，nums总数循环在外侧, 完全背包问题<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=size;i++)&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;=target;j++)&#123;<br>        dp[i][j]+=dp[i<span class="hljs-number">-1</span>][j];<br>        <span class="hljs-keyword">if</span>(j&gt;=nums[i<span class="hljs-number">-1</span>])&#123;<br>            dp[i][j]+=dp[i][j-nums[i<span class="hljs-number">-1</span>]];<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure></li>
-<li>删除回文子数组（区间dp/枚举长度的dp）<br>数组，每次可以删除一个数字，或者删除掉一个回文串，求删除需要的最少次数<br>dp[i][j]=min(dp[i+1][j-1], dp[i][j]) if a[i]==a[j]<br>dp[i][j]=min(dp[i][k]+dp[k+1][j], dp[i][j])<br>dp长度从3开始，dp长度为1， 2的时候使用初始化</li>
+<li>打气球的最大分数(区间dp)<ul>
+<li>虽然不是求个数，而是求最大，但是也是与当前状态的左右边界有关。因为最终结果和左右两边有关，因此都是枚举的长度+右边界，计算左边界，进行动态规划<br>转移方程：考虑这个区间上最后一个气球的打破方式，即最后一个气球的打破位置。在左边右边和中间</li>
+</ul>
+</li>
+<li>旋变字符串问题 (区间dp)<ul>
+<li>这道题不是求个数，而是求是否，但是仍然是需要枚举长度的问题，因为是两个字符串，所以应该有4个边，但是运用长度相等的信息，将思维坐标转为左边坐标+size, 成为三维问题<br>dp[start1][start2][len] 而且这道题有两个长度：一个是总字符串长度，一个是总字符串化为为两个旋变字符串的长度<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> size = <span class="hljs-number">2</span>; size &lt;= n; size++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> l1 = <span class="hljs-number">0</span>; l1 &lt;= n - size; l1++)&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> l2 = <span class="hljs-number">0</span>; l2 &lt;= n - size; l2++)&#123;<br>                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> leftPart = <span class="hljs-number">1</span>; leftPart &lt; size; leftPart++)&#123;<br>                    <span class="hljs-keyword">if</span>((dp[l1][l2][leftPart] &amp;&amp; dp[l1 + leftPart][l2 + leftPart][size - leftPart]) || <br>                        (dp[l1][l2 + size - leftPart][leftPart] &amp;&amp; dp[l1 + leftPart][l2][size - leftPart]))&#123;<br>                        dp[l1][l2][size] = <span class="hljs-literal">true</span>;      <span class="hljs-comment">// 只要有一个leftPart满足旋变串条件就可以break出去</span><br>                        <span class="hljs-keyword">break</span>;<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>数字字符串转为字母组合的总数<ul>
+<li>因为只是与之前的结果或者后面的结果有关，因此只需要从左到右枚举下标就可以了<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs C++">递推式<br><span class="hljs-comment">// 第 i 个字符只能单独转换为一个 字母</span><br><span class="hljs-comment">// dp[i-1] ：第 i 个字符单独转换的方案数</span><br>dp[i]=dp[i<span class="hljs-number">-1</span>];<br><span class="hljs-comment">// 第 i 个字符 可以和 第 i-1 个字符 共同转换为一个 字母</span><br><span class="hljs-comment">// dp[i-1] ：第 i 个字符单独转换的方案数</span><br><span class="hljs-comment">// dp[i-2] ：第 i 个字符，结合第 i-1 个字符组合转换为一个字母的方案数</span><br>dp[i]=dp[i<span class="hljs-number">-1</span>]+dp[i<span class="hljs-number">-2</span>];<br><span class="hljs-comment">//如果第i个字符不能单独存在那么</span><br>dp[i]=<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>组合总数IV， <ul>
+<li>总结：如果排序不同算不同的排列组合的话那么 target循环在外侧， nums总数循环在内侧<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=target;i++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;size;j++)&#123;<br>            <span class="hljs-keyword">if</span>(i&gt;=nums[j]&amp;&amp;dp[i - nums[j]] &lt; INT_MAX - dp[i])&#123;<br>                dp[i]+=dp[i-nums[j]];<br>            &#125;<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure></li>
+<li>如果排序不同算相同的排列祝贺的话那么， target循环在内侧，nums总数循环在外侧, 完全背包问题<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=size;i++)&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;=target;j++)&#123;<br>        dp[i][j]+=dp[i<span class="hljs-number">-1</span>][j];<br>        <span class="hljs-keyword">if</span>(j&gt;=nums[i<span class="hljs-number">-1</span>])&#123;<br>            dp[i][j]+=dp[i][j-nums[i<span class="hljs-number">-1</span>]];<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>删除回文子数组<ul>
+<li>区间dp/枚举长度的dp</li>
+<li>数组，每次可以删除一个数字，或者删除掉一个回文串，求删除需要的最少次数<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus">dp<span class="hljs-selector-attr">[i]</span><span class="hljs-selector-attr">[j]</span>=min(dp<span class="hljs-selector-attr">[i+1]</span><span class="hljs-selector-attr">[j-1]</span>, dp<span class="hljs-selector-attr">[i]</span><span class="hljs-selector-attr">[j]</span>) <span class="hljs-keyword">if</span> <span class="hljs-selector-tag">a</span><span class="hljs-selector-attr">[i]</span>==<span class="hljs-selector-tag">a</span><span class="hljs-selector-attr">[j]</span><br>dp<span class="hljs-selector-attr">[i]</span><span class="hljs-selector-attr">[j]</span>=min(dp<span class="hljs-selector-attr">[i]</span><span class="hljs-selector-attr">[k]</span>+dp<span class="hljs-selector-attr">[k+1]</span><span class="hljs-selector-attr">[j]</span>, dp<span class="hljs-selector-attr">[i]</span><span class="hljs-selector-attr">[j]</span>)<br>dp长度从<span class="hljs-number">3</span>开始，dp长度为<span class="hljs-number">1</span>， <span class="hljs-number">2</span>的时候使用初始化<br></code></pre></td></tr></table></figure></li>
+<li>答案见：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1659691">https://cloud.tencent.com/developer/article/1659691</a> 可以作为区间dp模板，但是枚举长度和转移方程那里可以修改一下</li>
+</ul>
+</li>
 </ol>
-<p>答案见：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1659691">https://cloud.tencent.com/developer/article/1659691</a> 可以作为区间dp模板，但是枚举长度和转移方程那里可以修改一下</p>
-<h4 id="求最大最小问题"><a href="#求最大最小问题" class="headerlink" title="求最大最小问题"></a>求最大最小问题</h4><p>PS: 子串都是要求连续的，而子序列是不要求连续的</p>
+<h3 id="求最大最小问题"><a href="#求最大最小问题" class="headerlink" title="求最大最小问题"></a>求最大最小问题</h3><p>PS: 子串都是要求连续的，而子序列是不要求连续的</p>
 <ol>
 <li><p>扔鸡蛋</p>
 </li>
@@ -264,127 +284,242 @@
 </ul>
 <p> 另外类似的题目: 1027. 最长等差数列<br> dp[i][j]表示以i结尾而且差为j的最长数列</p>
  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;size;i++)&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;i;j++)&#123;<br>        <span class="hljs-keyword">int</span> tmp=nums[i]-nums[j];<span class="hljs-comment">//因为差可能是负数</span><br>        dp[i][tmp+<span class="hljs-number">1000</span>]=dp[j][tmp+<span class="hljs-number">1000</span>]+<span class="hljs-number">1</span>;<br>        res=<span class="hljs-built_in">max</span>(res, dp[i][tmp+<span class="hljs-number">1000</span>]);   <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
-<li><p>最长公共子串（要求连续）<br> 注意和子序列的区别：动态规划转移方程是 dp[i][j]=dp[i][j]+1 or dp[i][j]=0表示以i或者j结尾的子串， 最后遍历二维数组求最大值<br> 求具体的最长公共子串，只需要动态规划的时候，记录最长的公共子串的下标，然后s.substr(start_pos = index-maxlen+1, len = maxlen)就可以了</p>
+<li><p>最长公共子串（要求连续）</p>
+<ul>
+<li>注意和子序列的区别：动态规划转移方程是 dp[i][j]=dp[i][j]+1 or dp[i][j]=0表示以i或者j结尾的子串， 最后遍历二维数组求最大值<br>求具体的最长公共子串，只需要动态规划的时候，记录最长的公共子串的下标，然后s.substr(start_pos = index-maxlen+1, len = maxlen)就可以了</li>
+</ul>
 </li>
-<li><p>最长公共子序列<br> 题意改变，但是代码不变的题目–不相交的线<br> 相似的题目：<br> 1）编辑距离<br> 2）两个字符串的删除操作， 可以直接动态规划求最少的删除字符数量，也可以用最长公共子序列，然后用m+n-2*lcs<br> 如果要求具体删除的是哪些字符串，两种方法应该都是可以的<br> 动态规划转移方程是 dp[i][j]=dp[i][j]+1 or dp[i][j]=max(dp[i][j-1], dp[i-1][j])  示以i或者j结尾的子串中包括的最长公共子序列（不一定是以i j结尾）， 所以最后只用直接返回dp[m][n]<br> 在求最长的公共子序列的时候，需要使用dp转换等式 i–,j– 或者j–, 或者i–来进行查找最长的公共子序列， 同时也可以求最短的删除的字符具体是哪些</p>
-</li>
-<li><p>最长回文子序列（不要求连续，枚举长度）<br> 初始化长度为1和2的情况，然后</p>
- <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> len=<span class="hljs-number">3</span>;len&lt;=s_len;len++)&#123;<br>       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> left=<span class="hljs-number">0</span>;left&lt;s_len;left++)&#123;<br>           <span class="hljs-keyword">int</span> right=left+len<span class="hljs-number">-1</span>;<br>           <span class="hljs-keyword">if</span>(right&lt;s_len)&#123;<br>               dp[left][right]=<span class="hljs-built_in">max</span>(dp[left+<span class="hljs-number">1</span>][right], dp[left][right<span class="hljs-number">-1</span>]);<br>               <span class="hljs-keyword">if</span>(s[left]==s[right])&#123;<br>                   dp[left][right]=<span class="hljs-built_in">max</span>(dp[left][right],dp[left+<span class="hljs-number">1</span>][right<span class="hljs-number">-1</span>]+<span class="hljs-number">2</span>);<br>               &#125; <br>           &#125;<br>       &#125;<br>   &#125;<br></code></pre></td></tr></table></figure></li>
-<li><p>最长回文子串的问题<br> 可以用动态规划也可以用从中间向两边扩展的方法<br> 动态规划dp[left][right]不是表示长度，而是表示是否为回文子串，在求长度使用一个公共变量max_len,每求出dp 如果dp为1那么更新max_len</p>
-</li>
-<li><p>最长有效括号子串</p>
-</li>
+<li><p>最长公共子序列</p>
+<ul>
+<li>题意改变，但是代码不变的题目–不相交的线</li>
+<li>相似的题目：</li>
+</ul>
+<ol>
+<li>编辑距离</li>
+<li>两个字符串的删除操作， 可以直接动态规划求最少的删除字符数量，也可以用最长公共子序列，然后用m+n-2*lcs</li>
 </ol>
 <ul>
-<li>方法一：动态规划<br>  转移方程 dp[i]:以i结尾的最长有效括号子串 转移方程如下  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;s_len;i++)&#123;<br>    <span class="hljs-keyword">if</span>(s[i]==<span class="hljs-string">&#x27;)&#x27;</span>)&#123;<br>        <span class="hljs-keyword">int</span> j=i-dp[i<span class="hljs-number">-1</span>]<span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">if</span>(j&gt;=<span class="hljs-number">0</span>&amp;&amp;s[j]==<span class="hljs-string">&#x27;(&#x27;</span>)&#123;<br>            dp[i]=dp[i<span class="hljs-number">-1</span>]+<span class="hljs-number">2</span>;<br>            <span class="hljs-keyword">if</span>(j<span class="hljs-number">-1</span>&gt;=<span class="hljs-number">0</span>)&#123;<br>                dp[i]+=dp[j<span class="hljs-number">-1</span>];<br>            &#125;<br>        &#125;<br>        result=<span class="hljs-built_in">max</span>(result, dp[i]);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>如果要求具体删除的是哪些字符串，两种方法应该都是可以的</li>
+<li>动态规划转移方程是 <figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs inform7">dp<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>=dp<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>+1 or dp<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>=max(dp<span class="hljs-comment">[i]</span><span class="hljs-comment">[j-1]</span><br></code></pre></td></tr></table></figure>
+dp[i-1][j] 表示以i或者j结尾的子串中包括的最长公共子序列（不一定是以i j结尾）， 所以最后只用直接返回dp[m][n]</li>
+<li>在求最长的公共子序列的时候，需要使用dp转换等式 i–,j– 或者j–, 或者i–来进行查找最长的公共子序列， 同时也可以求最短的删除的字符具体是哪些</li>
+</ul>
+</li>
+<li><p>最长回文子序列</p>
+<ul>
+<li>不要求连续，枚举长度</li>
+<li>初始化长度为1和2的情况，然后<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> len=<span class="hljs-number">3</span>;len&lt;=s_len;len++)&#123;<br>       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> left=<span class="hljs-number">0</span>;left&lt;s_len;left++)&#123;<br>           <span class="hljs-keyword">int</span> right=left+len<span class="hljs-number">-1</span>;<br>           <span class="hljs-keyword">if</span>(right&lt;s_len)&#123;<br>               dp[left][right]=<span class="hljs-built_in">max</span>(dp[left+<span class="hljs-number">1</span>][right], dp[left][right<span class="hljs-number">-1</span>]);<br>               <span class="hljs-keyword">if</span>(s[left]==s[right])&#123;<br>                   dp[left][right]=<span class="hljs-built_in">max</span>(dp[left][right],dp[left+<span class="hljs-number">1</span>][right<span class="hljs-number">-1</span>]+<span class="hljs-number">2</span>);<br>               &#125; <br>           &#125;<br>       &#125;<br>   &#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>最长回文子串的问题</p>
+<ul>
+<li>可以用动态规划也可以用从中间向两边扩展的方法<br>动态规划dp[left][right]不是表示长度，而是表示是否为回文子串，在求长度使用一个公共变量max_len,每求出dp 如果dp为1那么更新max_len</li>
+</ul>
+</li>
+<li><p>最长有效括号子串</p>
+<ul>
+<li>方法一：动态规划</li>
+<li>转移方程 dp[i]:以i结尾的最长有效括号子串 转移方程如下<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;s_len;i++)&#123;<br>    <span class="hljs-keyword">if</span>(s[i]==<span class="hljs-string">&#x27;)&#x27;</span>)&#123;<br>        <span class="hljs-keyword">int</span> j=i-dp[i<span class="hljs-number">-1</span>]<span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">if</span>(j&gt;=<span class="hljs-number">0</span>&amp;&amp;s[j]==<span class="hljs-string">&#x27;(&#x27;</span>)&#123;<br>            dp[i]=dp[i<span class="hljs-number">-1</span>]+<span class="hljs-number">2</span>;<br>            <span class="hljs-keyword">if</span>(j<span class="hljs-number">-1</span>&gt;=<span class="hljs-number">0</span>)&#123;<br>                dp[i]+=dp[j<span class="hljs-number">-1</span>];<br>            &#125;<br>        &#125;<br>        result=<span class="hljs-built_in">max</span>(result, dp[i]);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 <li>方法二：下标栈，栈低维护的是最后一个没有被匹配的右括号下标，如果s[i]==’(‘入栈下标; 如果s[i]==’)’, 栈中弹出一个元素，如果栈为空，直接push(i) continue，否则更新ans=max(ans, i-s.peek())</li>
 </ul>
-<ol start="9">
-<li><p>分割回文串系列题目<br> a.分割回文串1<br> 动态规划+回溯dfs，求所有i， j之间的子字符串p[i][j]是否是回文 </p>
-<p> b.分割回文串2<br> 求最少分割次数<br> 这道题不能使用枚举长度和左边界+枚举分割点的方式，时间复杂度太高（O(N^3)）<br> 正确的解决方案是，求dp[i] 从0到i需要分割的最少次数，同时事先需要使用动态规划求出任意i j之间是否是回文串；如果0-i是回文串，直接结果为0，否则依次遍历i之后的字符串，找到回文串j+1-i，同时更新dp[i]=min(dp[i], dp[j]+1)<br> 这道题可以和“子数组异或值为0的最多划分”进行类比（动态规划+map映射上一个位置）；不同之处这道题通过回文串映射到上一个位置，异或和是通过异或值为和当前值相同隐射到上一个位置</p>
- <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s_len;i++)&#123;<br>    dp[i]=INT_MAX;<br>&#125;<br>dp[<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s_len;i++)&#123;<br>    <span class="hljs-keyword">if</span>(p[<span class="hljs-number">0</span>][i])&#123;<br>        dp[i]=<span class="hljs-number">0</span>;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;i;j++)&#123;<br>            <span class="hljs-keyword">if</span>(p[j+<span class="hljs-number">1</span>][i])&#123;<br>                dp[i]=<span class="hljs-built_in">min</span>(dp[i], dp[j]+<span class="hljs-number">1</span>);<span class="hljs-comment">//每一个被分割的子字符串都必须要为回文</span><br>            &#125;<br>        &#125;<br>    &#125;<br>    <br>&#125;<br><span class="hljs-keyword">return</span> dp[s_len<span class="hljs-number">-1</span>];<br></code></pre></td></tr></table></figure></li>
+</li>
+<li><p>分割回文串系列题目</p>
+<ol>
+<li>分割回文串1</li>
+</ol>
+<ul>
+<li>动态规划+回溯dfs，求所有i， j之间的子字符串p[i][j]是否是回文 </li>
+</ul>
+<ol start="2">
+<li>分割回文串2</li>
+</ol>
+<ul>
+<li>求最少分割次数<ul>
+<li>这道题不能使用枚举长度和左边界+枚举分割点的方式，时间复杂度太高（O(N^3)）</li>
+<li>正确的解决方案是，求dp[i] 从0到i需要分割的最少次数，同时事先需要使用动态规划求出任意i j之间是否是回文串；如果0-i是回文串，直接结果为0，否则依次遍历i之后的字符串，找到回文串j+1-i，同时更新dp[i]=min(dp[i], dp[j]+1)</li>
+<li>这道题可以和“子数组异或值为0的最多划分”进行类比（动态规划+map映射上一个位置）；不同之处这道题通过回文串映射到上一个位置，异或和是通过异或值为和当前值相同隐射到上一个位置<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s_len;i++)&#123;<br>    dp[i]=INT_MAX;<br>&#125;<br>dp[<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s_len;i++)&#123;<br>    <span class="hljs-keyword">if</span>(p[<span class="hljs-number">0</span>][i])&#123;<br>        dp[i]=<span class="hljs-number">0</span>;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;i;j++)&#123;<br>            <span class="hljs-keyword">if</span>(p[j+<span class="hljs-number">1</span>][i])&#123;<br>                dp[i]=<span class="hljs-built_in">min</span>(dp[i], dp[j]+<span class="hljs-number">1</span>);<span class="hljs-comment">//每一个被分割的子字符串都必须要为回文</span><br>            &#125;<br>        &#125;<br>    &#125;<br>    <br>&#125;<br><span class="hljs-keyword">return</span> dp[s_len<span class="hljs-number">-1</span>];<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
 </ol>
 <ol start="10">
-<li><p>背包问题<br>比较难的例题：货物转移（lintcode-困难） 反向dp（求背包数最少）+滚动数组+额外条件<br>相当于转为两个题：1. 从n个背包里面选择最少的背包使得背包容量大于等于sum（与选最大价值使得，重量小于sum相反）</p>
-<ol start="2">
+<li><p>背包问题</p>
+<ul>
+<li>比较难的例题：货物转移（lintcode-困难） 反向dp（求背包数最少）+滚动数组+额外条件<ul>
+<li>相当于转为两个题：</li>
+</ul>
+<ol>
+<li>从n个背包里面选择最少的背包使得背包容量大于等于sum（与选最大价值使得，重量小于sum相反）</li>
 <li>假设1求出来的结果为m, 从n个背包里面选择m个背包使得转移最少–&gt;选出的n个背包里面包含货物最多（weight最大）<br>相当于在状态转移方程再加上了一个weight数组的更新，具体代码如下：<br>dp[i]表示使得容量达到i（大于等于i），选择的最少的背包；<br>weight[i]表示使得背包容量达到i（大于等于i），在选择的背包最少的前提下，背包里原本包含的货物最多。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=sum;j&gt;=<span class="hljs-number">1</span>;j--)&#123;<br>            <span class="hljs-keyword">int</span> tmp=<span class="hljs-built_in">max</span>(j-b[i], <span class="hljs-number">0</span>);<br>            <span class="hljs-comment">// dp[j]=min(dp[tmp]+1, dp[j]); 实际上的状态转移</span><br>            <span class="hljs-keyword">if</span>(dp[j]&lt;dp[tmp]+<span class="hljs-number">1</span>)&#123;  <span class="hljs-comment">//拆分后的状态转移</span><br>                <span class="hljs-comment">// weight[j]=weight[tmp];</span><br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(dp[j]==dp[tmp]+<span class="hljs-number">1</span>)&#123;<br>                weight[j]=<span class="hljs-built_in">max</span>(weight[j], weight[tmp]+a[i]);<br>            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(dp[j]&gt;dp[tmp]+<span class="hljs-number">1</span>)&#123;<br>                dp[j]=dp[tmp]+<span class="hljs-number">1</span>;<br>                weight[j]=weight[tmp]+a[i];<br>            &#125;<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure></li>
 </ol>
 </li>
+</ul>
+</li>
 <li><p>换钱问题</p>
 </li>
-<li><p>通配符匹配问题，一定要注意动态规划的状态转移方程式是i j 从 i-k j-k转移过来，不能出现i+k j+k(如果出现，一定是枚举的长度，例如回文串和打气球问题)<br>易错点：<br>字符串的匹配问题，通常会在字符前面加上” “ dp[0][0]=1<br>同时如果i j从1开始取的话，需要初始化赋值dp[0][i] 和dp[i][0]</p>
-<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs prolog">for(int i=<span class="hljs-number">2</span>;i&lt;p_len;i++)&#123;<br>    if(p[i]==<span class="hljs-string">&#x27;*&#x27;</span>)&#123;<br>        dp[<span class="hljs-number">0</span>][i]=dp[<span class="hljs-number">0</span>][i<span class="hljs-number">-2</span>]; // or dp[<span class="hljs-number">0</span>][i]=dp[<span class="hljs-number">0</span>][i<span class="hljs-number">-1</span>];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>如果不好赋值dp[i][0] or dp[0][i] 可以让i j 从0开始取，但是在状态转移的时候注意进行j 或者i的判断 if j&gt;=1  dp[j-1]<br>a. 问题1：<em>可以匹配任意字符<br>b. 问题2，</em>只能匹配前面字符的0个1个或多个(正则表达式匹配) 需要判断s[i] p[j-1]是否相等</p>
+<li><p>通配符匹配问题</p>
+<ul>
+<li>一定要注意动态规划的状态转移方程式是i j 从 i-k j-k转移过来，不能出现i+k j+k(如果出现，一定是枚举的长度，例如回文串和打气球问题)</li>
+<li>易错点：<br>字符串的匹配问题，通常会在字符前面加上” “ dp[0][0]=1<br>同时如果i j从1开始取的话，需要初始化赋值dp[0][i] 和dp[i][0]<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i&lt;p_len;i++)&#123;<br>    <span class="hljs-keyword">if</span>(p[i]==<span class="hljs-string">&#x27;*&#x27;</span>)&#123;<br>        dp[<span class="hljs-number">0</span>][i]=dp[<span class="hljs-number">0</span>][i<span class="hljs-number">-2</span>]; <span class="hljs-comment">// or dp[0][i]=dp[0][i-1];</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>如果不好赋值dp[i][0] or dp[0][i] 可以让i j 从0开始取，但是在状态转移的时候注意进行j 或者i的判断 if j&gt;=1  dp[j-1]<ol>
+<li>问题1：*可以匹配任意字符 </li>
+<li>问题2：*只能匹配前面字符的0个1个或多个(正则表达式匹配) 需要判断s[i] p[j-1]是否相等</li>
+</ol>
 </li>
-<li><p>打家劫舍，求能够得到金额的最大值。环形可以转为dp[0][size-2]和dp[1][size-1]两者之中求最大值</p>
+</ul>
 </li>
-<li><p>整数拆分 可以使用动态规划 二层循环 dp[i]= max(j*(i-j), j* dp[i-j])， 因为存在i-j &gt; dp[i-j]的情况<br>或者使用数据规划，将余数为2（2<em>） 1（4</em>） 0情况区别对待</p>
+<li><p>打家劫舍</p>
+<ul>
+<li>求能够得到金额的最大值。</li>
+<li>环形可以转为dp[0][size-2]和dp[1][size-1]两者之中求最大值</li>
+</ul>
 </li>
-<li><p>最大整除子集 （和最长递增序列有相似之处）注意：在进行倒推序列的时候，需要记录当前的maxval 以及target_dpval, 这两者都需要在压入每个元素的时候更新</p>
+<li><p>整数拆分 </p>
+<ul>
+<li>可以使用动态规划 二层循环 dp[i]= max(j*(i-j), j* dp[i-j])， 因为存在i-j &gt; dp[i-j]的情况</li>
+<li>或者使用数据规划，将余数为2（2<em>） 1（4</em>） 0情况区别对待</li>
+</ul>
+</li>
+<li><p>最大整除子集 </p>
+<ul>
+<li>和最长递增序列有相似之处）</li>
+<li>注意：在进行倒推序列的时候，需要记录当前的maxval 以及target_dpval, 这两者都需要在压入每个元素的时候更新</li>
+</ul>
 </li>
 <li><p> 摆动序列 （序列最长问题）</p>
 </li>
-<li><p>无重叠区间 可以使用动态规划，找到以每个区间结尾的最长子序列（O(N^2)） 或者贪心，对区间右边进行排序然后选择 O(nlogn)</p>
+<li><p>无重叠区间 </p>
+<ul>
+<li>可以使用动态规划，找到以每个区间结尾的最长子序列（O(N^2)） 或者贪心，对区间右边进行排序然后选择 O(nlogn)</li>
+</ul>
 </li>
-<li><p>最后一块石头的重量 II<br>需要理解题意之后转为背包问题，也就是最大最小问题<br>求两个子集相差的最小值 -&gt; 转为背包问题，背包容量是sum/2，求能够放入背包的最大数<br>dp[i][j]=max(dp[i-1][j], dp[i-1][j-stone[i]]+stone[i])</p>
+<li><p>最后一块石头的重量 II</p>
+<ul>
+<li><p>需要理解题意之后转为背包问题，也就是最大最小问题</p>
 </li>
-</ol>
-<p>0-1的最大背包问题，逆向枚举<br>多重背包问题也是，只能逆向枚举<br>完全背包（无限个）才是正向枚举！！！</p>
-<ol start="19">
-<li>乘积为正数的最长子数组长度 (最长子数组系列题目)<br>注意这道题是求最长的长度，不是最大的乘积，但是这两个问题都可以使用动态规划完成<br>1）最长的长度，positive[i]表示以i结尾的为正数的子数组，negtive[i] i结尾的为负数的子数组，<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">if</span> (nums[<span class="hljs-number">0</span>] &gt; <span class="hljs-number">0</span>) &#123;<br>    positive[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[<span class="hljs-number">0</span>] &lt; <span class="hljs-number">0</span>) &#123;<br>    negative[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-keyword">int</span> maxLength = positive[<span class="hljs-number">0</span>];<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; length; i++) &#123;<br>    <span class="hljs-keyword">if</span> (nums[i] &gt; <span class="hljs-number">0</span>) &#123;<br>        positive[i] = positive[i - <span class="hljs-number">1</span>] + <span class="hljs-number">1</span>;<br>        negative[i] = negative[i - <span class="hljs-number">1</span>] &gt; <span class="hljs-number">0</span> ? negative[i - <span class="hljs-number">1</span>] + <span class="hljs-number">1</span> : <span class="hljs-number">0</span>; <span class="hljs-comment">//注意一定要和0判断</span><br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[i] &lt; <span class="hljs-number">0</span>) &#123;<br>        positive[i] = negative[i - <span class="hljs-number">1</span>] &gt; <span class="hljs-number">0</span> ? negative[i - <span class="hljs-number">1</span>] + <span class="hljs-number">1</span> : <span class="hljs-number">0</span>;<br>        negative[i] = positive[i - <span class="hljs-number">1</span>] + <span class="hljs-number">1</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        positive[i] = <span class="hljs-number">0</span>;<br>        negative[i] = <span class="hljs-number">0</span>;<br>    &#125;<br>    maxLength = Math.<span class="hljs-built_in">max</span>(maxLength, positive[i]);<br>&#125;<br></code></pre></td></tr></table></figure>
-我的思路：转为前缀和+hash<pre><code>题意转为：负数为1，正数为0， 0单独处理，相加和为偶数的最长子数组
-如果&lt;0, 那么sum+=1；
-如果&gt;0, 那么sum不变；
-如果=0, 那么sum=0，  hash.clear(), hash[0]=i；
-如果sum为偶数：
-res=max(res, i-hash[0])
-如果sum为奇数：
-如果hash[1]存在
-res=max(res, i-hash[1]) 
-否则hash[1]=i;
-</code></pre>
+<li><p>求两个子集相差的最小值 -&gt; 转为背包问题，背包容量是sum/2，求能够放入背包的最大数</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs inform7">dp<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>=max(dp<span class="hljs-comment">[i-1]</span><span class="hljs-comment">[j]</span>, dp<span class="hljs-comment">[i-1]</span><span class="hljs-comment">[j-stone<span class="hljs-comment">[i]</span>]</span>+stone<span class="hljs-comment">[i]</span>)<br></code></pre></td></tr></table></figure></li>
+<li><p>0-1的最大背包问题，逆向枚举</p>
 </li>
-</ol>
-<p>2）最大乘积，dp1[i]表示以i结尾乘积最大子数组，dp2[i]的乘积最小(注意不一定为负数)的子数组</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=size;i++)&#123;<br>    <span class="hljs-keyword">if</span>(nums[i<span class="hljs-number">-1</span>]&gt;<span class="hljs-number">0</span>)&#123;<br>        dp1[i]=<span class="hljs-built_in">max</span>(dp1[i<span class="hljs-number">-1</span>]*nums[i<span class="hljs-number">-1</span>], nums[i<span class="hljs-number">-1</span>]);<br>        dp2[i]=<span class="hljs-built_in">min</span>(dp2[i<span class="hljs-number">-1</span>]*nums[i<span class="hljs-number">-1</span>], nums[i<span class="hljs-number">-1</span>]);<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(nums[i<span class="hljs-number">-1</span>]&lt;<span class="hljs-number">0</span>)&#123;<br>        dp1[i]=<span class="hljs-built_in">max</span>(dp2[i<span class="hljs-number">-1</span>]*nums[i<span class="hljs-number">-1</span>], nums[i<span class="hljs-number">-1</span>]);<br>        dp2[i]=<span class="hljs-built_in">min</span>(dp1[i<span class="hljs-number">-1</span>]*nums[i<span class="hljs-number">-1</span>], nums[i<span class="hljs-number">-1</span>]);<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        dp1[i]=<span class="hljs-number">0</span>;<br>        dp2[i]=<span class="hljs-number">0</span>;<br>    &#125;<br>    res=<span class="hljs-built_in">max</span>(res, dp1[i]);<br></code></pre></td></tr></table></figure>
-
-
-<ol start="20">
-<li>最低票价<br>找到能够让days天都观光的最低票价，类似完全背包问题， 最少兑换钞票<br>dp[i]定义为至少让index==i天观光所需要的最低票价， 分别遍历决策1，决策2， 决策3需要的最低票价</li>
-</ol>
-<p>solution 1：每天进行dp + 从后往前</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">int</span> len = days.length, maxDay = days[len - <span class="hljs-number">1</span>], minDay = days[<span class="hljs-number">0</span>];<br><span class="hljs-keyword">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[maxDay + <span class="hljs-number">31</span>]; <span class="hljs-comment">// 多扩几天，省得判断 365 的限制</span><br><span class="hljs-comment">// 只需看 maxDay -&gt; minDay，此区间外都不需要出门，不会增加费用</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> d = maxDay, i = len - <span class="hljs-number">1</span>; d &gt;= minDay; d--) &#123;<br>    <span class="hljs-comment">// i 表示 days 的索引</span><br>    <span class="hljs-comment">// 也可提前将所有 days 放入 Set，再通过 set.contains() 判断</span><br>    <span class="hljs-keyword">if</span> (d == days[i]) &#123;<br>        dp[d] = Math.<span class="hljs-built_in">min</span>(dp[d + <span class="hljs-number">1</span>] + costs[<span class="hljs-number">0</span>], dp[d + <span class="hljs-number">7</span>] + costs[<span class="hljs-number">1</span>]);<br>        dp[d] = Math.<span class="hljs-built_in">min</span>(dp[d], dp[d + <span class="hljs-number">30</span>] + costs[<span class="hljs-number">2</span>]);<br>        i--; <span class="hljs-comment">// 别忘了递减一天</span><br>    &#125; <span class="hljs-keyword">else</span> dp[d] = dp[d + <span class="hljs-number">1</span>]; <span class="hljs-comment">// 不需要出门</span><br>&#125;<br><span class="hljs-keyword">return</span> dp[minDay]; <span class="hljs-comment">// 从后向前遍历，返回最前的 minDay</span><br><br></code></pre></td></tr></table></figure>
-<p>solution 2：只从days包含的天数进行dp + 从前往后</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">int</span> valid[<span class="hljs-number">3</span>]=&#123;<span class="hljs-number">1</span>, <span class="hljs-number">7</span>, <span class="hljs-number">30</span>&#125;;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;size;i++)&#123;<br>    dp[i]=INT_MAX;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;n;j++)&#123;<br>        <span class="hljs-keyword">if</span>(days[i]-valid[j]&lt;days[<span class="hljs-number">0</span>])&#123;<br>            dp[i]=<span class="hljs-built_in">min</span>(dp[i], costs[j]); <br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-keyword">int</span> index=<span class="hljs-built_in">upper_bound</span>(days.<span class="hljs-built_in">begin</span>(), days.<span class="hljs-built_in">end</span>(), days[i]-valid[j])-days.<span class="hljs-built_in">begin</span>();<br>            <span class="hljs-comment">//找到对应的前面天数对应的下标</span><br>            <span class="hljs-comment">// cout&lt;&lt;index&lt;&lt;endl;</span><br>            dp[i]=<span class="hljs-built_in">min</span>(dp[index<span class="hljs-number">-1</span>]+costs[j], dp[i]);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-
-
-<h4 id="数学相关问题（找规律）"><a href="#数学相关问题（找规律）" class="headerlink" title="数学相关问题（找规律）"></a>数学相关问题（找规律）</h4><ol>
-<li><p>计算各个位数不同的数字个数 （其实就是9* 9 * 8* 7这种情况）但是要注意是n位数以内的n位数都需要计算，开始各位数有10种情况，后面在当前数插入数据的时候，最开头有9种情况，后面数据有（10-1）种情况，因为后面的数据是可以为0的（固定前面，枚举后面）</p>
+<li><p>多重背包问题也是，只能逆向枚举</p>
 </li>
-<li><p>消除游戏 和约瑟夫环问题</p>
+<li><p>完全背包（无限个）才是正向枚举！！！</p>
 </li>
+</ul>
+</li>
+<li><p>乘积为正数的最长子数组长度 (最长子数组系列题目)</p>
+<ul>
+<li>注意这道题是求最长的长度，不是最大的乘积，但是这两个问题都可以使用动态规划完成</li>
+</ul>
+<ol>
+<li>最长的长度，positive[i]表示以i结尾的为正数的子数组，negtive[i] i结尾的为负数的子数组，<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">if</span> (nums[<span class="hljs-number">0</span>] &gt; <span class="hljs-number">0</span>) &#123;<br>    positive[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[<span class="hljs-number">0</span>] &lt; <span class="hljs-number">0</span>) &#123;<br>    negative[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-keyword">int</span> maxLength = positive[<span class="hljs-number">0</span>];<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; length; i++) &#123;<br>    <span class="hljs-keyword">if</span> (nums[i] &gt; <span class="hljs-number">0</span>) &#123;<br>        positive[i] = positive[i - <span class="hljs-number">1</span>] + <span class="hljs-number">1</span>;<br>        negative[i] = negative[i - <span class="hljs-number">1</span>] &gt; <span class="hljs-number">0</span> ? negative[i - <span class="hljs-number">1</span>] + <span class="hljs-number">1</span> : <span class="hljs-number">0</span>; <span class="hljs-comment">//注意一定要和0判断</span><br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[i] &lt; <span class="hljs-number">0</span>) &#123;<br>        positive[i] = negative[i - <span class="hljs-number">1</span>] &gt; <span class="hljs-number">0</span> ? negative[i - <span class="hljs-number">1</span>] + <span class="hljs-number">1</span> : <span class="hljs-number">0</span>;<br>        negative[i] = positive[i - <span class="hljs-number">1</span>] + <span class="hljs-number">1</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        positive[i] = <span class="hljs-number">0</span>;<br>        negative[i] = <span class="hljs-number">0</span>;<br>    &#125;<br>    maxLength = Math.<span class="hljs-built_in">max</span>(maxLength, positive[i]);<br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ol>
 <ul>
-<li>解决方案一：使用之后的下标和之前下标的映射 来解决（删除后，末尾从1开始编号）<br>2 ~ 2k映射为k ~ 1那么还原的规律f(2k)=2*(k+1-f(k))</li>
-<li>解决方案二：每次记录剩下链表的头结点，如果当前剩下的个数==1那么直接返回这个数</li>
+<li>我的思路：转为前缀和+hash<br>  题意转为：负数为1，正数为0， 0单独处理，相加和为偶数的最长子数组<br>  如果&lt;0, 那么sum+=1；<br>  如果&gt;0, 那么sum不变；<br>  如果=0, 那么sum=0，  hash.clear(), hash[0]=i；<br>  如果sum为偶数：<br>  res=max(res, i-hash[0])<br>  如果sum为奇数：<br>  如果hash[1]存在<br>  res=max(res, i-hash[1])<br>  否则hash[1]=i;</li>
 </ul>
-<p>约瑟夫环递推问题的公式<br>𝑓(𝑛)=(𝑓(𝑛−1)+𝑚)%𝑛</p>
-<ol start="3">
-<li>第 N 位数字（一位）<br>赵到不同位数包含的数字number= base*10-base,如果n&gt;这个数那么更新n-=number * weishu,否则就在这个位数里面查找<br>如果当前的数%位数==0，那么当前的数字是cur_num=base+n/weishu-1, 否则当前的数字为cur_num=base+n/weishu，然后计算在当前数字里面对应具体哪个数字， 为(cur_num/pow(10, weishu-n%weishu))%10</li>
+<ol start="2">
+<li>最大乘积，dp1[i]表示以i结尾乘积最大子数组，dp2[i]的乘积最小(注意不一定为负数)的子数组<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=size;i++)&#123;<br>    <span class="hljs-keyword">if</span>(nums[i<span class="hljs-number">-1</span>]&gt;<span class="hljs-number">0</span>)&#123;<br>        dp1[i]=<span class="hljs-built_in">max</span>(dp1[i<span class="hljs-number">-1</span>]*nums[i<span class="hljs-number">-1</span>], nums[i<span class="hljs-number">-1</span>]);<br>        dp2[i]=<span class="hljs-built_in">min</span>(dp2[i<span class="hljs-number">-1</span>]*nums[i<span class="hljs-number">-1</span>], nums[i<span class="hljs-number">-1</span>]);<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(nums[i<span class="hljs-number">-1</span>]&lt;<span class="hljs-number">0</span>)&#123;<br>        dp1[i]=<span class="hljs-built_in">max</span>(dp2[i<span class="hljs-number">-1</span>]*nums[i<span class="hljs-number">-1</span>], nums[i<span class="hljs-number">-1</span>]);<br>        dp2[i]=<span class="hljs-built_in">min</span>(dp1[i<span class="hljs-number">-1</span>]*nums[i<span class="hljs-number">-1</span>], nums[i<span class="hljs-number">-1</span>]);<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        dp1[i]=<span class="hljs-number">0</span>;<br>        dp2[i]=<span class="hljs-number">0</span>;<br>    &#125;<br>    res=<span class="hljs-built_in">max</span>(res, dp1[i]);<br></code></pre></td></tr></table></figure></li>
 </ol>
-<p>扩展：还有一个排序后的第n个数 （一个数）二叉树，求两个节点直接夹的数组，类似于上面这道题base*10的操作，如果小于，那么就往二叉树的下一层节点走</p>
-<ol start="4">
-<li>灯泡开关<br>主要是找到规律前6个灯泡可以推导出其他灯泡的状态，更进一步是，前三个灯可以推导后面所有的状态，因此有状态16种<br>（找规律，但不是动态规划问题）</li>
+</li>
+</ol>
+<ol start="20">
+<li><p>最低票价</p>
+<ul>
+<li><p>找到能够让days天都观光的最低票价，类似完全背包问题， 最少兑换钞票</p>
+</li>
+<li><p>dp[i]定义为至少让index==i天观光所需要的最低票价， 分别遍历决策1，决策2， 决策3需要的最低票价</p>
+</li>
+<li><p>solution 1：每天进行dp + 从后往前</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">int</span> len = days.length, maxDay = days[len - <span class="hljs-number">1</span>], minDay = days[<span class="hljs-number">0</span>];<br><span class="hljs-keyword">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[maxDay + <span class="hljs-number">31</span>]; <span class="hljs-comment">// 多扩几天，省得判断 365 的限制</span><br><span class="hljs-comment">// 只需看 maxDay -&gt; minDay，此区间外都不需要出门，不会增加费用</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> d = maxDay, i = len - <span class="hljs-number">1</span>; d &gt;= minDay; d--) &#123;<br>    <span class="hljs-comment">// i 表示 days 的索引</span><br>    <span class="hljs-comment">// 也可提前将所有 days 放入 Set，再通过 set.contains() 判断</span><br>    <span class="hljs-keyword">if</span> (d == days[i]) &#123;<br>        dp[d] = Math.<span class="hljs-built_in">min</span>(dp[d + <span class="hljs-number">1</span>] + costs[<span class="hljs-number">0</span>], dp[d + <span class="hljs-number">7</span>] + costs[<span class="hljs-number">1</span>]);<br>        dp[d] = Math.<span class="hljs-built_in">min</span>(dp[d], dp[d + <span class="hljs-number">30</span>] + costs[<span class="hljs-number">2</span>]);<br>        i--; <span class="hljs-comment">// 别忘了递减一天</span><br>    &#125; <span class="hljs-keyword">else</span> dp[d] = dp[d + <span class="hljs-number">1</span>]; <span class="hljs-comment">// 不需要出门</span><br>&#125;<br><span class="hljs-keyword">return</span> dp[minDay]; <span class="hljs-comment">// 从后向前遍历，返回最前的 minDay</span><br></code></pre></td></tr></table></figure></li>
+<li><p>solution 2：只从days包含的天数进行dp + 从前往后</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">int</span> valid[<span class="hljs-number">3</span>]=&#123;<span class="hljs-number">1</span>, <span class="hljs-number">7</span>, <span class="hljs-number">30</span>&#125;;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;size;i++)&#123;<br>    dp[i]=INT_MAX;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;n;j++)&#123;<br>        <span class="hljs-keyword">if</span>(days[i]-valid[j]&lt;days[<span class="hljs-number">0</span>])&#123;<br>            dp[i]=<span class="hljs-built_in">min</span>(dp[i], costs[j]); <br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-keyword">int</span> index=<span class="hljs-built_in">upper_bound</span>(days.<span class="hljs-built_in">begin</span>(), days.<span class="hljs-built_in">end</span>(), days[i]-valid[j])-days.<span class="hljs-built_in">begin</span>();<br>            <span class="hljs-comment">//找到对应的前面天数对应的下标</span><br>            <span class="hljs-comment">// cout&lt;&lt;index&lt;&lt;endl;</span><br>            dp[i]=<span class="hljs-built_in">min</span>(dp[index<span class="hljs-number">-1</span>]+costs[j], dp[i]);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h3 id="数学相关问题（找规律）"><a href="#数学相关问题（找规律）" class="headerlink" title="数学相关问题（找规律）"></a>数学相关问题（找规律）</h3><ol>
+<li><p>计算各个位数不同的数字个数 </p>
+<ul>
+<li>其实就是9* 9 * 8* 7这种情况）但是要注意是n位数以内的n位数都需要计算，开始各位数有10种情况，后面在当前数插入数据的时候，最开头有9种情况，后面数据有（10-1）种情况，因为后面的数据是可以为0的（固定前面，枚举后面）</li>
+</ul>
+</li>
+<li><p>消除游戏 和约瑟夫环问题</p>
+<ul>
+<li><p>解决方案一：使用之后的下标和之前下标的映射 来解决（删除后，末尾从1开始编号）<br>2 ~ 2k映射为k ~ 1那么还原的规律f(2k)=2*(k+1-f(k))</p>
+</li>
+<li><p>解决方案二：每次记录剩下链表的头结点，如果当前剩下的个数==1那么直接返回这个数</p>
+</li>
+<li><p>约瑟夫环递推问题的公式<br>𝑓(𝑛)=(𝑓(𝑛−1)+𝑚)%𝑛</p>
+</li>
+</ul>
+</li>
+<li><p>第 N 位数字（一位）</p>
+<ul>
+<li><p>找到不同位数包含的数字number= base*10-base,如果n&gt;这个数那么更新n-=number * weishu,否则就在这个位数里面查找</p>
+</li>
+<li><p>如果当前的数%位数==0，那么当前的数字是cur_num=base+n/weishu-1, 否则当前的数字为cur_num=base+n/weishu，然后计算在当前数字里面对应具体哪个数字， 为(cur_num/pow(10, weishu-n%weishu))%10</p>
+</li>
+<li><p>扩展：还有一个排序后的第n个数 （一个数）二叉树，求两个节点直接夹的数组，类似于上面这道题base*10的操作，如果小于，那么就往二叉树的下一层节点走</p>
+</li>
+</ul>
+</li>
+<li><p>灯泡开关</p>
+<ul>
+<li>主要是找到规律前6个灯泡可以推导出其他灯泡的状态，更进一步是，前三个灯可以推导后面所有的状态，因此有状态16种<br>（找规律，但不是动态规划问题）</li>
+</ul>
+</li>
 </ol>
 <ol start="5">
-<li><p>到达终点数字（左右走，步数为1， 2， 3，…） 也是属于找规律，但是不是动态规划的问题<br>找到连加中小于target的最小k,然后求delta=sum-target,如果为奇数那么k++, 直到为偶数，然后返回当前k值</p>
+<li><p>到达终点数字</p>
+<ul>
+<li>左右走，步数为1， 2， 3，…。也是属于找规律，但是不是动态规划的问题 </li>
+<li>找到连加中小于target的最小k,然后求delta=sum-target,如果为奇数那么k++, 直到为偶数，然后返回当前k值</li>
+</ul>
 </li>
-<li><p>子矩阵问题(lintcode)<br> 1）第一种题型，要求矩阵内部的元素全部为1，那么以i， j为右下角的最长矩阵边长为<br> if(matrix[i][j]==1){</p>
-<pre><code> dp[i][j]=min(dp[i][j-1], dp[i-1][j], dp[i-1][j-1])+1
-</code></pre>
-<p> }<br> 那么以 i， j为右下角的子矩阵的个数为dp[i][j]个<br> 2)要求矩形框最长, 那么每个点需要为何它上面最长 up，和左边最长 left， 两个数组<br> int tmp = min(left[i][j-1], up[i-1][j])+1;<br> for(int len=tmp-1;len&gt;=1;len–){ //枚举长度，使得4个边长都是在len之内，说明能围成一个框</p>
-<pre><code> if(min(up[i][j-len], left[i-len][j])&gt;=len)&#123;
-     return len+1;//返回枚举得到的最长边框
- &#125;
-</code></pre>
-<p> }</p>
+<li><p>子矩阵问题(lintcode)</p>
+<ol>
+<li><p>第一种题型，要求矩阵内部的元素全部为1，那么以i， j为右下角的最长矩阵边长为</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">if</span>(matrix[i][j]==<span class="hljs-number">1</span>)&#123;<br>    dp[i][j]=<span class="hljs-built_in">min</span>(dp[i][j<span class="hljs-number">-1</span>], dp[i<span class="hljs-number">-1</span>][j], dp[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>])+<span class="hljs-number">1</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>那么以 i， j为右下角的子矩阵的个数为dp[i][j]个</p>
 </li>
-<li><p>捡苹果(lintcode) 前后缀问题(找两个区间，一个区间连续k个数，一个区间连续l个数，两个区间不相交且和最大)<br>solution: 枚举中间的划分点i,使得<br>res=max(res, presumK[i]+postsumL[i+1])<br>res=max(res, presumL[i]+postsumK[i+1])<br>思路没问题：主要是没有找打0<del>i之前连续窗口最大值与i</del>len-1 连续窗口的最大值怎么求<br>计算前缀和后缀数组，注意如果index转为1~size，那么后缀数组需要开size+2 !!!!</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=K;i&lt;=size;i++)&#123;<br>    presumK[i]=<span class="hljs-built_in">max</span>(presum[i]-presum[i-K], presumK[i<span class="hljs-number">-1</span>]);<br>&#125;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=L;i&lt;=size;i++)&#123;<br>    presumL[i]=<span class="hljs-built_in">max</span>(presum[i]-presum[i-L], presumL[i<span class="hljs-number">-1</span>]);<br>&#125;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=size-K+<span class="hljs-number">1</span>;i&gt;=<span class="hljs-number">1</span>;i--)&#123;<br>    postsumK[i]=<span class="hljs-built_in">max</span>(presum[i+K<span class="hljs-number">-1</span>]-presum[i<span class="hljs-number">-1</span>], postsumK[i+<span class="hljs-number">1</span>]);<br>&#125;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=size-L+<span class="hljs-number">1</span>;i&gt;=<span class="hljs-number">1</span>;i--)&#123;<br>    postsumL[i]=<span class="hljs-built_in">max</span>(presum[i+L<span class="hljs-number">-1</span>]-presum[i<span class="hljs-number">-1</span>], postsumL[i+<span class="hljs-number">1</span>]);<br>&#125;<br></code></pre></td></tr></table></figure></li>
-<li><p>钢笔和<br>题意：找到两个不相交的区间，每个区间和都为target, 使得这两个区间len之和最小，其实也可以向上一题一样，分为pre post,然后枚举划分点，使用分治算法进行计算</p>
-</li>
-<li><p>可被三整除的最大和<br>不要求是连续<br>使用余数的递归公式 dp[i][j]表示以i结尾的余数为j的最大和<br>那么就要根据nums[i]%3的余数分类别更新dp[i][0], dp[i][1], dp[i][2]<br>一个更简单的方法是</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs C++">a=remainder[<span class="hljs-number">0</span>]+nums[i]; <br>b=remainder[<span class="hljs-number">1</span>]+nums[i];<br>c=remainder[<span class="hljs-number">2</span>]+nums[i];<span class="hljs-comment">//因为可以不连续</span><br>remainder[a%<span class="hljs-number">3</span>]=<span class="hljs-built_in">max</span>(remainder[a%<span class="hljs-number">3</span>], a);<span class="hljs-comment">//a对余数就是a%3,所以分在一组</span><br>remainder[b%<span class="hljs-number">3</span>]=<span class="hljs-built_in">max</span>(remainder[b%<span class="hljs-number">3</span>], b);<br>remainder[c%<span class="hljs-number">3</span>]=<span class="hljs-built_in">max</span>(remainder[c%<span class="hljs-number">3</span>], c);<br></code></pre></td></tr></table></figure></li>
+<li><p>要求矩形框最长, 那么每个点需要为何它上面最长 up，和左边最长 left， 两个数组</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">int</span> tmp = <span class="hljs-built_in">min</span>(left[i][j<span class="hljs-number">-1</span>], up[i<span class="hljs-number">-1</span>][j])+<span class="hljs-number">1</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> len=tmp<span class="hljs-number">-1</span>;len&gt;=<span class="hljs-number">1</span>;len--)&#123; <span class="hljs-comment">//枚举长度，使得4个边长都是在len之内，说明能围成一个框</span><br>    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">min</span>(up[i][j-len], left[i-len][j])&gt;=len)&#123;<br>        <span class="hljs-keyword">return</span> len+<span class="hljs-number">1</span>;<span class="hljs-comment">//返回枚举得到的最长边框</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ol>
-<p>类似的一个题：将字符串翻转到单调递增<br>    dp[i][0]表示前i个数以0结尾，dp[i][0]表示前i个数以1结尾<br>    易错点dp[i][1]=min(dp[i-1][0], dp[i-1][1])</p>
-<h4 id="博弈论相关问题"><a href="#博弈论相关问题" class="headerlink" title="博弈论相关问题"></a>博弈论相关问题</h4><ol>
+</li>
+<li><p>捡苹果(lintcode) </p>
+<ul>
+<li>前后缀问题(找两个区间，一个区间连续k个数，一个区间连续l个数，两个区间不相交且和最大)</li>
+<li>solution: 枚举中间的划分点i,使得<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs C++">res=<span class="hljs-built_in">max</span>(res, presumK[i]+postsumL[i+<span class="hljs-number">1</span>])<br>res=<span class="hljs-built_in">max</span>(res, presumL[i]+postsumK[i+<span class="hljs-number">1</span>])<br></code></pre></td></tr></table></figure></li>
+<li>思路没问题：主要是没有找打0<del>i之前连续窗口最大值与i</del>len-1 连续窗口的最大值怎么求</li>
+<li>计算前缀和后缀数组，注意如果index转为1~size，那么后缀数组需要开size+2 !!!!<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=K;i&lt;=size;i++)&#123;<br>    presumK[i]=<span class="hljs-built_in">max</span>(presum[i]-presum[i-K], presumK[i<span class="hljs-number">-1</span>]);<br>&#125;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=L;i&lt;=size;i++)&#123;<br>    presumL[i]=<span class="hljs-built_in">max</span>(presum[i]-presum[i-L], presumL[i<span class="hljs-number">-1</span>]);<br>&#125;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=size-K+<span class="hljs-number">1</span>;i&gt;=<span class="hljs-number">1</span>;i--)&#123;<br>    postsumK[i]=<span class="hljs-built_in">max</span>(presum[i+K<span class="hljs-number">-1</span>]-presum[i<span class="hljs-number">-1</span>], postsumK[i+<span class="hljs-number">1</span>]);<br>&#125;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=size-L+<span class="hljs-number">1</span>;i&gt;=<span class="hljs-number">1</span>;i--)&#123;<br>    postsumL[i]=<span class="hljs-built_in">max</span>(presum[i+L<span class="hljs-number">-1</span>]-presum[i<span class="hljs-number">-1</span>], postsumL[i+<span class="hljs-number">1</span>]);<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>钢笔和</p>
+<ul>
+<li>题意：找到两个不相交的区间，每个区间和都为target, 使得这两个区间len之和最小，其实也可以向上一题一样，分为pre post,然后枚举划分点，使用分治算法进行计算</li>
+</ul>
+</li>
+<li><p>可被三整除的最大和</p>
+<ul>
+<li><p>不要求是连续</p>
+</li>
+<li><p>使用余数的递归公式 dp[i][j]表示以i结尾的余数为j的最大和</p>
+</li>
+<li><p>那么就要根据nums[i]%3的余数分类别更新dp[i][0], dp[i][1], dp[i][2]</p>
+</li>
+<li><p>一个更简单的方法是</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs C++">a=remainder[<span class="hljs-number">0</span>]+nums[i]; <br>b=remainder[<span class="hljs-number">1</span>]+nums[i];<br>c=remainder[<span class="hljs-number">2</span>]+nums[i];<span class="hljs-comment">//因为可以不连续</span><br>remainder[a%<span class="hljs-number">3</span>]=<span class="hljs-built_in">max</span>(remainder[a%<span class="hljs-number">3</span>], a);<span class="hljs-comment">//a对余数就是a%3,所以分在一组</span><br>remainder[b%<span class="hljs-number">3</span>]=<span class="hljs-built_in">max</span>(remainder[b%<span class="hljs-number">3</span>], b);<br>remainder[c%<span class="hljs-number">3</span>]=<span class="hljs-built_in">max</span>(remainder[c%<span class="hljs-number">3</span>], c);<br></code></pre></td></tr></table></figure></li>
+<li><p>PS: 类似的一个题：将字符串翻转到单调递增<br>dp[i][0]表示前i个数以0结尾，dp[i][0]表示前i个数以1结尾<br>易错点dp[i][1]=min(dp[i-1][0], dp[i-1][1])</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="博弈论相关问题"><a href="#博弈论相关问题" class="headerlink" title="博弈论相关问题"></a>博弈论相关问题</h3><ol>
 <li>石子问题</li>
 <li>预测赢家，当前只能从石子序列的头或者尾部进行取，那么使用枚举长度的动态规划+前缀和 （区dp）</li>
 <li>能赢吗， 因为是从1-n中随机取，而且取了之后就不能取了，所以使用带记忆的dfs, 使用位图来记录当前状态是否遍历过 dp[state]</li>
 </ol>
-<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ol>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ol>
 <li><p>斐波拉切数列问题</p>
 </li>
 <li><p>成熟的牛不断生小牛的问题</p>
@@ -395,72 +530,127 @@ res=max(res, i-hash[1])
 </li>
 <li><p>扔鸡蛋问题</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C++">dp[i][j]=<span class="hljs-number">1</span>+dp[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>]+dp[i<span class="hljs-number">-1</span>][j] <span class="hljs-comment">//dp[i][j]表示用i次操作j个鸡蛋能够验证的最高高度</span><br></code></pre></td></tr></table></figure></li>
-<li><p>画匠问题<br>动态规划或者二分算法</p>
-</li>
-</ol>
+<li><p>画匠问题</p>
 <ul>
+<li><p>动态规划或者二分算法</p>
+</li>
 <li><p>动态规划：类似于鸡蛋问题，可以使用滑动数组，将二维转为一维，但是在转的时候注意i j的顺序 dp[i-1][0<del>j]可以转 dp[0</del>i][j]不太好转</p>
 </li>
 <li><p>二分解法如下</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span> limit)</span></span>&#123;<br>    <span class="hljs-keyword">int</span> cnt=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">int</span> tmpsum=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;arr.<span class="hljs-built_in">size</span>();i++)&#123;<br>        tmpsum+=arr[i];<br>        <span class="hljs-keyword">if</span>(tmpsum&gt;limit)&#123;<br>            cnt++;<br>            tmpsum=arr[i];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> cnt+<span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-keyword">int</span> left=INT_MIN, right=<span class="hljs-number">0</span>; <span class="hljs-comment">//表示一个画家画的时长</span><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;arr.<span class="hljs-built_in">size</span>();i++)&#123;<br>    left=<span class="hljs-built_in">max</span>(arr[i], left);<br>    right+=arr[i];<br>&#125;<br><br><span class="hljs-keyword">if</span>(K&gt;=arr.<span class="hljs-built_in">size</span>())&#123;<span class="hljs-comment">//如果画家数量比画多</span><br>    <span class="hljs-keyword">return</span> left;<span class="hljs-comment">//返回时长最大的画</span><br>&#125;<br><br><span class="hljs-keyword">while</span>(left&lt;right)&#123;<br>    <span class="hljs-keyword">int</span> mid=left+(right-left)/<span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">int</span> tmp=<span class="hljs-built_in">getNumber</span>(mid);<br>    <span class="hljs-keyword">if</span>(tmp==K)&#123;<br>        right=mid;<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(tmp&lt;K)&#123;<br>        right=mid<span class="hljs-number">-1</span>;<span class="hljs-comment">//应该也可以和tmp==K合并为right=mid</span><br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        left=mid+<span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">return</span> right;<span class="hljs-comment">//最小的时长</span><br></code></pre></td></tr></table></figure></li>
 </ul>
-<ol start="7">
-<li><p>邮局选址的问题： 转移状态的枚举类似于画匠问题<br>因为两个邮局的情况，不清楚那个邮局负责哪些居民区，那么就枚举，然后求最小。<br>这道题前提是要知道：建立一个邮局的时候，建在中间是最优的情况！</p>
-<ol>
-<li>提前求i~j这段距离建立一个邮局的最小距离</li>
-<li>dp[i][j]表示0<del>i这段居民区，有j+1个邮局的最小距离   也可以改成j对应j个邮局，这样初始化dp[i][1],循环j从 2</del>num</li>
+</li>
+<li><p>邮局选址的问题</p>
+<ul>
+<li>转移状态的枚举类似于画匠问题</li>
+<li>因为两个邮局的情况，不清楚那个邮局负责哪些居民区，那么就枚举，然后求最小。</li>
+<li>这道题前提是要知道：建立一个邮局的时候，建在中间是最优的情况！<ol>
+<li>提前求i ~ j这段距离建立一个邮局的最小距离</li>
+<li>dp[i][j]表示0 ~ i这段居民区，有j+1个邮局的最小距离   也可以改成j对应j个邮局，这样初始化dp[i][1],循环j从 2 ~ num</li>
 <li>初始化边界dp[i][0]=w[0][i];</li>
 <li>建立转移方程： dp[i][j]=min(dp[k][j-1]+w[k+1][i], dp[i][j]) k从0到i，（官方题解：两端值都取!!!!!），表示建邮局的位置<br>注意j&lt;=i，当j&gt;i dp=0; 每次进入k循环的时候，在初始化dp[i][j]=INT_MAX</li>
 <li>返回结果 dp[n-1][K-1];<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">int</span> w[size+<span class="hljs-number">1</span>][size+<span class="hljs-number">1</span>];<br><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;size;i++)&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i+<span class="hljs-number">1</span>;j&lt;size;j++)&#123;<br>        w[i][j]=w[i][j<span class="hljs-number">-1</span>]+a[j]-a[(i+j)/<span class="hljs-number">2</span>];<br>    &#125;<br>&#125;<br><br>dp[i][<span class="hljs-number">0</span>]=w[<span class="hljs-number">0</span>][i];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;=size<span class="hljs-number">-1</span>;i++)&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;=num<span class="hljs-number">-1</span>;j++)&#123;  <br>        <span class="hljs-keyword">if</span>(j&gt;=i)&#123;<span class="hljs-comment">//邮局数量&gt;=居民区数量  如果不进行判断就需要 k&lt;=i，否则就会因为进不去 k 的循环，导致dp[i][j]=INT_MAX</span><br>            dp[i][j]=<span class="hljs-number">0</span>;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            dp[i][j]=INT_MAX;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k=<span class="hljs-number">0</span>;k&lt;i;k++)&#123;<br>                dp[i][j]=<span class="hljs-built_in">min</span>(dp[k][j<span class="hljs-number">-1</span>]+ w[k+<span class="hljs-number">1</span>][i], dp[i][j]); <span class="hljs-comment">//注意k+1可能==size，因此需要w需要size+1空间</span><br>            &#125;<br>        &#125;<br>        <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ol>
 </li>
-<li><p>数组的最大价值 (区间dp)<br>题意，就是找任意不相交区间且每个区间首位值相等，使得这些区间加起来价值最大<br>转移方程：dp[i]=max(dp[i-1], dp[j-1]+presum[i]-presum[j-1]); （a[i]==a[j]）<br>因为需要a[j]==a[i]，如果使用二中循环会超时， 解决方案<br>（1）使用hash存储不同a[i]对应的下标<br>（2）记录另外一个hash 使得hash[a[i]]=max(hash[a[i]], dp[i-1]-presum[i-1])<br>之后再进行更新就不用循环找与i相同的下标j,可以直接更新dp[i]=max(dp[i-1], presum[i]+hash[a[i]]);<br>（注意要对hash[a[i]]是否存在进行分类讨论）</p>
+</ul>
 </li>
-<li><p>盒子放置（谷歌）<br>使用动态规划的思想；<br>dp[i][j] 表示当前第i个box，第j个position能放置的最多的box数量。<br>如果 box[i - 1] &lt;= position[j - 1]，则dp[i][j] = dp[i - 1][ j - 1] + 1 贪心，放在最后一个位置最好<br>反之，dp[i][j] = max(dp[i-1][j], dp[i][j - 1]) 其中di[i-1][j]表示不放第i个box, dp[i][j - 1] 第i个box不放在j个位置</p>
-</li>
-</ol>
-<p><strong><strong>重要！！！！！</strong></strong><br>注意下标i从0<del>n-1，但是这个因为有w，所以最好和w对应，不转为1</del>n。<br>从i从0开始取的话，每次k循环，划分两个部分相加， 后半部分都不会包含第一个数，因此j要从2开始取，否则就会造成dp[0][0]//第一个0代表有地址，第二个0代表无邮局，就会返回INT_MAX,造成结果错误<br>背包问题，i下标是1~n 因为i可能从i-1推导，需要i&gt;=1</p>
-<ol start="8">
-<li>“马”在棋盘上的概率<br>类似的==地图问题==，虽然当前位置可以由它四面八方的位置推出来，但是因为步数，所以对应的三维数组还是由之前的状态推导出来，因此仍然可以使用动态规划</li>
-</ol>
-<h4 id="字符串与动态规划"><a href="#字符串与动态规划" class="headerlink" title="字符串与动态规划"></a>字符串与动态规划</h4><p>也可以划分到Trie树问题:一般是对单词建立Trie树</p>
-<ol>
-<li>单词拆分问题（dp代表的是True or False）：dp+第二层循环枚举字典里面的每一个单词，看是否恰好是当前遍历序列0~i的最后几个字符<br>为了进一步减少时间，内层训练从i枚举到0，同时为true的时候直接退出<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;size;i++)&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i;j&gt;=<span class="hljs-number">0</span>;j--)&#123;<br>        string tmp=s.<span class="hljs-built_in">substr</span>(j, i-j+<span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">if</span>(wordSet.<span class="hljs-built_in">find</span>(tmp)!=wordSet.<span class="hljs-built_in">end</span>())&#123;<br>            dp[i]=dp[i]|dp[j<span class="hljs-number">-1</span>];<br>        &#125;<br>        <span class="hljs-keyword">if</span>(dp[i])&#123;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
-<li>恢复空格问题(代表的无效字符的个数) 都可以转为Trie树+dp类型的题目 </li>
-</ol>
+<li><p>数组的最大价值 (区间dp)</p>
 <ul>
+<li>题意，就是找任意不相交区间且每个区间首位值相等，使得这些区间加起来价值最大</li>
+<li>转移方程：<br><code>  dp[i]=max(dp[i-1], dp[j-1]+presum[i]-presum[j-1]); （a[i]==a[j]）</code><br>因为需要a[j]==a[i]，如果使用二重循环会超时<br>解决方案：<br>（1）使用hash存储不同a[i]对应的下标<br>（2）记录另外一个hash 使得hash[a[i]]=max(hash[a[i]], dp[i-1]-presum[i-1]) </li>
+<li>之后再进行更新就不用循环找与i相同的下标j,可以直接更新dp[i]=max(dp[i-1], presum[i]+hash[a[i]]);<br>（注意要对hash[a[i]]是否存在进行分类讨论）</li>
+</ul>
+</li>
+<li><p>盒子放置（谷歌）</p>
+<ul>
+<li>使用动态规划的思想；</li>
+<li>dp[i][j] 表示当前第i个box，第j个position能放置的最多的box数量。<br>如果 box[i - 1] &lt;= position[j - 1]，则dp[i][j] = dp[i - 1][ j - 1] + 1 贪心，放在最后一个位置最好<br>反之，dp[i][j] = max(dp[i-1][j], dp[i][j - 1]) 其中di[i-1][j]表示不放第i个box, dp[i][j - 1] 第i个box不放在j个位置</li>
+</ul>
+<p> <strong>重要！！！！！</strong></p>
+<ul>
+<li>注意下标i从0 ~ n-1，但是这个因为有w，所以最好和w对应，不转为1 ~ n。<br>从i从0开始取的话，每次k循环，划分两个部分相加， 后半部分都不会包含第一个数，因此j要从2开始取，否则就会造成dp[0][0]//第一个0代表有地址，第二个0代表无邮局，就会返回INT_MAX,造成结果错误<br>背包问题，i下标是1~n 因为i可能从i-1推导，需要i&gt;=1</li>
+</ul>
+</li>
+</ol>
+<ol start="8">
+<li>“马”在棋盘上的概率<ul>
+<li>类似的==地图问题==，虽然当前位置可以由它四面八方的位置推出来，但是因为步数，所以对应的三维数组还是由之前的状态推导出来，因此仍然可以使用动态规划</li>
+</ul>
+</li>
+</ol>
+<h3 id="字符串与动态规划"><a href="#字符串与动态规划" class="headerlink" title="字符串与动态规划"></a>字符串与动态规划</h3><p>也可以划分到Trie树问题:一般是对单词建立Trie树</p>
+<ol>
+<li><p>单词拆分问题（</p>
+<ul>
+<li>dp代表的是True or False</li>
+<li>dp+第二层循环枚举字典里面的每一个单词，看是否恰好是当前遍历序列0~i的最后几个字符<br>为了进一步减少时间，内层训练从i枚举到0，同时为true的时候直接退出<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;size;i++)&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i;j&gt;=<span class="hljs-number">0</span>;j--)&#123;<br>        string tmp=s.<span class="hljs-built_in">substr</span>(j, i-j+<span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">if</span>(wordSet.<span class="hljs-built_in">find</span>(tmp)!=wordSet.<span class="hljs-built_in">end</span>())&#123;<br>            dp[i]=dp[i]|dp[j<span class="hljs-number">-1</span>];<br>        &#125;<br>        <span class="hljs-keyword">if</span>(dp[i])&#123;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>恢复空格问题(代表的无效字符的个数) </p>
+<ul>
+<li>都可以转为Trie树+dp类型的题目 </li>
 <li>这个不能暴力erase,因为可能出现一个单词是另外一个单词的前缀，可能导致erase顺序不同，结果不同；这个只能使用字典序；</li>
 <li>另外一个减少暴力深搜索带来的超时问题，可以使用第二层循环每次枚举dict的每个元素，看是否与当前遍历序列的最后几个字符相同，而不是每个不同长度的单词一个一个的进行比较。</li>
 <li>多次搜索：使用暴力的string find或者使用将small单词列表建立Trie树，然后big以每个字符为开头，查找字符串是否出现在Trie树中，在查找的路径中如果遇到isend=True说明找到了一个字符<br>然后继续找下去</li>
 </ul>
-<ol start="3">
-<li>环绕字符串中唯一的子字符串<br>计算出26个英文字母中每一个英文字母的结尾的最长的连续的环绕字符串，然后求和<br>PS：注意字符串去重，如果不考虑去重的话，可以直接使用滑动窗口记录子串个数；因为这个滑动窗口是直接出现不连续，窗口长度直接退化为1，所以可以只记录窗口长度，不记录窗口左右两端<br>题意为：找到子串字符必须是连续的，这样的子串的个数，但是这样可以会出现重复比如abcbc，所以要使用dp</li>
-</ol>
-<h4 id="状态压缩"><a href="#状态压缩" class="headerlink" title="状态压缩"></a>状态压缩</h4><ol>
-<li>优美的排序</li>
-</ol>
-<p>没看懂+ 之后看</p>
-<ol start="2">
-<li><p>划分为k个相同子集，也可以看做dfs+回溯+贪心<br>状态压缩的话就是dp[i]中i的每一个数由二进制位的状态组成，然后遍历二进制的每一个状态，当前的状态可以由当前状态中任意取消一个1的状态转移过来，或者用当前的状态更新下一个状态（将状态中为0的转为1），只有只有dp[i]=true, 而且当前状态的和%target+nums[i]&lt;=target下一个状态才为true,否则为false</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">bool</span> canPartitionKSubsets(vector&lt;<span class="hljs-built_in">int</span>&gt;&amp; nums, <span class="hljs-built_in">int</span> k) &#123;<br>        <span class="hljs-built_in">int</span> size=nums.size();<br>        <span class="hljs-built_in">int</span> total_sum=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i=<span class="hljs-number">0</span>;i&lt;size;i++)&#123;<br>            total_sum+=nums[i];<br>        &#125;<br>        <span class="hljs-keyword">if</span>(total_sum%k!=<span class="hljs-number">0</span>)&#123;<br>            <span class="hljs-keyword">return</span> false;<br>        &#125;<br>        <span class="hljs-built_in">int</span> target=total_sum/k;<br>        sort(nums.begin(), nums.end());<br>        <span class="hljs-built_in">int</span> total_state=<span class="hljs-number">1</span>&lt;&lt;size;<br>        vector&lt;<span class="hljs-built_in">bool</span>&gt; dp(total_state, false);<br>        vector&lt;<span class="hljs-built_in">int</span>&gt; <span class="hljs-built_in">sum</span>(total_state, <span class="hljs-number">0</span>);<br>        dp[<span class="hljs-number">0</span>]=true;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i=<span class="hljs-number">0</span>;i&lt;total_state;i++)&#123;<br>            <span class="hljs-keyword">if</span>(!dp[i])&#123;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br>            // cout&lt;&lt;i&lt;&lt;endl;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> j=<span class="hljs-number">0</span>;j&lt;size;j++)&#123;<br>                // cout&lt;&lt;j&lt;&lt;endl;<br>                <span class="hljs-keyword">if</span>((i&amp;(<span class="hljs-number">1</span>&lt;&lt;j))==<span class="hljs-number">0</span>)&#123;   //注意：位运算一定要记得打上括号之后再判断是否相等，否则会出错！！！！！<br>                    <span class="hljs-built_in">int</span> <span class="hljs-built_in">next</span>=i|(<span class="hljs-number">1</span>&lt;&lt;j);<br>                    // cout&lt;&lt;<span class="hljs-built_in">next</span>&lt;&lt;endl;<br>                    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">sum</span>[i]%target+nums[j]&lt;=target)&#123;<br>                        <span class="hljs-built_in">sum</span>[<span class="hljs-built_in">next</span>]=<span class="hljs-built_in">sum</span>[i]+nums[j];<br>                        dp[<span class="hljs-built_in">next</span>]=true;<br>                        cout&lt;&lt;<span class="hljs-built_in">next</span>&lt;&lt;endl;<br>                    &#125;<span class="hljs-keyword">else</span>&#123;<br>                        <span class="hljs-keyword">break</span>;<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[total_state-<span class="hljs-number">1</span>];<br><br></code></pre></td></tr></table></figure></li>
-<li><p>优美的排列<br>也是状态压缩 或者回溯，相比第2题需要枚举当前位置放的数是哪个，所以多一层循环。上面那道题因为数的位置是固定的，所以只需要判断这个数放没放。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-class"><span class="hljs-title">public</span>:</span><br>    <span class="hljs-built_in">int</span> count(<span class="hljs-built_in">int</span> number)&#123;<br>        <span class="hljs-built_in">int</span> res=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span>(number!=<span class="hljs-number">0</span>)&#123;<br>            <span class="hljs-keyword">if</span>(number&amp;<span class="hljs-number">1</span>)&#123;<br>                res++;<br>            &#125;<br>            number=number&gt;&gt;<span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>    <span class="hljs-built_in">int</span> countArrangement(<span class="hljs-built_in">int</span> n) &#123;<br>        <span class="hljs-built_in">int</span> state=<span class="hljs-number">1</span>&lt;&lt;n;<br><br>        <br>        vector&lt;<span class="hljs-built_in">int</span>&gt; dp(state, <span class="hljs-number">0</span>);<br>        dp[<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> num=<span class="hljs-number">1</span>;num&lt;=n;num++)&#123; //类似背包的，当前放第num数， 标准答案是将状态放在外层， 然后通过<span class="hljs-number">1</span>个个数判断当前的num<br>            <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i=<span class="hljs-number">0</span>;i&lt;state;i++)&#123;<br>                // <span class="hljs-keyword">if</span>(!dp[i])&#123;<br>                //     <span class="hljs-keyword">continue</span>;<br>                // &#125;<br>                <span class="hljs-keyword">if</span>(count(i)!=num-<span class="hljs-number">1</span>)&#123;<br>                    <span class="hljs-keyword">continue</span>;<br>                &#125;<br>                <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> j=<span class="hljs-number">0</span>;j&lt;n;j++)&#123;<br>                    <span class="hljs-keyword">if</span>((i&amp;(<span class="hljs-number">1</span>&lt;&lt;j))==<span class="hljs-number">0</span>)&#123;<br>                        <span class="hljs-keyword">if</span>(num%(j+<span class="hljs-number">1</span>)==<span class="hljs-number">0</span>||(j+<span class="hljs-number">1</span>)%num==<span class="hljs-number">0</span>)&#123;<br>                            <span class="hljs-built_in">int</span> <span class="hljs-built_in">next</span>=i^(<span class="hljs-number">1</span>&lt;&lt;j);<br>                            dp[<span class="hljs-built_in">next</span>]+=dp[i];<br>                        &#125;<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[state-<span class="hljs-number">1</span>];<br>        <br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure></li>
-<li><p>华为的一个机试题目<br>需要在规定燃油内（规定长度内）得到的资源最大化（有点像0-1背包问题）， 但是这个不同之处在于：从不同点到相同的i，消耗的燃油是不一样的， 而且这个最后还需要回到原点，所以dist需要走过的位置mask 以及最后的位置i<br>其实就是先求每个mask的最小dist, 得到d[mask][i]:也就是以i结尾的最小燃油，然后遍历这个数组，如果d[mask][i]+fuel[i][0]&lt;=maxdist 那么更新ans<br>ans=max(ans, g[mask])</p>
+</li>
+<li><p>环绕字符串中唯一的子字符串</p>
+<ul>
+<li>题意为：找到子串字符必须是连续的，这样的子串的个数，但是这样可以会出现重复比如abcbc，所以要使用dp</li>
+<li>计算出26个英文字母中每一个英文字母的结尾的最长的连续的环绕字符串，然后求和</li>
+<li>PS：注意字符串去重，如果不考虑去重的话，可以直接使用滑动窗口记录子串个数；因为这个滑动窗口是直接出现不连续，窗口长度直接退化为1，所以可以只记录窗口长度，不记录窗口左右两端</li>
+</ul>
 </li>
 </ol>
-<p>为什么不直接求d[fuel][i]的最大化，这样也会重复vis统一节点<br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/circle/discuss/a4pRYY/">https://leetcode-cn.com/circle/discuss/a4pRYY/</a></p>
-<ol start="5">
-<li><p>访问所有节点的最短路径<br>主要思路：先求出任意两个节点间的距离，使用floyd，同时记得出事dist[i][i]=0<br>然后使用d[mask][i]:表示最后状态为mask,并且以i结尾的最短路径<br>最后遍历d[mask][i] 求最小值<br>易错点，mask的循环一定要在节点i的循环的外面， 否则就会出错</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> mask=<span class="hljs-number">1</span>;mask&lt;(<span class="hljs-number">1</span>&lt;&lt;n);mask++)&#123;<br>          <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>              <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k=<span class="hljs-number">0</span>;k&lt;n;k++)&#123;<br>                  <span class="hljs-keyword">if</span>((mask&amp;(<span class="hljs-number">1</span>&lt;&lt;k))==<span class="hljs-number">0</span>)&#123;<br>                      d[mask|(<span class="hljs-number">1</span>&lt;&lt;k)][k]=<span class="hljs-built_in">min</span>(d[mask|(<span class="hljs-number">1</span>&lt;&lt;k)][k],d[mask][i]+dist[i][k]);<br>                  &#125;<br>              &#125;<br>          &#125;<br>      &#125;<br></code></pre></td></tr></table></figure></li>
-<li><p>基于陈述统计最多好人数<br>这个是枚举状态，与dp无关，但是和状态压缩dp有点类似</p>
+<h3 id="状态压缩"><a href="#状态压缩" class="headerlink" title="状态压缩"></a>状态压缩</h3><ol>
+<li><p>划分为k个相同子集，也可以看做dfs+回溯+贪心</p>
+<ul>
+<li>状态压缩的话就是dp[i]中i的每一个数由二进制位的状态组成，然后遍历二进制的每一个状态，当前的状态可以由当前状态中任意取消一个1的状态转移过来，或者用当前的状态更新下一个状态（将状态中为0的转为1），只有只有dp[i]=true, 而且当前状态的和%target+nums[i]&lt;=target下一个状态才为true,否则为false<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">canPartitionKSubsets</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> size=nums.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">int</span> total_sum=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;size;i++)&#123;<br>            total_sum+=nums[i];<br>        &#125;<br>        <span class="hljs-keyword">if</span>(total_sum%k!=<span class="hljs-number">0</span>)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">int</span> target=total_sum/k;<br>        <span class="hljs-built_in">sort</span>(nums.<span class="hljs-built_in">begin</span>(), nums.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-keyword">int</span> total_state=<span class="hljs-number">1</span>&lt;&lt;size;<br>        <span class="hljs-function">vector&lt;<span class="hljs-keyword">bool</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(total_state, <span class="hljs-literal">false</span>)</span></span>;<br>        <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">sum</span><span class="hljs-params">(total_state, <span class="hljs-number">0</span>)</span></span>;<br>        dp[<span class="hljs-number">0</span>]=<span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;total_state;i++)&#123;<br>            <span class="hljs-keyword">if</span>(!dp[i])&#123;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br>            <span class="hljs-comment">// cout&lt;&lt;i&lt;&lt;endl;</span><br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;size;j++)&#123;<br>                <span class="hljs-comment">// cout&lt;&lt;j&lt;&lt;endl;</span><br>                <span class="hljs-keyword">if</span>((i&amp;(<span class="hljs-number">1</span>&lt;&lt;j))==<span class="hljs-number">0</span>)&#123;   <span class="hljs-comment">//注意：位运算一定要记得打上括号之后再判断是否相等，否则会出错！！！！！</span><br>                    <span class="hljs-keyword">int</span> next=i|(<span class="hljs-number">1</span>&lt;&lt;j);<br>                    <span class="hljs-comment">// cout&lt;&lt;next&lt;&lt;endl;</span><br>                    <span class="hljs-keyword">if</span>(sum[i]%target+nums[j]&lt;=target)&#123;<br>                        sum[next]=sum[i]+nums[j];<br>                        dp[next]=<span class="hljs-literal">true</span>;<br>                        cout&lt;&lt;next&lt;&lt;endl;<br>                    &#125;<span class="hljs-keyword">else</span>&#123;<br>                        <span class="hljs-keyword">break</span>;<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[total_state<span class="hljs-number">-1</span>];<br></code></pre></td></tr></table></figure></li>
+</ul>
 </li>
-<li><p>两个数组最小的异或值之和  数组的最大与和<br>这两道题都是位运算相关的状态压缩<br>第一题枚举nums2每个数应该放的位置<br>第二题需要先装为状态压缩的样子，因为每个index有两个slot,所以需要先转为2*n个slot，那么slot和index对应关系为j/2+1<br>然后枚举每个数应该放在哪个slot,同时注意这道题不是每个状态都有值，对于one_num of state i&gt;=num数量, 直接continue</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br><span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-number">1</span> &lt;&lt; (numSlots * <span class="hljs-number">2</span>))</span></span>;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; f.<span class="hljs-built_in">size</span>(); ++i) &#123;<br>    <span class="hljs-keyword">int</span> c = __builtin_popcount(i); <span class="hljs-comment">//当前已经放了几个数，下一个放的数就是nums[c]</span><br>    <span class="hljs-keyword">if</span> (c &gt;= nums.<span class="hljs-built_in">size</span>()) <span class="hljs-keyword">continue</span>; <span class="hljs-comment">//直接跳过</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; numSlots * <span class="hljs-number">2</span>; ++j) &#123;<br>        <span class="hljs-keyword">if</span> ((i &amp; (<span class="hljs-number">1</span> &lt;&lt; j)) == <span class="hljs-number">0</span>) &#123; <span class="hljs-comment">// 枚举空篮子 j</span><br>            <span class="hljs-keyword">int</span> s = i | (<span class="hljs-number">1</span> &lt;&lt; j);<br>            f[s] = <span class="hljs-built_in">max</span>(f[s], f[i] + ((j / <span class="hljs-number">2</span> + <span class="hljs-number">1</span>) &amp; nums[c]));<br>            ans = <span class="hljs-built_in">max</span>(ans, f[s]); <span class="hljs-comment">//有效的状态求结果</span><br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">return</span> ans;<br></code></pre></td></tr></table></figure></li>
+<li><p>优美的排列</p>
+<ul>
+<li>也是状态压缩 或者回溯，相比第2题需要枚举当前位置放的数是哪个，所以多一层循环。上面那道题因为数的位置是固定的，所以只需要判断这个数放没放。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-class"><span class="hljs-title">public</span>:</span><br>    <span class="hljs-built_in">int</span> count(<span class="hljs-built_in">int</span> number)&#123;<br>        <span class="hljs-built_in">int</span> res=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span>(number!=<span class="hljs-number">0</span>)&#123;<br>            <span class="hljs-keyword">if</span>(number&amp;<span class="hljs-number">1</span>)&#123;<br>                res++;<br>            &#125;<br>            number=number&gt;&gt;<span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>    <span class="hljs-built_in">int</span> countArrangement(<span class="hljs-built_in">int</span> n) &#123;<br>        <span class="hljs-built_in">int</span> state=<span class="hljs-number">1</span>&lt;&lt;n;<br><br>        <br>        vector&lt;<span class="hljs-built_in">int</span>&gt; dp(state, <span class="hljs-number">0</span>);<br>        dp[<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> num=<span class="hljs-number">1</span>;num&lt;=n;num++)&#123; //类似背包的，当前放第num数， 标准答案是将状态放在外层， 然后通过<span class="hljs-number">1</span>个个数判断当前的num<br>            <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i=<span class="hljs-number">0</span>;i&lt;state;i++)&#123;<br>                // <span class="hljs-keyword">if</span>(!dp[i])&#123;<br>                //     <span class="hljs-keyword">continue</span>;<br>                // &#125;<br>                <span class="hljs-keyword">if</span>(count(i)!=num-<span class="hljs-number">1</span>)&#123;<br>                    <span class="hljs-keyword">continue</span>;<br>                &#125;<br>                <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> j=<span class="hljs-number">0</span>;j&lt;n;j++)&#123;<br>                    <span class="hljs-keyword">if</span>((i&amp;(<span class="hljs-number">1</span>&lt;&lt;j))==<span class="hljs-number">0</span>)&#123;<br>                        <span class="hljs-keyword">if</span>(num%(j+<span class="hljs-number">1</span>)==<span class="hljs-number">0</span>||(j+<span class="hljs-number">1</span>)%num==<span class="hljs-number">0</span>)&#123;<br>                            <span class="hljs-built_in">int</span> <span class="hljs-built_in">next</span>=i^(<span class="hljs-number">1</span>&lt;&lt;j);<br>                            dp[<span class="hljs-built_in">next</span>]+=dp[i];<br>                        &#125;<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[state-<span class="hljs-number">1</span>];<br>        <br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>华为的一个机试题目</p>
+<ul>
+<li><p>需要在规定燃油内（规定长度内）得到的资源最大化（有点像0-1背包问题）， 但是这个不同之处在于：从不同点到相同的i，消耗的燃油是不一样的， 而且这个最后还需要回到原点，所以dist需要走过的位置mask 以及最后的位置i</p>
+</li>
+<li><p>其实就是先求每个mask的最小dist, 得到d[mask][i]:也就是以i结尾的最小燃油，然后遍历这个数组，如果d[mask][i]+fuel[i][0]&lt;=maxdist 那么更新ans<br>ans=max(ans, g[mask])</p>
+</li>
+<li><p>为什么不直接求d[fuel][i]的最大化，这样也会重复vis统一节点<br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/circle/discuss/a4pRYY/">https://leetcode-cn.com/circle/discuss/a4pRYY/</a></p>
+</li>
+</ul>
+</li>
+<li><p>访问所有节点的最短路径</p>
+<ul>
+<li>主要思路：<br>先求出任意两个节点间的距离，使用floyd，同时记得出事dist[i][i]=0<br>然后使用d[mask][i]:表示最后状态为mask,并且以i结尾的最短路径<br>最后遍历d[mask][i] 求最小值</li>
+<li>易错点，mask的循环一定要在节点i的循环的外面， 否则就会出错<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> mask=<span class="hljs-number">1</span>;mask&lt;(<span class="hljs-number">1</span>&lt;&lt;n);mask++)&#123;<br>          <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>              <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k=<span class="hljs-number">0</span>;k&lt;n;k++)&#123;<br>                  <span class="hljs-keyword">if</span>((mask&amp;(<span class="hljs-number">1</span>&lt;&lt;k))==<span class="hljs-number">0</span>)&#123;<br>                      d[mask|(<span class="hljs-number">1</span>&lt;&lt;k)][k]=<span class="hljs-built_in">min</span>(d[mask|(<span class="hljs-number">1</span>&lt;&lt;k)][k],d[mask][i]+dist[i][k]);<br>                  &#125;<br>              &#125;<br>          &#125;<br>      &#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>基于陈述统计最多好人数</p>
+<ul>
+<li>这个是枚举状态，与dp无关，但是和状态压缩dp有点类似</li>
+</ul>
+</li>
+<li><p>两个数组最小的异或值之和  数组的最大与和</p>
+<ul>
+<li>这两道题都是位运算相关的状态压缩<br>第一题枚举nums2每个数应该放的位置<br>第二题需要先装为状态压缩的样子，因为每个index有两个slot,所以需要先转为2*n个slot，那么slot和index对应关系为j/2+1<br>然后枚举每个数应该放在哪个slot,同时注意这道题不是每个状态都有值，对于one_num of state i&gt;=num数量, 直接continue<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br><span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-number">1</span> &lt;&lt; (numSlots * <span class="hljs-number">2</span>))</span></span>;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; f.<span class="hljs-built_in">size</span>(); ++i) &#123;<br>    <span class="hljs-keyword">int</span> c = __builtin_popcount(i); <span class="hljs-comment">//当前已经放了几个数，下一个放的数就是nums[c]</span><br>    <span class="hljs-keyword">if</span> (c &gt;= nums.<span class="hljs-built_in">size</span>()) <span class="hljs-keyword">continue</span>; <span class="hljs-comment">//直接跳过</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; numSlots * <span class="hljs-number">2</span>; ++j) &#123;<br>        <span class="hljs-keyword">if</span> ((i &amp; (<span class="hljs-number">1</span> &lt;&lt; j)) == <span class="hljs-number">0</span>) &#123; <span class="hljs-comment">// 枚举空篮子 j</span><br>            <span class="hljs-keyword">int</span> s = i | (<span class="hljs-number">1</span> &lt;&lt; j);<br>            f[s] = <span class="hljs-built_in">max</span>(f[s], f[i] + ((j / <span class="hljs-number">2</span> + <span class="hljs-number">1</span>) &amp; nums[c]));<br>            ans = <span class="hljs-built_in">max</span>(ans, f[s]); <span class="hljs-comment">//有效的状态求结果</span><br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">return</span> ans;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
 </ol>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
+<h3 id="动态规划-拓扑排序"><a href="#动态规划-拓扑排序" class="headerlink" title="动态规划 + 拓扑排序"></a>动态规划 + 拓扑排序</h3><ol>
+<li>并行课程III<br>题意：可能具有拓扑结构+每节课程都有上课时间， 任意两节不依赖课程可以同时上，求最短上完所有课程的时间<br>转化：拓扑排序的最长路径<br>两种解决方案：</li>
+</ol>
+<ul>
+<li>转为dfs，建立依赖关系的时候反向建立，然后将度为0的点放入队列之中（root）,dfs求深度，然后多棵树取最长深度</li>
+<li>使用拓扑排序，将度为0的点放入队列，同时每次在取出队列中的点的时候，用当前点的结果f[v]更新v后面所有后修课程的结果<br>f[w]=max(f[w], f[v]+time[v])</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
 <li><p>图与动态规划，一定要主要vis的问题，bellman-ford以及floyd算法都是图的动态规划的例子<br>但是注意因为bellman-ford是求距离最小，所以不会出现重复vis同一个节点的情况<br>但是如果求max的情况，使用动态规划+图就可能造成一个节点vis多次，因此最好考虑记忆化dfs或者状态压缩</p>
 </li>
-<li><p> 状态压缩问题，将状态放在外层比较保险；如果是list数组，那么可以将num放在外面，如果是图，那么只能将状态放在外面</p>
+<li><p>状态压缩问题，将状态放在外层比较保险；如果是list数组，那么可以将num放在外面，如果是图，那么只能将状态放在外面</p>
 </li>
 <li><p>动态规划的关键是处理 i 取值范围 j取值范围，转移方程以及边界情况求动态规划<br>也就是找到dp[i]-&gt; dp[j] (j&lt; i) 的递推公式,这个递推可能由i，j之间回文，括号，或者异或和组成；特别的，如果是回文可以提前得到任何i，j之间是否为回文字符串，模板代码如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=s_len<span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">0</span>;i--)&#123;<br>     <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i+<span class="hljs-number">1</span>;j&lt;s_len;j++)&#123;<br>         p[i][j]=(s[i]==s[j]&amp;&amp;p[i+<span class="hljs-number">1</span>][j<span class="hljs-number">-1</span>]);<br>     &#125;<br> &#125;<br></code></pre></td></tr></table></figure></li>

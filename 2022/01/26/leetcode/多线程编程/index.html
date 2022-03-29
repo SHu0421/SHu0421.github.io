@@ -25,7 +25,7 @@
 <meta property="og:description" content="semaphore 信号量12345678910111213#include &lt;semaphore.h&gt;sem_t sem1;&#x2F;&#x2F;进行变量申明sem_init(&amp;sem1, 1, 0); 第一个参数：指向的信号对象第二个参数：控制信号量的类型，如果其值为0，就表示信号量是当前进程的局部信号量，否则信号量就可以在多个进程间共享第三个参数：信号量sem的初始值sem_post(&amp;a">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-26T04:19:28.000Z">
-<meta property="article:modified_time" content="2022-01-26T08:51:38.856Z">
+<meta property="article:modified_time" content="2022-02-24T13:04:07.844Z">
 <meta property="article:author" content="huhu">
 <meta property="article:tag" content="多线程并发， 信号量， 互斥锁">
 <meta name="twitter:card" content="summary_large_image">
@@ -198,7 +198,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.7k 字
+      1.9k 字
     </span>
   
 
@@ -207,7 +207,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5 分钟
+      6 分钟
     </span>
   
 
@@ -252,16 +252,32 @@
 <ol start="3">
 <li>注意！！！！<br>条件变量被通知后，挂起的线程就被唤醒，但是唤醒也有可能是假唤醒，或者是因为超时等异常情况，所以被唤醒的线程仍要检查条件是否满足，所以 wait 是放在条件循环里面。cv.wait(lock, [] { return ready; }); 相当于：while (!ready) { cv.wait(lock); }。</li>
 </ol>
-<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p>为了实现两个函数的交替打印，可以使用信号量，也可以使用交替锁<br>1115. 交替打印 FooBar</p>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><ol>
+<li>为了实现两个函数的交替打印，可以使用信号量，也可以使用交替锁</li>
+<li>交替打印 FooBar</li>
+</ol>
 <p>solution 1:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs C++">func1:<br><span class="hljs-built_in">sem_wait</span>(&amp;sem_foo);<br><span class="hljs-built_in">printFoo</span>();<br><span class="hljs-built_in">sem_post</span>(&amp;sem_bar);<br><br><span class="hljs-function">func2</span><br><span class="hljs-function"><span class="hljs-title">sem_wait</span><span class="hljs-params">(&amp;sem_bar)</span></span>;<br><span class="hljs-built_in">printBar</span>();<br><span class="hljs-built_in">sem_post</span>(&amp;sem_foo);<br></code></pre></td></tr></table></figure>
 
 <p>solution 2 互斥锁（不建议用这种解法，在不同线程加锁解锁确实会出问题）</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs C++">func1:<br>mutex lock1, lock2; <span class="hljs-comment">//这里锁类似条件变量</span><br><br>lock1.<span class="hljs-built_in">lock</span>();<br><span class="hljs-built_in">printFoo</span>();<br>lock2.<span class="hljs-built_in">unlock</span>();<br><br>func2<br>lock2.<span class="hljs-built_in">lock</span>();<br><span class="hljs-built_in">printBar</span>();<br>lock1.<span class="hljs-built_in">unlock</span>();<br></code></pre></td></tr></table></figure>
+
+
+<ol start="2">
+<li>实现一个线程安全的队列<br>在多个线程进行push的时候需要加锁，在push的时候通知pop的线程可以pop<br>使用trypop，如果加锁，判断队列为空，那么直接返回，否则调用pop //不用try pop那么可能出现阻塞<br>pop函数使用使用条件锁 m_cond, 在pop的时候也需要加锁 //在多进程需要使用条件变量，虽然判断了是否为empty再进入的pop，因为可能时间片被其他线程占用导致当前没有元素pop<br>empty(), 加锁判断队列里面是否有元素</li>
+</ol>
+
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/leetcode/">leetcode</a>
+                    
+                  </div>
                 
                 
                   <div class="post-meta">
@@ -283,6 +299,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/02/23/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E9%9D%A2%E8%AF%95tips/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Review Tips</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

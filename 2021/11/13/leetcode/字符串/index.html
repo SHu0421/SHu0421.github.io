@@ -25,7 +25,7 @@
 <meta property="og:description" content="常见字符串解决套路 用动态规划求解 用滑动窗口求解 用双指针求解 使用DFS&#x2F;BFS求一个字符串转为另外一个字符串的路径问题  扩展：字符串hashabcde转为为多项式f(5)&#x3D; a* p^5 + b*p^4 +c *p^3 +d p^2 +e p^1f(3)&#x3D; a p^3 + bp^2 +c *p^1f(4, 5)&#x3D;f(5)-f(3)*p^(5-4+1) c++用unsigned long l">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-13T09:23:32.000Z">
-<meta property="article:modified_time" content="2022-02-12T11:31:16.668Z">
+<meta property="article:modified_time" content="2022-02-25T03:04:28.561Z">
 <meta property="article:author" content="huhu">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -197,7 +197,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.6k 字
+      3.7k 字
     </span>
   
 
@@ -206,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8 分钟
+      12 分钟
     </span>
   
 
@@ -282,8 +282,18 @@
 <p>8.序列自动机<br>在进行判断一个字符串a是否是另外一个字符串b的子序列的时候，可以使用双指针，判断a的指针是否能走到末尾<br>也可以使用dp<br>dp[i][j]=i  s[i]==j （表示s从i开始第一个等于字符j的下标）<br>dp[i][j]=dp[i+1][j]  s[i]!=j<br>从后往前更新</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"> Arrays.fill(f[m], m);<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = m - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; --i) &#123;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">26</span>; ++j) &#123;<span class="hljs-comment">//只包含小写字符</span><br>		<span class="hljs-keyword">if</span> (s.charAt(i) == (<span class="hljs-keyword">char</span>) (<span class="hljs-string">&#x27;a&#x27;</span> + j)) &#123;<br>			f[i][j] = i;<br>		&#125; <span class="hljs-keyword">else</span> &#123;<br>			f[i][j] = f[i + <span class="hljs-number">1</span>][j];<br>		&#125;<br>	&#125;<br>&#125;<br>String res = <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">for</span> (String t : dictionary) &#123;<br>	<span class="hljs-keyword">boolean</span> match = <span class="hljs-keyword">true</span>;<br>	<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; t.length(); ++i) &#123;<br>		<span class="hljs-keyword">if</span> (f[j][t.charAt(i) - <span class="hljs-string">&#x27;a&#x27;</span>] == m) &#123;<br>			match = <span class="hljs-keyword">false</span>;<br>			<span class="hljs-keyword">break</span>;<br>		&#125;<br>		j = f[j][t.charAt(i) - <span class="hljs-string">&#x27;a&#x27;</span>] + <span class="hljs-number">1</span>;<br>	&#125;<br>	<span class="hljs-keyword">if</span> (match) &#123;<br>		<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-
+<ol start="9">
+<li><p>KMP算法的模板，主要是求next的数组，以及在循环退出之后判断字符是否相等，进行k的判断或者next数组的赋值</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">findnext</span><span class="hljs-params">(string pattern, vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; next)</span></span>&#123;<br>       <span class="hljs-keyword">int</span> size = pattern.<span class="hljs-built_in">size</span>();<br>       <span class="hljs-keyword">int</span> k = <span class="hljs-number">-1</span>;<br>       next[<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>;<span class="hljs-comment">//代表已经匹配的下标</span><br>       <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; size; i++)<br>       &#123;<br>           <span class="hljs-keyword">while</span>(k!=<span class="hljs-number">-1</span>&amp;&amp;pattern[i]!=pattern[k+<span class="hljs-number">1</span>])&#123;<br>                   k = next[k];<br>           &#125;<span class="hljs-comment">//因为跳出循环后还需要判断相等，因此将判断相等放在while的后面而不是前面</span><br>           <span class="hljs-keyword">if</span>(pattern[i]==pattern[k+<span class="hljs-number">1</span>])&#123;<br>               k++;<br>           &#125;<br><br>           next[i] = k;<br>       &#125;<br>   &#125;<br>   <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">strStr</span><span class="hljs-params">(string haystack, string needle)</span> </span>&#123;<br>   <span class="hljs-comment">// int KMP(string target, string pattern)&#123;</span><br>       string target=haystack;<br>       string pattern=needle;<br>       <span class="hljs-keyword">int</span> size = target.<span class="hljs-built_in">size</span>();<br>       <span class="hljs-keyword">int</span> k = <span class="hljs-number">-1</span>;<br>       <span class="hljs-keyword">if</span>(pattern==<span class="hljs-string">&quot;&quot;</span>)&#123;<br>           <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>       &#125;<br>       <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">next</span><span class="hljs-params">(pattern.size())</span></span>;<br>       <span class="hljs-built_in">findnext</span>(pattern, next);<br>       <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++)<br>       &#123;<br>           <span class="hljs-keyword">while</span>(k!=<span class="hljs-number">-1</span>&amp;&amp;target[i]!=pattern[k+<span class="hljs-number">1</span>])&#123;<br>                   k = next[k];<br>           &#125;<br>           <span class="hljs-keyword">if</span>(target[i]==pattern[k+<span class="hljs-number">1</span>])&#123;<br>               k++;<br>               <span class="hljs-keyword">if</span>(k==pattern.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>)&#123;<br>                   <span class="hljs-keyword">return</span> i - k ; <span class="hljs-comment">//返回匹配字符串的头位置</span><br>               &#125;<br>           &#125;<br><br>       &#125;<br>       <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>   &#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>字符串翻转<br>“leetcode i” –&gt; “i leetcode”<br>思路：1. 使用栈</p>
+</li>
+<li><p>先整个字符串翻转，去空格+原位翻转（双指针）+删除后面多余的字符 //空间复杂度O(1)</p>
+</li>
+<li><p>实现 atoi() 字符串转数字：注意这几个测试用例<br>a. 包含非法字符，返回 error 或者 0<br>b. 要考虑正负号<br>c. 要考虑溢出的情况。直接按照字典序，比较输入字符串和 TMin、TMax 的字符串就可以了，不需要在转换过程中判断是否溢出</p>
+</li>
+</ol>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>在对字符串进行操作通常可以朝栈，递归， bfs等方向思考<br>尤其是左右括号对应的这种情况-&gt; 栈和递归<br>状态压缩：如果字符串的每一个字符串都至多包含每个字母一次，并且字母的顺序无关紧要，因此我们可以使用一个 262的二进制数 mask 表示一个字符串。<br>同时如何两两判断两个字符串是否有关联的时间复杂度太高O(n^2^len(str)), 那么可以转为「枚举一个节点」+「枚举可能的相邻节点」+「使用哈希表判断相邻节点是否真正存在」的方法得到所有关联的边，（也就是猜测字符串的每个数的时间复杂度可能小于两层循环遍历+判断）</p>
+<p>注意在进行字符串比较的时候是比较多次，但是在进行数字比较的时候是比较一次</p>
 
             </div>
             <hr>

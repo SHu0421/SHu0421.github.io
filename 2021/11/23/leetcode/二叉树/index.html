@@ -25,7 +25,7 @@
 <meta property="og:description" content="二叉树的前序序列化 观察规律题或者建树题 我的思路是直接建立一颗二叉树，但是建立树代码可以不写； 官方题解是：通过槽位计数，如果遍历到最后槽位为0说明正确，如果中间槽位为0，说明出错 注意这道题的易错点是: 字符串中包含’,’而且可能数字包含两个字符 98,7,#  二叉树的宽度： 宽度应该包含一层的节点之间夹杂的空字符，所以为了得到一层的宽度，应该在栈中压入每个节点的下标(左边：2 * pos">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-23T02:27:56.000Z">
-<meta property="article:modified_time" content="2022-02-12T04:12:46.473Z">
+<meta property="article:modified_time" content="2022-03-01T01:48:24.845Z">
 <meta property="article:author" content="huhu">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -197,7 +197,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.7k 字
+      3.9k 字
     </span>
   
 
@@ -206,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8 分钟
+      12 分钟
     </span>
   
 
@@ -285,11 +285,38 @@
 </ol>
 </li>
 </ol>
+<ol start="12">
+<li>前后序遍历中空间复杂度为O(1)的Morris Traval方法<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/AnnieKim/archive/2013/06/15/MorrisTraversal.html">https://www.cnblogs.com/AnnieKim/archive/2013/06/15/MorrisTraversal.html</a><br>前序遍历<br>根左右</li>
+<li>如果当前节点的左孩子为空，那么输出当前节点，并将当前节点设置为当前节点的右孩子</li>
+<li>一个节点的左孩子不为空，那么在当前节点的左子树找到这个节点的前驱节点<br> 如果这个前驱节点的右孩子为空，那么设置右孩子为当前节点，==输出当前节点==（于中序的唯一不同），并当前节点更新为当前节点左孩子<br> 如果这个前驱节点的右孩子为当前节点，那么将右孩子重新设置为空。并更新当前节点为当前节点的右孩子。</li>
+</ol>
+<p>中序遍历<br>左根右</p>
+<ol>
+<li>如果当前节点的左孩子为空，那么输出当前节点，并将当前节点设置为当前节点的右孩子</li>
+<li>一个节点的左孩子不为空，那么在当前节点的左子树找到这个节点的前驱节点<br> 如果这个前驱节点的右孩子为空，那么设置右孩子为当前节点，并当前节点更新为当前节点左孩子<br> 如果这个前驱节点的右孩子为当前节点，那么将右孩子重新设置为空。==输出当前节点==， 并更新当前节点为当前节点的右孩子</li>
+</ol>
+<p>一个是回来之后再输出(else)，一个是建立前驱到根节点关系后输出（if）</p>
+<p>后序遍历<br>==需要建立一个临时节点dump==，使该节点的左子树等于root<br>1.如果当前节点的左孩子为空，那么则将其右孩子作为当前节点<br>2.一个节点的左孩子不为空，那么在当前节点的左子树找到这个节点的前驱节点<br>    如果这个前驱节点的右孩子为空，那么设置右孩子为当前节点, 并当前节点更新为当前节点左孩子<br>    如果这个前驱节点的右孩子为当前节点，那么还原前驱右孩子为null, ==同时逆序输出从当前节点左孩子到前驱节点的路==，并更新当前节点为右孩子</p>
+<p>总结：建立关系后，到左孩子；为空或者一圈回来后到右孩子<br>    一圈回来后，还原关系</p>
+<ol start="13">
+<li> 将子数组重新排序得到同一个二叉查找树的方案数<br>题意，交换插入序列，但是得到的二叉搜索树最后的结果相同的序列共有多少个<br>解决：抓住，先插左还是右的顺序是可以变的，但是在插入单边的时候，根节点的插入顺序是不可以变的    - 排列组合+dfs    - 求排列组合的时候，其实用动态规划的思想 (n,k)=(n-1, k-1)+(n-1,k)    - 在使用dfs的时候，使用一个全局的res变量，每次乘以（all, less)的组合结果；划分less, greater的时候，可以用一个新的vector来记录左右子树的节点    - 也可以先建立一棵树，使用递归左右指针的方式，树的信息需要包含size ,ans等一些信息</li>
+</ol>
+<ol start="14">
+<li>二叉搜索树删除一个节点<br>递归删除<br>易错点：1. 可以根据二叉搜索树的性质，选择向左右递归 2. 找到该节点，如果是叶节点直接删除，如果只有左右子树，也可以直接返回左右子树，否则找到左边最小，然后赋值到当前值，然后递归删除</li>
+<li>注意递归删除的的时候，一定要注意返回值，一定要赋值给当前节点的左指针或者右指针</li>
+</ol>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/leetcode/">leetcode</a>
+                    
+                  </div>
                 
                 
               </div>

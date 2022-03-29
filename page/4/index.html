@@ -194,6 +194,115 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/11/13/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" target="_self">
+          滑动窗口
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/13/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" target="_self">
+          
+          
+            
+          
+          例题
+最小覆盖子串（两个字符串）
+不同字符的最小子序列（一个字符串）
+窗口内的最大值，使用的是单调栈
+未排序数组中，累加和为给定值的最长子数组
+
+
+方法一： 滑动窗口  
+
+方法二： 使用hash记录一个sum出现的最早index,同时要记得压入hash[0]=-1(PS: 累加和为给定值的子数组个数-&gt;hash)
+
+补充问题1，正数和负数个数相等的最长子数组  将正数转为1，负数转为0，求
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-13 17:22" pubdate>
+              2021-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/13/leetcode/%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/" target="_self">
+          二分算法
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/13/leetcode/%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/" target="_self">
+          
+          
+            
+          
+          模板
+参考链接：[二分查找专题]（https://blog.csdn.net/qq_41221520/article/details/108277801）
+
+
+如果找左右边界2 4 4 4 4 5（第一个等于，最后一个等于），那么使用left&lt;right以及找左右边界，控制右边；找右边界，控制左边的口诀；
+如果找第一个大于target,第一个大于等于target；小于target, 最后一个
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-13 17:21" pubdate>
+              2021-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BA%8C%E5%88%86/">二分</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/11/13/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%A2%98%E5%9E%8B/" target="_self">
           动态规划
         </a>
@@ -207,9 +316,14 @@
           
           求总数问题
 回文字符串的个数
-表达式为期望结果的总数(也是区间dp, dp[i][j][0]或者dp[i][j][1])因为不是表达式的个数，而是达到期望值的个数，因此要记录一个表达式的值，用三维数组
+表达式为期望结果的总数
+也是区间dp, dp[i][j][0]或者dp[i][j][1])
+因为不是表达式的个数，而是达到期望值的个数，因此要记录一个表达式的值，用三维数组
+
+
 能够组成的二叉树的个数
-打气球的最大分数(区间dp)虽然不是求个数，而是求最大，但是也是与当前状态的左右边界有关。因为最终结果和左右两边有关，因此都是枚举的长度+右边界，计算左边界，进行动态规划转移
+打气球的最大分数(区间dp)
+虽然不是求个数，而是求最大，但是也是与当前状态的左右边界有关。因为最终结果和左右两边有关，因此都是枚举的长度+右边界，计算左边界，进行动态
         </a>
       </p>
 
@@ -260,17 +374,23 @@
             
           
           单调栈相关题目：
-去除重复字母(使得去除重复字母之后，字符串的字典序最小)值栈
+去除重复字母
+
+使得去除重复字母之后，字符串的字典序最小
+值栈
+
 
 接雨水
-
-
 
 方法一：每个地方能接的雨水是当前下标左右两边最大值（LeftMax and RightMax）的较小一个 –&gt;值栈
 方法二：使用单调递减栈，维护top and left（单调栈的top下面的值） –&gt;下标栈
 
 
-直方图最大矩阵面积（求离当前直方图左右两边第一个小于该直方图的下标，使用左边单调
+
+
+直方图最大矩阵面积
+
+求离当前直方图左右两边第一个小于该直方图的下标，使用左
         </a>
       </p>
 
@@ -560,101 +680,6 @@ vscode调试的时候找不到路径
               <a href="/tags/private/">private</a>
             
           </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/11/08/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/rclone/" target="_self">
-          rclone
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/11/08/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/rclone/" target="_self">
-          
-          
-            
-          
-          从google drive中下载文件的两种方法1.让远程服务器使用rclone挂载google drive (谷歌云端硬盘)简易步骤：
-
-下载rclone:
-1wget https://www.moerats.com/usr/shell/rclone_debian.sh &amp;&amp; bash rclone_debian.sh
-rclone的配置
-
-
-1rclone config
-
-3.使
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-08 21:39" pubdate>
-              2021-11-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/">工具相关</a>
-            
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/11/08/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/command-related/" target="_self">
-          command-related
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/11/08/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/command-related/" target="_self">
-          
-          
-            
-          
-          1.让远程服务器节点使用本地节点的vpn进行翻墙， 适用于远程节点方法一：假设，服务器上你选择使用端口18860，先在你的mac上运行命令：ssh -C  -N -g -R 18860:127.0.0.1:7890 服务器用户名@服务器ip  然后在服务器运行：export https_proxy=http://127.0.0.1:18860 那么当服务器使用Https去下载东西的时候，就会通过端
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-08 21:37" pubdate>
-              2021-11-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/">工具相关</a>
-            
-          </div>
-        
         
       </div>
     </article>

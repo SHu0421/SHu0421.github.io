@@ -25,7 +25,7 @@
 <meta property="og:description" content="前缀和 + hash题目汇总一定要注意先判断hash[presum-target]是否存在并更新结果，再更新hash[presum]++， 因为可能nums[i]&#x3D;0 例题：面试题 17.05.  字母与数字，要求字母和数字个数相同，那么就是将字母转为1， 数字转为-1的时候，前缀和为0的最长序列；另外使用这种思想是的”和等于 k 的最长子数组长度“ ”和等于k子数组“ ”1371. 每个元音包含">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-13T11:58:31.000Z">
-<meta property="article:modified_time" content="2022-02-08T06:05:04.550Z">
+<meta property="article:modified_time" content="2022-03-01T01:56:30.593Z">
 <meta property="article:author" content="huhu">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -197,7 +197,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.7k 字
+      4.3k 字
     </span>
   
 
@@ -206,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8 分钟
+      13 分钟
     </span>
   
 
@@ -250,6 +250,7 @@
 <li><p>统计「优美子数组」<br>将奇数转为1， 偶数转为0， 然后求和为k的子数组个数</p>
 </li>
 </ol>
+<h4 id="前缀和-单调栈"><a href="#前缀和-单调栈" class="headerlink" title="前缀和+单调栈"></a>前缀和+单调栈</h4><p>leetcode 1124表现良好的最长时间段<br>题意就是转化为1， -1的数组，和大于0的最长连续子数组 （注意是和大于0，不是和最大）<br>解决方案： 整体思路：前缀和，对于每一个下标对应的当前的前缀和，应该求比他小的前缀和的下标最小的一个+这是1， -1的数组，因此前缀和应该是连续的<br>如果前缀和大于0，那么一定是从下标0到当前的数的长度最长<br>如果前缀和小于0，那么就是当前前缀和-1到当前的长度最长<br>那么使用前缀和的单调栈，逆序遍历，如果当前的前缀和大于栈顶，那么循环弹出，直到当前的前缀和不大于栈顶；遍历下一个数</p>
 <h4 id="hash-双指针"><a href="#hash-双指针" class="headerlink" title="hash + 双指针"></a>hash + 双指针</h4><p>一定要注意返回的是元素还是元素的下标，一个可以排序使用指针，一个不能使用指针<br>两数之和：用双指针只能针对已经排好序的数组，没有排好序的数组，但是要求要返回下标，那么就用hash (unordered_set)<br>三数之和<br>四数之和：三重循环，因此有是三个去重的部分，不要只去重最后一层循环，忘了i j 层循环的去重</p>
 <p>注意！！！</p>
 <ol>
@@ -264,8 +265,24 @@
 <blockquote>
 <p>参考链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/4sum/solution/si-shu-zhi-he-by-leetcode-solution/">四数之和答案</a></p>
 </blockquote>
+<h4 id="HashMap的底层实现（java）"><a href="#HashMap的底层实现（java）" class="headerlink" title="HashMap的底层实现（java）"></a>HashMap的底层实现（java）</h4><p>JDK1.7 的底层是数组加链表，而 JDK1.8 的底层是数组加链表加红黑树，红黑树相对于AVL树来说，牺牲了部分平衡性以换取插入/删除操作时少量的旋转操作，整体来说性能要优于AVL树。</p>
+<p>使用hash函数（hash算法： index = HashCode（Key） &amp; （Length - 1）），将数据放在数组中，如果数组已经将要放的位置满了，就使用链表链接在那个位置的后面；使用树是为了防止链表过长,设定阈值为8，那么大于这个阈值就将这个链表转为红黑树，小于6的时候链化， 避免查询时间过长。（8树化、6链化），而且设置为8个节点时，红黑树的性能优势也会开始展现出来，因此8是一个较合理的数字。</p>
+<p>hashmap初始长度是16，每次扩展或者手动初始化必须是2的幂：是为了服务从key到index的hash算法：index = HashCode（Key） &amp; （Length - 1），使得使用位运算计算的结果等同于取模（x mod 2^n = x &amp; (2^n - 1)），也就是只取决于hashcode的二进制后面几位，只要HashCode本身分布均匀，Hash算法的结果就是均匀的，从而大大提高性能。</p>
+<p>高并发情况下，hashmap可能会出现死锁<br>JDK1.7以及前是在头结点插入的，在JDK1.8之后是在尾节点插入的。，因为JDK1.7在多进程的情况下可能会出现死循环，由循环链表造成（rehash的时候，一个进程在e, next的时候挂起，另外一个进程已经将数据都扩容好，进程1又开始扩容），但是JDK1.8仍然可能会出现数据丢失（进程1要在插入时候，时间片用完，进程2插入元素在一个相同位置，进程1就会直接将进程2插入的元素覆盖），并发下扩容数据丢失</p>
+<p>避免hash冲突的方法：<br>开放定址法（再hash）<br>    线性探查：可能会出现大量的错误<br>    平方探查<br>    二次散列/平方探查：导致hash表空间利用率很低，出现大量重复</p>
+<pre><code>优点：存储结构连续，因此查找的IO开销更小
+缺点：1）在插入的元素大于hash表的时候，需要扩容 2）hash表存储空间利用率低 3）删除操作的时间复杂度高，因为不能直接删除，因为它的后面可能有数据，因此需要设置删除标记，需要额外的空间 4）探查序列如何设计比较复杂可能会降低hash的性能
+</code></pre>
+<p>拉链法：<br>    可能导致数据存储的物理空间不连续导致大量I/O开销</p>
+<pre><code>优点：1）对于记录总数是动态变化的情况比较好，不需要频繁扩容 2）存储空间动态分配，因此hash的空间利用率高 3）删除记录也比较方便
+缺点：1）因为使用的链表，因此在查询记录时，相比结构紧凑的数据类型（比如数组），哈希表的跳转访问会带来额外的时间开销 2)由于使用指针，记录不容易进行序列化（serialize）操作
+</code></pre>
 <h4 id="hash-动态规划"><a href="#hash-动态规划" class="headerlink" title="hash+动态规划"></a>hash+动态规划</h4><ol>
 <li>最长定差子序列<br>转移方程： dp[arr[i]]=dp[arr[i]-diff]+1<br>因为不知道arr[i]的最大值，以及可能出现负数的下标， 所以直接使用hash，而不是数组<br>dp[x] 表示以 x 结尾的最长等差子序列的长度；</li>
+</ol>
+<h4 id="分布式一致性hash算法"><a href="#分布式一致性hash算法" class="headerlink" title="分布式一致性hash算法"></a>分布式一致性hash算法</h4><p>针对的问题是如何将数据均匀的分布在key-value的分布式缓存中，如果使用mod方法，均匀但是可能导致插入删除节点，所有的数据需要重新hash<br>1)第一种是将存储节点和数据都映射到一个首尾相连的hash环上，数据存储在hash环上顺时针的第一个节点，插入节点就只影响相邻节点的后续节点，对其他节点没有影响。但是可能造成不均衡的局面，<br>2）因此改进就是对一个存储节点使用虚拟节点，映射在环上的多个位置</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
+<li>最长类似题目，可以使用dp, 前缀和，双指针，以及单栈+逆序遍历</li>
 </ol>
 
             </div>

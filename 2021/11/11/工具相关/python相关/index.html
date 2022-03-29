@@ -25,7 +25,7 @@
 <meta property="og:description" content="Python语言部分 python 开启debug模式，使用logger.setLevel 以及在logger的时候设置不同的logger.info  logger.error  logger.warning等  1234567891011import loggingimport requestslogging.basicConfig(level&#x3D;logging.DEBUG,">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-11T11:06:48.000Z">
-<meta property="article:modified_time" content="2022-01-07T01:18:14.516Z">
+<meta property="article:modified_time" content="2022-02-25T02:05:30.101Z">
 <meta property="article:author" content="huhu">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -197,7 +197,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.9k 字
+      3.6k 字
     </span>
   
 
@@ -206,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9 分钟
+      11 分钟
     </span>
   
 
@@ -267,9 +267,15 @@
 <p>_MultiProcessingDataLoaderIter 可以学习一下多进程的退出<br>使用了三个队列 index_queue worker_result_queue data_queue</p>
 <p>workers_done_event 检测一个迭代器是否shut down, 如果一个迭代器进行shutdown，那么那个进程的input_queue里面的数据只需要为None就好了， 就不用一直等待那个queue里面的数据</p>
 <p>为什么要使用 cancel_join_thread()  index_queue.cancel_join_thread()</p>
-<p>记录：<br>多进程每个进程都可以创建多个dataset实例, 是否在主函数中初始化一个cacheout类，然后作为dataset的参数传过去，这样多进程也是使用的一个cache<br>主要的逻辑</p>
+<p>记录：<br>多进程每个进程都可以创建多个dataset实例(这个好像是错的), 是否在主函数中初始化一个cacheout类，然后作为dataset的参数传过去，这样多进程也是使用的一个cache<br>主要的逻辑</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(self._num_workers):<br>            <span class="hljs-comment"># No certainty which module multiprocessing_context is</span><br>            index_queue = multiprocessing_context.Queue()  <span class="hljs-comment"># type: ignore</span><br>            <span class="hljs-comment"># Need to `cancel_join_thread` here!</span><br>            <span class="hljs-comment"># See sections (2) and (3b) above.</span><br>            index_queue.cancel_join_thread()<br>            w = multiprocessing_context.Process(<br>                target=_utils.worker._worker_loop,<br>                args=(self._dataset_kind, self._dataset, index_queue,<br>                      self._worker_result_queue, self._workers_done_event,<br>                      self._auto_collation, self._collate_fn, self._drop_last,<br>                      self._base_seed + i, self._worker_init_fn, i, self._num_workers,<br>                      self._persistent_workers))<br></code></pre></td></tr></table></figure>
 <p>只有一个worker_result_queue, 以及多个result_queue; 如果pin_memory=True, 那么会将worker_result_queue里面的数据，全部放在另外一个_data_queue中</p>
+<h4 id="pyTorch取数据过程详解（面试版本）"><a href="#pyTorch取数据过程详解（面试版本）" class="headerlink" title="pyTorch取数据过程详解（面试版本）"></a>pyTorch取数据过程详解（面试版本）</h4><ol>
+<li>初始化的时候，每个进程都会拥有自己的index_queue,里面最多存储两个batch 的index</li>
+<li>每个worker会不断判断自己的index_queue里面有没有数据，如果有，那么就取读一个batch, 读取的时候调用collate_fn函数，读取之后放入多进程共享的data_queue / worker_result_queue 里面</li>
+<li>data_queue里面的数据会先放入reorder字典中进行重新排序，如果需要的下一个batch在reorder_dict里面，那么就从reorder_dict中弹出这个数据，否则就等待</li>
+<li>某个worker读取的数据被消耗之后，dataloader就会将新的index放到对应worker的index_queue里面，这个worker就继续从queue里面读下标和取数据<br>参考：<br><a target="_blank" rel="noopener" href="https://www.dazhuanlan.com/yiliabi/topics/1111356">https://www.dazhuanlan.com/yiliabi/topics/1111356</a></li>
+</ol>
 <ol start="4">
 <li>代码常见标记<br>TODO：英语翻译为待办事项，备忘录。如果代码中有该标识，说明在标识处有功能代码待编写，待实现的功能在说明中会简略说明。</li>
 </ol>
@@ -277,8 +283,15 @@
 <p>XXX：如果代码中有该标识，说明标识处代码虽然实现了功能，但是实现的方法有待商榷，希望将来能改进，要改进的地方会在说明中简略说明。</p>
 <p>HACK：英语翻译为砍。如果代码中有该标识，说明标识处代码我们需要根据自己的需求去调整程序代码。</p>
 <ol start="5">
-<li>pytorch安装各种版本链接：<br><a target="_blank" rel="noopener" href="https://pytorch.org/get-started/previous-versions/">https://pytorch.org/get-started/previous-versions/</a></li>
+<li><p>pytorch安装各种版本链接：<br><a target="_blank" rel="noopener" href="https://pytorch.org/get-started/previous-versions/">https://pytorch.org/get-started/previous-versions/</a></p>
+</li>
+<li><p>pytorch 多进程数据加载流程</p>
+</li>
 </ol>
+<ol start="7">
+<li>iterator和next函数的关系<br>生成器都是iterator对象<br>可以被next函数调用的都是一个iterator对象，Iterator的计算是惰性的，只有在需要返回下一个数据时它才会计算。直到没有数据时抛出StopIteration错误。<br>list/dict/str这些是iterable但是不是iterator</li>
+</ol>
+<p>Python的for循环本质上就是通过不断调用next()函数实现的，首先需要将list作为参数，传入iter函数中，获得一个iterator对象，然后才能调用next函数</p>
 
             </div>
             <hr>
