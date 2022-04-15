@@ -17,15 +17,15 @@
   <meta name="description" content="这是我的第一篇博客">
   <meta name="author" content="huhu">
   <meta name="keywords" content="">
-  <meta name="description" content="堆排序堆排序的基本思路a.先所有的内部节点的每个，从下到上进行往下沉的操作heap_buildb.然后根节点和最后一个节点交换，然后从根节点向下沉（0,n-1），然后根节点和倒数第二个节点交换，然后往下沉(0,n-2)然后重复上述的过程 也就是先build最大堆，然后逐渐交换，然后重复build 优先队列默认是从大到小进行排序；multiset 基于红黑树实现，默认是从小到大进行排序priorit">
+  <meta name="description" content="堆排序堆排序的基本思路（每个内部节点，和左右节点对比，往上浮；之后根分别与最后，倒数第二个交换往下沉）a.先所有的内部节点的每个，从下到上进行往上浮的操作heap_buildb.然后根节点和最后一个节点交换，然后从根节点向下沉（0,n-1），然后根节点和倒数第二个节点交换，然后往下沉(0,n-2)然后重复上述的过程 也就是先build最大堆，然后逐渐交换，然后重复build 优先队列默认是从大到小">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序算法">
 <meta property="og:url" content="http://example.com/2021/11/13/leetcode/%E6%8E%92%E5%BA%8F%E9%A2%98/index.html">
 <meta property="og:site_name" content="Hello World">
-<meta property="og:description" content="堆排序堆排序的基本思路a.先所有的内部节点的每个，从下到上进行往下沉的操作heap_buildb.然后根节点和最后一个节点交换，然后从根节点向下沉（0,n-1），然后根节点和倒数第二个节点交换，然后往下沉(0,n-2)然后重复上述的过程 也就是先build最大堆，然后逐渐交换，然后重复build 优先队列默认是从大到小进行排序；multiset 基于红黑树实现，默认是从小到大进行排序priorit">
+<meta property="og:description" content="堆排序堆排序的基本思路（每个内部节点，和左右节点对比，往上浮；之后根分别与最后，倒数第二个交换往下沉）a.先所有的内部节点的每个，从下到上进行往上浮的操作heap_buildb.然后根节点和最后一个节点交换，然后从根节点向下沉（0,n-1），然后根节点和倒数第二个节点交换，然后往下沉(0,n-2)然后重复上述的过程 也就是先build最大堆，然后逐渐交换，然后重复build 优先队列默认是从大到小">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-13T09:22:15.000Z">
-<meta property="article:modified_time" content="2022-02-25T03:59:07.925Z">
+<meta property="article:modified_time" content="2022-03-29T02:42:55.134Z">
 <meta property="article:author" content="huhu">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -197,7 +197,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      8.8k 字
+      11k 字
     </span>
   
 
@@ -206,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      28 分钟
+      34 分钟
     </span>
   
 
@@ -238,10 +238,13 @@
             <h1 style="display: none">排序算法</h1>
             
             <div class="markdown-body">
-              <h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><h5 id="堆排序的基本思路"><a href="#堆排序的基本思路" class="headerlink" title="堆排序的基本思路"></a>堆排序的基本思路</h5><p>a.先所有的内部节点的每个，从下到上进行往下沉的操作heap_build<br>b.然后根节点和最后一个节点交换，然后从根节点向下沉（0,n-1），然后根节点和倒数第二个节点交换，然后往下沉(0,n-2)然后重复上述的过程</p>
+              <h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><h5 id="堆排序的基本思路"><a href="#堆排序的基本思路" class="headerlink" title="堆排序的基本思路"></a>堆排序的基本思路</h5><p>（每个内部节点，和左右节点对比，往上浮；之后根分别与最后，倒数第二个交换往下沉）<br>a.先所有的内部节点的每个，从下到上进行往上浮的操作heap_build<br>b.然后根节点和最后一个节点交换，然后从根节点向下沉（0,n-1），然后根节点和倒数第二个节点交换，然后往下沉(0,n-2)然后重复上述的过程</p>
 <p>也就是先build最大堆，然后逐渐交换，然后重复build</p>
 <p>优先队列默认是从大到小进行排序；multiset 基于红黑树实现，默认是从小到大进行排序<br>priority&lt;int, vector<int>, greater<int> &gt; q;//最小堆<br>multiset&lt;int, greater<int> &gt; //最大堆</p>
 <p>使用归并排序可以求逆序对的数量以及“计算数组的小和”问题:<br>特征，如果一个数组中两个元素，nums[i]&lt;nums[j]或者nums[i]&gt;nums[j]再执行某个操作，而且数组元素之间的连续性等没有其他要求，那么使用归并排序计算</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs C++">merge函数<br><span class="hljs-keyword">while</span> (p1 &lt;= mid &amp;&amp; p2 &lt;= right)<br>    &#123;<br>        res += arr[p1] &lt;= arr[p2] ? arr[p1]*(right-p2+<span class="hljs-number">1</span>) : <span class="hljs-number">0</span>;<br>        help[i++] = arr[p1] &lt;= arr[p2] ? arr[p1++] : arr[p2++];<br>    &#125;<br>    <span class="hljs-keyword">while</span> (p1 &lt;= mid) help[i++] = arr[p1++];<br>    <span class="hljs-keyword">while</span> (p2 &lt;= right) help[i++] = arr[p2++];<br></code></pre></td></tr></table></figure>
+
+
 <h5 id="堆排序的相关例题："><a href="#堆排序的相关例题：" class="headerlink" title="堆排序的相关例题："></a>堆排序的相关例题：</h5><p>1.打印N个数组的最大TopK (topk类似题使用堆)</p>
 <p>用N个最后的元素建立一个最大堆，然后移去堆顶元素，然后用移去元素的下一个元素放在堆顶调整堆，重复上面的过程；<br>如果被移去元素数组中没有下一个元素，那么用堆的最后一个元素移到堆顶，让堆的size-1</p>
 <p>注意堆排序都是下沉的过程，但是如果向堆中一个一个插入元素，是插入到最后一个位置，heapsize++, 然后上浮过程<br>同时也可以先全部放入数组中，然后从内部节点倒叙下沉</p>
@@ -263,20 +266,30 @@
 <h5 id="乱序数据使用多进程进行排序"><a href="#乱序数据使用多进程进行排序" class="headerlink" title="乱序数据使用多进程进行排序"></a>乱序数据使用多进程进行排序</h5><p>每个进程进行各种的快速排序，然后将所有进程排序好的结果进行两两归并<br>使用pthread_t 和pthread_create</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs C++"> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> <span class="hljs-title">s</span>[10];</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++)<br>    &#123;<br>        s[i].id = i;<br>        s[i].l = i*<span class="hljs-number">10</span>;<br>        s[i].r = i*<span class="hljs-number">10</span>+<span class="hljs-number">9</span>;<br>    &#125;<br> <br>    <span class="hljs-keyword">pthread_t</span> t[<span class="hljs-number">10</span>];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++)<br>        <span class="hljs-built_in">pthread_create</span>(&amp;t[i],<span class="hljs-literal">NULL</span>,__sort,(<span class="hljs-keyword">void</span> *)&amp;s[i]);<br> <br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++)<br>        <span class="hljs-built_in">pthread_join</span>(t[i],<span class="hljs-literal">NULL</span>);<br><br>[完整代码参考链接](https:<span class="hljs-comment">//blog.csdn.net/Return_nellen/article/details/79937320)</span><br><br></code></pre></td></tr></table></figure>
 
-<h5 id="桶排序例题"><a href="#桶排序例题" class="headerlink" title="桶排序例题"></a>桶排序例题</h5><p>存在重复元素 III: 使用二分查找（set.lower_bound）和滑动窗口，或者桶排序和滑动窗口，比较经典<br>主要思路：查找当窗口元素中是否存在大于等于nums[i]-t的元素，如果存在，判断这个元素是否是小于等于 nums[i]+t 如果存在返回true;<br>如果是桶排序解决，就设定每个桶的大小为t+1 计算每个nums[i]应该在的桶的编号，判断这个桶是否有数据，如果有数据直接返回true； 如果没有，那么判断左右两边桶的数据之间的abs差是否 &lt;=t，同时在<br>循环向前的时候记得删除范围大于k的桶里面的数据</p>
+<h5 id="桶排序例题"><a href="#桶排序例题" class="headerlink" title="桶排序例题"></a>桶排序例题</h5><p><font color=red>存在重复元素 III</font><br>使用二分查找（set.lower_bound）和滑动窗口，或者桶排序和滑动窗口，比较经典<br>主要思路：查找当窗口元素中是否存在大于等于nums[i]-t的元素，如果存在，判断这个元素是否是小于等于 nums[i]+t 如果存在返回true;<br>如果是桶排序解决，就设定每个桶的大小为t+1 计算每个nums[i]应该在的桶的编号，判断这个桶是否有数据，如果有数据直接返回true； 如果没有，那么判断左右两边桶的数据之间的abs差是否 &lt;=t，同时在<br>循环向前的时候记得删除范围大于k的桶里面的数据</p>
+<p>感觉使用滑动窗口更好理解，就是查找窗口为k的，是否能够找到当前加入的元素x, [x-t, x+t]范围内的数，而且不是当前的数x,如果能,那么返回true</p>
 <p>易错点：<br>1.滑动窗口记得删除窗口之外的数据<br>2. nums[i]-t可能超出了整数的范围，一定要记得判断范围</p>
+<h4 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h4><p>归并排序一般是求逆序对个数，或者其他规则的逆序对<br>比如例题lc493. 翻转对 求i&lt;j, 且nums[i]&gt;2*nums[j]</p>
+<ul>
+<li><p>易错点: 有负数+是大于，因此在求解的时候/2 向上还是向下取整会不同</p>
+</li>
+<li><p>题解是将求res这个过程单调拎出来计算，之后再进行归并</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs C++"> <span class="hljs-keyword">while</span>(i&lt;=mid)&#123;<br>    <span class="hljs-keyword">while</span>(j&lt;=right&amp;&amp;(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>)nums[i]&gt;(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>)<span class="hljs-number">2</span>*nums[j]) j++; <span class="hljs-comment">//最好不要转为nums[i]/2&gt; nums[j] 因为负数在取整的时候和正数向上和向下不一样</span><br>    res+=(j-mid<span class="hljs-number">-1</span>);<br>    i++;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>方法二：使用树状数组，但是因为数据的范围太大，因此使用hash对数据进行离散化， 对x 2*x 一些列数据排序后，递增给予他们idx 1….</p>
+</li>
+</ul>
 <h4 id="其他排序例题"><a href="#其他排序例题" class="headerlink" title="其他排序例题"></a>其他排序例题</h4><ol>
 <li>寻找两个正序数组的中位数 (寻找两个正序数组的第k个数)</li>
 </ol>
 <p>注意k表示的第k个数，而不是下标为k<br>同时注意算法是一边在进行移动，而不是两边都移动</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">findMedianSortedArrays</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums1, vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums2)</span></span>&#123;<br>   <span class="hljs-keyword">int</span> size1 = nums1.<span class="hljs-built_in">size</span>();<br>   <span class="hljs-keyword">int</span> size2 = nums2.<span class="hljs-built_in">size</span>();<br>   <span class="hljs-keyword">int</span> total = size1+size2;<br>   <span class="hljs-keyword">if</span>(total%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>)&#123;<br>       <span class="hljs-keyword">return</span> (<span class="hljs-built_in">findKthElement</span>(nums1, nums2, total/<span class="hljs-number">2</span>) + <span class="hljs-built_in">findKthElement</span>(nums1, nums2, total/<span class="hljs-number">2</span>+<span class="hljs-number">1</span>))/<span class="hljs-number">2</span>;<br>   &#125;<span class="hljs-keyword">else</span>&#123;<br>       <span class="hljs-keyword">return</span> <span class="hljs-built_in">findKthElement</span>(nums1, nums2, total/<span class="hljs-number">2</span>+<span class="hljs-number">1</span>);<br>   &#125;<br><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">findKthElement</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums1, vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums2, <span class="hljs-keyword">int</span> k)</span></span>&#123;<br>    <span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>,j=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">int</span> size1=nums1.<span class="hljs-built_in">size</span>();<br>    <span class="hljs-keyword">int</span> size2=nums2.<span class="hljs-built_in">size</span>();<br>    <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;<br>        <span class="hljs-keyword">if</span>(i==size1)&#123;<br>            <span class="hljs-keyword">return</span> nums2[j+k<span class="hljs-number">-1</span>];<br>        &#125;<br>        <span class="hljs-keyword">if</span>(j==size2)&#123;<br>            <span class="hljs-keyword">return</span> nums1[i+k<span class="hljs-number">-1</span>];<br>        &#125;<br>        <span class="hljs-keyword">if</span>(k==<span class="hljs-number">1</span>)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">min</span>(nums1[i], nums2[j]);<br>        &#125;<br>        <span class="hljs-keyword">int</span> tmpi=<span class="hljs-built_in">min</span>(size1<span class="hljs-number">-1</span>, i+k/<span class="hljs-number">2</span>+<span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">int</span> tmpj=<span class="hljs-built_in">min</span>(size2<span class="hljs-number">-1</span>, j+k/<span class="hljs-number">2</span>+<span class="hljs-number">1</span>)<br>        <span class="hljs-keyword">if</span>(nums1[tmpi]&lt;nums2[tmpj])&#123;<br>            i=tmpi+<span class="hljs-number">1</span>;<br>            k-=(tmpi-i+<span class="hljs-number">1</span>);<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            j=tmpj+<span class="hljs-number">1</span>;<br>            k-=(tmpj-j+<span class="hljs-number">1</span>);<br>        &#125;<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">//时间复杂度log(m+n) 空间复杂度O(1)</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">getKthElement</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums1, vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums2, <span class="hljs-keyword">int</span> k)</span></span>&#123;<br>        <span class="hljs-keyword">int</span> size1 = nums1.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">int</span> size2 = nums2.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">int</span> index1 = <span class="hljs-number">0</span>, index2 = <span class="hljs-number">0</span>; <br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(index1==size1)&#123;<br>                <span class="hljs-keyword">return</span> nums2[index2 + k - <span class="hljs-number">1</span>];<br>            &#125;<br>            <span class="hljs-keyword">if</span>(index2==size2)&#123;<br>                <span class="hljs-keyword">return</span> nums1[index1 + k - <span class="hljs-number">1</span>];<br>            &#125;<br>            <span class="hljs-keyword">if</span>(k==<span class="hljs-number">1</span>)&#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-built_in">min</span>(nums1[index1], nums2[index2]);<br>            &#125;<br>            <span class="hljs-keyword">int</span> newIndex1 = <span class="hljs-built_in">min</span>(index1 + k / <span class="hljs-number">2</span> - <span class="hljs-number">1</span>, size1 - <span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">int</span> newIndex2 = <span class="hljs-built_in">min</span>(index2 + k / <span class="hljs-number">2</span> - <span class="hljs-number">1</span>, size2 - <span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">int</span> pivot1 = nums1[newIndex1];<br>            <span class="hljs-keyword">int</span> pivot2 = nums2[newIndex2];<br>            <br>            <span class="hljs-keyword">if</span>(pivot1&lt;=pivot2)&#123;<br>                <br>                k = k - (newIndex1 - index1 + <span class="hljs-number">1</span>);<br>                index1 = newIndex1 + <span class="hljs-number">1</span>;<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                <br>                k = k - (newIndex2 - index2 + <span class="hljs-number">1</span>);<br>                index2 = newIndex2 + <span class="hljs-number">1</span>;<br>            &#125;<br>            cout&lt;&lt;pivot1&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;pivot2&lt;&lt;endl;<br>            <br>        &#125;<br>        <br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">findMedianSortedArrays</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums1, vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums2)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> size1 = nums1.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">int</span> size2 = nums2.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">int</span> sum = size1 + size2;<br>        <span class="hljs-keyword">if</span>(sum%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>)&#123;<br>            <span class="hljs-keyword">return</span> (<span class="hljs-built_in">getKthElement</span>(nums1, nums2, sum / <span class="hljs-number">2</span>) + <span class="hljs-built_in">getKthElement</span>(nums1, nums2, sum / <span class="hljs-number">2</span> +<span class="hljs-number">1</span>)) / <span class="hljs-number">2</span>;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            cout&lt;&lt;sum/<span class="hljs-number">2</span>+<span class="hljs-number">1</span>&lt;&lt;endl;<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">getKthElement</span>(nums1, nums2, sum / <span class="hljs-number">2</span>+<span class="hljs-number">1</span>);<br>        &#125;<br>    &#125;<br>&#125;;<br><br></code></pre></td></tr></table></figure>
 
 <ol start="2">
 <li>排序和优先队列结合！！<br>两个最好的不重叠活动<br>步骤：</li>
 </ol>
 <ul>
 <li>先将活动按起始时间从小到大进行排序</li>
-<li>维护一个最小堆，堆内元素代表活动的结束时间和对应价值</li>
+<li>维护一个最小堆，堆内元素代表活动的结束时间和对应价值(结束时间越早的越先弹出)</li>
 <li>遍历所有活动，如果堆内的活动结束时间小于当前活动的起始时间，又因为活动时间是从小到大进行排序的，所以当前堆内的活动是可以与后面任意活动一起参与的，因此我们可以维护maxVal记录下当前活动开始前，我们可以选择的最大价值</li>
 </ul>
 <h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>快速排序模板题</p>
@@ -317,6 +330,47 @@
 此方法能生成平均长度为&#123;\displaystyle 2M&#125;2M的顺串，可以进一步减少访问外部存储器的次数，节约时间，提高算法效率。
 </code></pre>
 <p>总结：顺串产生可以用1）小顶堆或者2）划分为多个小文件+各自快速排序产生</p>
+<ol start="4">
+<li>向数组中追加 K 个整数（lc6017）<br>题意，向数组中插入k个数组都没出现过的正整数，如果是插入的和最小<br>解决方案：排序数组，然后填充数组的空隙， 使用高斯求和公式得到结果会更快<br>易错点：注意的是需要在数组前面和后面加两个哨兵</li>
+</ol>
+<p>5.lc1539. 第 k 个缺失的正整数 (easy)</p>
+<ul>
+<li>一个排序正整数数组，找到缺失的第k个正整数</li>
+<li>算法1：为了减少分类讨论，直接在数组前面+一个哨兵节点0， 然后k依次减去相邻两个数中间包含数的个数</li>
+<li>算法2：缺失的正整数一定 &gt;= k；数组中每出现一个 &lt;= k 的数字, 意味着少了一个缺失的数字, 此时k+1<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.<span class="hljs-built_in">size</span>(); i++) &#123;<br>    <span class="hljs-keyword">if</span> (arr[i] &lt;= k) &#123;<br>        k++;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">return</span> k;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<ol start="6">
+<li><ol start="414">
+<li>第三大的数（easy）</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li>题意：返回第k大的数，相同的数同一level, 如果每个第k大的数，返回第一大</li>
+<li>注意数据中可能包含INT_MIN</li>
+<li>思路：可以使用排序，可以O(n)， 用三个数a, b, c, 初始化为long INT_MIN</li>
+<li>定要注意等于的情况是不更新的，比如等于b, 不会更新c的！！！！</li>
+</ul>
+<ol start="7">
+<li>lc870. 优势洗牌</li>
+</ol>
+<ul>
+<li>题意：将nums1和nums2如何进行配对，使得在i, nums1[i]&gt;nums2[i]的对数最大</li>
+<li>田忌赛马的思想</li>
+<li>使用优先队列，将每个nums2的下标和数据入队</li>
+<li>每次弹出nums2的最大的一个，如果当前nums1的最大不能打败当前的数，那么就将nums1的最小和nums2的最大匹配（nums1 index left++）, 否则right– （更易理解）</li>
+<li>或者每次弹出nums2的最小的一个，如果当前nums1的最小不能打败当前的数，那么就将nums1的最小和nums2的最大匹配(此时用优先队列好像不行，可以直接对结构体nums2进行排序), 否则right–</li>
+<li>“滑动窗口的最大值”，也是使用了优先队列</li>
+</ul>
+<ol start="8">
+<li>奇偶稳定排序</li>
+</ol>
+<ul>
+<li>将数组的奇数全部排在偶数前面，同时不交换奇数和偶数原本的相对顺序</li>
+<li>用一个k来记录前面以及排好序的奇数的个数， 然后每遇到一个奇数，就使用冒泡排序的方法，一个一个的交换到前面去<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">reOrderArray</span>(<span class="hljs-params">arr</span>):</span><br>    m = <span class="hljs-built_in">len</span>(arr)<br>    k = <span class="hljs-number">0</span> <span class="hljs-comment"># 记录当前已经排序好的奇数个数</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m):<br>        <span class="hljs-keyword">if</span> arr[i] % <span class="hljs-number">2</span> == <span class="hljs-number">1</span>:<br>            j = i<br>            <span class="hljs-keyword">while</span> j &gt; k:  <span class="hljs-comment"># 将奇数移到最前面</span><br>                temp = arr[j]<br>                arr[j] = arr[j-<span class="hljs-number">1</span>]<br>                arr[j-<span class="hljs-number">1</span>] = temp<br>                j -= <span class="hljs-number">1</span><br>            k += <span class="hljs-number">1</span> <br>    <span class="hljs-built_in">print</span>(arr)<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>,<span class="hljs-number">4</span>,<span class="hljs-number">7</span>,<span class="hljs-number">6</span>,<span class="hljs-number">12</span>]<br>    reOrderArray(arr)<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>ok</p>
+<p>主要是针对大文件或者多线程情况的下排序，或者数据结构本身的考察</p>
 
             </div>
             <hr>

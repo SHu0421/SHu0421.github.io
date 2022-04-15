@@ -97,3 +97,24 @@ public:
         
     }
 };
+
+
+
+//鸡蛋掉落问题
+dp[i][j] 确定的最高
+
+dp[1][i] = 1;
+int i = 2;
+while (true)
+{
+    for (int j = 1; j <= k;j++){
+        dp[i][j] = dp[i - 1][j] + dp[i - 1][j - 1] + 1;
+    }
+    if(dp[i][k]>=n){
+        return i;
+    }
+    else{
+        i++;
+    }
+}
+    

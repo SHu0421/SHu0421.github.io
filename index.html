@@ -194,6 +194,105 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2022/04/10/leetcode/hard%E9%A2%98%E7%9B%AE%E5%90%88%E9%9B%86/" target="_self">
+          Hard题目集合
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/04/10/leetcode/hard%E9%A2%98%E7%9B%AE%E5%90%88%E9%9B%86/" target="_self">
+          
+          
+            
+          
+          枚举+二分lc6040. 花园的最大总美丽值
+
+主要是在求partial的最小超时, 还有就是一个long long数据类型注意！！
+法一: 从右到左，先枚举完善花园数目，再计算不完善花园数据可以获得的最大解决方案：使用二分+前缀和来求增加后的最小值，而不是一个一个遍历(空间复杂度O(n))
+
+-法二: 如果是从左到右计算，可以将空间开销降到O(1)，先计算要让所有的花园变为完善花园还剩下的花的数
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-04-10 16:41" pubdate>
+              2022-04-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/04/04/dp%E9%97%AE%E9%A2%98%E4%B8%93%E6%A0%8F/DAG+%E6%A0%91%E7%8A%B6+%E5%85%B6%E4%BB%96dp/" target="_self">
+          
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/04/04/dp%E9%97%AE%E9%A2%98%E4%B8%93%E6%A0%8F/DAG+%E6%A0%91%E7%8A%B6+%E5%85%B6%E4%BB%96dp/" target="_self">
+          
+          
+            
+          
+          DAG上的dp
+UVa 437 巴比伦塔 The Tower of Babylon
+这道题求最高的塔，其实就是一个记忆化dfs的过程一些需要注意的点：
+
+因为不可能出现一个立方体同时叠两次，因此不需要vis
+因为有三种叠法，所以需要3个方向
+因为最开始让谁做底部是不清楚的，所以使用循环遍历方法
+因为一个底确定之后的最高是确定的，因此使用记忆化搜索，避免重复计算
+对于这种题情况多，再加上dfs的题，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-04-04 11:54" pubdate>
+              2022-04-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/dp%E9%97%AE%E9%A2%98%E4%B8%93%E6%A0%8F/">dp问题专栏</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2022/02/25/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/vscode/" target="_self">
           vscode 配置
         </a>
@@ -258,6 +357,13 @@
             </time>
           </div>
         
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/">项目相关</a>
+            
+          </div>
         
         
           <div class="post-meta">
@@ -443,7 +549,8 @@ pytor
           
             
           
-          题型1.标准布隆过滤器hash函数的设置12345678910111213141516171819202122232425262728293031323334class HashFunction &#123;private:    int cap, seed;public:    HashFunction(int cap, int seed) &#123;        this-&gt;cap 
+          链接https://github.com/donnemartin/system-design-primer
+题型1.标准布隆过滤器hash函数的设置12345678910111213141516171819202122232425262728293031323334class HashFunction &#123;private:    int cap, seed;public:    HashF
         </a>
       </p>
 
@@ -568,97 +675,6 @@ pytor
               <a href="/tags/conda-environment/">conda environment</a>
             
           </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/12/03/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/rpc/" target="_self">
-          RPC related
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/12/03/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/rpc/" target="_self">
-          
-          
-            
-          
-          gRPC 可以保证不同语言之间的通讯编写.proto文件，生成指定语言源代码。编写服务端代码编写客户端代码https://www.liwenzhou.com/posts/Go/gRPC/  一个python客户端和go服务端的例子
-pytorch的官网框架rpc常见方法rpc_sync同步远程调用、rpc_async异步远程调用、remote异步远程调用。
-rpc.init_rpc 初始化rpc，
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-12-03 10:01" pubdate>
-              2021-12-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/">工具相关</a>
-            
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/12/01/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/orangefs/" target="_self">
-          orangefs
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/12/01/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/orangefs/" target="_self">
-          
-          
-            
-          
-          orangefs
-genconfig是一个go语言文件，它有一个可选参数oranges-server.conf
-
-init_start_all.sh相比start_all.sh 多了一个/local500G/orange_store/ 以及多了一条有-f命令的语句 应该是在服务器节点启动pvfs-serverorangefs默认的服务器的文件系统挂载的目录是在oranges-server.conf
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-12-01 15:54" pubdate>
-              2021-12-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/">工具相关</a>
-            
-          </div>
-        
         
       </div>
     </article>

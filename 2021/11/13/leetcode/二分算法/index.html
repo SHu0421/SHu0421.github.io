@@ -17,15 +17,15 @@
   <meta name="description" content="这是我的第一篇博客">
   <meta name="author" content="huhu">
   <meta name="keywords" content="">
-  <meta name="description" content="模板 参考链接：[二分查找专题]（https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_41221520&#x2F;article&#x2F;details&#x2F;108277801）   如果找左右边界2 4 4 4 4 5（第一个等于，最后一个等于），那么使用left&lt;right以及找左右边界，控制右边；找右边界，控制左边的口诀； 如果找第一个大于target,第一个大于等于target；小于target, 最后一个">
+  <meta name="description" content="模板 参考链接：[二分查找专题]（https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_41221520&#x2F;article&#x2F;details&#x2F;108277801）  提型： 第一个大于，第一个大于等于， 等于的左右边界（1）某一个数（2）最后一个小于目标值target的数（3）最后一个小于等于目标值target的数（3）第一个大于目标值target的数（5）第一个大于等于目标值target的数  如果找左">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二分算法">
 <meta property="og:url" content="http://example.com/2021/11/13/leetcode/%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Hello World">
-<meta property="og:description" content="模板 参考链接：[二分查找专题]（https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_41221520&#x2F;article&#x2F;details&#x2F;108277801）   如果找左右边界2 4 4 4 4 5（第一个等于，最后一个等于），那么使用left&lt;right以及找左右边界，控制右边；找右边界，控制左边的口诀； 如果找第一个大于target,第一个大于等于target；小于target, 最后一个">
+<meta property="og:description" content="模板 参考链接：[二分查找专题]（https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_41221520&#x2F;article&#x2F;details&#x2F;108277801）  提型： 第一个大于，第一个大于等于， 等于的左右边界（1）某一个数（2）最后一个小于目标值target的数（3）最后一个小于等于目标值target的数（3）第一个大于目标值target的数（5）第一个大于等于目标值target的数  如果找左">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-13T09:21:34.000Z">
-<meta property="article:modified_time" content="2022-01-23T05:35:03.663Z">
+<meta property="article:modified_time" content="2022-04-13T04:53:54.647Z">
 <meta property="article:author" content="huhu">
 <meta property="article:tag" content="二分">
 <meta name="twitter:card" content="summary_large_image">
@@ -198,7 +198,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.2k 字
+      6.1k 字
     </span>
   
 
@@ -207,7 +207,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10 分钟
+      19 分钟
     </span>
   
 
@@ -242,40 +242,51 @@
               <h4 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h4><blockquote>
 <p>参考链接：[二分查找专题]（<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41221520/article/details/108277801%EF%BC%89">https://blog.csdn.net/qq_41221520/article/details/108277801）</a></p>
 </blockquote>
+<p><font color=red>提型： 第一个大于，第一个大于等于， 等于的左右边界</font><br>（1）某一个数<br>（2）最后一个小于目标值target的数<br>（3）最后一个小于等于目标值target的数<br>（3）第一个大于目标值target的数<br>（5）第一个大于等于目标值target的数</p>
 <ol>
 <li>如果找左右边界2 4 4 4 4 5（第一个等于，最后一个等于），那么使用left&lt;right以及找左右边界，控制右边；找右边界，控制左边的口诀；</li>
 <li>如果找第一个大于target,第一个大于等于target；小于target, 最后一个小于等于target<br>那么使用常规二分算法，left&lt;=right 以及题目中有等号，等式中无，以及大于对应left=mid+1在前，小于对应right=mid-1在前的口诀</li>
 </ol>
-<p>这个是否能统一为一个：<br>就是第一个大于target,第一个大于等于target，转为左边界；目前看是可以的<br>小于target, 最后一个小于等于target，转换为右边界.</p>
+<p><font color =red>统一：<br>第一个大于等于target，转为左边界；<br>最后一个小于等于target，转换为右边界.<br>其余等于，大于，或者小于都转为标准二分<br>注意标准二分记得返回的时候判断l， r是否在范围内（-1 size，判断）； 左右边界不用判断是否在返回内<br>记住大于目标值的第一个数，并不一定是等于target的右边界+1对应的下标</font></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">//找到第一个大于target的数</span><br><span class="hljs-keyword">int</span> l=<span class="hljs-number">0</span>, r=arr.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>;<br><span class="hljs-keyword">while</span>(l&lt;=r)&#123; <br>    <span class="hljs-keyword">int</span> mid=l+(r-l)/<span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">if</span>(arr[mid]&gt;x)&#123;<br>        r=mid<span class="hljs-number">-1</span>;<br>    &#125;<span class="hljs-keyword">else</span>&#123; <span class="hljs-comment">//等于情况应该为mid+1</span><br>        l=mid+<span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">if</span>(l&gt;=size)&#123;<br>    <span class="hljs-keyword">return</span> error<br>&#125;<br><span class="hljs-keyword">return</span> l;<br></code></pre></td></tr></table></figure>
+
+<p>第一个大于不能转为左边界：<br>[0] 当size=1的时候不行，会直接退出循环，然后返回0， 实际上应该返回1</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs C++">左右边界<br><span class="hljs-comment">//左边界</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">left_bound</span><span class="hljs-params">(<span class="hljs-keyword">int</span> left, <span class="hljs-keyword">int</span> right, <span class="hljs-keyword">int</span> arr, <span class="hljs-keyword">int</span> target)</span></span>&#123;<br>    <span class="hljs-keyword">while</span>(left&lt;right)&#123;<br>        <span class="hljs-keyword">int</span> mid=left+(right-left)/<span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">if</span>(arr[mid]&lt;target)&#123;<br>            left=mid+<span class="hljs-number">1</span>;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            right=mid;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> arr[left];<br>&#125;<br><br><span class="hljs-comment">//右边界</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">right_bound</span><span class="hljs-params">(<span class="hljs-keyword">int</span> left, <span class="hljs-keyword">int</span> right, <span class="hljs-keyword">int</span> arr, <span class="hljs-keyword">int</span> target)</span></span>&#123;<br>    <span class="hljs-keyword">while</span>(left&lt;right)&#123;<br>        <span class="hljs-keyword">int</span> mid=left+(right-left)/<span class="hljs-number">2</span>+<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span>(arr[mid]&lt;=target)&#123;<br>            left=mid;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            right=mid<span class="hljs-number">-1</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> arr[right];<br>&#125;<br><br><br>标准：<br><span class="hljs-keyword">while</span>(left&lt;=right)&#123;<br>    <span class="hljs-keyword">int</span> mid=(left+right)/<span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">if</span>(arr[mid]&lt;target)&#123;<br>        left=mid+<span class="hljs-number">1</span>;<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(arr[mid]&gt;target)&#123;<br>        right=mid<span class="hljs-number">-1</span>;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">return</span> mid;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
-<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><ol>
+<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><p><font color=red>0. lc34. 在排序数组中查找元素的第一个和最后一个位置</font><br>这道题元素可能存在可能不存在，使用左右边界的方法，同时需要判断最后结果是否是target</p>
+<ol>
 <li>在数组中找到一个局部最小值（不一定要在排序数组中使用二分算法，只要能确定二分两侧的某一侧肯定存在你要找的内容，就可以使用二分查找。</li>
 </ol>
-<ol start="2">
-<li><p>寻找旋转排序数组中的最小值（一个是可能包含重复数据，一个是不包含重复数据）<br>两个都是arr可能经过一次旋转处理，可能没有<br>(1)不包含重复，那么比较中间的值和右边的值，如果小于则说明右边顺序没变，right=mid,否则，left=mid+1<br>(2)可能包含重复数据就是在不包含重复数据基础上 添加一个如果nums[r]==nums[mid]，那么r–,一直到右边不等于mid</p>
-<p> <strong>注意</strong>: 一定是右边的数和中间的数进行比较，因为要考虑没有旋转的这种情况</p>
-</li>
+<p><font color=red>2. 寻找旋转排序数组中的最小值（一个是可能包含重复数据，一个是不包含重复数据）</font><br>两个都是arr可能经过一次旋转处理，可能没有<br>(1)不包含重复，那么比较中间的值和右边的值，如果小于则说明右边顺序没变，right=mid,否则，left=mid+1<br>(2)可能包含重复数据就是在不包含重复数据基础上 添加一个如果nums[r]==nums[mid]，那么r–,一直到右边不等于mid</p>
+<pre><code>**注意**: 一定是右边的数和中间的数进行比较，因为要考虑没有旋转的这种情况
+</code></pre>
+<ol start="3">
 <li><p>有序旋转数组中找到一个数 target<br>Solution:为了方便记忆，仍然使用右边的数和中间的数进行对比</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">while</span>(left&lt;=right)&#123;<br>    <span class="hljs-keyword">int</span> mid=left+(right-left)/<span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">if</span>(arr[mid]==target)&#123;<br>        <span class="hljs-keyword">return</span> arr[mid];<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">if</span>(arr[mid]==arr[right])&#123;<br>            right--;<br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(arr[mid]&lt;arr[right])&#123;<br>            <span class="hljs-keyword">if</span>(target&gt;arr[mid]&amp;&amp;target&lt;=arr[right])&#123;<br>                left=mid+<span class="hljs-number">1</span>;<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                right=mid<span class="hljs-number">-1</span>;<br>            &#125;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-keyword">if</span>(target&gt;=arr[left]&amp;&amp;target&lt;arr[mid])&#123;<br>                right=mid<span class="hljs-number">-1</span><br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                left=mid+<span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br></code></pre></td></tr></table></figure></li>
-<li><p>H指数 计数排序 O(n)（计数的数组应该为size+1, 每个index的数量，如果&gt;=n全部计算为count[n]）或者二分查找(O(logn))</p>
+<li><p>H指数 计数排序 O(n)（计数的数组应该为size+1, 每个index的数量，如果&gt;=n全部计算为count[n]）或者二分查找(O(logn))<br>H指数II多了一个已经拍好序，以及O(logn)因此不能遍历求citation的范围；所以只能二分查找数组，不能二分查找h_指数，同时返回的应该是个数，而不是引用量<br>根据分割点右边论文的个数与分割点 citations[x] 的大小关系进行二分 。</p>
 </li>
 </ol>
-<ol start="5">
-<li><p>寻找排序矩阵中的第k个数<br>二分查找算法， 计算mid值，查找，大于等于这个数的数量，然后right=mid  如果数量小于这个数量， left=mid+1<br>注意抓住矩阵横向和纵向都是有序的特点<br>同时在计算小于k的数量的时候，是每列每列的计算（从左下角）,因为是mid对矩阵进行划分</p>
-</li>
-<li><p>蜡烛之间的盘子,可以直接使用vector自带的函数进行二分查找<br>lower_bound(vec.begin(), vec.end(), target)-vec.begin()</p>
-</li>
-<li><p>寻找右区间， 二分查找+hash</p>
-</li>
-<li><p>我的日程安排表I<br> 方法一：暴力算法<br> 方法二：使用map对key进行排序，之后使用二分查找，查找当前区间应该插入的位置<br> 两个考点：<br> 1.map的lower_bound and upper_bound</p>
-<ol start="2">
-<li>插入的时候使用mp[end]=start<br>查找的时候查找start所在的位置，这样的话就不用和左右两边进行对比，只需要对比一边就好了<br>方法三：使用二叉搜索树, 每个数节点，包含left,right指针，以及start,和end两个val</li>
-</ol>
+<p><font color=red> 5. 寻找排序矩阵中的第k个数</font><br>二分查找算法，假设第k个数的值，然后判断小于他的数据是不是k<br> 计算mid值，查找，大于等于这个数的数量，然后right=mid  如果数量小于这个数量， left=mid+1<br>注意抓住矩阵横向和纵向都是有序的特点<br>同时在计算小于k的数量的时候，是每列每列的计算（从左下角）,因为是mid对矩阵进行划分</p>
+<p><font color=blue> 6. 蜡烛之间的盘子,可以直接使用vector自带的函数进行二分查找</font><br>lower_bound(vec.begin(), vec.end(), target)-vec.begin()<br>==只有两种数据， 比如0，1 找最近：使用下标的二分查找，而不是循环往前遍历==</p>
+<ol start="7">
+<li>寻找右区间， 二分查找+hash <ul>
+<li>按照左边排序+遍历每个区间右边，在区间二分查找，找到最近那个</li>
+<li>因为是interval (vector<int>), 因此自己实现二分，而不是使用标准库函数里面的方法</li>
+</ul>
 </li>
 </ol>
+<p><font color=red> 8. 我的日程安排表I </font><br>题意，就是判断是否能向当前的区间继续插入，插入之前如何高效判断，以及以如何形式表示已经插入了该区间，提示，不使用vector<interval>结构表示插入<br>    方法一：暴力算法<br>    方法二：使用map对key进行排序，之后使用二分查找，查找当前区间应该插入的位置<br>    两个考点：<br>    1.map的lower_bound and upper_bound<br>    2. 插入的时候使用mp[end]=start<br>    查找的时候查找start所在end后面的位置，这样的话就不用和左右两边进行对比，只需要对比一边就好了<br>    插入end查找start; 插入start, 查找end, 这样判断只需要判断一边<br>    方法三：使用二叉搜索树, 每个数节点，包含left,right指针，以及start,和end两个val</p>
 <p>PS 我的日程安排II III都是使用边界计数来实现，就是mp[start]++ mp[end]–</p>
+<p><strong>总结：</strong>二分算法解决区间题目， 这三道题都比较简单，前两道是判断是否有三重或者多重预定，最后一个是判断有几重预定。但是微软有一个题目是删除最少的区间，使得预定数重叠不超过2（可以等于2）：<br>微软这道题：</p>
+<ul>
+<li>按照左边边排序，同时用一个优先队列记录现在ok的序列，同时优先队列按照右边排序（我们贪心地删除右边能扩展到最远的那个）</li>
+<li>依次遍历排好序的区间，如果当前区间和优先队列中的前两个区间都有交集，那么将当区间压入优先队列中，并弹出一个区间；否则直接压入，不弹出</li>
+</ul>
+<p>这个其实也是上下车题目的模板代码，思想就是差分数组，只需要在两端进行标记</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">maxConcurrent</span> <span class="hljs-params">(vecotr&lt;vecotr&lt;<span class="hljs-keyword">int</span>&gt;&gt;&amp; time)</span></span>&#123;<br>    map&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; record;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span>&amp; t : time)&#123;<br>        record[t[<span class="hljs-number">0</span>]] += <span class="hljs-number">1</span>;<br>        record[t[<span class="hljs-number">1</span>]] -= <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>, concurrent = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span>&amp; p : record)&#123;<br>        concurrent += p.second;<br>        ans = <span class="hljs-built_in">max</span>(ans, concurrent);<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
 <ol start="9">
 <li><p>在 D 天内送达包裹的能力<br>使用二分搜索，查找船最低的容量，使得能在days内完成传输<br>易错点：一定要记得left 应该为里面最大的val，而不是0</p>
 </li>
@@ -283,16 +294,44 @@
 </li>
 </ol>
 <ol start="11">
-<li><p>同时运行 N 台电脑的最长时间(hard)<br>S=min(barries[i], mid)  S/mid&gt;=n<br>left=1, right=sum(barries)/n<br>也就是如果当前假设的值大于电池容量，电池就会被榨干，否则电池会被用掉mid (因此电池不会同时被多台电脑用，因此最多用掉假设t这么多的电量)</p>
-</li>
-<li><p> 转变数组后最接近目标值的数组和<br>第一种思路： 这道题使用二分，但是因为是找target更近的点，因此mid的和是大于target或者小于target都有可能，虽然整体上left和right应该向target靠拢，但是最终的结果应该有另外的变量记录。==/&lt;/&gt; target的时候都不是找到了最终结果，而是候选结果。</p>
-</li>
+<li>同时运行 N 台电脑的最长时间(hard)<br>S=min(barries[i], mid)  Sum/mid&gt;=n<br>left=1, right=sum(barries)/n<br>也就是如果当前假设的值大于电池容量，电池就会被榨干，否则电池会被用掉mid (因此电池不会同时被多台电脑用，因此最多用掉假设t这么多的电量)</li>
 </ol>
+<p><font color=blue>  12.  转变数组后最接近目标值的数组和 </font><br>二分，但是因为是绝对值，所以需要比较mid计算值比target小还是大，决定搜索那边<br>第一种思路： 这道题使用二分，但是因为是找target更近的点，因此mid的和是大于target或者小于target都有可能，虽然整体上left和right应该向target靠拢，但是最终的结果应该有另外的变量记录。==/&lt;/&gt; target的时候都不是找到了最终结果，而是候选结果。</p>
 <p>也就是结果和left/right的变化是两个逻辑，不在一条线上</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">if</span>(<span class="hljs-built_in">abs</span>(sum-target)&lt;dist)&#123;<br>    res=mid;<br>    dist=<span class="hljs-built_in">abs</span>(sum-target);<br>&#125;<br><span class="hljs-keyword">if</span>(<span class="hljs-built_in">abs</span>(sum-target)==dist)&#123;<br>    <span class="hljs-keyword">if</span>(res&gt;mid)&#123;<br>        res=mid;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">if</span>(<span class="hljs-built_in">abs</span>(sum-target)&lt;dist)&#123;<br>    res=mid;<br>    dist=<span class="hljs-built_in">abs</span>(sum-target);<br>&#125;<br><span class="hljs-keyword">if</span>(<span class="hljs-built_in">abs</span>(sum-target)==dist)&#123;<br>    <span class="hljs-keyword">if</span>(res&gt;mid)&#123;<br>        res=mid;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">if</span>(sum&gt;=target)&#123;<br>    maxvalue=mid<span class="hljs-number">-1</span>; <span class="hljs-comment">//right</span><br>&#125;<span class="hljs-keyword">else</span>&#123;<br>    minvalue=mid+<span class="hljs-number">1</span>; <span class="hljs-comment">//left</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <p>第二种思路: 要想确定差的绝对值最小，可以先求出比target大的最小值，结果必出在最小值和最小值-1，二选一，比较下即可</p>
-<h4 id="二分查找总结"><a href="#二分查找总结" class="headerlink" title="二分查找总结"></a>二分查找总结</h4><p>结果是整数<br>数组排好序<br>时间复杂度要求O(nlogn)<br>类似于一种缩小范围的随机查找</p>
-<p>寻找类型题，可以考虑二分，如果是最大最小题，可以试试动态规划或者二分算法</p>
+<p><font color=red>12. 搜索旋转排序数组 （寻找里面的某个元素target/或者里面的最小值）</font><br>    1） 无重复数据，直接返回下标，那么使用标准二分查找<br>    2） 有重复数据，返回true或者false<br>    3)  有重复数据，同时返回==target的最小的下标 (<font color=red>面试题 10.03. 搜索旋转数组</font>)<br>        a. 需要对比mid的左边的元素，因为是找到最小index b. 需要加一些条件判断，方便直接退出<br>        if(nums[left]==target) 直接返回left; if(nums[mid]==target) right=mid<br>        b. 因为需要最小的下标，所以只看中和左，不看右边<br>        c. 对左边和中间相等的端点进行单独处理， 只有确定target&gt;mid的时候，才left=mid+1; target==mid的时候不能left=mid+1；需要加一些预处理的命令<br>    4） 寻找旋转排序数组的最小值-无重复元素<br>    5)  寻找旋转排序数组的最小值-有重复元素<br>    6） 旋转数组， 让数组向右移动k个位置，<br>        reverse(0,n-1)<br>        reverse(0,k-1)<br>        reverse(k,n-1)</p>
+<pre><code>总结：前三个为标准的二分查找 4，5个 为边界类型的二分查找（right=mid）；找最小值的时候比较mid和right的值，找target的最小下标使用left, mid进行比较，其余情况两种都可以
+</code></pre>
+<ol start="12">
+<li>面试题 10.10. 数字流的秩</li>
+</ol>
+<ul>
+<li>先随机插入一些数，如何找到小于等于x的数据个数</li>
+<li>方法1：插入的时候顺序插入，在查找的时候，使用二分查找</li>
+<li>方法2：使用树状数组</li>
+</ul>
+<ol start="13">
+<li>lc363. 矩形区域不超过 K 的最大数值和(二维前缀和问题)</li>
+</ol>
+<ul>
+<li>求一个矩阵内部一个矩阵和小于k的最大数值和</li>
+<li>枚举上下两边，然后求和时累加前面（减少空间复杂度），查找的时候使用二分查找（nlogn），大于sum[i]-k的最小值(lower_bound因为是大于等于)</li>
+</ul>
+<ol start="14">
+<li>lc373. 查找和最小的 K 对数字<br>优先队列+使用多路归并：<br>nums1[0]: nums2[0]-nums2[9]<br>nums1[1]: nums2[0]-nums2[9]<br>…<br>nums1[9]: nums2[0]-nums2[9]<br>多条路，每条路都是压入第一个元素<br>从优先队列中弹出一个元素（压入），看他在哪条路中，然后压入这条路的后一个元素</li>
+</ol>
+<ol start="15">
+<li>lc1235. 规划兼职工作</li>
+</ol>
+<ul>
+<li>题意：找到不重叠而且profit最大的区间段</li>
+<li>解决方法：使用dp+二分算法， 首先将区间按照endTime进行排序，然后定义dp为 0-i之间的最大的利益，然后使用二分找到0到i-1之间endTime&lt; i start_time的最后的区间，然后进行状态转移<br>f[i]=f[i-1]<br>f[i] = max(f[i], f[r] + q[i][2]); </li>
+<li>为了减少区间0的判断，区间的编号可以直接从1开始向后</li>
+<li>易错点：最主要在进行动态规划的时候dp[i]不能定义为以i结尾的最大profit，只能定义为前i个最大的profit, 因为在进行二分的时候，可能有多个endTime相同，因此选择哪个i是未知的，如果dp定义为区间段，那么就知道选择的是最右边的i</li>
+</ul>
+<h4 id="二分查找总结"><a href="#二分查找总结" class="headerlink" title="二分查找总结"></a>二分查找总结</h4><p>ok<br>结果是整数, 数组排好序，或者数值选择有规律<br>时间复杂度要求O(nlogn)<br>类似于一种缩小范围的随机查找, 有方向的猜测<br>寻找类型题，可以考虑二分，如果是最大最小题，可以试试动态规划或者二分算法<br>找第k个数，不一定需要排序，可以直接二分猜测+计数验证</p>
+<p>区间问题，感觉总是出错，一般用二分或者贪心算法</p>
 
             </div>
             <hr>

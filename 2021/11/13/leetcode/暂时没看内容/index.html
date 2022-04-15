@@ -25,7 +25,7 @@
 <meta property="og:description" content="堆排序和其他排序内容，面试前过一次  堆排序已经看，主要思路：先对每个内部节点进行heap_build,然后每次将0交换到i位置（n-1 到0），然后对0~i-1进行heap_build；heap_build：先对左右排序，在对root排序，如果当前root没有交换，那么退出递归程序，否则递归root&#x3D;flag, heap_build  字典树前缀树也不一定要有value字段，当value的数字">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-13T09:23:20.000Z">
-<meta property="article:modified_time" content="2021-11-13T12:08:41.300Z">
+<meta property="article:modified_time" content="2022-03-22T09:57:24.870Z">
 <meta property="article:author" content="huhu">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -197,7 +197,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      979 字
+      1.4k 字
     </span>
   
 
@@ -206,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3 分钟
+      4 分钟
     </span>
   
 
@@ -243,8 +243,16 @@
 </ol>
 <p>堆排序已经看，主要思路：<br>先对每个内部节点进行heap_build,然后每次将0交换到i位置（n-1 到0），然后对0~i-1进行heap_build；<br>heap_build：先对左右排序，在对root排序，如果当前root没有交换，那么退出递归程序，否则递归root=flag, heap_build</p>
 <ol start="2">
-<li>字典树<br>前缀树也不一定要有value字段，当value的数字的时候，也可以直接用下标代表value，而不用记录value这个字段</li>
+<li>字典树<br>前缀树也不一定要有value字段，当value的数字的时候，也可以直接用下标代表value，而不用记录value这个字段<br>前缀树经典例题： </li>
 </ol>
+<ul>
+<li>lc648. 单词替换(前缀单词查找，注意类函数需要申明为public, 26个字符（如果申请小于26个会报错），而且最初建立的对象是指针 Trie *t=new Trie()， t-&gt;search, t-&gt;findPrefix)</li>
+<li><ol start="1268">
+<li>搜索推荐系统</li>
+</ol>
+</li>
+<li>字典树变形:在字典树中加入一个set<string> bags 来存储前缀包含该路径的前3个字符串，在每将字典里面的字符串插入这棵数的时候，将经过路径的所有字符的bags都插入这个字符串， 如果大于size, 就删除最后一个元素，bags.erase(–bags.end());<br>vector<string> tmp(cur-&gt;bags.begin(), cur-&gt;bags.end());//set元素赋值给vec, vec反过来赋值一样的<br>易错点：在收缩的时候，如果发现字典树都找不到这个字符了，那么直接break, 然后s.size()-res.size()大小全部push为 空的vec<string></li>
+</ul>
 <p>   例题：子数组的最大异或和：</p>
 <ul>
 <li>方法一：可以求前缀异或和，然后遍历每个下标j前面的i XOR(i,j)=XOR(o,j)^XOR(0,j) 时间复杂度O(N^2)</li>

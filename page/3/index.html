@@ -194,6 +194,112 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" target="_self">
+          编程语言
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" target="_self">
+          
+          
+            
+          
+          python
+python GIL介绍
+
+list tuple set的区别
+
+
+
+python迭代器和生成器的区别是什么生成器本质上还是一个迭代器，也是用在迭代操作中，因此它有和迭代器一样的特性，唯一的区别在于实现方式上不一样，后者更加简洁；生成器只是在需要这个值再生成
+
+迭代器迭代器对象要求支持迭代器协议的对象。在Python中，支持迭代器协议就是实现对象的__iter__()和next()方
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-13 20:11" pubdate>
+              2021-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/">项目相关</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python-C/">python, C++</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E9%9D%A2%E8%AF%95/" target="_self">
+          面试
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E9%9D%A2%E8%AF%95/" target="_self">
+          
+          
+            
+          
+          
+回答问题模板：a) 我为什么要做这个项目？要达到什么目标？b) 学术上，或者工业上 有哪些方法？能达到什么目标？这些方法分别有什么优缺点？c) 我为什么要选择这个方法？项目上做了哪些取舍？d) 这里面，我做了哪些创新点/亮点？为什么我要做这个创新点？e) 最后项目达到了什么样的结果
+
+发现、动机、实践和验证
+计算机视觉对于自己的工作，尤其是准备重点介绍的工作，每一个细节都要很熟悉，要能解释清楚做
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-13 20:10" pubdate>
+              2021-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/">项目相关</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E7%AC%94%E8%AF%95/" target="_self">
           笔试
         </a>
@@ -257,7 +363,8 @@
             
           
           前缀和 + hash题目汇总一定要注意先判断hash[presum-target]是否存在并更新结果，再更新hash[presum]++， 因为可能nums[i]=0
-例题：面试题 17.05.  字母与数字，要求字母和数字个数相同，那么就是将字母转为1， 数字转为-1的时候，前缀和为0的最长序列；另外使用这种思想是的”和等于 k 的最长子数组长度“ ”和等于k子数组“ ”1371. 每个元音包含
+例题：面试题 17.05.  字母与数字，要求字母和数字个数相同，那么就是将字母转为1， 数字转为-1的时候，前缀和为0的最长序列；另外使用这种思想是的”和等于 k 的最长子数组长度“ ”和等于k子数组“ （hash+前缀和）
+12
         </a>
       </p>
 
@@ -301,7 +408,7 @@
             
           
           例题
-字符串的转换路径问题: 标准答案是既用到了深度优先搜索，也用到了宽度优先搜索 1.构建nexts数组（图）2.使用BFS求每个节点到start的最短距离 3.DFS求具体路径，同时在进入下层循环是需要判断，当前的距离是不是当前节点到start的最短距离，如果是进入循环，否则剪枝 我之前的答案是用的BFS+vis数组+pre数组，同时vis数组更新和向队列中添加新的元素是遍历完了当前队列中的所
+字符串的转换路径问题: 单词接龙I:只返回最短转换序列的长度（使用BFS） 单词接龙II：返回所有最短转换序列具体是什么 标准答案是既用到了深度优先搜索，也用到了宽度优先搜索 （最短距离） 首先判断endWord是否在字典中，不在的话直接返回空 在进行单词找相邻，可以遍历单词每个字符，判断与当前是否只有一个不相等（O(mn)）；或者将当前单词的每一位替换成 26 个小写英文字母，查找是否在字
         </a>
       </p>
 
@@ -582,103 +689,6 @@ a + (b&amp;c) 不管是+/-/*/ 还是==， 只要和位运算在一起，位运�
               <a href="/tags/%E5%85%B6%E4%BB%96/">其他</a>
             
           </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/11/13/leetcode/%E5%8F%8C%E6%8C%87%E9%92%88/" target="_self">
-          双指针
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/11/13/leetcode/%E5%8F%8C%E6%8C%87%E9%92%88/" target="_self">
-          
-          
-            
-          
-          例题双指针+字符串// 反转字符串s中左闭又闭的区间[start, end]void reverse(string&amp; s, int start, int end) {    for (int i = start, j = end; i &lt; j; i++, j–) {        swap(s[i], s[j]);    }}
-
-替换后的最长重复字符如果k=0就是求连续的最长重复字符
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-13 17:22" pubdate>
-              2021-11-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/leetcode/">leetcode</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/11/13/leetcode/%E6%8E%92%E5%BA%8F%E9%A2%98/" target="_self">
-          排序算法
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/11/13/leetcode/%E6%8E%92%E5%BA%8F%E9%A2%98/" target="_self">
-          
-          
-            
-          
-          堆排序堆排序的基本思路a.先所有的内部节点的每个，从下到上进行往下沉的操作heap_buildb.然后根节点和最后一个节点交换，然后从根节点向下沉（0,n-1），然后根节点和倒数第二个节点交换，然后往下沉(0,n-2)然后重复上述的过程
-也就是先build最大堆，然后逐渐交换，然后重复build
-优先队列默认是从大到小进行排序；multiset 基于红黑树实现，默认是从小到大进行排序priorit
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-13 17:22" pubdate>
-              2021-11-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/leetcode/">leetcode</a>
-            
-          </div>
-        
         
       </div>
     </article>

@@ -194,6 +194,97 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/12/03/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/rpc/" target="_self">
+          RPC related
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/12/03/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/rpc/" target="_self">
+          
+          
+            
+          
+          gRPC 可以保证不同语言之间的通讯编写.proto文件，生成指定语言源代码。编写服务端代码编写客户端代码https://www.liwenzhou.com/posts/Go/gRPC/  一个python客户端和go服务端的例子
+pytorch的官网框架rpc常见方法rpc_sync同步远程调用、rpc_async异步远程调用、remote异步远程调用。
+rpc.init_rpc 初始化rpc，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-12-03 10:01" pubdate>
+              2021-12-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/">工具相关</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/12/01/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/orangefs/" target="_self">
+          orangefs
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/12/01/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/orangefs/" target="_self">
+          
+          
+            
+          
+          orangefs
+genconfig是一个go语言文件，它有一个可选参数oranges-server.conf
+
+init_start_all.sh相比start_all.sh 多了一个/local500G/orange_store/ 以及多了一条有-f命令的语句 应该是在服务器节点启动pvfs-serverorangefs默认的服务器的文件系统挂载的目录是在oranges-server.conf
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-12-01 15:54" pubdate>
+              2021-12-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/">工具相关</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/11/24/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/system%20design/" target="_self">
           System Design
         </a>
@@ -252,9 +343,7 @@ Grokking system design 和数据密集型应用系统设计这两份资料。时
             
           
           
-二叉树的前序序列化 观察规律题或者建树题 我的思路是直接建立一颗二叉树，但是建立树代码可以不写； 官方题解是：通过槽位计数，如果遍历到最后槽位为0说明正确，如果中间槽位为0，说明出错 注意这道题的易错点是: 字符串中包含’,’而且可能数字包含两个字符 98,7,#
-
-二叉树的宽度： 宽度应该包含一层的节点之间夹杂的空字符，所以为了得到一层的宽度，应该在栈中压入每个节点的下标(左边：2 * pos
+验证二叉树的前序序列化 观察规律题或者建树题 我的思路是直接建立一颗二叉树，但是建立树代码可以不写；最后树是正确的就是中间不会访问到cur==size的情况，同时最后循环完之后不会再出现#或者数字 官方题解是：通过槽位计数，如果遍历到最后槽位为0说明正确，如果中间槽位为0，说明出错 因为加上一个#槽位数会–，如果加上一个数字那么槽位数会++（-1+2） 注意这道题的易错点是: 字符串中包含’,’
         </a>
       </p>
 
@@ -301,12 +390,14 @@ Grokking system design 和数据密集型应用系统设计这两份资料。时
 例题
 扁平化多级双向链表
 
-易错点
-判断head是否为null
-在使用tmp-&gt;next 或者tmp-&gt;prev 一定要注意判断当前节点不能为null也就是if(tmp){
+有序数组或者链表转为二叉搜索树lc109
 
-}
-3.双向链表在进行删除某个节点的时候，先固定前面和后面的关系都可以；但是在插入一个节点的时候一定要先固定后
+
+
+常规解法：找到中间节点为当前根节点，分别建立左右子树
+链表找中位数，需要使用快慢指针和断开链表
+为了解决链表找中位数耗时比较大，同时不使用额外空间（不转为数组方法）的方法就是使用中序遍历建树方法：
+我们没有必要“先”找到中
         </a>
       </p>
 
@@ -576,112 +667,6 @@ xgboost属于GDBT的工程实现，但是相比于GDBT有更多的优化
               <a href="/tags/machine-learning/">machine learning</a>
             
           </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" target="_self">
-          编程语言
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" target="_self">
-          
-          
-            
-          
-          python
-python GIL介绍
-
-list tuple set的区别
-
-
-
-python迭代器和生成器的区别是什么生成器本质上还是一个迭代器，也是用在迭代操作中，因此它有和迭代器一样的特性，唯一的区别在于实现方式上不一样，后者更加简洁；生成器只是在需要这个值再生成
-
-迭代器迭代器对象要求支持迭代器协议的对象。在Python中，支持迭代器协议就是实现对象的__iter__()和next()方
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-13 20:11" pubdate>
-              2021-11-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/">项目相关</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/python-C/">python, C++</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E9%9D%A2%E8%AF%95/" target="_self">
-          面试
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E9%9D%A2%E8%AF%95/" target="_self">
-          
-          
-            
-          
-          
-回答问题模板：a) 我为什么要做这个项目？要达到什么目标？b) 学术上，或者工业上 有哪些方法？能达到什么目标？这些方法分别有什么优缺点？c) 我为什么要选择这个方法？项目上做了哪些取舍？d) 这里面，我做了哪些创新点/亮点？为什么我要做这个创新点？e) 最后项目达到了什么样的结果
-
-发现、动机、实践和验证
-计算机视觉对于自己的工作，尤其是准备重点介绍的工作，每一个细节都要很熟悉，要能解释清楚做
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-13 20:10" pubdate>
-              2021-11-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/">项目相关</a>
-            
-          </div>
-        
         
       </div>
     </article>
