@@ -11,6 +11,9 @@ lintcode
 一致性hash 算法
 分布式场景下
 
+
+
+System Design: https://wwwyoutubecom/channel/UC9vLsnF6QPYuH51njmIooCQ
 Grokking system design 和数据密集型应用系统设计这两份资料。
 时间不够的话优先看 Grokking system design。重点是掌握系统设计题目的回答套路，如何一步一步地展开自己的系统设计思路以及和面试官提哪些问题来确定设计细节。一定要多和面试官沟通，多提问。
 

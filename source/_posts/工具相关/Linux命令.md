@@ -37,3 +37,9 @@ example: rename 's/\.tar.gz.1/\.tar.gz/' *
 
 #### 服务器之间使用scp进行文件传输和同步
 rsync -r -P --rsh=ssh source_dir dest_dir(shu@10.5.26.19:/nfs/home/shu/hushuang-8a100)
+
+
+Linux服务器上修改gcc版本
+https://blog.csdn.net/qq_31175231/article/details/77774971
+
+
