@@ -13,7 +13,7 @@ for (int i = 0; i < n;i++){
 }
 // 3. 多重背包
 for (int i = 0; i < n;i++){
-    for (int j = 0; j <=V ;j++){
+    for (int j = V; j >=v[i] ;j++){ //多重背包问题也必须倒着遍历
         for (int z = 0; z <= k;z++){
             if(j>=z*w[i]){
                 dp[j] = max(dp[j], dp[j - z*w[i]] + c[i]*z);
@@ -23,16 +23,19 @@ for (int i = 0; i < n;i++){
     }
 }
 
+
 // 4. 分组背包
 for (int i = 0; i < n;i++){
     for (int j = V; j >= 0;j--){
-        for (int z = 0; z < nums[i];z++){
+        for (int z = 0; z < nums[i];z++){ //每一个组最多只能选择一个物品， 理解为一组内的物品互斥
             if(j>=w[i][z]){
                 dp[j] = max(dp[j], dp[j - w[i][z]] + c[i][z]);
             }
         }
     }
 }
+
+例题:1800.浮点数组合和(分组背包+打印背包)
 
 // 5. 混合背包
 for (循环物品种类)
@@ -78,13 +81,13 @@ dp[0] = 1;
 for (int i = 0; i < n; i++)
 {
     for (int j = V; j >= w[i];j--){
-        dp[j] = dp[j]+ dp[j - w[i]];
+        dp[j] = dp[j]+ dp[j - w[i]]; //选或者不选这个物品方案总数之和
     }
 }
 
 
 
-// 10.求最优方案总数：
+// 10.求最优解方案总数：
     c[0] = 1;
 for (int i = 0; i < n; i++)
 {

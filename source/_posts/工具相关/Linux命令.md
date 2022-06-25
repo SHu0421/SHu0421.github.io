@@ -37,3 +37,23 @@ example: rename 's/\.tar.gz.1/\.tar.gz/' *
 
 #### 服务器之间使用scp进行文件传输和同步
 rsync -r -P --rsh=ssh source_dir dest_dir(shu@10.5.26.19:/nfs/home/shu/hushuang-8a100)
+
+
+Linux服务器上修改gcc版本
+https://blog.csdn.net/qq_31175231/article/details/77774971
+
+#### linux如果安装一半 ctrl+C中止了，锁住如何解决
+sudo rm /var/lib/dpkg/lock-frontend
+
+#### mac终端配置代理的方式
+https://github.com/Eathoublu/Content404/blob/master/Use%20Proxy%20on%20mac:linux/mac%E3%80%81linux%E7%BB%88%E7%AB%AF%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86.md
+
+#### 在ubuntu服务器上实现科学上网（翻墙）
+安装好后，使用ss-local命令，即可运行
+
+
+#### 挂载nfs hec节点
+sudo su - 
+mount -t nfs4 ws-nas.zhejianglab.com:/NAS/CAPFS/data/xxznjsxt   /nfs
+
+
