@@ -1,0 +1,569 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="这是我的第一篇博客">
+  <meta name="author" content="huhu">
+  <meta name="keywords" content="">
+  <meta name="description" content="验证二叉树的前序序列化 观察规律题或者建树题 我的思路是直接建立一颗二叉树，但是建立树代码可以不写；最后树是正确的就是中间不会访问到cur&#x3D;&#x3D;size的情况，同时最后循环完之后不会再出现#或者数字 官方题解是：通过槽位计数，如果遍历到最后槽位为0说明正确，如果中间槽位为0，说明出错 因为加上一个#槽位数会–，如果加上一个数字那么槽位数会++（-1+2） 注意这道题的易错点是: 字符串中包含’,’">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二叉树">
+<meta property="og:url" content="http://example.com/2021/11/23/leetcode/%E4%BA%8C%E5%8F%89%E6%A0%91/index.html">
+<meta property="og:site_name" content="Hello World">
+<meta property="og:description" content="验证二叉树的前序序列化 观察规律题或者建树题 我的思路是直接建立一颗二叉树，但是建立树代码可以不写；最后树是正确的就是中间不会访问到cur&#x3D;&#x3D;size的情况，同时最后循环完之后不会再出现#或者数字 官方题解是：通过槽位计数，如果遍历到最后槽位为0说明正确，如果中间槽位为0，说明出错 因为加上一个#槽位数会–，如果加上一个数字那么槽位数会++（-1+2） 注意这道题的易错点是: 字符串中包含’,’">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-23T02:27:56.000Z">
+<meta property="article:modified_time" content="2022-04-12T13:41:02.746Z">
+<meta property="article:author" content="huhu">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>二叉树 - Hello World</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hello World" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>HU&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="二叉树">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-23 10:27" pubdate>
+        2021年11月23日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      16 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">二叉树</h1>
+            
+            <div class="markdown-body">
+              <ol>
+<li><p>验证二叉树的前序序列化<br> 观察规律题或者建树题<br> 我的思路是直接建立一颗二叉树，但是建立树代码可以不写；最后树是正确的就是中间不会访问到cur==size的情况，同时最后循环完之后不会再出现#或者数字<br> 官方题解是：通过槽位计数，如果遍历到最后槽位为0说明正确，如果中间槽位为0，说明出错<br> 因为加上一个#槽位数会–，如果加上一个数字那么槽位数会++（-1+2）<br> 注意这道题的易错点是: 字符串中包含’,’而且可能数字包含两个字符 98,7,#</p>
+</li>
+<li><p>二叉树的宽度： 宽度应该包含一层的节点之间夹杂的空字符，所以为了得到一层的宽度，应该在栈中压入每个节点的下标(左边：2 * pos, 右边：2 * pos+1)，而不是具体的二叉树ListNode</p>
+</li>
+<li><p>两个子节点的最近公共父节点</p>
+</li>
+</ol>
+<p>如果一个节点为target_one或者target_two那么直接返回当前节点，否则进行dfs, dfs返回的左右节点都是非NULL那么就返回当前节点</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-function">ListNode* <span class="hljs-title">lowestCommonAncestor</span><span class="hljs-params">(ListNode* root, ListNode* node1, ListNode* node2)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(root==<span class="hljs-literal">NULL</span>||root==p||root==q) <span class="hljs-keyword">return</span> root;<br>    <span class="hljs-keyword">if</span>(root==node1||root==node2)&#123;<br>        <span class="hljs-keyword">return</span> cur;<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        ListNode *left=<span class="hljs-built_in">lowestCommonAncestor</span>(root-&gt;left, node1, node2);<br>        ListNode *right=<span class="hljs-built_in">lowestCommonAncestor</span>(root-&gt;right, node1, node2);<br>        <span class="hljs-keyword">if</span>(left&amp;&amp;right)&#123;<br>            <span class="hljs-keyword">return</span> cur;<br>        &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(left)&#123;<br>            <span class="hljs-keyword">return</span> left;<br>        &#125;<br>        <span class="hljs-keyword">return</span> right;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>从二叉树一个节点到另一个节点每一步的方向</li>
+</ol>
+<p>方法，通过dfs找到到达startValue和dstValue的具体路径，然后删除路径前面相同的部分，然后到达startValue剩余的size都加上U， 到达dstValue剩余的都加上dst剩余的路径</p>
+<ol start="5">
+<li><p>寻找重复的树，<br> 解决方案：序列化+hash判断子树是否唯一，序列化只能使用# ，以及前序和后序遍历</p>
+<ul>
+<li>注意这道题需要记录空节点，同时，只能使用前序或者后序遍历 唯一判定两棵子树是否相同，而不能使用中序遍历。而且数据与数据应该用，隔开，因为222可以理解为2+2+2也可以理解为2+22 </li>
+<li> ==加上#的这种情况，只有后序遍历和前序遍历能够唯一确定一课子树。中序遍历不行==  </li>
+<li>同样这道题使用二叉树的序列化和反序列化, 因为前序和后序都可以知道根节点，但是中序不行</li>
+</ul>
+</li>
+<li><p>最长同值路径</p>
+<ul>
+<li>和二叉树的直径类似，不过这里需要判断值是否相等，多了一个条件</li>
+<li>为了区分left+right+1 left+1 right+1三种情况，可以使用一个left_mark 如果左边和root相等那么==left_val+1否则为0。那么最后的结果都是left_mark+right_mark+1， 解决了三种情况 返回max(left_mark, right_mark)+1</li>
+</ul>
+</li>
+<li><p>二叉树中所有距离为 K 的结点<br>先通过dfs找到每个节点的父节点，然后再对target节点进行dfs 左右和父节点 (或者bfs+vis)</p>
+</li>
+<li><p>二叉树寻路，使用数学方法<br> 1.先求每个数正常的父亲，然后再对不同的层进行修改<br> 2.在进行修改的时候抓住对称的点的和是相同的<br> 3.如果层数是偶数，那么只需要修改奇数层的值；如果层数是奇数，那么需要修改偶数层的数据</p>
+</li>
+<li><p>二叉树中两个节点间的距离<br>先求两个节点的最近公共祖先，然后从最近公共祖先出发，求祖先节点分别到两个节点的距离(使用dfs两次，target==p||q)，距离之和就是两个节点的最短路径<br>代码：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/cec33f514f69">https://www.jianshu.com/p/cec33f514f69</a></p>
+</li>
+</ol>
+<ol start="10">
+<li>树的直径问题<br>任意选择一个节点为根，然后找到离他最远的节点a，然后找到离a最远的节点b，那么a-&gt;b就是最远的路径（数的直径）<br>如果是二叉树有指针的情况可以使用递归<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">int</span> result=<span class="hljs-number">0</span>;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">maxDistance</span><span class="hljs-params">(TreeNode* root)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(root==<span class="hljs-literal">NULL</span>)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>    <span class="hljs-keyword">int</span> leftLength=<span class="hljs-built_in">maxDistance</span>(root-&gt;left);<br>    <span class="hljs-keyword">int</span> rightLenght=<span class="hljs-built_in">maxDistance</span>(root-&gt;right);<br>    result=<span class="hljs-built_in">max</span>(leftLength+rightLenght+<span class="hljs-number">1</span>, result);<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(leftLength, rightLenght)+<span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">diameterOfBinaryTree</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>    <span class="hljs-built_in">maxDistance</span>(root);<br>    <span class="hljs-keyword">return</span> result<span class="hljs-number">-1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+如果是无向图：<br>算法思想<br>①从任意一点P出发，通过DFS寻找离它最远的点Q。<br>②再次从点Q出发，通过DFS寻找离它最远的W。<br>③直径即为WQ。<br>证明：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/115966044">https://zhuanlan.zhihu.com/p/115966044</a></li>
+</ol>
+<p>两次dfs</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> st)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;edge[st].<span class="hljs-built_in">size</span>();i++)<br>    &#123;<br>        <span class="hljs-keyword">int</span> to=edge[st][i];<br>        <span class="hljs-keyword">if</span>(!vis[to])<br>        &#123;<br>            vis[to]=<span class="hljs-number">1</span>;<br>            dis[to]=dis[st]+<span class="hljs-number">1</span>;<span class="hljs-comment">//注意，本代码计算的是无权树的直径，所以边权为1</span><br>            <span class="hljs-comment">//如果是有权树，则这里的1要改为边权</span><br>            <span class="hljs-built_in">dfs</span>(to);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>求最长就是求最大的dis，两次dfs中间需要重新初始化dis=0</p>
+<ol start="11">
+<li>具有所有最深节点的最小子树</li>
+</ol>
+<p>在深度优先搜索的时候同时返回结果和计算深度，返回的是一个结构体 node{root, dist}.<br>1)获取当前节点的左右子树的最大深度<br>2)如果两边最大深度相同，则这个节点就是结果<br>3)不相等，那返回深度大的子树的root信息</p>
+<ol start="12">
+<li><ol start="205">
+<li>同构字符串/890. 查找和替换模式<br>查找和对应模式一致的字符串，abb模式。<br>使用双hash,也就是两边都没有映射，才建立映射，或者两边都有映射且未对方，那么continue,否则说明出处<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">if</span>(s2t.<span class="hljs-built_in">find</span>(s[i])==s2t.<span class="hljs-built_in">end</span>()&amp;&amp;t2s.<span class="hljs-built_in">find</span>(t[i])==t2s.<span class="hljs-built_in">end</span>())&#123;<br>    s2t[s[i]]=t[i];<br>    t2s[t[i]]=s[i];<br>&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(s2t[s[i]]=t[i]&amp;&amp;t2s[t[i]]==s[i])&#123;<br>    <span class="hljs-keyword">continue</span>;<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<ol start="12">
+<li>前后序遍历中空间复杂度为O(1)的Morris Traval方法（主要是利用叶子节点的空指针进行映射到下一个节点）<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/AnnieKim/archive/2013/06/15/MorrisTraversal.html">https://www.cnblogs.com/AnnieKim/archive/2013/06/15/MorrisTraversal.html</a></li>
+</ol>
+<ul>
+<li><strong>前序遍历</strong><br>  根左右<ol>
+<li>如果当前节点的左孩子为空，那么输出当前节点，并将当前节点设置为当前节点的右孩子</li>
+<li>一个节点的左孩子不为空，那么在当前节点的左子树找到这个节点的前驱节点<br> 如果这个前驱节点的右孩子为空，那么设置右孩子为当前节点，==输出当前节点==（于中序的唯一不同），并当前节点更新为当前节点左孩子<br> 如果这个前驱节点的右孩子为当前节点，那么将右孩子重新设置为空。并更新当前节点为当前节点的右孩子。</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><strong>中序遍历</strong><br>  左根右<ol>
+<li>如果当前节点的左孩子为空，那么输出当前节点，并将当前节点设置为当前节点的右孩子</li>
+<li>一个节点的左孩子不为空，那么在当前节点的左子树找到这个节点的前驱节点<br> 如果这个前驱节点的右孩子为空，那么设置右孩子为当前节点，并当前节点更新为当前节点左孩子<br> 如果这个前驱节点的右孩子为当前节点，那么将右孩子重新设置为空。<strong>输出当前节点</strong>， 并更新当前节点为当前节点的右孩子<br> 与前序遍历相比一个是回来之后再输出(else)，一个是建立前驱到根节点关系后输出（if）</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><strong>后序遍历</strong><br>  <strong>需要建立一个临时节点dump</strong>，使该节点的左子树等于root<ol>
+<li>如果当前节点的左孩子为空，那么则将其右孩子作为当前节点</li>
+<li>一个节点的左孩子不为空，那么在当前节点的左子树找到这个节点的前驱节点<br>如果这个前驱节点的右孩子为空，那么设置右孩子为当前节点, 并当前节点更新为当前节点左孩子<br>如果这个前驱节点的右孩子为当前节点，那么还原前驱右孩子为null, ==同时逆序输出从当前节点左孩子到前驱节点的路==，并更新当前节点为右孩子</li>
+</ol>
+</li>
+</ul>
+<p>总结：建立关系后，到左孩子；为空或者一圈回来后到右孩子<br>    一圈回来后，还原关系</p>
+<ol start="13">
+<li> 将子数组重新排序得到同一个二叉查找树的方案数<br>题意，交换插入序列，但是得到的二叉搜索树最后的结果相同的序列共有多少个<br>解决：抓住，先插左还是右的顺序是可以变的，但是在插入单边的时候，根节点的插入顺序是不可以变的</li>
+</ol>
+<ul>
+<li>排列组合+dfs</li>
+<li>求排列组合的时候，其实用动态规划的思想 C(n,k)=C(n-1, k-1)+C(n-1,k)</li>
+<li>node-&gt;ans = (long long)c[lsize + rsize][lsize] % mod * lans % mod * rans % mod;</li>
+<li>在使用dfs的时候，使用一个全局的res变量，每次乘以（all, less)的组合结果；划分less, greater的时候，可以用一个新的vector来记录左右子树的节点</li>
+<li>也可以先建立一棵树，使用递归左右指针的方式，树的信息需要包含size ,ans等一些信息<br>另一种出题的方式：<br>  一个数组入栈顺序定了，有多少种出栈的顺序<br>  f(n)=f(1)* f(n-1) + f(2) * f(n-2)+…..f(n-1) f(1);<br>  递推公式的解为：h(n)=c(2n,n)-c(2n,n+1)(n=1,2,3,…)</li>
+</ul>
+<ol start="14">
+<li>二叉搜索树删除一个节点<br>递归删除<br>易错点：<ol>
+<li>可以根据二叉搜索树的性质，选择向左右递归 </li>
+<li>找到该节点，如果是叶节点直接删除，如果只有左右子树，也可以直接返回左右子树，否则找到左边最小，然后赋值到当前值，然后递归删除</li>
+<li>注意递归删除的的时候，一定要注意返回值，一定要赋值给当前节点的左指针或者右指针; 否则会造成树在中间断裂</li>
+</ol>
+</li>
+</ol>
+<ol start="15">
+<li>lc987. 二叉树的垂序遍历</li>
+</ol>
+<ul>
+<li>dfs 遍历nodes 记录下每个节点的行号row，列号 col 以及值 value。<br>在遍历完成后，我们按照 col 为第一关键字升序，row 为第二关键字升序，value 为第三关键字升序，对所有的节点进行排序即可。 遍历时将同一col的放到同一vector中</li>
+<li>也可以使用map&lt;int, vector<node>&gt; 这样的话就不用手动分每一个col</li>
+</ul>
+<p><font color=red>16. lc979. 在二叉树中分配硬币</font></p>
+<ul>
+<li>第一种方法：可以考虑后序遍历理解；需要从父节点得到或者获取 root-&gt;val-1个节点，<br>ans+=abs(root-&gt;val-1); return root-&gt;val-1//返回可能是负数</li>
+<li>第二种方法：转为在子树中分配硬币<br>dfs(root)表示root这棵子树冗余的节点数<br>root-&gt;val+dfs(root-&gt;left)+dfs(root-&gt;right)-1;<br>ans+=abs(dfs(root-&gt;left))+abs(dfs(root-&gt;right));</li>
+</ul>
+<ol start="16">
+<li> lc99. 恢复二叉搜索树</li>
+</ol>
+<ul>
+<li>二叉树出现位置交换会出现两种情况<br>两次逆序：记录前面x和后面y， 第二次更新y<br>一次逆序：记录前面x和后面y</li>
+<li>时间O(n),空间O(1)</li>
+</ul>
+<ol start="17">
+<li> Find Leaves of Binary Tree 找二叉树的叶节点</li>
+</ol>
+<ul>
+<li>题意：类似剥洋葱一样，将二叉树从最外到最内</li>
+<li>重新定义二叉树的深度为最优深度最大值加一，然后res[depth].push_back(root-&gt;val)<br>if (depth &gt;= res.size()) res.resize(depth + 1);//因为最开始不知道最大的深度，因此不知道如何初始化，所以在最深一层初始化大小</li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>ok ok</p>
+<ol>
+<li>主要考察前中后序遍历， 子树（序列化+hash）, 直径(自底向上判断，左右返回最大一个，同时更新结果为根)， 宽度（BFS）， 二叉树的左右节点（index*2, index *2）, 二叉搜索树相关（删除节点）， 自顶向下和自底向上递归</li>
+<li>主要关联的数据结构有栈，队列（BFS/DFS）， hash, 字符串等</li>
+<li>求总数的时候可能会涉及排列组合的知识， </li>
+<li>判断当前子树是否为BST, 不能仅仅靠当前节点的值大于左边最大和右边最小就可以，还需要左右两边都是BST（lc333-最大BST子树）</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/leetcode/">leetcode</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/11/24/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/system%20design/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">System Design</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/16/leetcode/%E9%93%BE%E8%A1%A8/">
+                        <span class="hidden-mobile">链表</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

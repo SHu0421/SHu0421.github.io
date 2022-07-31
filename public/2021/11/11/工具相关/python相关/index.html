@@ -1,0 +1,487 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="这是我的第一篇博客">
+  <meta name="author" content="huhu">
+  <meta name="keywords" content="">
+  <meta name="description" content="Python语言部分 python 开启debug模式，使用logger.setLevel 以及在logger的时候设置不同的logger.info  logger.error  logger.warning等  1234567891011import loggingimport requestslogging.basicConfig(level&#x3D;logging.DEBUG,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python相关">
+<meta property="og:url" content="http://example.com/2021/11/11/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/python%E7%9B%B8%E5%85%B3/index.html">
+<meta property="og:site_name" content="Hello World">
+<meta property="og:description" content="Python语言部分 python 开启debug模式，使用logger.setLevel 以及在logger的时候设置不同的logger.info  logger.error  logger.warning等  1234567891011import loggingimport requestslogging.basicConfig(level&#x3D;logging.DEBUG,">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-11T11:06:48.000Z">
+<meta property="article:modified_time" content="2022-02-25T02:05:30.101Z">
+<meta property="article:author" content="huhu">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>python相关 - Hello World</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hello World" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>HU&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="python相关">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-11 19:06" pubdate>
+        2021年11月11日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.6k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      11 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">python相关</h1>
+            
+            <div class="markdown-body">
+              <h4 id="Python语言部分"><a href="#Python语言部分" class="headerlink" title="Python语言部分"></a>Python语言部分</h4><ol>
+<li>python 开启debug模式，使用logger.setLevel 以及在logger的时候设置不同的logger.info  logger.error  logger.warning等</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> logging<br><span class="hljs-keyword">import</span> requests<br>logging.basicConfig(level=logging.DEBUG,<br>                    <span class="hljs-built_in">format</span>=<span class="hljs-string">&#x27;%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s&#x27;</span>,<br>                    datefmt=<span class="hljs-string">&#x27;%a, %d %b %Y %H:%M:%S&#x27;</span>,<br>                    filename=<span class="hljs-string">&#x27;myapp.log&#x27;</span>,<br>                    filemode=<span class="hljs-string">&#x27;w&#x27;</span>)<br> <br>logging.debug(session.get(<span class="hljs-string">&#x27;http://www.qq.com&#x27;</span>))<br>logging.debug(session.get(<span class="hljs-string">&#x27;http://www.qq.com&#x27;</span>))<br><br></code></pre></td></tr></table></figure>
+
+
+<p>tuple和list的区别</p>
+<p>tuple和list都可以通过下标访问元素，但是list是可以修改列表中的元素， 但是tuple一旦初始化就不能修改，不能append和insert</p>
+<h4 id="PyTorch-部分"><a href="#PyTorch-部分" class="headerlink" title="PyTorch 部分"></a>PyTorch 部分</h4><ol>
+<li>在如果在模型训练的时候，一部分卷积使用的是dataparallel一部分使用的是直接cuda (比如alexnet) 这种情况在模型参数的加载的时候，需要修改keys中包含 module.的部分（dataparallel 部分）</li>
+</ol>
+<p>方法一:<br>修改保存或者加载时的字典</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs haxe">from collections <span class="hljs-keyword">import</span> OrderedDict<br><span class="hljs-keyword">new</span><span class="hljs-type">_state_dict</span> = OrderedDict()<br><span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> state_dict.items():<span class="hljs-type"></span><br>    namekey = k[<span class="hljs-number">7</span>:<span class="hljs-type"></span>] <span class="hljs-keyword">if</span> k.startswith(<span class="hljs-string">&#x27;module.&#x27;</span>) <span class="hljs-keyword">else</span> k<br>    <span class="hljs-keyword">new</span><span class="hljs-type">_state_dict</span>[namekey] = v<br></code></pre></td></tr></table></figure>
+
+<p>方法二：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">uni_model.load_state_dict(&#123;k.replace(<span class="hljs-string">&#x27;module.&#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>) :v <span class="hljs-keyword">for</span> k,v <span class="hljs-keyword">in</span> model_queue.<span class="hljs-builtin-name">get</span>(<span class="hljs-attribute">block</span>=<span class="hljs-literal">False</span>).items() &#125;)<br></code></pre></td></tr></table></figure>
+
+
+<ol start="2">
+<li>DatasetFolder类的解读<br>数据类别，是通过遍历目标文件夹，得到每个文件夹的名字，以及名字对应的下标<br>make_data返回的是 数据的路径+类别下标 序列元组 List of (sample path, class_index) tuples 得到self.samples<br>然后再在get_item函数中使用path = self.samples[index] self.loader(path) 获得图片实例</li>
+</ol>
+<p>那么我自定义的缓存，既可以在MyDataSet里面的DataSet_ImageNet里面修改，判断是应该从缓存中取还是从文件系统；<br>也可以修改ImageFolder, 里面加一个缓存， 在self.loader那里加上if-else判断语句</p>
+<p>但是多进程会初始化多个dataset, 这样每个进程都会有一个cache， 我的目的应该是只有一个cache, 然后多进程从里面都可以从这个cache中取数据；而且多进程如果每一轮的dataset的实例被销毁的话会导致<br>cache也会被销毁</p>
+<ol start="3">
+<li>DatasetLoader类的解读<br>问题：<br>worker_init_fn， prefetch_factor 和persistent_workers（保持被实例化的Dataset在下一轮仍然保持alive） 的作用是什么<br>warning中表示如果spwarn start method被使用， 那么worker_init_fn 不能是一个unpicklable object</li>
+</ol>
+<p>_MultiProcessingDataLoaderIter 可以学习一下多进程的退出<br>使用了三个队列 index_queue worker_result_queue data_queue</p>
+<p>workers_done_event 检测一个迭代器是否shut down, 如果一个迭代器进行shutdown，那么那个进程的input_queue里面的数据只需要为None就好了， 就不用一直等待那个queue里面的数据</p>
+<p>为什么要使用 cancel_join_thread()  index_queue.cancel_join_thread()</p>
+<p>记录：<br>多进程每个进程都可以创建多个dataset实例(这个好像是错的), 是否在主函数中初始化一个cacheout类，然后作为dataset的参数传过去，这样多进程也是使用的一个cache<br>主要的逻辑</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(self._num_workers):<br>            <span class="hljs-comment"># No certainty which module multiprocessing_context is</span><br>            index_queue = multiprocessing_context.Queue()  <span class="hljs-comment"># type: ignore</span><br>            <span class="hljs-comment"># Need to `cancel_join_thread` here!</span><br>            <span class="hljs-comment"># See sections (2) and (3b) above.</span><br>            index_queue.cancel_join_thread()<br>            w = multiprocessing_context.Process(<br>                target=_utils.worker._worker_loop,<br>                args=(self._dataset_kind, self._dataset, index_queue,<br>                      self._worker_result_queue, self._workers_done_event,<br>                      self._auto_collation, self._collate_fn, self._drop_last,<br>                      self._base_seed + i, self._worker_init_fn, i, self._num_workers,<br>                      self._persistent_workers))<br></code></pre></td></tr></table></figure>
+<p>只有一个worker_result_queue, 以及多个result_queue; 如果pin_memory=True, 那么会将worker_result_queue里面的数据，全部放在另外一个_data_queue中</p>
+<h4 id="pyTorch取数据过程详解（面试版本）"><a href="#pyTorch取数据过程详解（面试版本）" class="headerlink" title="pyTorch取数据过程详解（面试版本）"></a>pyTorch取数据过程详解（面试版本）</h4><ol>
+<li>初始化的时候，每个进程都会拥有自己的index_queue,里面最多存储两个batch 的index</li>
+<li>每个worker会不断判断自己的index_queue里面有没有数据，如果有，那么就取读一个batch, 读取的时候调用collate_fn函数，读取之后放入多进程共享的data_queue / worker_result_queue 里面</li>
+<li>data_queue里面的数据会先放入reorder字典中进行重新排序，如果需要的下一个batch在reorder_dict里面，那么就从reorder_dict中弹出这个数据，否则就等待</li>
+<li>某个worker读取的数据被消耗之后，dataloader就会将新的index放到对应worker的index_queue里面，这个worker就继续从queue里面读下标和取数据<br>参考：<br><a target="_blank" rel="noopener" href="https://www.dazhuanlan.com/yiliabi/topics/1111356">https://www.dazhuanlan.com/yiliabi/topics/1111356</a></li>
+</ol>
+<ol start="4">
+<li>代码常见标记<br>TODO：英语翻译为待办事项，备忘录。如果代码中有该标识，说明在标识处有功能代码待编写，待实现的功能在说明中会简略说明。</li>
+</ol>
+<p>FIXME：可以拆成短语，fix me ，意为修理我。如果代码中有该标识，说明标识处代码需要修正，甚至代码是错误的，不能工作，需要修复，如何修正会在说明中简略说明。</p>
+<p>XXX：如果代码中有该标识，说明标识处代码虽然实现了功能，但是实现的方法有待商榷，希望将来能改进，要改进的地方会在说明中简略说明。</p>
+<p>HACK：英语翻译为砍。如果代码中有该标识，说明标识处代码我们需要根据自己的需求去调整程序代码。</p>
+<ol start="5">
+<li><p>pytorch安装各种版本链接：<br><a target="_blank" rel="noopener" href="https://pytorch.org/get-started/previous-versions/">https://pytorch.org/get-started/previous-versions/</a></p>
+</li>
+<li><p>pytorch 多进程数据加载流程</p>
+</li>
+</ol>
+<ol start="7">
+<li>iterator和next函数的关系<br>生成器都是iterator对象<br>可以被next函数调用的都是一个iterator对象，Iterator的计算是惰性的，只有在需要返回下一个数据时它才会计算。直到没有数据时抛出StopIteration错误。<br>list/dict/str这些是iterable但是不是iterator</li>
+</ol>
+<p>Python的for循环本质上就是通过不断调用next()函数实现的，首先需要将list作为参数，传入iter函数中，获得一个iterator对象，然后才能调用next函数</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/11/12/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/scheduler-ralated/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">scheduler_ralated</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/11/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
+                        <span class="hidden-mobile">常见问题及解决方案</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
