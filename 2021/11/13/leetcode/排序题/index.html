@@ -25,7 +25,7 @@
 <meta property="og:description" content="堆排序堆排序的基本思路（每个内部节点，和左右节点对比，往上浮；之后根分别与最后，倒数第二个交换往下沉）a.先所有的内部节点的每个，从下到上进行往上浮的操作heap_buildb.然后根节点和最后一个节点交换，然后从根节点向下沉（0,n-1），然后根节点和倒数第二个节点交换，然后往下沉(0,n-2)然后重复上述的过程 也就是先build最大堆，然后逐渐交换，然后重复build 优先队列默认是从大到小">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-13T09:22:15.000Z">
-<meta property="article:modified_time" content="2022-03-29T02:42:55.134Z">
+<meta property="article:modified_time" content="2022-07-31T09:18:13.837Z">
 <meta property="article:author" content="huhu">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -206,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      34 分钟
+      35 分钟
     </span>
   
 
@@ -368,6 +368,11 @@
 <ul>
 <li>将数组的奇数全部排在偶数前面，同时不交换奇数和偶数原本的相对顺序</li>
 <li>用一个k来记录前面以及排好序的奇数的个数， 然后每遇到一个奇数，就使用冒泡排序的方法，一个一个的交换到前面去<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">reOrderArray</span>(<span class="hljs-params">arr</span>):</span><br>    m = <span class="hljs-built_in">len</span>(arr)<br>    k = <span class="hljs-number">0</span> <span class="hljs-comment"># 记录当前已经排序好的奇数个数</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m):<br>        <span class="hljs-keyword">if</span> arr[i] % <span class="hljs-number">2</span> == <span class="hljs-number">1</span>:<br>            j = i<br>            <span class="hljs-keyword">while</span> j &gt; k:  <span class="hljs-comment"># 将奇数移到最前面</span><br>                temp = arr[j]<br>                arr[j] = arr[j-<span class="hljs-number">1</span>]<br>                arr[j-<span class="hljs-number">1</span>] = temp<br>                j -= <span class="hljs-number">1</span><br>            k += <span class="hljs-number">1</span> <br>    <span class="hljs-built_in">print</span>(arr)<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>,<span class="hljs-number">4</span>,<span class="hljs-number">7</span>,<span class="hljs-number">6</span>,<span class="hljs-number">12</span>]<br>    reOrderArray(arr)<br></code></pre></td></tr></table></figure></li>
+</ul>
+<p>9.lc703. 数据流中的第 K 大元素<br>标准优先队列的题目</p>
+<ul>
+<li>注意k大和k小的含义区别</li>
+<li>易错点，最开始的nums为空；因此需要判断优先队列里面元素&gt;k的时候才弹出，否则可能会出现空队列弹出，或者push 空的错误</li>
 </ul>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>ok</p>
 <p>主要是针对大文件或者多线程情况的下排序，或者数据结构本身的考察</p>

@@ -25,7 +25,7 @@
 <meta property="og:description" content="单调栈相关题目： 去除重复字母  使得去除重复字母之后，字符串的字典序最小 值栈记录剩下字符串中是否包含这个字符，如果包含，那么就可以弹出（如果当前字符比这个字符小，就弹出）   接雨水  方法一：每个地方能接的雨水是当前下标左右两边最大值（LeftMax and RightMax）的较小一个 –&gt;值栈 方法二：使用单调递减栈，维护top and left（单调栈的top下面的值） –&amp;gt">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-13T08:51:36.000Z">
-<meta property="article:modified_time" content="2022-04-06T03:17:24.536Z">
+<meta property="article:modified_time" content="2022-07-31T09:18:13.827Z">
 <meta property="article:author" content="huhu">
 <meta property="article:tag" content="栈, 单调栈">
 <meta name="twitter:card" content="summary_large_image">
@@ -198,7 +198,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      7.1k 字
+      7.5k 字
     </span>
   
 
@@ -207,7 +207,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      22 分钟
+      24 分钟
     </span>
   
 
@@ -370,7 +370,7 @@
         1.如果大于等于栈顶，直接入栈， 也就是重复元素是可以单独成块的
         2.如果小于，那么将栈顶下面小于当前值的元素pop掉，然后压入原来的栈顶
 </code></pre>
-<p><font color = red>6. 基本计算器/基本计算器||/基本计算器||| （表达式中可能有空格）</font><br>第一个是只有正负符号和括号，（直接将括号展开）因此不需要转化逆波兰，只需要一个递归符号的栈+一个当前数的前面的符号就可以了；res+=s.top()* sign <em>num   易错点：注意在（ 要手动赋值当前的sign=1<br>第二个是有+-</em>/ ，但是全是正整数，因此只需要逆波兰，一个数字栈一个符号栈，在压栈的同时，根据优先级计算结果，同时在最后判断符号栈是否为空，如果不为空的话，需要将符号栈里面的元素逐个弹出<br>第三个是有+-*/ 和括号，如题2，在（压入栈中，在）依次弹出符号栈中的符号<br>第四个，自己的扩展，在第三个上面加上数据可以为正负； 难点在于判断-是负号还是减号<br>    1）将所有空格去掉 ，题目必须保证两个运算符号不会同时出现<br>    2）在num里面压入0<br>    3）在（-变为（0-；将（+ 变为（0+<br>    4）题解如第三题</p>
+<p><font color = red>6. 基本计算器/基本计算器||/基本计算器||| （表达式中可能有空格）</font><br>第一个是只有正负符号和括号，（直接将括号展开）因此不需要转化逆波兰，只需要一个递归符号的栈+一个当前数的前面的符号就可以了；res+=s.top()* sign <em>num   易错点：注意在（ 要手动赋值当前的sign=1<br>第二个是有+-</em>/ ，但是全是正整数，因此只需要逆波兰，一个数字栈一个符号栈，在压栈的同时，根据优先级计算结果，同时在最后判断符号栈是否为空，如果不为空的话，需要将符号栈里面的元素逐个弹出<br>第三个是有+-*/ 和括号，如题2，在（压入栈中，在）依次弹出符号栈中的符号<br>第四个，自己的扩展，在第三个上面加上数据可以为正负； 难点在于判断-是负号还是减号<br>    1）将所有空格去掉 ，题目必须保证两个运算符号不会同时出现<br>    2）在num里面压入0，因为可能出现-(2+6)这种情况<br>    3）在（-变为（0-；将（+ 变为（0+<br>    4）题解如第三题</p>
 <ol start="7">
 <li><ol start="16">
 <li>lc362. design-hit-counter<br>这道题和单调没有什么关系，主要是队列</li>
@@ -409,6 +409,18 @@
 <li>实际的解决方法用两个hash, 一个存储&lt;k, freq&gt; 一个存储&lt;freq, vector<k>&gt;/&lt;freq, stack<k>&gt;</li>
 <li>一定要注意这两个hash一定要同时修改，不能只修改一个，频率包含的元素在变，元素当前的频率在变</li>
 <li>LFU是使用unordered_map&lt;int, NodeList*&gt; 存储频率到一个双向链表； 以及一个unordered_map&lt;int, Node*&gt; 存储key到节点的位置</li>
+</ul>
+<p><font color=red>10. lc6080. 使数组按非递减顺序排列(mid实际上有hard难度)</font></p>
+<ul>
+<li>找到每个数左边第一个比该数大的数的距离的变形题目</li>
+<li>题意：每轮删除相邻的 nums[i - 1] &gt; nums[i] 的 nums[i]， 问删除多少轮，使得数组变为 非递减 数组</li>
+<li>解决方案：<ul>
+<li>使用单调栈找到每个数左边第一个比他大的数，那么就是最大的跨度</li>
+<li>易错点：<font color=red> 因为中间的数是可以合并的 </font>，所以不能用每个数的最大跨度的最大值作为最后的结果，而只能用找到左边第一个比较大的数过程中 弹出的每个数的 合并间隔 的最大结果+1 作为当前数的合并最大间隔。</li>
+<li>比如：[14,13,2,6,13]最大间隔是4， 结果是3， 因为13， 2在第一轮删除， 6在第二轮删除， 13在第三轮删除</li>
+<li>思路类似的别人解法：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/steps-to-make-array-non-decreasing/solution/dan-diao-zhan-by-haodong-du-p5hc/">https://leetcode.cn/problems/steps-to-make-array-non-decreasing/solution/dan-diao-zhan-by-haodong-du-p5hc/</a></li>
+</ul>
+</li>
 </ul>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>ok </p>
 <ol>
