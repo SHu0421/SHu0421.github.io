@@ -15,6 +15,8 @@ ssh -C  -N -g -R 18861:127.0.0.1:7890 zhinengjisuan@10.5.30.42 -o ProxyCommand="
 shu@10.5.26.19's password: 
 ```
 
+curl https://www.baidu.com 反正数据说明连接正确
+
 方法二: 使用terminus节点，建立一个新的连接，配置如下
 ![image-20211207175530810](command-related/image-20211207175530810.png)
 这个节点相当于加了方法一的命令 ```ssh -C  -N -g -R 18860:127.0.0.1:7890 服务器用户名@服务器ip```
@@ -59,6 +61,9 @@ ssh -L 30091:127.0.0.1:30090 shu@10.5.26.66 -o ProxyCommand="ssh shu@10.5.26.19 
 将远程服务器的30090端口映射到本地的30091端口，然后可以在本地浏览器中输入
 http://localhost:30090/graph 访问远程服务器的登录界面
 
+#### 使用跳板机在服务器间传输文件scp:
+scp -o 'ProxyJump shu@10.5.26.19'  -r /Users/hushuang/Desktop/Graduate_Thesis wanghongsheng@10.5.30.43:/home/wanghongsheng/shu
+
 
 #### linux mv命令 将当前文件夹除了xx的文件夹move到另外一个文件夹
 mv !(github.com|gopkg.in|golang.org|k8s.io) github.com/
@@ -68,4 +73,7 @@ mv /!(github.com|gopkg.in|golang.org|k8s.io) github.com/ 是错误的！！！�
 
 如果出现bash: !: event not found，那么运行下面命令解决
 shopt -s extglob
+
+#### latex中插入代码
+https://blog.csdn.net/u012675539/article/details/49131567
 

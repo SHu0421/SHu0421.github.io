@@ -1,0 +1,2 @@
+<<endl;
+    cout<<target<<endl;

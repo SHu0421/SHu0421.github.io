@@ -12,7 +12,7 @@ int findnext(string s)
     {
         while (k != -1&&s[k+1] != s[i])
         {
-            k = next[k+1];
+            k = next[k];
         }
 
         if(s[i]==s[k+1]){

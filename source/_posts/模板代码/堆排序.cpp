@@ -4,7 +4,7 @@
 #include<algorithm>
 using namespace std;
 
-void adjust(int arr[], int len, int index)
+void adjust(int arr[], int len, int index) //sift down
 {
     int left = 2*index + 1;
     int right = 2*index + 2;
@@ -41,3 +41,6 @@ int main()
     }
     return 0;
 }
+
+
+//亚马面试题目：最小堆的时间和Importance Informed - Cache
