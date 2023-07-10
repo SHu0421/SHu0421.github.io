@@ -46,3 +46,16 @@ https://blog.csdn.net/x763795151/article/details/114903758
 一定要先设置代理后取消，直接取消没有效果
 
 
+5. git pull 或者git push一直卡住
+使用ssh key的方式连接远程仓库
+查看remote-url:
+'''git remote -v '''
+删除remote-url:
+’‘’git remote rm origin‘’‘
+添加
+’‘’git remote add origin git@xxxx '''
+
+添加和删除可以合并为一个操作
+‘’‘git remote set-url origin’‘’
+
+
