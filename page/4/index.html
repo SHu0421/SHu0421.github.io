@@ -1,0 +1,820 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="这是我的第一篇博客">
+  <meta name="author" content="huhu">
+  <meta name="keywords" content="">
+  <meta name="description" content="这是我的第一篇博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="http://example.com/page/4/index.html">
+<meta property="og:site_name" content="Hello World">
+<meta property="og:description" content="这是我的第一篇博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="huhu">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>Hello World</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hello World" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>HU&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Good Good Study, Day Day up!">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E7%AC%94%E8%AF%95/" target="_self">
+          笔试
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E7%AC%94%E8%AF%95/" target="_self">
+          
+          
+            
+          
+          Awesome algorithm interview
+计算机网络TCP连接为什么要三次握手，TCP关闭为什么要4次挥手？三次握手是为了防止服务器资源的浪费，因为如何是两次的话，如果客户端发送请求连接，但是不发送请求数据，就可能造成服务器端口占用，资源被浪费；四次回收是因为客户端和服务器可以各自关闭，比如客户端告诉服务器FIN，表示自己不发送数据，但是仍然可以接收数据，因此服务器可以继续发送，服务
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-13 20:10" pubdate>
+              2021-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/">项目相关</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/13/leetcode/%E5%93%88%E5%B8%8C%E7%9B%B8%E5%85%B3/" target="_self">
+          哈希相关+前缀和
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/13/leetcode/%E5%93%88%E5%B8%8C%E7%9B%B8%E5%85%B3/" target="_self">
+          
+          
+            
+          
+          前缀和 + hash题目汇总一定要注意先判断hash[presum-target]是否存在并更新结果，再更新hash[presum]++， 因为可能nums[i]=0
+例题：面试题 17.05.  字母与数字，要求字母和数字个数相同，那么就是将字母转为1， 数字转为-1的时候，前缀和为0的最长序列；另外使用这种思想是的”和等于 k 的最长子数组长度“ ”和等于k子数组“ （hash+前缀和）
+12
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-13 19:58" pubdate>
+              2021-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/13/leetcode/%E5%9B%9E%E6%BA%AF_DFS_BFS/" target="_self">
+          回溯_DFS_BFS
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/13/leetcode/%E5%9B%9E%E6%BA%AF_DFS_BFS/" target="_self">
+          
+          
+            
+          
+          例题
+字符串的转换路径问题: 单词接龙I:只返回最短转换序列的长度（使用BFS） 单词接龙II：返回所有最短转换序列具体是什么 标准答案是既用到了深度优先搜索，也用到了宽度优先搜索 （最短距离） 首先判断endWord是否在字典中，不在的话直接返回空 在进行单词找相邻，可以遍历单词每个字符，判断与当前是否只有一个不相等（O(mn)）；或者将当前单词的每一位替换成 26 个小写英文字母，查找是否在字
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-13 17:23" pubdate>
+              2021-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95-DFS-BFS/">回溯算法, DFS, BFS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/13/leetcode/%E5%AD%97%E7%AC%A6%E4%B8%B2/" target="_self">
+          字符串相关问题
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/13/leetcode/%E5%AD%97%E7%AC%A6%E4%B8%B2/" target="_self">
+          
+          
+            
+          
+          常见字符串解决套路
+用动态规划求解
+用滑动窗口求解
+用双指针求解
+使用DFS/BFS求一个字符串转为另外一个字符串的路径问题
+
+扩展：字符串hashabcde转为为多项式f(5)= a* p^5 + b*p^4 +c *p^3 +d p^2 +e p^1f(3)= a p^3 + bp^2 +c *p^1f(4, 5)=f(5)-f(3)*p^(5-4+1)
+c++用unsigned long l
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-13 17:23" pubdate>
+              2021-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/13/leetcode/%E6%9A%82%E6%97%B6%E6%B2%A1%E7%9C%8B%E5%86%85%E5%AE%B9/" target="_self">
+          暂时未看
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/13/leetcode/%E6%9A%82%E6%97%B6%E6%B2%A1%E7%9C%8B%E5%86%85%E5%AE%B9/" target="_self">
+          
+          
+            
+          
+          
+堆排序和其他排序内容，面试前过一次
+
+堆排序已经看，主要思路：先对每个内部节点进行heap_build,然后每次将0交换到i位置（n-1 到0），然后对0~i-1进行heap_build；heap_build：先对左右排序，在对root排序，如果当前root没有交换，那么退出递归程序，否则递归root=flag, heap_build
+
+字典树前缀树也不一定要有value字段，当value的数字
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-13 17:23" pubdate>
+              2021-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/13/leetcode/%E4%BD%8D%E8%BF%90%E7%AE%97/" target="_self">
+          位运算
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/13/leetcode/%E4%BD%8D%E8%BF%90%E7%AE%97/" target="_self">
+          
+          
+            
+          
+          总结注意位运算的优先级问题：使用位运算一定要多打括号
+123456789// 错误写法if (a &amp; b == 0) &#123;    ...;&#125;// 正确写法if ((a &amp; b) == 0) &#123;    ...;&#125;
+
+
+a + (b&amp;c) 不管是+/-/*/ 还是==， 只要和位运算在一起，位运算都应该大括号！！！！
+例题
+使用位运算来判断
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-13 17:22" pubdate>
+              2021-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/13/leetcode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" target="_self">
+          贪心算法
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/13/leetcode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" target="_self">
+          
+          
+            
+          
+          相关例题
+摆动序列：使用贪心算法，或者动态规划 当前状态可以用前面的一个状态转移过来（可以证明得到，down是由up转移过来，up是由down转移过来），所以时间复杂度只有O(1)或者使用diff来进行理解，当前的diff一定要和前一个diff相反注意和最长上升子序列的区别，最长上升子序列，当前的状态不能从上一个状态转移过来，所以只能使用内外循环
+
+其实摆动序列也属于动态规划  down[i], 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-13 17:22" pubdate>
+              2021-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/13/leetcode/%E5%85%B6%E4%BB%96/" target="_self">
+          其他问题
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/13/leetcode/%E5%85%B6%E4%BB%96/" target="_self">
+          
+          
+            
+          
+          数组相关问题要将数字放在对应的位置上，使用原地交换的方式
+
+旋转矩阵  这个好像不行，需要记录交换过来的值的同时，记录交换过来的下标
+自然数数组的排序
+奇数下标是奇数，偶数下标是偶数
+
+
+第一种方法，使用一个环来进行数据的交换
+第二种方法，每个数据与当前的数据进行交换，然后判断当前交换过来的数据应该放到的位置，重复这样的过程，知道当前交换过来的数是应该放置的数
+
+举个例子：//如果下标i应该放的数
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-13 17:22" pubdate>
+              2021-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%85%B6%E4%BB%96/">其他</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/13/leetcode/%E5%8F%8C%E6%8C%87%E9%92%88/" target="_self">
+          双指针
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/13/leetcode/%E5%8F%8C%E6%8C%87%E9%92%88/" target="_self">
+          
+          
+            
+          
+          例题双指针+字符串// 反转字符串s中左闭又闭的区间[start, end]void reverse(string&amp; s, int start, int end) {    for (int i = start, j = end; i &lt; j; i++, j–) {        swap(s[i], s[j]);    }}
+ 2. 替换后的最长重复字符    - 经典滑动窗口题目
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-13 17:22" pubdate>
+              2021-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/13/leetcode/%E6%8E%92%E5%BA%8F%E9%A2%98/" target="_self">
+          排序算法
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/13/leetcode/%E6%8E%92%E5%BA%8F%E9%A2%98/" target="_self">
+          
+          
+            
+          
+          堆排序堆排序的基本思路（每个内部节点，和左右节点对比，往上浮；之后根分别与最后，倒数第二个交换往下沉）a.先所有的内部节点的每个，从下到上进行往上浮的操作heap_buildb.然后根节点和最后一个节点交换，然后从根节点向下沉（0,n-1），然后根节点和倒数第二个节点交换，然后往下沉(0,n-2)然后重复上述的过程
+也就是先build最大堆，然后逐渐交换，然后重复build
+优先队列默认是从大到小
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-13 17:22" pubdate>
+              2021-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

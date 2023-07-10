@@ -1,0 +1,521 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="这是我的第一篇博客">
+  <meta name="author" content="huhu">
+  <meta name="keywords" content="">
+  <meta name="description" content="枚举+二分lc6040. 花园的最大总美丽值  主要是在求partial的最小超时, 还有就是一个long long数据类型注意！！ 法一: 从右到左，先枚举完善花园数目，再计算不完善花园数据可以获得的最大解决方案：使用二分+前缀和来求增加后的最小值，而不是一个一个遍历(空间复杂度O(n))  -法二: 如果是从左到右计算，可以将空间开销降到O(1)，先计算要让所有的花园变为完善花园还剩下的花的数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hard题目集合">
+<meta property="og:url" content="http://example.com/2022/04/10/leetcode/hard%E9%A2%98%E7%9B%AE%E5%90%88%E9%9B%86/index.html">
+<meta property="og:site_name" content="Hello World">
+<meta property="og:description" content="枚举+二分lc6040. 花园的最大总美丽值  主要是在求partial的最小超时, 还有就是一个long long数据类型注意！！ 法一: 从右到左，先枚举完善花园数目，再计算不完善花园数据可以获得的最大解决方案：使用二分+前缀和来求增加后的最小值，而不是一个一个遍历(空间复杂度O(n))  -法二: 如果是从左到右计算，可以将空间开销降到O(1)，先计算要让所有的花园变为完善花园还剩下的花的数">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/04/10/leetcode/hard%E9%A2%98%E7%9B%AE%E5%90%88%E9%9B%86/hard题目合集/image-20220522153532000.png">
+<meta property="og:image" content="http://example.com/2022/04/10/leetcode/hard%E9%A2%98%E7%9B%AE%E5%90%88%E9%9B%86/hard%E9%A2%98%E7%9B%AE%E5%90%88%E9%9B%86/image-20220625120018624.png">
+<meta property="article:published_time" content="2022-04-10T08:41:22.000Z">
+<meta property="article:modified_time" content="2022-07-31T09:18:13.812Z">
+<meta property="article:author" content="huhu">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/04/10/leetcode/hard%E9%A2%98%E7%9B%AE%E5%90%88%E9%9B%86/hard题目合集/image-20220522153532000.png">
+  
+  <title>Hard题目集合 - Hello World</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hello World" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>HU&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Hard题目集合">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-10 16:41" pubdate>
+        2022年4月10日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.6k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      8 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Hard题目集合</h1>
+            
+            <div class="markdown-body">
+              <h3 id="枚举-二分"><a href="#枚举-二分" class="headerlink" title="枚举+二分"></a>枚举+二分</h3><p>lc6040. 花园的最大总美丽值</p>
+<ul>
+<li>主要是在求partial的最小超时, 还有就是一个long long数据类型注意！！</li>
+<li>法一: 从右到左，先枚举完善花园数目，再计算不完善花园数据可以获得的最大<br>解决方案：使用二分+前缀和来求增加后的最小值，而不是一个一个遍历(空间复杂度O(n))</li>
+</ul>
+<p>-法二: 如果是从左到右计算，可以将空间开销降到O(1)，先计算要让所有的花园变为完善花园还剩下的花的数量（可能为负数），然后遍历的时候一个一个加回去，同时不完善花园数目最小值是逐渐增大，所以可以在之前的结果上累加，不用重头计算</p>
+<ul>
+<li>同样类型的题目，+k使最小的数能够达到的最大值，lc6039. K 次增加后的最大乘积（这道题也可以最小堆+1，一个一个加）</li>
+</ul>
+<p>lc 6066. 统计区间中的整数数目</p>
+<ul>
+<li>区间问题，主要是插入多个区间，如何合并得到最后的不重复的区间</li>
+<li>使用hash start_end，那么每次判断的时候需要和前面一个和后面多个区间进行判断 upper_bound, 前面一个区间就是iter–</li>
+<li>如果使用hash end_start(或者set&lt;pair&lt;end, start&gt;&gt;)那么只需要判断后面的多个可能覆盖的区间   lower_bound， iter++</li>
+<li>每次合并区间，一定记得同时更新l_bound和r_bound</li>
+<li>删除hash中的一个元素，并移动到下一个的正确姿势， hash.erase(iter++);</li>
+<li>加速小技巧：为了不每次count都从头计算一次，可以使用插入的时候维护一个全局ans, 之后count的时候直接返回全局ans就可以了；这种利用先计算打表，后面直接使用的思想在前缀和，hulu面试的（组成平行四边形的个数）也可以体现出来<br>在进行i j两两组合的时候可以将，每组的组合方式求加和提前算出来，之后直接使用前缀和思想减掉0 到 i-1，就是当前i对应的组合方式</li>
+</ul>
+<p>lc6077. 巫师的总力量和</p>
+<ul>
+<li>子数组+区间问题</li>
+<li>找到每个最小数的管辖区间（使用单调栈，同时为了避免出现数可能相等的情况使用了左边&gt;=, 右边&gt;的情况）</li>
+<li>求管辖区间的每个子区间的sum, 使用前缀和的前缀和方法，也就是将右边放到一起，左边放到一起，将（a1-b1）+(a2-b2)+….+<br>= （a1+a2+…+an）-(b1+b2+….+bn) 其中a和b都是代表的前缀和</li>
+<li>递推公式：</li>
+</ul>
+<img src="hard题目合集/image-20220522153532000.png" srcset="/img/loading.gif" lazyload alt="image-20220522153532000" style="zoom:50%;" />
+
+<ul>
+<li>补充类似的题目：</li>
+</ul>
+<ol start="907">
+<li>子数组的最小值之和</li>
+<li>子数组最小乘积的最大值</li>
+<li>子数组范围和<br>都是使用单调栈求一个数作为最大值或者最小值的管辖范围（找到该数i左右两边第一个比这个数，或者大的数）然后包含数i的区间就有（r-i）*(i-l)个，其中r,l都是不包含在区间内，所以不需要+1</li>
+</ol>
+<p>lc 6094. 公司命名</p>
+<ul>
+<li><p>题意，从字典中随便找两个单词，如果找到的单词交换首字母后，新单词都没在字典中出现过，那么res++, 问最后的res是多少</p>
+</li>
+<li><p>解决方案：先遍历一次字典每个单词，计算一个数组cnt[i][j], 表示将字典中单词首字母为 i+’a’ 转为j+’a’，且未在字典中出现的个数，那么结果就是再次遍历字典的每个单词, 将首字母换为26个字母中任意一个，如果该单词没在字典中出现过 则res+=cnt[j][i]</p>
+</li>
+<li><p>利用枚举+互补思想，如果一个单词转为另外一个首字母可行，那么就要判断以另外这个字母为首字母的单词，转为当前单词首字母 一共有多少种情况</p>
+</li>
+<li><p>优化点: 在vector O(n)里面查找的时间复杂度远远高于在set O(1)中，所以如果针对频繁在vec中查找的情况，可以将其转到set中查找</p>
+</li>
+</ul>
+<p>lc903. DI 序列的有效排列</p>
+<ul>
+<li>这道题主要的难点在于使用映射，而不是vis数组来表示已经访问的数据</li>
+<li>得到动态转移方程<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">if</span>(s[i<span class="hljs-number">-1</span>]==<span class="hljs-string">&#x27;D&#x27;</span>)&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k=j;k&lt;i;k++)&#123; <span class="hljs-comment">//注意这是j to i-1 不是j+1到i, 因为i-1的时候是取不到 i的，因为有一个映射</span><br>        dp[i][j]+=dp[i<span class="hljs-number">-1</span>][k];<br>        dp[i][j]%=MOD;<br>    &#125;<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k=<span class="hljs-number">0</span>;k&lt;j;k++)&#123;<br>        dp[i][j]+=dp[i<span class="hljs-number">-1</span>][k];<br>        dp[i][j]%=MOD;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<p>lc730. 统计不同回文子序列</p>
+<ul>
+<li><p>难点在于使用动态规划找不重复的</p>
+</li>
+<li><p>解决方案：分情况讨论 s[i]， s[j]是否相等 ， 当相等的时候，s[i], s[j]之间有几个和s[i]相同的字符<br><img src="hard%E9%A2%98%E7%9B%AE%E5%90%88%E9%9B%86/image-20220625120018624.png" srcset="/img/loading.gif" lazyload alt="image-20220625120018624"></p>
+</li>
+</ul>
+<p>lc6109. 知道秘密的人数(显示为medium，但是我感觉类似hard难度)</p>
+<ul>
+<li>一个人知道密码吼，会在[i+delay, i+foraget-1]区间每个时间都告诉一个人， 问第n天知道密码的人</li>
+<li>解决方法：第i天知道密码的人数=第i天新增人数+第i天还没有忘记秘密的人数(但是不是第i天新增的人数)<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>   <br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i+delay;j&lt;=<span class="hljs-built_in">min</span>(i+forget<span class="hljs-number">-1</span>, n);j++)&#123;<br>        dp[j]= (dp[j]+dp[i])%MOD; <span class="hljs-comment">// dp[i]表示第i天新增知道的人数</span><br>    &#125; <br>    <span class="hljs-keyword">if</span>(i+forget<span class="hljs-number">-1</span>&gt;=n )&#123;<br>        cnt_a= (cnt_a+dp[i])%MOD; <span class="hljs-comment">//第n天还没有忘记秘密的人数(包括了第n天新增的人数+前面新增且第n天没有忘记)</span><br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">return</span> cnt_a % MOD;<br></code></pre></td></tr></table></figure></li>
+<li>类似前缀和的思想， 时间复杂度O(n^2),空间复杂度O(n)</li>
+</ul>
+<p>lc6115. 统计理想数组的数目</p>
+<ul>
+<li><p>我的思路：求dp[i][j][len]的总数，也就是首是i， 尾是j，长度为len的方案的总数， 最后的答案就是 len==n的所有方案总和<br>但是因为O(n^3)所以超时,递推公式如下</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C++">dp[i][j][len%<span class="hljs-number">2</span>] = (dp[i][j][len%<span class="hljs-number">2</span>] + dp[i][j/k][(len<span class="hljs-number">-1</span>)%<span class="hljs-number">2</span>])%MOD; j/k需要j可以被k整除且j/k&gt;=i<br></code></pre></td></tr></table></figure></li>
+<li><p>官方解答：排列组合题目</p>
+<ol>
+<li>先求到以i结尾的长度为j的个数 dp[i][j]+=dp[k][j-1] k能够被i整除</li>
+<li>再求将长度为n包含互不相同的j个数，一共有多少种方案<br>固定第一个数的方案总数：Cn-1 j-1</li>
+<li>总结就是，找序列不同个数， 找序列不同数的排布</li>
+</ol>
+</li>
+<li><p>关键点，在于找不同数</p>
+</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/leetcode/">leetcode</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/23/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/Macos/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Macos相关环境配置</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/04/dp%E9%97%AE%E9%A2%98%E4%B8%93%E6%A0%8F/DAG+%E6%A0%91%E7%8A%B6+%E5%85%B6%E4%BB%96dp/">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
