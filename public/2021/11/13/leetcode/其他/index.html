@@ -25,7 +25,7 @@
 <meta property="og:description" content="数组相关问题要将数字放在对应的位置上，使用原地交换的方式  旋转矩阵  这个好像不行，需要记录交换过来的值的同时，记录交换过来的下标 自然数数组的排序 奇数下标是奇数，偶数下标是偶数   第一种方法，使用一个环来进行数据的交换 第二种方法，每个数据与当前的数据进行交换，然后判断当前交换过来的数据应该放到的位置，重复这样的过程，知道当前交换过来的数是应该放置的数  举个例子：&#x2F;&#x2F;如果下标i应该放的数">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-13T09:22:38.000Z">
-<meta property="article:modified_time" content="2022-04-06T03:39:42.226Z">
+<meta property="article:modified_time" content="2023-07-10T10:15:05.602Z">
 <meta property="article:author" content="huhu">
 <meta property="article:tag" content="其他">
 <meta name="twitter:card" content="summary_large_image">
@@ -207,7 +207,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      72 分钟
+      73 分钟
     </span>
   
 
@@ -523,6 +523,12 @@
 <ul>
 <li>这个是二维坐标的，横坐标或者纵坐标相同都在一个并查集，因此需要将横纵坐标放在两个范围中，防止重叠；因为x, y在[0,1000]之间，一次你可以将横坐标放在+10001, 使得x y范围错开</li>
 </ul>
+<p>剑指 Offer II 111. 计算除法</p>
+<ul>
+<li>使用并查集或者BFS/DFS</li>
+<li>并查集注意分母为儿子（大），分子为父亲</li>
+<li>BFS的时候正向，反向都要连接</li>
+</ul>
 <h4 id="图相关"><a href="#图相关" class="headerlink" title="图相关"></a>图相关</h4><p>竞赛第四题 hard lc2097. 合法重新排列数对 //暂时没有看</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br>    map&lt;<span class="hljs-keyword">int</span>, vector&lt;<span class="hljs-keyword">int</span>&gt;&gt; mp;<br>    map&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; deg;<br>    vector&lt;vector&lt;<span class="hljs-keyword">int</span>&gt;&gt; ans;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> sn)</span> </span>&#123;<br>        vector&lt;<span class="hljs-keyword">int</span>&gt; &amp;e = mp[sn]; <span class="hljs-comment">// 注意这个是引用</span><br>        <span class="hljs-keyword">while</span> (!e.<span class="hljs-built_in">empty</span>()) &#123;<br>            <span class="hljs-keyword">int</span> fn = e.<span class="hljs-built_in">back</span>();<br>            e.<span class="hljs-built_in">pop_back</span>();<br>            <span class="hljs-built_in">dfs</span>(fn);<br>            ans.<span class="hljs-built_in">push_back</span>(vector&lt;<span class="hljs-keyword">int</span>&gt;&#123;sn, fn&#125;);<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">//为什么要先dfs再push_back没看明白</span><br><br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-keyword">int</span>&gt;&gt; <span class="hljs-built_in">validArrangement</span>(vector&lt;vector&lt;<span class="hljs-keyword">int</span>&gt;&gt;&amp; pairs) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> &amp;pair : pairs) &#123;<br>            mp[pair[<span class="hljs-number">0</span>]].<span class="hljs-built_in">push_back</span>(pair[<span class="hljs-number">1</span>]);<br>            deg[pair[<span class="hljs-number">0</span>]]--; deg[pair[<span class="hljs-number">1</span>]]++;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it = deg.<span class="hljs-built_in">begin</span>(); it != deg.<span class="hljs-built_in">end</span>(); it++) <span class="hljs-keyword">if</span> (it-&gt;second == <span class="hljs-number">-1</span>) <span class="hljs-built_in">dfs</span>(it-&gt;first);<br>        <span class="hljs-keyword">if</span> (ans.<span class="hljs-built_in">empty</span>()) <span class="hljs-built_in">dfs</span>(deg.<span class="hljs-built_in">begin</span>()-&gt;first);<br>        <span class="hljs-built_in">reverse</span>(ans.<span class="hljs-built_in">begin</span>(), ans.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br><br></code></pre></td></tr></table></figure>
 
@@ -570,6 +576,12 @@
 <li>只能最多经过k个中转站的最短路径</li>
 <li>使用bellman-ford算法，k个中转站就是松弛每条边 k+1次(1~k+1)，然后使用dp[i][dst]记录 中转i次的最短路径<br>最后的结果就是在dp[1][dst] 到dp[k+1][dst]中取最小的一个</li>
 </ul>
+<p>lc6134. 找到离给定两个节点最近的节点</p>
+<ul>
+<li>内向基环树</li>
+<li>求出node1 到每个点的距离， 和node2 到每个点的距离，然后取最小 (两次求距离，然后取最小，最后注意返回的是最近的下标，而不是最近的距离)</li>
+</ul>
+<p>PS, 最开始理解的时候，感觉应该用两个节点的最近公共祖先来解决，但是因为图中可能有环，所以不能使用最近公共祖先的栈或者dfs方法解决</p>
 <h3 id="前缀和和差分数组相关"><a href="#前缀和和差分数组相关" class="headerlink" title="前缀和和差分数组相关"></a>前缀和和差分数组相关</h3><p>一般是有关于矩阵的一维前缀和， 二维前缀和， 一维差分数组和二维差分数组<br>如果要计算差分数组和前缀和数组最好是将坐标转为 1-n，更好计算；不然sum i j对应的grid为i-1,j-1</p>
 <p>一维差分数组中，如果数组中一段数据加上或者减去某一个元素，在差分数组中只有两头的元素进行了修改，中间的元素都没有修改<br>二维差分数组中，如果包含左上角（x1, y1）, 右下角（x2, y2）这一部分都+C, 那么对应的差分数组d[x1][y1]+c d[x2+1][y2+1]+c d[x1][y1+1]-c d[x2+1][y1]-c<br>(上升的对角线两端元素-c, 下降的对角线元素+c)</p>
 <p>二维差分数组公式:<br>nums[i][j]-nums[i-1][j]-nums[i][j-1]+nums[i-1][j-1]=d[i][j]<br>从差分数组还原原来的数组<br>nums[i][j]=nums[i-1][j]+nums[i][j-1]-nums[i-1][j-1]+d[i][j]</p>
