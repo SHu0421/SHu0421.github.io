@@ -142,13 +142,6 @@
   </url>
   
   <url>
-    <loc>http://example.com/2021/11/13/leetcode/%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
-    
-    <lastmod>2023-07-10</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://example.com/2021/11/13/leetcode/%E6%8E%92%E5%BA%8F%E9%A2%98/</loc>
     
     <lastmod>2023-07-10</lastmod>
@@ -156,7 +149,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2021/11/13/leetcode/%E5%9B%9E%E6%BA%AF_DFS_BFS/</loc>
+    <loc>http://example.com/2021/11/13/leetcode/%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
     
     <lastmod>2023-07-10</lastmod>
     
@@ -164,6 +157,13 @@
   
   <url>
     <loc>http://example.com/2021/11/13/leetcode/%E5%93%88%E5%B8%8C%E7%9B%B8%E5%85%B3/</loc>
+    
+    <lastmod>2023-07-10</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/11/13/leetcode/%E5%9B%9E%E6%BA%AF_DFS_BFS/</loc>
     
     <lastmod>2023-07-10</lastmod>
     
@@ -354,13 +354,6 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E5%85%B6%E4%BB%96/</loc>
-    <lastmod>2023-07-12</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/tags/%E6%A0%88-%E5%8D%95%E8%B0%83%E6%A0%88/</loc>
     <lastmod>2023-07-12</lastmod>
     <changefreq>daily</changefreq>
@@ -375,7 +368,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95-DFS-BFS/</loc>
+    <loc>http://example.com/tags/%E5%85%B6%E4%BB%96/</loc>
     <lastmod>2023-07-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -383,6 +376,13 @@
   
   <url>
     <loc>http://example.com/tags/dp/</loc>
+    <lastmod>2023-07-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95-DFS-BFS/</loc>
     <lastmod>2023-07-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -482,14 +482,14 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/%E5%85%B6%E4%BB%96/</loc>
+    <loc>http://example.com/categories/leetcode/</loc>
     <lastmod>2023-07-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/leetcode/</loc>
+    <loc>http://example.com/categories/%E5%85%B6%E4%BB%96/</loc>
     <lastmod>2023-07-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
