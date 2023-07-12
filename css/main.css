@@ -294,12 +294,12 @@ sup > a::before,
   color: #ff4500;
 }
 html {
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 0.02em;
 }
 html,
 body {
-  font-family: Georgia, -apple-system, 'Nimbus Roman No9 L', 'PingFang SC', 'Hiragino Sans GB', 'Noto Serif SC', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'ST Heiti', sans-serif;
+  font-family: "Noto Serif SC", PingFang SC, var(--font-family-sans-serif);
 }
 html,
 body,
@@ -891,7 +891,7 @@ img[lazyload] {
 .markdown-body {
   font-size: 1rem;
   line-height: 1.6;
-  font-family: Georgia, -apple-system, 'Nimbus Roman No9 L', 'PingFang SC', 'Hiragino Sans GB', 'Noto Serif SC', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'ST Heiti', sans-serif;
+  font-family: "Noto Serif SC", PingFang SC, var(--font-family-sans-serif);
   margin-bottom: 2rem;
   color: var(--post-text-color);
 }
