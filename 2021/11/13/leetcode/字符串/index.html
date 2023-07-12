@@ -25,7 +25,7 @@
 <meta property="og:description" content="常见字符串解决套路 用动态规划求解 用滑动窗口求解 用双指针求解 使用DFS&#x2F;BFS求一个字符串转为另外一个字符串的路径问题  扩展：字符串hashabcde转为为多项式f(5)&#x3D; a* p^5 + b*p^4 +c *p^3 +d p^2 +e p^1f(3)&#x3D; a p^3 + bp^2 +c *p^1f(4, 5)&#x3D;f(5)-f(3)*p^(5-4+1) c++用unsigned long l">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-13T09:23:32.000Z">
-<meta property="article:modified_time" content="2022-05-01T03:52:00.268Z">
+<meta property="article:modified_time" content="2023-07-10T10:36:19.573Z">
 <meta property="article:author" content="huhu">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -75,7 +75,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -171,7 +171,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/bg-3.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -263,7 +263,7 @@
 <li><p>匹配子序列的单词数<br>查看多个字符串中，有几个是字符串s的子序列<br>使用二分查找，先通过hash，将不同字符对应的下标值进行存储，然后遍历需要查询的每个字符串，分别从hash里面多个vector进行查找，同时下次查找的下标，应该比当前下标至少+1</p>
 </li>
 </ol>
-<p><font color=red>4. 反转每对括号间的子串 (华为机试)</font><br><strong>字符串+栈</strong><br>注意这道题我最开始还没想出来</p>
+<p><font color="red">4. 反转每对括号间的子串 (华为机试)</font><br><strong>字符串+栈</strong><br>注意这道题我最开始还没想出来</p>
 <ul>
 <li>解决方案：<br>str为最后的结果<br>遇到（ 那么将str的元素压入栈中，然后str转为“”<br>遇到）那么将str元素翻转，<strong>如果栈不为空, 将栈顶元素弹出</strong>, str=s.top()+str; s.pop()<br>其余的字符直接追加在str后面<br>最后返回str</li>
 <li>也就是拼接好的字符串直接放在str中，不需要再压入栈中, 多了一个 “每次遇到]将当前字符串reverse 并加在栈顶元素的后面” 的步骤</li>
@@ -273,9 +273,9 @@
 <li>仍然使用栈, 思路和4相似，只不过多了一个数字 （左括号不会被压入栈中）</li>
 <li>另一种解法：数字存放在数字栈，字符串存放在字符串栈，遇到右括号时候弹出一个数字栈，字母栈弹到左括号为止。（左括号会压入栈中）</li>
 </ul>
-<p><font color=red>5. lc2157字符串分组(hard)</font></p>
+<p><font color="red">5. lc2157字符串分组(hard)</font></p>
 <ul>
-<li>(lc49字符串异位词分组) 用string或者vector<int> 作为hash的key</li>
+<li>(lc49字符串异位词分组) 用string或者vector<int> 作为hash的key</int></li>
 <li>并查集对字符串进行分组和记录组数（带size的并查集，同时要考虑可能存在相同字符串的情况， size[x]&gt;1 group–，同时合并的时候， group也会–），状态压缩+位运算实现字符串关联判断和查找</li>
 <li>如果直接枚举任意两个字符串并判断是否关联，并以此得到图上所有的边，时间复杂度至少为 O(n^2), 会超出时间限制。因此对每个字符串进行变换</li>
 </ul>
@@ -291,7 +291,7 @@
 <ol start="7">
 <li>不同字符的最小子序列<br>去除重复的字符串，使得子序列包含所有的字符，每个字符一次，同时字典序有最少<br>solution:<br>需要有一个hash来记录一个字符的剩余出现次数<br>如果栈中没找到，从栈中弹出剩余出现次数大于0，而且大于当前字符的字符，然后压入当前字符<br>如果栈中找到，直接将num[当前字符]–, 不push进入栈中</li>
 </ol>
-<p><font color=red>8.序列自动机</font><br>字符串dp<br>在进行判断一个字符串a是否是另外一个字符串b的子序列的时候，可以使用双指针，判断a的指针是否能走到末尾<br>也可以使用dp<br>dp[i][j]=i  s[i]==j （表示s从i开始第一个等于字符j的下标）<br>dp[i][j]=dp[i+1][j]  s[i]!=j<br>从后往前更新</p>
+<p><font color="red">8.序列自动机</font><br>字符串dp<br>在进行判断一个字符串a是否是另外一个字符串b的子序列的时候，可以使用双指针，判断a的指针是否能走到末尾<br>也可以使用dp<br>dp[i][j]=i  s[i]==j （表示s从i开始第一个等于字符j的下标）<br>dp[i][j]=dp[i+1][j]  s[i]!=j<br>从后往前更新</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"> Arrays.fill(f[m], m);<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = m - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; --i) &#123;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">26</span>; ++j) &#123;<span class="hljs-comment">//只包含小写字符</span><br>		<span class="hljs-keyword">if</span> (s.charAt(i) == (<span class="hljs-keyword">char</span>) (<span class="hljs-string">&#x27;a&#x27;</span> + j)) &#123;<br>			f[i][j] = i;<br>		&#125; <span class="hljs-keyword">else</span> &#123;<br>			f[i][j] = f[i + <span class="hljs-number">1</span>][j];<br>		&#125;<br>	&#125;<br>&#125;<br>String res = <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">for</span> (String t : dictionary) &#123;<br>	<span class="hljs-keyword">boolean</span> match = <span class="hljs-keyword">true</span>;<br>	<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; t.length(); ++i) &#123;<br>		<span class="hljs-keyword">if</span> (f[j][t.charAt(i) - <span class="hljs-string">&#x27;a&#x27;</span>] == m) &#123;<br>			match = <span class="hljs-keyword">false</span>;<br>			<span class="hljs-keyword">break</span>;<br>		&#125;<br>		j = f[j][t.charAt(i) - <span class="hljs-string">&#x27;a&#x27;</span>] + <span class="hljs-number">1</span>;<br>	&#125;<br>	<span class="hljs-keyword">if</span> (match) &#123;<br>		<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <ol start="9">
@@ -320,10 +320,10 @@
 <ul>
 <li>Trie树+回溯<br>先将要字典中的单词建立一颗Trie树，然后枚举矩阵中的每个点，进行dfs, 在进行dfs的时候，只对Trie树中有的边进行dfs, 如果当前走到isEnd=True的情况，那么就直接压入结果，同时这个时候不能直接退出，还可以继续dfs,因为字典中的单词可能是存在相互包含的关系的（dfs剪枝）</li>
 </ul>
-<p><font color=red>15. 最长回文前缀</font><br>lc214. 最短回文串<br>求s的最长回文前缀，其实就是求str = s+”#”+rev_s的最长公共前后缀，使用KMP算法求next数组，然后返回next[str.size()-1]，就是最长的回文前缀</p>
+<p><font color="red">15. 最长回文前缀</font><br>lc214. 最短回文串<br>求s的最长回文前缀，其实就是求str = s+”#”+rev_s的最长公共前后缀，使用KMP算法求next数组，然后返回next[str.size()-1]，就是最长的回文前缀</p>
 <p>一个字符串的最长前后缀为，这个字符串求next数组，返回next[size-1]</p>
 <p>马拉车算法：<a target="_blank" rel="noopener" href="https://www.acwing.com/file_system/file/content/whole/index/content/446985/">https://www.acwing.com/file_system/file/content/whole/index/content/446985/</a></p>
-<p><font color=red>16. lc321. 拼接最大数 (hard)</font></p>
+<p><font color="red">16. lc321. 拼接最大数 (hard)</font></p>
 <ul>
 <li>题意：从两个数组中共选择k个数，是的数最大</li>
 <li>第一步是枚举每个数组中取数据的个数</li>
@@ -336,7 +336,7 @@
 <ul>
 <li>判断字典里面的每个字符串是否是s的子序列，使用双指针会超时</li>
 <li>方法一：使用字符串dp, dp[i][j]表示s从index下标开始，找到的第一个字母j的下标</li>
-<li>方法二：使用map&lt;int, vector<int>&gt; 记录下每个字母在字符串中下标的位置，然后使用二分查找</li>
+<li>方法二：使用map&lt;int, vector<int>&gt; 记录下每个字母在字符串中下标的位置，然后使用二分查找</int></li>
 </ul>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>ok ok</p>
 <ol>
@@ -355,8 +355,6 @@
 <li><p>字符串匹配问题:求个数，求是否匹配，求删除字符的最小数量，都是使用的动态规划，定义的dp[i][j]都是让s前i个字符和t前j个字符匹配的xxxx， 一般都是将s[i]和t[j]是否相等分成两种情况，并分别求对应的状态转移</p>
 </li>
 <li><p>有时候有字典的这种情况会考虑到建立前缀树，也可以考虑使用逆向思维，将字典树加密的所有字符串提前求出来，然后使用打表方法<br>lc5302. 加密解密字符串（周赛hard）</p>
-</li>
-<li><p>求所有子字符串的分数（要求连续类问题） 可以转为每个字母对于包含它的每个子字符串的贡献 求和，将二重循环转为一重循环<br>（周赛：6050. 字符串的总引力）</p>
 </li>
 </ol>
 
