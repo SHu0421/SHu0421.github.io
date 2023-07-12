@@ -25,7 +25,7 @@
 <meta property="og:description" content="前缀和 + hash题目汇总一定要注意先判断hash[presum-target]是否存在并更新结果，再更新hash[presum]++， 因为可能nums[i]&#x3D;0 例题：面试题 17.05.  字母与数字，要求字母和数字个数相同，那么就是将字母转为1， 数字转为-1的时候，前缀和为0的最长序列；另外使用这种思想是的”和等于 k 的最长子数组长度“ ”和等于k子数组“ （hash+前缀和） 12">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-13T11:58:31.000Z">
-<meta property="article:modified_time" content="2022-04-05T03:45:17.532Z">
+<meta property="article:modified_time" content="2023-07-10T10:36:19.572Z">
 <meta property="article:author" content="huhu">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -75,7 +75,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -171,7 +171,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/bg-wenzhang-2.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -242,7 +242,7 @@
 <p>例题：<br>面试题 17.05.  字母与数字，要求字母和数字个数相同，那么就是将字母转为1， 数字转为-1的时候，前缀和为0的最长序列；<br>另外使用这种思想是的”和等于 k 的最长子数组长度“ ”和等于k子数组“ （hash+前缀和）</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">//hash+前缀和的模板代码</span><br>hash[<span class="hljs-number">0</span>]=<span class="hljs-number">-1</span>;<br><span class="hljs-keyword">int</span> sum=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">int</span> res=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;nums.<span class="hljs-built_in">size</span>();++i)&#123;<br>    sum += nums[i];<br>    <span class="hljs-keyword">if</span>(hash.<span class="hljs-built_in">count</span>(sum-k))  res= <span class="hljs-built_in">max</span>(res,i-hash[sum-k]);<br>    <span class="hljs-keyword">if</span>(!hash.<span class="hljs-built_in">count</span>(sum)) hash[sum]=i; <span class="hljs-comment">// 因为要的是第一次出现的值</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
 
-<p> <font color=red>”1371. 每个元音包含偶数次的最长子字符串“</font>:<br>题解：为了表明每个元音出现了偶数次，可以使用二进制数，如果一个位经过一轮之后仍然为当前的值，那么说明这个位出现了偶数次或者没出现过，<br>通过这种方法可以类推到特定字符出现k数次，那么就使用k进制；同时注意是每个元音出现偶数次，而不是元音总个数为偶数次，如果是第二种情况<br>可以使用元音为奇数表示，sum%2==0表示元音个数为偶数）<br>    k进制的加法过程类似于大数相加</p>
+<p> <font color="red">”1371. 每个元音包含偶数次的最长子字符串“</font>:<br>题解：为了表明每个元音出现了偶数次，可以使用二进制数，如果一个位经过一轮之后仍然为当前的值，那么说明这个位出现了偶数次或者没出现过，<br>通过这种方法可以类推到特定字符出现k数次，那么就使用k进制；同时注意是每个元音出现偶数次，而不是元音总个数为偶数次，如果是第二种情况<br>可以使用元音为奇数表示，sum%2==0表示元音个数为偶数）<br>    k进制的加法过程类似于大数相加</p>
 <ol>
 <li><p>连续的子数组和 注意这道题不是说连续的子数组为目标数，而是为目标数的倍数，但是仍然可以用这种方法来做，因为为目标数的倍数，意味着前缀和%该数得到的余数相同，因为可以用hash记录第一次出现该余数的下标，然后再次出现时，判断数组长度是否大于等于2， 一定要注意在开始的时候hash[0]=-1!!!</p>
 </li>
@@ -254,8 +254,8 @@
 <ol start="5">
 <li>统计「优美子数组」<br>将奇数转为1， 偶数转为0， 然后求和为k的子数组个数</li>
 </ol>
-<h4 id="前缀和-单调栈"><a href="#前缀和-单调栈" class="headerlink" title="前缀和+单调栈"></a>前缀和+单调栈</h4><p><font color=red>leetcode 1124表现良好的最长时间段</font><br>题意就是转化为1， -1的数组，和大于0的最长连续子数组 （注意是和大于0，不是和最大）<br>解决方案： 整体思路：前缀和，对于每一个下标对应的当前的前缀和，应该求比他小的前缀和的下标最小的一个+这是1， -1的数组，因此前缀和应该是连续的<br>如果前缀和大于0，那么一定是从下标0到当前的数的长度最长<br>如果前缀和小于0，那么就是当前前缀和-1到当前的长度最长<br>先顺序遍历，如果当前数小于栈顶就push,否则continue(因为当前值不可能为最优)，然后逆序遍历，如果当前的前缀和大于栈顶，那么循环弹出，同时还需要更新最大结果，直到当前的前缀和不大于栈顶；遍历下一个数</p>
-<p><font color=red>类似的一个题目：962. 最大宽度坡 - 单调栈比较经典的题目</font></p>
+<h4 id="前缀和-单调栈"><a href="#前缀和-单调栈" class="headerlink" title="前缀和+单调栈"></a>前缀和+单调栈</h4><p><font color="red">leetcode 1124表现良好的最长时间段</font><br>题意就是转化为1， -1的数组，和大于0的最长连续子数组 （注意是和大于0，不是和最大）<br>解决方案： 整体思路：前缀和，对于每一个下标对应的当前的前缀和，应该求比他小的前缀和的下标最小的一个+这是1， -1的数组，因此前缀和应该是连续的<br>如果前缀和大于0，那么一定是从下标0到当前的数的长度最长<br>如果前缀和小于0，那么就是当前前缀和-1到当前的长度最长<br>先顺序遍历，如果当前数小于栈顶就push,否则continue(因为当前值不可能为最优)，然后逆序遍历，如果当前的前缀和大于栈顶，那么循环弹出，同时还需要更新最大结果，直到当前的前缀和不大于栈顶；遍历下一个数</p>
+<p><font color="red">类似的一个题目：962. 最大宽度坡 - 单调栈比较经典的题目</font></p>
 <ul>
 <li>这道题除了用正序单减栈+逆序遍历外，还可以用排序方法</li>
 <li>排序方法：用结构体存储值和下标，然后按照值排序，针对每个元素，找到它左边的元素中（都比他小），最小的下标（i - min(indexes_previously_written)）</li>
@@ -268,7 +268,7 @@
 <li>数组不一定是排好序的，因此需要先对数组进行排序</li>
 </ol>
 <p>变形：数组中的k-diff数对，这里只是换成了绝对值差，而不是目标值; 而且因为数组中存在重复的数字，因此需要先用set记录结果，然后再返回set.size<br>这道题也可以用排序+二分查找（找到目标的k+nums[i]），同时需要过滤掉已经找的数据</p>
-<p>拓展：<br>注意前面三个题是可能包含重复的元素，但是需要返回不重复的元组对，下面这个题是找出所有的元组对，因此是包含重复的元组对的<br><font color=red>题目：三数之和的多种可能</font><br>解决方案：仍然是三数之和的方法的，但是在进行计算的时候， 需要判断左右指针指向的数是否相等，来计算可能组成的相同数对的个数<br>如果arr[left]!=arr[right]那么res+=hash[left]<em>hash[right] (用while循环找到hash[left]-相同数的数量，或者提前计算)<br>如果arr[left]==arr[right] res+=(right-left+1)</em>(right-left)/2</p>
+<p>拓展：<br>注意前面三个题是可能包含重复的元素，但是需要返回不重复的元组对，下面这个题是找出所有的元组对，因此是包含重复的元组对的<br><font color="red">题目：三数之和的多种可能</font><br>解决方案：仍然是三数之和的方法的，但是在进行计算的时候， 需要判断左右指针指向的数是否相等，来计算可能组成的相同数对的个数<br>如果arr[left]!=arr[right]那么res+=hash[left]<em>hash[right] (用while循环找到hash[left]-相同数的数量，或者提前计算)<br>如果arr[left]==arr[right] res+=(right-left+1)</em>(right-left)/2</p>
 <h4 id="代码模板（去重-找四数之和为target）"><a href="#代码模板（去重-找四数之和为target）" class="headerlink" title="代码模板（去重+找四数之和为target）"></a>代码模板（去重+找四数之和为target）</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">int</span> size=nums.<span class="hljs-built_in">size</span>();<br><span class="hljs-built_in">sort</span>(nums.<span class="hljs-built_in">begin</span>(), nums.<span class="hljs-built_in">end</span>());<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;nums.<span class="hljs-built_in">size</span>()<span class="hljs-number">-3</span>;i++)&#123;<br>    <span class="hljs-keyword">while</span>(i<span class="hljs-number">-1</span>&gt;=<span class="hljs-number">0</span>&amp;&amp;nums[i]==nums[i<span class="hljs-number">-1</span>])&#123;<br>        <span class="hljs-keyword">continue</span>; <span class="hljs-comment">//去重</span><br>    &#125;<br>    <span class="hljs-keyword">if</span>((<span class="hljs-keyword">long</span>) nums[i]+nums[i+<span class="hljs-number">1</span>]+nums[i+<span class="hljs-number">2</span>]+nums[i+<span class="hljs-number">3</span>]&gt;target)&#123;<br>            <span class="hljs-keyword">break</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span>((<span class="hljs-keyword">long</span>) nums[i]+nums[size<span class="hljs-number">-3</span>]+nums[size<span class="hljs-number">-2</span>]+nums[size<span class="hljs-number">-1</span>]&lt;target)&#123;<br>            <span class="hljs-keyword">continue</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i+<span class="hljs-number">1</span>;j&lt;nums.<span class="hljs-built_in">size</span>()<span class="hljs-number">-2</span>;j++)&#123;<br>        <span class="hljs-keyword">if</span> (j &gt; i + <span class="hljs-number">1</span> &amp;&amp; nums[j] == nums[j - <span class="hljs-number">1</span>]) &#123;<br>                    <span class="hljs-keyword">continue</span>; <span class="hljs-comment">//去重</span><br>        &#125;<br>        <span class="hljs-keyword">if</span>((<span class="hljs-keyword">long</span>) nums[i]+nums[j]+nums[j+<span class="hljs-number">1</span>]+nums[j+<span class="hljs-number">2</span>]&gt;target)&#123;<br>                <span class="hljs-keyword">break</span>; <span class="hljs-comment">//注意是break不是continue</span><br>        &#125;<br>        <span class="hljs-keyword">if</span>((<span class="hljs-keyword">long</span>) nums[i]+nums[j]+nums[size<span class="hljs-number">-2</span>]+nums[size<span class="hljs-number">-1</span>]&lt;target)&#123;<br>                <span class="hljs-keyword">continue</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">int</span> k=j+<span class="hljs-number">1</span>, q=size<span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">int</span> find_num=target-nums[i]-nums[j];<br>        <span class="hljs-keyword">while</span>(k&lt;q)&#123; <span class="hljs-comment">//双指针</span><br>            <span class="hljs-keyword">if</span>(nums[k]+nums[q]&gt;find_num)&#123;<br>                q--;<br>            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[k]+nums[q]&lt;find_num)&#123;<br>                k++;<br>            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[k]+nums[q]==find_num)&#123;<br>                res.<span class="hljs-built_in">push_back</span>(&#123;nums[i], nums[j], nums[q], nums[k]&#125;);<br>                k++;<br>                q--;<br>                <span class="hljs-keyword">while</span>(k&lt;q&amp;&amp;nums[k]==nums[k<span class="hljs-number">-1</span>])&#123; <span class="hljs-comment">//去重</span><br>                    k++;<br>                &#125;<br>                <span class="hljs-keyword">while</span>(k&lt;q&amp;&amp;nums[q]==nums[q+<span class="hljs-number">1</span>])&#123;<br>                q--;<br>                &#125;<br>            &#125;<br>        &#125;<br><br>        <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <blockquote>
@@ -278,7 +278,7 @@
 <p>使用hash函数（hash算法： index = HashCode（Key） &amp; （Length - 1）），将数据放在数组中，如果数组已经将要放的位置满了，就使用链表链接在那个位置的后面；使用树是为了防止链表过长,设定阈值为8，那么大于这个阈值就将这个链表转为红黑树，小于6的时候链化， 避免查询时间过长。（8树化、6链化），而且设置为8个节点时，红黑树的性能优势也会开始展现出来，因此8是一个较合理的数字。</p>
 <p>hashmap初始长度是16，每次扩展或者手动初始化必须是2的幂：是为了服务从key到index的hash算法：index = HashCode（Key） &amp; （Length - 1），使得使用位运算计算的结果等同于取模（x mod 2^n = x &amp; (2^n - 1)），也就是只取决于hashcode的二进制后面几位，只要HashCode本身分布均匀，Hash算法的结果就是均匀的，从而大大提高性能。</p>
 <p>高并发情况下，hashmap可能会出现死锁<br>JDK1.7以及前是在头结点插入的，在JDK1.8之后是在尾节点插入的。，因为JDK1.7在多进程的情况下可能会出现死循环，由循环链表造成（rehash的时候，一个进程在e, next的时候挂起，另外一个进程已经将数据都扩容好，进程1又开始扩容），但是JDK1.8仍然可能会出现数据丢失（进程1要在插入时候，时间片用完，进程2插入元素在一个相同位置，进程1就会直接将进程2插入的元素覆盖），并发下扩容数据丢失</p>
-<p><font color=red>避免hash冲突的方法：</font><br>开放定址法（再hash）<br>    线性探查：可能会出现大量的错误<br>    平方探查<br>    二次散列/平方探查：导致hash表空间利用率很低，出现大量重复</p>
+<p><font color="red">避免hash冲突的方法：</font><br>开放定址法（再hash）<br>    线性探查：可能会出现大量的错误<br>    平方探查<br>    二次散列/平方探查：导致hash表空间利用率很低，出现大量重复</p>
 <pre><code>优点：存储结构连续，因此查找的IO开销更小
 缺点：1）在插入的元素大于hash表的时候，需要扩容 2）hash表存储空间利用率低 3）删除操作的时间复杂度高，因为不能直接删除，因为它的后面可能有数据，因此需要设置删除标记，需要额外的空间 4）探查序列如何设计比较复杂可能会降低hash的性能
 </code></pre>

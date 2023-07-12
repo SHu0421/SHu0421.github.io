@@ -25,7 +25,7 @@
 <meta property="og:description" content="例题 最小覆盖子串（两个字符串） 不同字符的最小子序列（一个字符串）需要有一个hash来记录一个字符的剩余出现次数如果栈中没找到，从栈中弹出剩余出现次数大于0，而且大于当前字符的字符，然后压入当前字符否则直接将num[当前字符]– 窗口内的最大值，使用的是单调栈 未排序数组中，累加和为给定值的最长子数组   方法一： 滑动窗口 （使用了条件，数据全部为正数，如果没有这个条件就不能使用滑动窗口）">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-13T09:22:03.000Z">
-<meta property="article:modified_time" content="2022-04-11T08:15:08.064Z">
+<meta property="article:modified_time" content="2023-07-10T10:36:19.575Z">
 <meta property="article:author" content="huhu">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -75,7 +75,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -171,7 +171,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/bg-wenzhang-2.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -257,7 +257,7 @@
 <ol start="5">
 <li><p>未排序数组中，累加和小于等于给定值的最长子数组</p>
 </li>
-<li><p>和小于等于K的最长子数组  以及 和不小于k的最短子数组leetcode 862<br><font color=red>862. 和至少为 K 的最短子数组(hard)</font><br>因为带有负数，所以收缩窗口不一定sum变小，和还有可能变大,所以滑动窗口不行<br>解决方案：使用前缀和+双端队列</p>
+<li><p>和小于等于K的最长子数组  以及 和不小于k的最短子数组leetcode 862<br><font color="red">862. 和至少为 K 的最短子数组(hard)</font><br>因为带有负数，所以收缩窗口不一定sum变小，和还有可能变大,所以滑动窗口不行<br>解决方案：使用前缀和+双端队列</p>
 </li>
 </ol>
 <ul>
@@ -266,14 +266,14 @@
 <li>如果队尾的值减去队首前缀和大于等于target，那么循环弹出首部的值（下标）,同时更新minlen (先pop前面再pop后面，或者先pop后面再pop前面都是可以的)</li>
 <li>易错点：一定要注意先push_back(0), 因为要处理只有一个元素的情况  [1] k=1</li>
 </ul>
-<p><font color=blue> 这道题可以和连续和大于0的最长序列（lc-1124:表现良好的最长时间段）一起看：</p>
+<p><font color="blue"> 这道题可以和连续和大于0的最长序列（lc-1124:表现良好的最长时间段）一起看：</font></p>
 <ul>
 <li>求最长大于k使用前缀和+单调栈，求最短大于等于k使用前缀和+双端队列； </li>
 <li>如果是求最长小于k（和小于k的最长序列），那么使用先遍历一次前缀和数组（小压栈，否则continue），得到底部到顶单增的栈，然后逆序遍历，求小于k的最长序列</li>
 <li>如果是求最长大于k（和大于0的最长序列），那么使用先遍历一次前缀和数组（小压栈，否则continue），得到底部到顶单减的栈，然后逆序遍历，求小于k的最长序列</li>
-<li>如果是求最短小于k（一般无这种问法）</font></li>
+<li>如果是求最短小于k（一般无这种问法）</li>
 </ul>
-<p><font color=red>7. 至少有 K 个重复字符的最长子串</font><br>题意：子串中每个字符都需要重复k次<br>解决方案： </p>
+<p><font color="red">7. 至少有 K 个重复字符的最长子串</font><br>题意：子串中每个字符都需要重复k次<br>解决方案： </p>
 <ul>
 <li><p>滑动窗口，枚举窗口内包含的字符的总数，如果字符总数大于（1-26个字符26种情况下，每个字符至少k个）的最大长度，当当前窗口包含的字符数大于遍历的这种情况的话，收缩窗口， 末尾如果typecnt=k_num那么就更新答案</p>
 </li>
@@ -293,12 +293,12 @@
 </ul>
 <p>PS:类似的题 最小覆盖子串（可以包含其他字符）， 至少有k个无重复字符的最长子串, lc 面试题 17.18. 最短超串(big字符串里面包含small字符串里面每个字符的最短串)</p>
 <ul>
-<li><font color=red>易错点：注意一定是needle[big[left]]++/–不是needle[left] or needle[right]</font></li>
+<li><font color="red">易错点：注意一定是needle[big[left]]++/–不是needle[left] or needle[right]</font></li>
 </ul>
 <p>模板 needle+count来判断</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs C++">总结：count == <span class="hljs-number">0</span>的时候，先收缩不必要的字符再进行判断！！！！<br><span class="hljs-keyword">int</span> left=<span class="hljs-number">0</span>, right=<span class="hljs-number">0</span>;<br>        <span class="hljs-comment">//right最好是包含这个字符</span><br><span class="hljs-keyword">while</span>(right&lt;len1)&#123;<br><br>    <span class="hljs-keyword">if</span>(needle[s[right]]&gt;<span class="hljs-number">0</span>)&#123;<br>        count--; <br>    &#125;<br>    needle[s[right]]--; <span class="hljs-comment">//先减再判断</span><br>    <span class="hljs-keyword">if</span>(count==<span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-comment">//收缩字符</span><br>        <span class="hljs-keyword">while</span>(needle[s[left]]&lt;<span class="hljs-number">0</span>)&#123;<br>            needle[s[left]]++;<br>            left++;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(right-left+<span class="hljs-number">1</span>&lt;min_len)&#123;<br>            min_len = right - left+<span class="hljs-number">1</span>;<br>            start = left;<br>        &#125;<br>            needle[s[left]]++;<br>            count++;<br>            left++;<br>        &#125;<br>        <br>        right++;<br>  &#125;<br></code></pre></td></tr></table></figure>
 
-<p><font color=red>10. 最少交换次数来组合所有的 1 II</font><br>  先计算出有多少个1，假设为k个<br>  然后用一个固定大小为k的窗口，遍历数组，记录窗口内0的最小个数即为答案<br>  II和I的区别在于II是环形数组，因此需要遍历每一个start(包括==size, 此时end通过求余得到),但是I只需要遍历end&lt;size</p>
+<p><font color="red">10. 最少交换次数来组合所有的 1 II</font><br>  先计算出有多少个1，假设为k个<br>  然后用一个固定大小为k的窗口，遍历数组，记录窗口内0的最小个数即为答案<br>  II和I的区别在于II是环形数组，因此需要遍历每一个start(包括==size, 此时end通过求余得到),但是I只需要遍历end&lt;size</p>
 <ol start="11">
 <li>水果成篮<br>题意是包含两种数据类型的最长子数组;使用typecnt， hash_cnt 和left right指针；当typecnt&lt;=2对窗口进行扩， 否则进行收缩<br>用滑动窗口<br>注意是hash[fruit[left]]++/–不是hash[left]++/–</li>
 </ol>
@@ -315,7 +315,7 @@
 <ol start="13">
 <li>可获得的最大点数<br>题意：只能从两端取数据，取得k个数据的最大值<br>solution: 滑动窗口size-k内元素之和的最小值, 其实也可以用区间dp解决，但是因为为造成三维dp[left][right][k]，因此会超出内存</li>
 </ol>
-<p><font color=red>14. 最高频元素的频数</font></p>
+<p><font color="red">14. 最高频元素的频数</font></p>
 <ul>
 <li>将整个数组进行排序，使用滑动窗口，枚举将窗口内所有的数转为右边界这个数的最长长度， l只会递增不会减少， r就是当前遍历的下标，因为之前的元素都已经转为num[r-1]，因此还需要消耗的数据只有(nums[r]-nums[r-1])*(r-l), 如果比给定的k大，那么收缩窗口</li>
 <li>具有滑动窗口单增特性，r向右滑动，需要的数越来越大，l向右滑动需要的越来越小</li>

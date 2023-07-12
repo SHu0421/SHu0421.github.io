@@ -36,7 +36,16 @@ hexo generate
 
 4.查看网页
 hexo server
+
+5.本地查看
+hexo clean && hexo g && hexo s
 ```
 
 #### 参考链接
 https://juejin.cn/post/6978377036645531662
+配置指南
+https://hexo.fluid-dev.com/docs/guide/#%E6%96%87%E7%AB%A0%E5%9C%A8%E9%A6%96%E9%A1%B5%E7%9A%84%E5%B0%81%E9%9D%A2%E5%9B%BE
+
+#### 常见问题
+1. 文章中插入图片无法显示
+解决方法：注意将图片放在/source/img 而不是/img路径，即使是首页图像也是如此

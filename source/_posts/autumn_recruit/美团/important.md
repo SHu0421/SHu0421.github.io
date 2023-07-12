@@ -1,9 +1,9 @@
 ---
+title: 常见模板代码
 categories:
   - autumn_recruit
   - 美团
 ---
-模板
 
 ```C++
 #include<iostream>

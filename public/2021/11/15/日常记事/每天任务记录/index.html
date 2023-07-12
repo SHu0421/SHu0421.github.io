@@ -25,7 +25,7 @@
 <meta property="og:description" content="11-15记得之后验证一下multiple是否支持只有loss这种情况，如果支持的话，sampler全部修改为一个，同时目前只修改和看BS这种情况 tune参数包括warm_up_epoch and sampling rate 完成情况：整理完之前的IOAS代码，将multi和single进行融合，同时使用字典形式来替换if-else多个flag的情况记录：leetcode 刷题指南完成：贪心算法">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-15T03:19:12.000Z">
-<meta property="article:modified_time" content="2022-03-22T04:15:24.139Z">
+<meta property="article:modified_time" content="2023-07-10T10:36:19.584Z">
 <meta property="article:author" content="huhu">
 <meta property="article:tag" content="daily task">
 <meta name="twitter:card" content="summary_large_image">
@@ -76,7 +76,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -172,7 +172,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/bg-wenzhang-2.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -390,7 +390,7 @@
 <p>1-6 现在遇到的问题：1.有ssh密码登录的机器，使用rpc无法正常运行， 同时rpc在同一台机器好像也无法正常运行</p>
 <p>解决！<br>注意在rpc中发出rpc_async请求的是worker, 接收请求的是master</p>
 <p>hec上使用pytorch 1.8.1只能在没有gpu的节点上，如果在hec01 hec02上就会报错</p>
-<p>现在问题 8a100和hec06节点连接会报错：<br>aster: ECONNREFUSED: connection refused<br>Failed to respond to ‘Shutdown Proceed’ in time, got error ECONNREFUSED: connection refused<br>Traceback (most recent call last):<br>  File “worker.py”, line 88, in <module><br>    rpc.shutdown()<br>  File “/nfs/home/anaconda3/envs/pytorch-shu/lib/python3.6/site-packages/torch/distributed/rpc/api.py”, line 78, in wrapper<br>    return func(*args, **kwargs)<br>  File “/nfs/home/anaconda3/envs/pytorch-shu/lib/python3.6/site-packages/torch/distributed/rpc/api.py”, line 284, in shutdown<br>    _get_current_rpc_agent().join()<br>RuntimeError: [/opt/conda/conda-bld/pytorch_1607370193460/work/third_party/gloo/gloo/transport/tcp/pair.cc:575] Connection closed by peer [10.5.30.42]:27806</p>
+<p>现在问题 8a100和hec06节点连接会报错：<br>aster: ECONNREFUSED: connection refused<br>Failed to respond to ‘Shutdown Proceed’ in time, got error ECONNREFUSED: connection refused<br>Traceback (most recent call last):<br>  File “worker.py”, line 88, in <module><br>    rpc.shutdown()<br>  File “/nfs/home/anaconda3/envs/pytorch-shu/lib/python3.6/site-packages/torch/distributed/rpc/api.py”, line 78, in wrapper<br>    return func(*args, **kwargs)<br>  File “/nfs/home/anaconda3/envs/pytorch-shu/lib/python3.6/site-packages/torch/distributed/rpc/api.py”, line 284, in shutdown<br>    _get_current_rpc_agent().join()<br>RuntimeError: [/opt/conda/conda-bld/pytorch_1607370193460/work/third_party/gloo/gloo/transport/tcp/pair.cc:575] Connection closed by peer [10.5.30.42]:27806</module></p>
 <p>Solution: Edit /etc/hosts and change 127.0.1.1 to your actual ip-address 目前看到的一个答案<br>分析：现在在hec上互相使用rpc（即使有密码）是可以的，但是在8a100就不行，所以现在怀疑的是需要在host里面添加目录，以及需要在两台机器上换成同一个用户才行<br>第二种解决方案，应该使用tpc的init_method，以及使用gloo后端，但是目前试验过，仍然会报错</p>
 <p>感觉在分布式多台机器上训练也会出现相同的问题</p>
 <p>找到的真正的解决方案：backend=rpc.BackendType.PROCESS_GROUP， 不需要加其他的<br>os.environ[‘TF_SOCKET_IFNAME’] = ‘ens3’ (x)<br>os.environ[‘GLOO_SOCKET_IFNAME’] = ‘ens3’ (x)</p>

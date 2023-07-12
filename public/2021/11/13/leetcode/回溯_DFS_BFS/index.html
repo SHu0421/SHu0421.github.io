@@ -25,7 +25,7 @@
 <meta property="og:description" content="例题 字符串的转换路径问题: 单词接龙I:只返回最短转换序列的长度（使用BFS） 单词接龙II：返回所有最短转换序列具体是什么 标准答案是既用到了深度优先搜索，也用到了宽度优先搜索 （最短距离） 首先判断endWord是否在字典中，不在的话直接返回空 在进行单词找相邻，可以遍历单词每个字符，判断与当前是否只有一个不相等（O(mn)）；或者将当前单词的每一位替换成 26 个小写英文字母，查找是否在字">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-13T09:23:50.000Z">
-<meta property="article:modified_time" content="2022-04-05T08:38:40.673Z">
+<meta property="article:modified_time" content="2023-07-10T10:36:19.572Z">
 <meta property="article:author" content="huhu">
 <meta property="article:tag" content="回溯算法, DFS, BFS">
 <meta name="twitter:card" content="summary_large_image">
@@ -76,7 +76,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -172,7 +172,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/bg-wenzhang-2.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -256,7 +256,7 @@
 </ol>
 <p>PS: 其他解决字符串的相关问题的方案<br>使用动态规划+Trie树，或者暴力string find，或者转为数组（数字）等等，</p>
 <p>PS类似的题目： 单词接龙和最小基因变化， 最小基因变化的这道题在进行单词转换的时候，找相邻的两种方式：(1)对每个字符，4种情况 ACGT都进行测试（也就是每个字符需要验证4n次）， (2)在单词库中查找只有一个字符变化的</p>
-<p><font color=red>3. 组合总数 ：一定要注意如果给出的列表中包含重复的数据的话，一定要记得去重，以及通过一些条件可以提前剪枝</font></p>
+<p><font color="red">3. 组合总数 ：一定要注意如果给出的列表中包含重复的数据的话，一定要记得去重，以及通过一些条件可以提前剪枝</font></p>
 <p>组合总数I， II, III, VI 在进行回溯的时候需要注意的几个点：</p>
 <ul>
 <li>每类的数据是否可以重复选择，如果可以重复选择，那么需要在递归到某一个类的时候，将这个类的所有的数据（一个或者target/candidate[i]个）都选择完</li>
@@ -285,13 +285,13 @@
 <ol start="7">
 <li>水壶问题，使用深度优先搜索，或者数学推导<br>深度优先搜索，因为超过了系统的搜索的层数，所以需要自己模拟压栈和出栈， 同时需要知道当前状态可以转化为其他状态，其他状态包括，将X倒满，将Y倒满，将X倒空，将Y倒空，将x的水导入Y中，将Y的水倒数X中 6种撞他<br>或者使用数学方式解决，每次水的变化量（X+Y）一定是X或者Y, 那么有不等式 ax+by=z; 那么z一定x和y最小公因数的倍数</li>
 </ol>
-<p><font color=red>8. 字典序 或者 全排列使用深度优先搜索</font><br>字典序返回[1-n]所有整数</p>
+<p><font color="red">8. 字典序 或者 全排列使用深度优先搜索</font><br>字典序返回[1-n]所有整数</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span> cur, vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; res)</span></span>&#123;<br>      <span class="hljs-keyword">if</span>(cur&gt;n)&#123;<br>          <span class="hljs-keyword">return</span>;<br>      &#125;<br>      res.<span class="hljs-built_in">push_back</span>(cur);<span class="hljs-comment">//在dfs的同时push</span><br>      <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;=<span class="hljs-number">9</span>;i++)&#123;<br>          <span class="hljs-built_in">dfs</span>(n, cur*<span class="hljs-number">10</span>+i, res);<br>      &#125;<br>  &#125;<br>  <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">lexicalOrder</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>      vector&lt;<span class="hljs-keyword">int</span>&gt; res;<br>      <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">9</span>;i++)&#123;<br>          <span class="hljs-built_in">dfs</span>(n, i, res);<br>      &#125;<br>      <span class="hljs-keyword">return</span> res;<br>  &#125;<br></code></pre></td></tr></table></figure>
 <figure class="highlight c++"><figcaption><span>无重复数字的全排列</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs C++">方法<span class="hljs-number">1</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">all_permute</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums,vector&lt;vector&lt;<span class="hljs-keyword">int</span>&gt;&gt; &amp;result,<span class="hljs-keyword">int</span> cur )</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> size=nums.<span class="hljs-built_in">size</span>();<br>    <span class="hljs-keyword">if</span>(cur==size<span class="hljs-number">-1</span>)&#123;<br>        result.<span class="hljs-built_in">push_back</span>(nums);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=cur;i&lt;size;i++)&#123;<br>        <span class="hljs-built_in">swap</span>(nums[cur], nums[i]);<br>        <span class="hljs-built_in">all_permute</span>(nums, result, cur+<span class="hljs-number">1</span>);<br>        <span class="hljs-built_in">swap</span>(nums[cur], nums[i]);<br>    &#125;<br>&#125;<br><span class="hljs-comment">//方法2：</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index, string &amp;S, string &amp;path, vector&lt;<span class="hljs-keyword">int</span>&gt; &amp;used)</span></span>&#123;<br>    <span class="hljs-keyword">int</span> size=S.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">if</span>(index==size)&#123;<br>        res.<span class="hljs-built_in">push_back</span>(path);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;size;i++)&#123;<br>        <span class="hljs-keyword">if</span>(used[i])&#123; <span class="hljs-comment">//最重要的两个if判断</span><br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        path.<span class="hljs-built_in">push_back</span>(S[i]);<br>        used[i]=<span class="hljs-literal">true</span>;<br>        <span class="hljs-built_in">dfs</span>(index+<span class="hljs-number">1</span>, S, path, used);<br>        used[i]=<span class="hljs-literal">false</span>;<br>        path.<span class="hljs-built_in">pop_back</span>();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
 
-<p><font color=red> 有重复数字的全排列</font><br>答案解析：lc:全排列II</p>
+<p><font color="red"> 有重复数字的全排列</font><br>答案解析：lc:全排列II</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-built_in">sort</span>(S.<span class="hljs-built_in">begin</span>(), S.<span class="hljs-built_in">end</span>()); <span class="hljs-comment">//在主函数进行排序， 同时使用used数组，判断S中的某个字符是否被用过， 用一个string path，表示现在拼起来的字符</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index, string &amp;S, string &amp;path, vector&lt;<span class="hljs-keyword">int</span>&gt; &amp;used)</span></span>&#123;<br>    <span class="hljs-keyword">int</span> size=S.<span class="hljs-built_in">size</span>();<br>     <span class="hljs-keyword">if</span>(index==size)&#123;<br>        res.<span class="hljs-built_in">push_back</span>(path);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;size;i++)&#123;<br>        <span class="hljs-keyword">if</span>(used[i])&#123; <span class="hljs-comment">//最重要的两个if判断</span><br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(i!=<span class="hljs-number">0</span>&amp;&amp;S[i]==S[i<span class="hljs-number">-1</span>]&amp;&amp;!used[i<span class="hljs-number">-1</span>])&#123; <span class="hljs-comment">//注意这一层的判断</span><br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        path.<span class="hljs-built_in">push_back</span>(S[i]);<br>        used[i]=<span class="hljs-literal">true</span>;<br>        <span class="hljs-built_in">dfs</span>(index+<span class="hljs-number">1</span>, S, path, used);<br>        used[i]=<span class="hljs-literal">false</span>;<br>        path.<span class="hljs-built_in">pop_back</span>();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>扩展：排列中的下一个排列</p>
@@ -305,16 +305,16 @@
 <li>使用dfs+去重+路径中一直push到res中<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-built_in">dfs</span>():<br>    res.<span class="hljs-built_in">push_back</span>(path);<br>    <span class="hljs-keyword">if</span>(index&gt;=size)&#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=index;i&lt;size;i++)&#123;<br>        <span class="hljs-keyword">if</span>(i!=index&amp;&amp;nums[i]==nums[i<span class="hljs-number">-1</span>])&#123; <span class="hljs-comment">//去重方式和四数之和一样</span><br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        path.<span class="hljs-built_in">push_back</span>(nums[i]);<br>        <span class="hljs-built_in">dfs</span>(i+<span class="hljs-number">1</span>, nums, path);<br>        path.<span class="hljs-built_in">pop_back</span>();<br>    &#125;<br></code></pre></td></tr></table></figure></li>
 </ul>
 <ol start="9">
-<li><p>01矩阵 <font color=blue>多源BFS</font><br>找到1距离0的距离是从0开始进行bfs，而不是从1开始<br>解法：</p>
+<li><p>01矩阵 <font color="blue">多源BFS</font><br>找到1距离0的距离是从0开始进行bfs，而不是从1开始<br>解法：</p>
 <ul>
 <li>广度优先搜索+记忆数组（将为0的点放入队列中，然后一层层向外扩散，记得访问过的点记得标记为visit, 或者用matrix !=-1来判定该点时候被访问过）</li>
 <li>左上到右下；再从右下到左上</li>
 </ul>
 </li>
-<li><p>大礼包。注意这道题可以学习的是状态的记忆过程，使用map&lt;vector<int>, int&gt;, 当然这道题直接用dfs搜索每一个状态也是可以的<br>注意这道题在dfs的时候，除了要循环选择每个大礼包，退出循环后，还要判断当前计算值和==全部不用大礼包==谁更小！！！<br>无法使用完全背包+dp解决，因为dp的内层循环无法枚举，因为是一个vector, 而不是一个简单的int</p>
+<li><p>大礼包。注意这道题可以学习的是状态的记忆过程，使用map&lt;vector<int>, int&gt;, 当然这道题直接用dfs搜索每一个状态也是可以的<br>注意这道题在dfs的时候，除了要循环选择每个大礼包，退出循环后，还要判断当前计算值和==全部不用大礼包==谁更小！！！<br>无法使用完全背包+dp解决，因为dp的内层循环无法枚举，因为是一个vector, 而不是一个简单的int</int></p>
 </li>
 </ol>
-<p><font color=red>11. 划分为k个相同的子集：</font><br>这道题既可以使用状态压缩的dp也可以使用回溯+贪心<br>方法一：</p>
+<p><font color="red">11. 划分为k个相同的子集：</font><br>这道题既可以使用状态压缩的dp也可以使用回溯+贪心<br>方法一：</p>
 <ul>
 <li>需要对数组排序，从大的数最开始进行匹配，贪心策略（这样压栈次数会更少）</li>
 <li>使用回溯的时候需要使用一个vis数组，如果当前值小于target 那么继续向前遍历；如果==target那么从头开始遍历，同时k-1;如果大于target,那么循环内部判断数组下一个数是否合适  (循环数组的时候多次dfs 判断是否都能凑出&lt;=target)<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/78031844">https://zhuanlan.zhihu.com/p/78031844</a></li>
@@ -324,7 +324,7 @@
 <li>建立n个桶，然后判断每个数应该放在哪个桶内(只用记录桶中总数，不用记录具体放到什么)；如果当前这个数放在哪个桶都不行，那么当前循环return false；仍然使用贪心减少遍历次数</li>
 <li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/partition-to-k-equal-sum-subsets/solution/liang-chong-bu-tong-de-hui-su-si-lu-cong-5rnw/">https://leetcode-cn.com/problems/partition-to-k-equal-sum-subsets/solution/liang-chong-bu-tong-de-hui-su-si-lu-cong-5rnw/</a></li>
 </ul>
-<p><font color =blue>12. 地图分析，多源BFS的例题</font><br>和正向题目描述的思路反过来，从为1的陆地出发，而不是从每个海洋出发求最短距离。先将所有为1的节点的位置放在队列中，每访问一个节点，就修改节点位置的值，那么就不需要使用vis数组</p>
+<p><font color="blue">12. 地图分析，多源BFS的例题</font><br>和正向题目描述的思路反过来，从为1的陆地出发，而不是从每个海洋出发求最短距离。先将所有为1的节点的位置放在队列中，每访问一个节点，就修改节点位置的值，那么就不需要使用vis数组</p>
 <p>13.组合总数||<br>因为这个是要求具体的组合，用dfs,同时注意去重</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=index;i&lt;size;i++)&#123;<br>    <span class="hljs-keyword">if</span>(i&gt;index&amp;&amp;candidates[i]==candidates[i<span class="hljs-number">-1</span>])&#123;<span class="hljs-comment">//去重</span><br>        <span class="hljs-keyword">continue</span>;<br>    &#125;<br>    path.<span class="hljs-built_in">push_back</span>(candidates[i]);<br>    <span class="hljs-built_in">dfs</span>(candidates, target-candidates[i], i+<span class="hljs-number">1</span>, path);<br>    path.<span class="hljs-built_in">pop_back</span>();<br>    <span class="hljs-comment">// dfs(candidates, target, i+1, path); //注意这个一定不能要</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -338,7 +338,7 @@
 <ul>
 <li>使用两个队列， 每次更新一个size比较小的队列里面的所有元素，同时使用两个unordered_map记录走到某个字符串/位置，走的步数（同时有vis数组的功能）。 如果当前更新的字符串，在另外一个队列的map中也能找到记录说明两个队列相遇了， 返回step + 1 + other[copy];</li>
 </ul>
-<p><font color=red>16. 逃脱迷宫需要移除的最少砖头数量</font></p>
+<p><font color="red">16. 逃脱迷宫需要移除的最少砖头数量</font></p>
 <ul>
 <li> 使用BFS+优先队列+vis， 队列里面存放到x, y, 和到每个节点的最少要移除的砖头数量， 循环在nextx nexty=n-1的时候返回结果， 具体代码实现看模板代码/逃脱迷宫</li>
 <li> 不能使用dfs+记忆化数组+vis，因为到达当前节点的时候，前面vis 路径不一定是最优的，导致计算出来d不一定是最佳的，从而之后的计算都出现错误； 记忆化数组可以使用场景就是，之前的选择不会对之后的选择造成影响， 或者需要另外用一个状态位运算来记录之前走的路径到底是怎样的（见lc980, 下面有分析）</li>
@@ -358,7 +358,7 @@
 <li>使用BFS</li>
 <li>这个题类似于 剑指 Offer 35. 复杂链表的复制，需要建立原始node和新node之间的映射, 同时这个hash也能充当vis数组，判断当前节点是否被访问过；复杂链表复制那道题只需要顺序两次遍历链表就可以了，不需要vis或者bfs</li>
 </ul>
-<p><font color=red>16. 给表达式添加运算符（hard）</font><br>使用回溯<br>易错点：<br>    1. 乘法是有优先级的，因此之前计算dfs计算的结果有可能是需要回退一个数组，然后再进行计算<br>    2. 每次压入的数字可能是包含多个位的<br>    3. 不能包含前导0，但是这个数又不是0的情况<br>    <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">if</span>(i!=index&amp;&amp;num[index]==<span class="hljs-string">&#x27;0&#x27;</span>)&#123;<br>    <span class="hljs-keyword">return</span>;<br>&#125;<br></code></pre></td></tr></table></figure><br>    4. 回溯是时候一定要记得将符号pop_back!!!!</p>
+<p><font color="red">16. 给表达式添加运算符（hard）</font><br>使用回溯<br>易错点：<br>    1. 乘法是有优先级的，因此之前计算dfs计算的结果有可能是需要回退一个数组，然后再进行计算<br>    2. 每次压入的数字可能是包含多个位的<br>    3. 不能包含前导0，但是这个数又不是0的情况<br>    <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">if</span>(i!=index&amp;&amp;num[index]==<span class="hljs-string">&#x27;0&#x27;</span>)&#123;<br>    <span class="hljs-keyword">return</span>;<br>&#125;<br></code></pre></td></tr></table></figure><br>    4. 回溯是时候一定要记得将符号pop_back!!!!</p>
 <ol start="17">
 <li>lc980. 不同路径 III</li>
 </ol>
@@ -371,7 +371,7 @@
 </ol>
 <ul>
 <li>需要找到所有拆分的具体方案</li>
-<li>为了减少回溯的重复，使用一个hash&lt;int, vector<string>&gt; 将以i下标为开始后面形成的所有可能都存储下来，这样之后寻找的时候就不用重复判断 （类似二叉搜索树的所有可能那种题目）， 记忆化dfs</li>
+<li>为了减少回溯的重复，使用一个hash&lt;int, vector<string>&gt; 将以i下标为开始后面形成的所有可能都存储下来，这样之后寻找的时候就不用重复判断 （类似二叉搜索树的所有可能那种题目）， 记忆化dfs</string></li>
 </ul>
 <ol start="19">
 <li>lc741. 摘樱桃(hard)</li>
@@ -399,7 +399,7 @@
 <li>类似的概率转移dfs/dp有leet935. 马”在棋盘上的概率（可以最后/pow(8,N), 不用每次/8）</li>
 </ul>
 <ol start="3">
-<li><p>如果要求岛屿的形状相同，那么可以将岛屿的位置使用string的形式存储下来，然后使用set<string>来存储，返回size就是形状不同的岛屿（忽略翻折和旋转）</p>
+<li><p>如果要求岛屿的形状相同，那么可以将岛屿的位置使用string的形式存储下来，然后使用set<string>来存储，返回size就是形状不同的岛屿（忽略翻折和旋转）</string></p>
 </li>
 <li><p>递归转为非递归的方式，使用堆或者栈（lc100.相同的数（dfs/宽度优先遍历））</p>
 </li>
