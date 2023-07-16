@@ -58,7 +58,7 @@
 
 
 <body>
-  <header style="height: 100vh;">
+  <header style="height: 80vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -154,7 +154,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/bg-shouye.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -180,7 +180,7 @@
     
       <div class="container nopadding-x-md">
         <div class="py-5" id="board"
-          style=margin-top:0>
+          >
           
           <div class="container">
             <div class="row">
@@ -191,347 +191,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E7%AC%94%E8%AF%95/" target="_self">
-          笔试
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/11/13/leetcode/%E5%85%B6%E4%BB%96/" target="_self">
+          <img src="/img/post_default_side.jpeg" srcset="/img/loading.gif" lazyload alt="其他问题">
         </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E7%AC%94%E8%AF%95/" target="_self">
-          
-          
-            
-          
-          Awesome algorithm interview
-计算机网络TCP连接为什么要三次握手，TCP关闭为什么要4次挥手？三次握手是为了防止服务器资源的浪费，因为如何是两次的话，如果客户端发送请求连接，但是不发送请求数据，就可能造成服务器端口占用，资源被浪费；四次回收是因为客户端和服务器可以各自关闭，比如客户端告诉服务器FIN，表示自己不发送数据，但是仍然可以接收数据，因此服务器可以继续发送，服务
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-13 20:10" pubdate>
-              2021-11-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/">项目相关</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a>
-            
-          </div>
-        
       </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
     
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/11/13/leetcode/%E5%93%88%E5%B8%8C%E7%9B%B8%E5%85%B3/" target="_self">
-          哈希相关+前缀和
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/11/13/leetcode/%E5%93%88%E5%B8%8C%E7%9B%B8%E5%85%B3/" target="_self">
-          
-          
-            
-          
-          前缀和 + hash题目汇总一定要注意先判断hash[presum-target]是否存在并更新结果，再更新hash[presum]++， 因为可能nums[i]=0
-例题：面试题 17.05.  字母与数字，要求字母和数字个数相同，那么就是将字母转为1， 数字转为-1的时候，前缀和为0的最长序列；另外使用这种思想是的”和等于 k 的最长子数组长度“ ”和等于k子数组“ （hash+前缀和）
-12
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-13 19:58" pubdate>
-              2021-11-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/leetcode/">leetcode</a>
-            
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/11/13/leetcode/%E5%9B%9E%E6%BA%AF_DFS_BFS/" target="_self">
-          回溯_DFS_BFS
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/11/13/leetcode/%E5%9B%9E%E6%BA%AF_DFS_BFS/" target="_self">
-          
-          
-            
-          
-          例题
-字符串的转换路径问题: 单词接龙I:只返回最短转换序列的长度（使用BFS） 单词接龙II：返回所有最短转换序列具体是什么 标准答案是既用到了深度优先搜索，也用到了宽度优先搜索 （最短距离） 首先判断endWord是否在字典中，不在的话直接返回空 在进行单词找相邻，可以遍历单词每个字符，判断与当前是否只有一个不相等（O(mn)）；或者将当前单词的每一位替换成 26 个小写英文字母，查找是否在字
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-13 17:23" pubdate>
-              2021-11-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/leetcode/">leetcode</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95-DFS-BFS/">回溯算法, DFS, BFS</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/11/13/leetcode/%E5%AD%97%E7%AC%A6%E4%B8%B2/" target="_self">
-          字符串相关问题
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/11/13/leetcode/%E5%AD%97%E7%AC%A6%E4%B8%B2/" target="_self">
-          
-          
-            
-          
-          常见字符串解决套路
-用动态规划求解
-用滑动窗口求解
-用双指针求解
-使用DFS/BFS求一个字符串转为另外一个字符串的路径问题
-
-扩展：字符串hashabcde转为为多项式f(5)= a* p^5 + b*p^4 +c *p^3 +d p^2 +e p^1f(3)= a p^3 + bp^2 +c *p^1f(4, 5)=f(5)-f(3)*p^(5-4+1)
-c++用unsigned long l
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-13 17:23" pubdate>
-              2021-11-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/leetcode/">leetcode</a>
-            
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/11/13/leetcode/%E6%9A%82%E6%97%B6%E6%B2%A1%E7%9C%8B%E5%86%85%E5%AE%B9/" target="_self">
-          暂时未看
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/11/13/leetcode/%E6%9A%82%E6%97%B6%E6%B2%A1%E7%9C%8B%E5%86%85%E5%AE%B9/" target="_self">
-          
-          
-            
-          
-          
-堆排序和其他排序内容，面试前过一次
-
-堆排序已经看，主要思路：先对每个内部节点进行heap_build,然后每次将0交换到i位置（n-1 到0），然后对0~i-1进行heap_build；heap_build：先对左右排序，在对root排序，如果当前root没有交换，那么退出递归程序，否则递归root=flag, heap_build
-
-字典树前缀树也不一定要有value字段，当value的数字
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-13 17:23" pubdate>
-              2021-11-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/leetcode/">leetcode</a>
-            
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/11/13/leetcode/%E4%BD%8D%E8%BF%90%E7%AE%97/" target="_self">
-          位运算
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/11/13/leetcode/%E4%BD%8D%E8%BF%90%E7%AE%97/" target="_self">
-          
-          
-            
-          
-          总结注意位运算的优先级问题：使用位运算一定要多打括号
-123456789// 错误写法if (a &amp; b == 0) &#123;    ...;&#125;// 正确写法if ((a &amp; b) == 0) &#123;    ...;&#125;
-
-
-a + (b&amp;c) 不管是+/-/*/ 还是==， 只要和位运算在一起，位运算都应该大括号！！！！
-例题
-使用位运算来判断
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-13 17:22" pubdate>
-              2021-11-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/leetcode/">leetcode</a>
-            
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/11/13/leetcode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" target="_self">
-          贪心算法
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/11/13/leetcode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" target="_self">
-          
-          
-            
-          
-          相关例题
-摆动序列：使用贪心算法，或者动态规划 当前状态可以用前面的一个状态转移过来（可以证明得到，down是由up转移过来，up是由down转移过来），所以时间复杂度只有O(1)或者使用diff来进行理解，当前的diff一定要和前一个diff相反注意和最长上升子序列的区别，最长上升子序列，当前的状态不能从上一个状态转移过来，所以只能使用内外循环
-
-其实摆动序列也属于动态规划  down[i], 
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-13 17:22" pubdate>
-              2021-11-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/leetcode/">leetcode</a>
-            
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2021/11/13/leetcode/%E5%85%B6%E4%BB%96/" target="_self">
@@ -591,7 +257,13 @@ a + (b&amp;c) 不管是+/-/*/ 还是==， 只要和位运算在一起，位运�
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/11/13/leetcode/%E5%8F%8C%E6%8C%87%E9%92%88/" target="_self">
+          <img src="/img/post_default_side.jpeg" srcset="/img/loading.gif" lazyload alt="双指针">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2021/11/13/leetcode/%E5%8F%8C%E6%8C%87%E9%92%88/" target="_self">
@@ -642,7 +314,13 @@ a + (b&amp;c) 不管是+/-/*/ 还是==， 只要和位运算在一起，位运�
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/11/13/leetcode/%E6%8E%92%E5%BA%8F%E9%A2%98/" target="_self">
+          <img src="/img/post_default_side.jpeg" srcset="/img/loading.gif" lazyload alt="排序算法">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2021/11/13/leetcode/%E6%8E%92%E5%BA%8F%E9%A2%98/" target="_self">
@@ -684,11 +362,403 @@ a + (b&amp;c) 不管是+/-/*/ 还是==， 只要和位运算在一起，位运�
     </article>
   </div>
 
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/11/13/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" target="_self">
+          <img src="/img/post_default_side.jpeg" srcset="/img/loading.gif" lazyload alt="滑动窗口">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/13/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" target="_self">
+          滑动窗口
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/13/leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" target="_self">
+          
+          
+            
+          
+          例题
+最小覆盖子串（两个字符串）
+不同字符的最小子序列（一个字符串）需要有一个hash来记录一个字符的剩余出现次数如果栈中没找到，从栈中弹出剩余出现次数大于0，而且大于当前字符的字符，然后压入当前字符否则直接将num[当前字符]–
+窗口内的最大值，使用的是单调栈
+未排序数组中，累加和为给定值的最长子数组
+
+
+方法一： 滑动窗口 （使用了条件，数据全部为正数，如果没有这个条件就不能使用滑动窗口）
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-13 17:22" pubdate>
+              2021-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/11/13/leetcode/%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/" target="_self">
+          <img src="/img/post_default_side.jpeg" srcset="/img/loading.gif" lazyload alt="二分算法">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/13/leetcode/%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/" target="_self">
+          二分算法
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/13/leetcode/%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/" target="_self">
+          
+          
+            
+          
+          模板
+参考链接：[二分查找专题]（https://blog.csdn.net/qq_41221520/article/details/108277801）
+
+提型： 第一个大于，第一个大于等于， 等于的左右边界（1）某一个数（2）最后一个小于目标值target的数（3）最后一个小于等于目标值target的数（3）第一个大于目标值target的数（5）第一个大于等于目标值target的数
+
+如果找左
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-13 17:21" pubdate>
+              2021-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BA%8C%E5%88%86/">二分</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/11/13/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%A2%98%E5%9E%8B/" target="_self">
+          <img src="/img/post_default_side.jpeg" srcset="/img/loading.gif" lazyload alt="动态规划">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/13/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%A2%98%E5%9E%8B/" target="_self">
+          动态规划
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/13/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%A2%98%E5%9E%8B/" target="_self">
+          
+          
+            
+          
+          求总数问题
+回文字符串的个数
+
+表达式为期望结果的总数
+
+也是区间dp, dp[i][j][0]或者dp[i][j][1])
+因为不是表达式的个数，而是达到期望值的个数，因此要记录一个表达式的值，用三维数组
+
+
+能够组成的二叉树的个数
+
+打气球的最大分数(区间dp)
+
+虽然不是求个数，而是求最大，但是也是与当前状态的左右边界有关。因为最终结果和左右两边有关，因此都是枚举的长度+右边界，计算左边界，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-13 17:00" pubdate>
+              2021-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/dp/">dp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/11/13/leetcode/%E5%8D%95%E8%B0%83%E6%A0%88%E7%9B%B8%E5%85%B3/" target="_self">
+          <img src="/img/post_default_side.jpeg" srcset="/img/loading.gif" lazyload alt="单调栈">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/13/leetcode/%E5%8D%95%E8%B0%83%E6%A0%88%E7%9B%B8%E5%85%B3/" target="_self">
+          单调栈
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/13/leetcode/%E5%8D%95%E8%B0%83%E6%A0%88%E7%9B%B8%E5%85%B3/" target="_self">
+          
+          
+            
+          
+          单调栈相关题目：
+去除重复字母
+
+使得去除重复字母之后，字符串的字典序最小
+值栈记录剩下字符串中是否包含这个字符，如果包含，那么就可以弹出（如果当前字符比这个字符小，就弹出）
+
+
+接雨水
+
+方法一：每个地方能接的雨水是当前下标左右两边最大值（LeftMax and RightMax）的较小一个 –&gt;值栈
+方法二：使用单调递减栈，维护top and left（单调栈的top下面的值） –&gt
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-13 16:51" pubdate>
+              2021-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%A0%88-%E5%8D%95%E8%B0%83%E6%A0%88/">栈, 单调栈</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/11/13/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/leetcode-%E5%8D%95%E8%B0%83%E6%A0%88%E7%9B%B8%E5%85%B3/" target="_self">
+          <img src="/img/post_default_side.jpeg" srcset="/img/loading.gif" lazyload alt="leetcode/单调栈相关">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/13/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/leetcode-%E5%8D%95%E8%B0%83%E6%A0%88%E7%9B%B8%E5%85%B3/" target="_self">
+          leetcode/单调栈相关
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/13/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/leetcode-%E5%8D%95%E8%B0%83%E6%A0%88%E7%9B%B8%E5%85%B3/" target="_self">
+          
+          
+            
+          
+          
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-13 16:49" pubdate>
+              2021-11-13
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/11/12/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/scheduler-ralated/" target="_self">
+          <img src="/img/post_default_side.jpeg" srcset="/img/loading.gif" lazyload alt="scheduler_ralated">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/12/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/scheduler-ralated/" target="_self">
+          scheduler_ralated
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/12/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/scheduler-ralated/" target="_self">
+          
+          
+            
+          
+          调度需要关注的问题/或者目标：提高资源利用率，负载均衡，用户的优先级和公平性
+可能是针对深度学习场景的调度，也可能是平常的请求任务
+ParSync:调度器需要进行及时的同步，如果不及时进行同步那么就可能造成大量冲突；但是在同步的时候，如果一个调度器固定同步固定几个机器的话。就无法充分利用机器空闲资源；所以这篇论文提出利用分片同步的策略，就是一个调度器通过轮训的方式，分时段和多个机器进行同步；同时给
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-12 10:04" pubdate>
+              2021-11-12
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/scheduler/">scheduler</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/11/11/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/python%E7%9B%B8%E5%85%B3/" target="_self">
+          <img src="/img/post_default_side.jpeg" srcset="/img/loading.gif" lazyload alt="python相关">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/11/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/python%E7%9B%B8%E5%85%B3/" target="_self">
+          python相关
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/11/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/python%E7%9B%B8%E5%85%B3/" target="_self">
+          
+          
+            
+          
+          Python语言部分
+python 开启debug模式，使用logger.setLevel 以及在logger的时候设置不同的logger.info  logger.error  logger.warning等
+
+1234567891011import loggingimport requestslogging.basicConfig(level=logging.DEBUG,           
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-11 19:06" pubdate>
+              2021-11-11
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

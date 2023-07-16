@@ -75,7 +75,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -171,7 +171,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/bg-wenzhang-2.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -267,7 +267,7 @@
 <li><p>两整数之和，不使用+实现两个整数之和 使用异或以及与运算，一定要注意 carry要使用unsigned int 使用int会报错<br>(unsigned int) carry=(unsigned int) (a&amp;b)&lt;&lt;1</p>
 </li>
 </ol>
-<p><font color=red>7. 数组中两个数的最大异或值</font></p>
+<p><font color="red">7. 数组中两个数的最大异或值</font></p>
 <ul>
 <li>方法一：31位的每一位只有两种情况，因此可以猜测执行<br>  对异或结果的每一位(32位，从31-0)从大到小进行猜测可以取到的数1或者0 运用了a^b=x 那么x^a=b,也就是查看猜测的这个数和集合里面的进行异或是否能够在集合里面找到另外一个数 （31*n的时间复杂度仍然是O(n)）</li>
 <li>方法二：使用字典树，然后遍历每个数，得到针对这个数可以取到的异或最大值i，然后取最大；（这里的trie树是一颗二叉树）</li>
