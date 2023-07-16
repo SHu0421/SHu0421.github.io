@@ -15,7 +15,7 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="这是我的第一篇博客">
-  <meta name="author" content="huhu">
+  <meta name="author" content="Shu">
   <meta name="keywords" content="">
   <meta name="description" content="验证二叉树的前序序列化 观察规律题或者建树题 我的思路是直接建立一颗二叉树，但是建立树代码可以不写；最后树是正确的就是中间不会访问到cur&#x3D;&#x3D;size的情况，同时最后循环完之后不会再出现#或者数字 官方题解是：通过槽位计数，如果遍历到最后槽位为0说明正确，如果中间槽位为0，说明出错 因为加上一个#槽位数会–，如果加上一个数字那么槽位数会++（-1+2） 注意这道题的易错点是: 字符串中包含’,’">
 <meta property="og:type" content="article">
@@ -26,7 +26,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-23T02:27:56.000Z">
 <meta property="article:modified_time" content="2023-07-10T10:36:19.532Z">
-<meta property="article:author" content="huhu">
+<meta property="article:author" content="Shu">
 <meta name="twitter:card" content="summary_large_image">
   
   <title>二叉树 - Hello World</title>
@@ -152,6 +152,46 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-books"></i>
+                爱好
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/favorite/">
+                    
+                    概述
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/favorite-reading">
+                    
+                    阅读
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/favorite-language/">
+                    
+                    语言
+                  </a>
+                
+              </div>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
@@ -211,6 +251,14 @@
   
 
   
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
   
 </div>
 
@@ -416,6 +464,15 @@
             </div>
 
             
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+
+              </article>
+            
           </article>
         </div>
       </div>
@@ -532,6 +589,8 @@
   
 
 
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 

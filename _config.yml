@@ -9,7 +9,7 @@ title: Hello World
 subtitle: ''
 description: '这是我的第一篇博客'
 keywords:
-author: huhu
+author: Shu
 language: zh-CN
 timezone: ''
 
@@ -105,7 +105,8 @@ theme: fluid
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: git@github.com:SHu0421/SHu0421.github.io.git
+  # repo: git@github.com:SHu0421/SHu0421.github.io.git
+  repo: https://github.com/SHu0421/SHu0421.github.io.git
   branch: master
 
 server:

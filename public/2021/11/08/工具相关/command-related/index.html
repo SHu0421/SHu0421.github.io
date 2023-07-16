@@ -15,7 +15,7 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="这是我的第一篇博客">
-  <meta name="author" content="huhu">
+  <meta name="author" content="Shu">
   <meta name="keywords" content="">
   <meta name="description" content="1.让远程服务器节点使用本地节点的vpn进行翻墙， 适用于远程节点方法一：假设，服务器上你选择使用端口18860，先在你的mac上运行命令：ssh -C  -N -g -R 18860:127.0.0.1:7890 服务器用户名@服务器ip  然后在服务器运行：export https_proxy&#x3D;http:&#x2F;&#x2F;127.0.0.1:18860 那么当服务器使用Https去下载东西的时候，就会通过端">
 <meta property="og:type" content="article">
@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://example.com/.com//image-20211207175530810.png">
 <meta property="article:published_time" content="2021-11-08T13:37:17.000Z">
 <meta property="article:modified_time" content="2023-07-10T10:36:19.581Z">
-<meta property="article:author" content="huhu">
+<meta property="article:author" content="Shu">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/.com//image-20211207175530810.png">
   
@@ -154,6 +154,46 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-books"></i>
+                爱好
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/favorite/">
+                    
+                    概述
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/favorite-reading">
+                    
+                    阅读
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/favorite-language/">
+                    
+                    语言
+                  </a>
+                
+              </div>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
@@ -213,6 +253,14 @@
   
 
   
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
   
 </div>
 
@@ -307,6 +355,15 @@
               
             </div>
 
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+
+              </article>
             
           </article>
         </div>
@@ -424,6 +481,8 @@
   
 
 
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 

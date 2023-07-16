@@ -15,7 +15,7 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="这是我的第一篇博客">
-  <meta name="author" content="huhu">
+  <meta name="author" content="Shu">
   <meta name="keywords" content="">
   <meta name="description" content="相关例题 摆动序列：使用贪心算法，或者动态规划 当前状态可以用前面的一个状态转移过来（可以证明得到，down是由up转移过来，up是由down转移过来），所以时间复杂度只有O(1)或者使用diff来进行理解，当前的diff一定要和前一个diff相反注意和最长上升子序列的区别，最长上升子序列，当前的状态不能从上一个状态转移过来，所以只能使用内外循环  其实摆动序列也属于动态规划  down[i],">
 <meta property="og:type" content="article">
@@ -26,7 +26,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-13T09:22:53.000Z">
 <meta property="article:modified_time" content="2023-07-10T10:36:19.575Z">
-<meta property="article:author" content="huhu">
+<meta property="article:author" content="Shu">
 <meta name="twitter:card" content="summary_large_image">
   
   <title>贪心算法 - Hello World</title>
@@ -152,6 +152,46 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-books"></i>
+                爱好
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/favorite/">
+                    
+                    概述
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/favorite-reading">
+                    
+                    阅读
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/favorite-language/">
+                    
+                    语言
+                  </a>
+                
+              </div>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
@@ -211,6 +251,14 @@
   
 
   
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
   
 </div>
 
@@ -383,6 +431,15 @@
             </div>
 
             
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+
+              </article>
+            
           </article>
         </div>
       </div>
@@ -499,6 +556,8 @@
   
 
 
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 

@@ -315,7 +315,17 @@ navbar:
     - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
     - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
-    #- { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
+    # - { key: "favorite", name: "爱好", link: "/favorite/", icon: "iconfont icon-books"}
+    - {
+      key: '爱好',
+      icon: 'iconfont icon-books',
+      submenu: [
+        { key: '概述', link: '/favorite/' },
+        { key: '阅读', link: '/favorite-reading' },
+        { key: '语言', link: '/favorite-language/' }
+      ]
+  }
+    # - { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
 
 # 搜索功能，基于 hexo-generator-search 插件，若已安装其他搜索插件请关闭此功能，以避免生成多余的索引文件
 # Search feature, based on hexo-generator-search. If you have installed other search plugins, please disable this feature to avoid generating redundant index files
@@ -510,6 +520,8 @@ post:
   # 文章在首页的默认封面图，当没有指定 index_img 时会使用该图片，若两者都为空则不显示任何图片
   # Path of the default post cover when `index_img` is not set. If both are empty, no image will be displayed
   default_index_img: /img/post_default_side.jpeg
+    # - /img/post_default_side2.jpeg
+  #  default_index_img: https://cdn.seovx.com/d/?mom=302
 
   # 文章标题下方的元信息
   # Meta information below title
@@ -551,7 +563,7 @@ post:
     # 浏览量计数
     # Number of visits
     views:
-      enable: false
+      enable: true
       # 统计数据来源
       # Data Source
       # Options: busuanzi | leancloud
@@ -646,11 +658,11 @@ post:
   # 评论插件
   # Comment plugin
   comments:
-    enable: false
+    enable: true
     # 指定的插件，需要同时设置对应插件的必要参数
     # The specified plugin needs to set the necessary parameters at the same time
     # Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo | cusdis
-    type: disqus
+    type: valine
 
 
 #---------------------------
@@ -678,7 +690,7 @@ utterances:
 # Based on third-party service
 # See: https://disqus.com
 disqus:
-  shortname:
+  shortname: 
   # 以下为 Disqusjs 支持, 国内用户如果想使用 Disqus 建议配合使用
   # The following are Disqusjs configurations, please ignore if DisqusJS is not required
   # See: https://github.com/SukkaW/DisqusJS
@@ -880,10 +892,34 @@ about:
 # Custom Page through `hexo new page`
 #---------------------------
 page:
-  banner_img: /img/bg-zidingyi.jpg
+  banner_img: /img/bg-favorite.jpg # 新加了一个爱好页面
   banner_img_height: 60
   banner_mask_alpha: 0.3
 
+favorite:
+  enable: true
+  banner_img: /img/bg-favorite.jpg # 新加了一个爱好页面
+  banner_img_height: 60
+  banner_mask_alpha: 0.3
+  items:
+    - {
+      title: "Favorite Into",
+      intro: "爱好综述",
+      link: "/favorite/index.md",
+      avatar: "/img/favicon.png"
+    }
+    - {
+      title: "Reading",
+      intro: "阅读",
+      link: "/favorite/index_reading.md",
+      avatar: "/img/favicon.png"
+    }
+    - {
+      title: "Exercise",
+      intro: "运动",
+      link: "/favorite_exercise/index.md",
+      avatar: "/img/favicon.png"
+    }
 
 #---------------------------
 # 404页
@@ -946,7 +982,7 @@ links:
     # 指定的插件，需要同时设置对应插件的必要参数
     # The specified plugin needs to set the necessary parameters at the same time
     # Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo | cusdis
-    type: disqus
+    type: valine
 
 
 #---------------------------
