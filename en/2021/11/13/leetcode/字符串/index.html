@@ -1,0 +1,832 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/en/img/favicon.png">
+  <link rel="icon" href="/en/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Shu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="常见字符串解决套路 用动态规划求解 用滑动窗口求解 用双指针求解 使用DFS&#x2F;BFS求一个字符串转为另外一个字符串的路径问题  扩展：字符串hashabcde转为为多项式f(5)&#x3D; a* p^5 + b*p^4 +c *p^3 +d p^2 +e p^1f(3)&#x3D; a p^3 + bp^2 +c *p^1f(4, 5)&#x3D;f(5)-f(3)*p^(5-4+1) c++用unsigned long l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符串相关问题">
+<meta property="og:url" content="http://shu0421.github.io/en/2021/11/13/leetcode/%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
+<meta property="og:site_name" content="Hello World">
+<meta property="og:description" content="常见字符串解决套路 用动态规划求解 用滑动窗口求解 用双指针求解 使用DFS&#x2F;BFS求一个字符串转为另外一个字符串的路径问题  扩展：字符串hashabcde转为为多项式f(5)&#x3D; a* p^5 + b*p^4 +c *p^3 +d p^2 +e p^1f(3)&#x3D; a p^3 + bp^2 +c *p^1f(4, 5)&#x3D;f(5)-f(3)*p^(5-4+1) c++用unsigned long l">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-11-13T09:23:32.000Z">
+<meta property="article:modified_time" content="2023-07-10T10:36:19.573Z">
+<meta property="article:author" content="Shu">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>字符串相关问题 - Hello World</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="/en/lib/hint/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/en/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/en/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/en/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"shu0421.github.io","root":"/en/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"gtag":null},"search_path":"/en/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/en/js/utils.js" ></script>
+  <script  src="/en/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/en/atom.xml" title="Hello World" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/en/">
+      <strong>HU&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/en/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/en/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/en/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/en/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/en/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-books"></i>
+                <span>Favorites</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/en/favorite/">
+                    
+                    <span>Summary</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/en/favorite-reading">
+                    
+                    <span>Reading</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/en/favorite-language/">
+                    
+                    <span>Language</span>
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="http://shu0421.github.io">
+                <i class="iconfont icon-brush"></i>
+                <span>中文</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/en/img/bg-wenzhang-2.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="字符串相关问题"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-11-13 17:23" pubdate>
+          November 13, 2021 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          6.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          20 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">字符串相关问题</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h4 id="常见字符串解决套路"><a href="#常见字符串解决套路" class="headerlink" title="常见字符串解决套路"></a>常见字符串解决套路</h4><ol>
+<li><a href="./%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%A2%98%E5%9E%8B.md">用动态规划求解</a></li>
+<li><a href="./%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3.md">用滑动窗口求解</a></li>
+<li><a href="./%E5%8F%8C%E6%8C%87%E9%92%88.md">用双指针求解</a></li>
+<li><a href="./%E5%9B%9E%E6%BA%AF_DFS_BFS.md">使用DFS/BFS求一个字符串转为另外一个字符串的路径问题</a></li>
+</ol>
+<h4 id="扩展：字符串hash"><a href="#扩展：字符串hash" class="headerlink" title="扩展：字符串hash"></a>扩展：字符串hash</h4><p>abcde<br>转为为多项式<br>f(5)= a* p^5 + b*p^4 +c *p^3 +d <em>p^2 +e <em>p^1<br>f(3)= a</em> p^3 + b</em>p^2 +c *p^1<br>f(4, 5)=f(5)-f(3)*p^(5-4+1)</p>
+<p>c++用unsigned long long 自然溢出，可以不用取模，如果使用取模方式可能会导致溢出</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs C++">p[<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;<br>h[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;size;i++)&#123;<br>  h[i]=h[i<span class="hljs-number">-1</span>]*p+s[i<span class="hljs-number">-1</span>]; <span class="hljs-comment">//0到i-1之间的hash值</span><br>  p[i]=p[i<span class="hljs-number">-1</span>]*p;  <span class="hljs-comment">//不同长度字符串的p值</span><br>&#125;<br><br>hash_val_m_n=h[m]-h[n<span class="hljs-number">-1</span>]*p[m-n+<span class="hljs-number">1</span>];<br></code></pre></td></tr></table></figure>
+
+<p>最长重复子串（hard）<br>使用字符串hash+二分寻找长度，如果hash的key是字符串的话，时间复杂度为O(n*len))， 只有key为整数类型，时间复杂度才为 O(n))</p>
+<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><ol>
+<li><p>最大数：注意使用str.substr以及位移操作时候一定要记得赋值，否则结果是不会改变的 res=res.substr(start, len), 以及注意最后的结果包含首0的情况，一定要记得去除首零</p>
+</li>
+<li><p>最大单词长度乘积<br>使用掩码判断字符串是否有相似的字符，然后掩码&amp;</p>
+</li>
+<li><p>打开转盘锁<br>使用bfs<br>值得学习的地方：</p>
+</li>
+<li><p>使用unordered_set代替vector<br>主要在判断一个字符之前是否在一个集合中, 使用unordered_set比vector更快 if(!set.count())  表示集合中没有这个元素</p>
+</li>
+<li><p>在查找当前字符变形后的字符，一定要及得保留当前的字符再做修改！！</p>
+</li>
+<li><p>匹配子序列的单词数<br>查看多个字符串中，有几个是字符串s的子序列<br>使用二分查找，先通过hash，将不同字符对应的下标值进行存储，然后遍历需要查询的每个字符串，分别从hash里面多个vector进行查找，同时下次查找的下标，应该比当前下标至少+1</p>
+</li>
+</ol>
+<p><font color="red">4. 反转每对括号间的子串 (华为机试)</font><br><strong>字符串+栈</strong><br>注意这道题我最开始还没想出来</p>
+<ul>
+<li>解决方案：<br>str为最后的结果<br>遇到（ 那么将str的元素压入栈中，然后str转为“”<br>遇到）那么将str元素翻转，<strong>如果栈不为空, 将栈顶元素弹出</strong>, str=s.top()+str; s.pop()<br>其余的字符直接追加在str后面<br>最后返回str</li>
+<li>也就是拼接好的字符串直接放在str中，不需要再压入栈中, 多了一个 “每次遇到]将当前字符串reverse 并加在栈顶元素的后面” 的步骤</li>
+</ul>
+<p>PS：类似的一道题: 字符串解码 (2021年4399后端开发笔试原题)</p>
+<ul>
+<li>仍然使用栈, 思路和4相似，只不过多了一个数字 （左括号不会被压入栈中）</li>
+<li>另一种解法：数字存放在数字栈，字符串存放在字符串栈，遇到右括号时候弹出一个数字栈，字母栈弹到左括号为止。（左括号会压入栈中）</li>
+</ul>
+<p><font color="red">5. lc2157字符串分组(hard)</font></p>
+<ul>
+<li>(lc49字符串异位词分组) 用string或者vector<int> 作为hash的key</int></li>
+<li>并查集对字符串进行分组和记录组数（带size的并查集，同时要考虑可能存在相同字符串的情况， size[x]&gt;1 group–，同时合并的时候， group也会–），状态压缩+位运算实现字符串关联判断和查找</li>
+<li>如果直接枚举任意两个字符串并判断是否关联，并以此得到图上所有的边，时间复杂度至少为 O(n^2), 会超出时间限制。因此对每个字符串进行变换</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">int</span> x = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">char</span> ch: word) &#123;<br>    x |= <span class="hljs-number">1</span> &lt;&lt; (ch - <span class="hljs-string">&#x27;a&#x27;</span>); <span class="hljs-comment">// 计算 word 的二进制表示</span><br>&#125;<br><br><span class="hljs-keyword">for</span> x := range fa &#123; <span class="hljs-comment">// 枚举所有字符串（二进制表示）</span><br>		<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">26</span>; i++ &#123;<br>			<span class="hljs-built_in">merge</span>(x, x^<span class="hljs-number">1</span>&lt;&lt;i) <span class="hljs-comment">// 添加或删除字符 i  0变为1， 1变为0</span><br>			<span class="hljs-keyword">if</span> x&gt;&gt;i&amp;<span class="hljs-number">1</span> == <span class="hljs-number">1</span> &#123; <span class="hljs-comment">//找到一个1， 0对 翻转</span><br>				<span class="hljs-keyword">for</span> j := <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">26</span>; j++ &#123;<br>					<span class="hljs-keyword">if</span> x&gt;&gt;j&amp;<span class="hljs-number">1</span> == <span class="hljs-number">0</span> &#123;<br>						<span class="hljs-built_in">merge</span>(x, x^<span class="hljs-number">1</span>&lt;&lt;i|<span class="hljs-number">1</span>&lt;&lt;j) <span class="hljs-comment">// 替换字符 i 为 j</span><br>					&#125;<br>				&#125;<br>			&#125;<br>		&#125;<br>	&#125;<br><br></code></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>最长的美好子字符串</li>
+</ol>
+<ul>
+<li>枚举，i， j, 表示字符串左右，两重循环</li>
+<li>然后使用两个二进制代替两个数组，判断是否大小写都有，如果有数量就不能使用两个数来代替，只有这种有或没有可以<br>也是使用二进制对字符串进行压缩<br>枚举/分治/枚举typenum(至少有K个重复字符的最长子串, 不建议用这种方法，因为比较难)</li>
+</ul>
+<ol start="7">
+<li>不同字符的最小子序列<br>去除重复的字符串，使得子序列包含所有的字符，每个字符一次，同时字典序有最少<br>solution:<br>需要有一个hash来记录一个字符的剩余出现次数<br>如果栈中没找到，从栈中弹出剩余出现次数大于0，而且大于当前字符的字符，然后压入当前字符<br>如果栈中找到，直接将num[当前字符]–, 不push进入栈中</li>
+</ol>
+<p><font color="red">8.序列自动机</font><br>字符串dp<br>在进行判断一个字符串a是否是另外一个字符串b的子序列的时候，可以使用双指针，判断a的指针是否能走到末尾<br>也可以使用dp<br>dp[i][j]=i  s[i]==j （表示s从i开始第一个等于字符j的下标）<br>dp[i][j]=dp[i+1][j]  s[i]!=j<br>从后往前更新</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"> Arrays.fill(f[m], m);<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = m - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; --i) &#123;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">26</span>; ++j) &#123;<span class="hljs-comment">//只包含小写字符</span><br>		<span class="hljs-keyword">if</span> (s.charAt(i) == (<span class="hljs-keyword">char</span>) (<span class="hljs-string">&#x27;a&#x27;</span> + j)) &#123;<br>			f[i][j] = i;<br>		&#125; <span class="hljs-keyword">else</span> &#123;<br>			f[i][j] = f[i + <span class="hljs-number">1</span>][j];<br>		&#125;<br>	&#125;<br>&#125;<br>String res = <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">for</span> (String t : dictionary) &#123;<br>	<span class="hljs-keyword">boolean</span> match = <span class="hljs-keyword">true</span>;<br>	<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; t.length(); ++i) &#123;<br>		<span class="hljs-keyword">if</span> (f[j][t.charAt(i) - <span class="hljs-string">&#x27;a&#x27;</span>] == m) &#123;<br>			match = <span class="hljs-keyword">false</span>;<br>			<span class="hljs-keyword">break</span>;<br>		&#125;<br>		j = f[j][t.charAt(i) - <span class="hljs-string">&#x27;a&#x27;</span>] + <span class="hljs-number">1</span>;<br>	&#125;<br>	<span class="hljs-keyword">if</span> (match) &#123;<br>		<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ol start="9">
+<li><p>KMP算法的模板，主要是求next的数组，以及在循环退出之后判断字符是否相等，进行k的判断或者next数组的赋值</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">findnext</span><span class="hljs-params">(string pattern, vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; next)</span></span>&#123;<br>       <span class="hljs-keyword">int</span> size = pattern.<span class="hljs-built_in">size</span>();<br>       <span class="hljs-keyword">int</span> k = <span class="hljs-number">-1</span>;<br>       next[<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>;<span class="hljs-comment">//代表已经匹配的下标</span><br>       <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; size; i++)<br>       &#123;<br>           <span class="hljs-keyword">while</span>(k!=<span class="hljs-number">-1</span>&amp;&amp;pattern[i]!=pattern[k+<span class="hljs-number">1</span>])&#123;<br>                   k = next[k];<br>           &#125;<span class="hljs-comment">//因为跳出循环后还需要判断相等，因此将判断相等放在while的后面而不是前面</span><br>           <span class="hljs-keyword">if</span>(pattern[i]==pattern[k+<span class="hljs-number">1</span>])&#123;<br>               k++;<br>           &#125;<br><br>           next[i] = k;<br>       &#125;<br>   &#125;<br>   <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">strStr</span><span class="hljs-params">(string haystack, string needle)</span> </span>&#123;<br>   <span class="hljs-comment">// int KMP(string target, string pattern)&#123;</span><br>       string target=haystack;<br>       string pattern=needle;<br>       <span class="hljs-keyword">int</span> size = target.<span class="hljs-built_in">size</span>();<br>       <span class="hljs-keyword">int</span> k = <span class="hljs-number">-1</span>;<br>       <span class="hljs-keyword">if</span>(pattern==<span class="hljs-string">&quot;&quot;</span>)&#123;<br>           <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>       &#125;<br>       <span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">next</span><span class="hljs-params">(pattern.size())</span></span>;<br>       <span class="hljs-built_in">findnext</span>(pattern, next);<br>       <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++)<br>       &#123;<br>           <span class="hljs-keyword">while</span>(k!=<span class="hljs-number">-1</span>&amp;&amp;target[i]!=pattern[k+<span class="hljs-number">1</span>])&#123;<br>                   k = next[k];<br>           &#125;<br>           <span class="hljs-keyword">if</span>(target[i]==pattern[k+<span class="hljs-number">1</span>])&#123;<br>               k++;<br>               <span class="hljs-keyword">if</span>(k==pattern.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>)&#123;<br>                   <span class="hljs-keyword">return</span> i - k ; <span class="hljs-comment">//返回匹配字符串的头位置</span><br>               &#125;<br>           &#125;<br><br>       &#125;<br>       <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>   &#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>字符串翻转<br>“leetcode i” –&gt; “i leetcode”<br>思路：1. 使用栈</p>
+</li>
+<li><p>先整个字符串翻转，去空格+原位翻转（双指针）+删除后面多余的字符 //空间复杂度O(1)</p>
+</li>
+<li><p>实现 atoi() 字符串转数字：注意这几个测试用例<br>a. 包含非法字符，返回 error 或者 0<br>b. 要考虑正负号<br>c. 要考虑溢出的情况。直接按照字典序，比较输入字符串和 TMin、TMax 的字符串就可以了，不需要在转换过程中判断是否溢出</p>
+</li>
+<li><p>lc115. 不同的子序列(字符串匹配问题)</p>
+</li>
+</ol>
+<ul>
+<li> 这道题主要是求一个字符串s中可以找到多少个字符串t(只变了一个字符也是一种新的情况) (见8.序列自动机)</li>
+<li> 使用dp[i][j]表示字符串s前i个，和字符串t前j个进行匹配的个数，那么状态转移方程为 （下面展示的是从前往后，从后往前也是可以的）<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s1;i++)&#123;  <span class="hljs-comment">//注意这里的初始化非常重要</span><br>    dp[i][<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;s1;i++)&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;s2;j++)&#123;<br>        <span class="hljs-keyword">if</span>(s[i]==t[j])&#123;<br>            dp[i][j]=dp[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>]+dp[i<span class="hljs-number">-1</span>][j];   <span class="hljs-comment">//相同可以与当前t匹配，也可以不匹配</span><br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            dp[i][j]=dp[i<span class="hljs-number">-1</span>][j];<br>        &#125;<br>        dp[i][j]=<span class="hljs-built_in">min</span>(dp[i][j],<span class="hljs-number">1LL</span>*<span class="hljs-number">1000000000000000</span>); <span class="hljs-comment">//这里是为了防止long long型超出范围</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li> 其他注意的地方：自左向右和从右到左都会爆 long long超出范围，使用记忆化搜索不会。同时一定要记得初始化，没有与模式字符串匹配的时候，都需要赋值为1 dp[i][0]=1</li>
+</ul>
+<ol start="13">
+<li><p>Trie树的实现<br>具体实现见系统设计中的Trie树专题</p>
+</li>
+<li><p>单词搜索</p>
+</li>
+</ol>
+<ul>
+<li>Trie树+回溯<br>先将要字典中的单词建立一颗Trie树，然后枚举矩阵中的每个点，进行dfs, 在进行dfs的时候，只对Trie树中有的边进行dfs, 如果当前走到isEnd=True的情况，那么就直接压入结果，同时这个时候不能直接退出，还可以继续dfs,因为字典中的单词可能是存在相互包含的关系的（dfs剪枝）</li>
+</ul>
+<p><font color="red">15. 最长回文前缀</font><br>lc214. 最短回文串<br>求s的最长回文前缀，其实就是求str = s+”#”+rev_s的最长公共前后缀，使用KMP算法求next数组，然后返回next[str.size()-1]，就是最长的回文前缀</p>
+<p>一个字符串的最长前后缀为，这个字符串求next数组，返回next[size-1]</p>
+<p>马拉车算法：<a target="_blank" rel="noopener" href="https://www.acwing.com/file_system/file/content/whole/index/content/446985/">https://www.acwing.com/file_system/file/content/whole/index/content/446985/</a></p>
+<p><font color="red">16. lc321. 拼接最大数 (hard)</font></p>
+<ul>
+<li>题意：从两个数组中共选择k个数，是的数最大</li>
+<li>第一步是枚举每个数组中取数据的个数</li>
+<li>第二步分别从两个数组中得到指定长度的最大子序列</li>
+<li>第三步是将两个最大子序列合并。（一定要注意合并！！！！ 可能会遇到相同的情况，不是随便选一个，而是要找到他们后面第一个不相等的进行比较）<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">bool</span> flag=<span class="hljs-literal">true</span>; <span class="hljs-comment">//第一个数组++</span><br><span class="hljs-keyword">while</span>(index1&lt;m&amp;&amp;index2&lt;n)&#123;<br>    <span class="hljs-keyword">if</span>(arr1[index1]&gt;arr2[index2])&#123;<br>        flag==<span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">break</span>;<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(arr1[index1]&lt;arr2[index2])&#123;<br>        flag=<span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">break</span>;<br>    &#125;<br>    index1++;<br>    index2++;<br>&#125;<br><span class="hljs-keyword">if</span>(index1==m)&#123;<br>    flag=<span class="hljs-literal">false</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<ol start="17">
+<li>lc792. 匹配子序列的单词数</li>
+</ol>
+<ul>
+<li>判断字典里面的每个字符串是否是s的子序列，使用双指针会超时</li>
+<li>方法一：使用字符串dp, dp[i][j]表示s从index下标开始，找到的第一个字母j的下标</li>
+<li>方法二：使用map&lt;int, vector<int>&gt; 记录下每个字母在字符串中下标的位置，然后使用二分查找</int></li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>ok ok</p>
+<ol>
+<li><p>在对字符串进行操作通常可以朝栈，递归， bfs等方向思考<br> 尤其是左右括号对应的这种情况-&gt; 栈和递归</p>
+</li>
+<li><p>状态压缩：如果字符串的每一个字符串都至多包含每个字母一次，并且字母的顺序无关紧要，因此我们可以使用一个 262的二进制数 mask 表示一个字符串。<br>同时如何两两判断两个字符串是否有关联的时间复杂度太高O(n^2^len(str)), 那么可以转为「枚举一个节点」+「枚举可能的相邻节点」+「使用哈希表判断相邻节点是否真正存在」的方法得到所有关联的边，（也就是猜测字符串的每个数的时间复杂度可能小于两层循环遍历+判断）</p>
+</li>
+<li><p>注意在进行字符串比较的时候是比较多次，但是在进行数字比较的时候是比较一次,所以hash的key存int比存string更高效</p>
+</li>
+<li><p>char a可以使用a++，变为另外一个字符 ‘A’-&gt;’B’<br>但是string s类型，即使只有一个字符，也必须使用s[0]++, 不能使用s++</p>
+</li>
+<li><p>如果出现反复将一个字符串的子串和字典中的每个字符比对的题目，可以使用Trie树，或者使用动态规划（True/False类型），提前判断某一个子字符串是否在字典中 （PS: 动态规划中也有这句话的总结）</p>
+</li>
+<li><p>Trie树，通常是将字典里面的字符串构建一个trie数，然后在进行查询的时候，就相当于直接在字典中（多个字符串同时）查找，而不是和字典中的每个字符串进行对比<br>例题：lc: 面试题 17.17. 多次搜索(KMP/ Trie数)</p>
+</li>
+<li><p>字符串匹配问题:求个数，求是否匹配，求删除字符的最小数量，都是使用的动态规划，定义的dp[i][j]都是让s前i个字符和t前j个字符匹配的xxxx， 一般都是将s[i]和t[j]是否相等分成两种情况，并分别求对应的状态转移</p>
+</li>
+<li><p>有时候有字典的这种情况会考虑到建立前缀树，也可以考虑使用逆向思维，将字典树加密的所有字符串提前求出来，然后使用打表方法<br>lc5302. 加密解密字符串（周赛hard）</p>
+</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/en/categories/leetcode/" class="category-chain-item">leetcode</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>字符串相关问题</div>
+      <div>http://shu0421.github.io/en/2021/11/13/leetcode/字符串/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Shu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 13, 2021</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/en/2021/11/13/leetcode/%E5%9B%9E%E6%BA%AF_DFS_BFS/" title="回溯_DFS_BFS">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">回溯_DFS_BFS</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/en/2021/11/13/leetcode/%E6%9A%82%E6%97%B6%E6%B2%A1%E7%9C%8B%E5%86%85%E5%AE%B9/" title="暂时未看">
+                        <span class="hidden-mobile">暂时未看</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/en/js/events.js" ></script>
+<script  src="/en/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/en/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/en/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/en/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
