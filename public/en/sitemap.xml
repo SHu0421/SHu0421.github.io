@@ -2,28 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://shu0421.github.io/en/favorite/index.html</loc>
+    <loc>http://shu0421.github.io/en/2023/07/24/Tools/Anaconda/</loc>
     
     <lastmod>2023-11-24</lastmod>
     
   </url>
   
   <url>
-    <loc>http://shu0421.github.io/en/favorite-reading/index.html</loc>
+    <loc>http://shu0421.github.io/en/2023/07/24/Tools/Hexo-Notes/</loc>
     
     <lastmod>2023-11-24</lastmod>
     
   </url>
   
   <url>
-    <loc>http://shu0421.github.io/en/about/index.html</loc>
+    <loc>http://shu0421.github.io/en/2023/07/24/Tools/Linux%20Command/</loc>
     
     <lastmod>2023-11-24</lastmod>
     
   </url>
   
   <url>
-    <loc>http://shu0421.github.io/en/favorite-language/index.html</loc>
+    <loc>http://shu0421.github.io/en/2023/07/24/Tools/RClone%20Command/</loc>
+    
+    <lastmod>2023-11-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://shu0421.github.io/en/2023/07/24/Tools/RPC%20Command/</loc>
     
     <lastmod>2023-11-24</lastmod>
     
@@ -51,35 +58,28 @@
   </url>
   
   <url>
-    <loc>http://shu0421.github.io/en/2023/07/24/Tools/RClone%20Command/</loc>
+    <loc>http://shu0421.github.io/en/favorite/index.html</loc>
     
     <lastmod>2023-11-24</lastmod>
     
   </url>
   
   <url>
-    <loc>http://shu0421.github.io/en/2023/07/24/Tools/RPC%20Command/</loc>
+    <loc>http://shu0421.github.io/en/favorite-reading/index.html</loc>
     
     <lastmod>2023-11-24</lastmod>
     
   </url>
   
   <url>
-    <loc>http://shu0421.github.io/en/2023/07/24/Tools/Linux%20Command/</loc>
+    <loc>http://shu0421.github.io/en/about/index.html</loc>
     
     <lastmod>2023-11-24</lastmod>
     
   </url>
   
   <url>
-    <loc>http://shu0421.github.io/en/2023/07/24/Tools/Hexo-Notes/</loc>
-    
-    <lastmod>2023-11-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://shu0421.github.io/en/2023/07/24/Tools/Anaconda/</loc>
+    <loc>http://shu0421.github.io/en/favorite-language/index.html</loc>
     
     <lastmod>2023-11-24</lastmod>
     
@@ -95,7 +95,49 @@
 
   
   <url>
-    <loc>http://shu0421.github.io/en/tags/Tools/</loc>
+    <loc>http://shu0421.github.io/en/tags/anaconda/</loc>
+    <lastmod>2023-11-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://shu0421.github.io/en/tags/hexo/</loc>
+    <lastmod>2023-11-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://shu0421.github.io/en/tags/linux/</loc>
+    <lastmod>2023-11-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://shu0421.github.io/en/tags/rclone/</loc>
+    <lastmod>2023-11-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://shu0421.github.io/en/tags/rpc/</loc>
+    <lastmod>2023-11-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://shu0421.github.io/en/tags/vscode/</loc>
+    <lastmod>2023-11-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://shu0421.github.io/en/tags/zplot/</loc>
     <lastmod>2023-11-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

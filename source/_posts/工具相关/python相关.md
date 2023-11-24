@@ -2,7 +2,8 @@
 layout: python相关
 title: python相关
 date: 2021-11-11 19:06:48
-tags:
+tags: python
+index_img: https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302
 ---
 
 

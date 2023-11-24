@@ -1,9 +1,10 @@
 ---
 title: Linux Command
-tags: Tools
+tags: linux
 categories:
   - Tools
 date: 2023-07-24 16:40:43
+index_img: https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302
 ---
 
 #### 1. rename:

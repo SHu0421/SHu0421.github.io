@@ -522,7 +522,8 @@ post:
 
   # 文章在首页的默认封面图，当没有指定 index_img 时会使用该图片，若两者都为空则不显示任何图片
   # Path of the default post cover when `index_img` is not set. If both are empty, no image will be displayed
-  default_index_img: /img/post_default_side.jpeg
+  default_index_img: https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302
+  # /img/post_default_side.jpeg
     # - /img/post_default_side2.jpeg
   #  default_index_img: https://cdn.seovx.com/d/?mom=302
 
@@ -878,7 +879,7 @@ about:
   subtitle:
   avatar: /img/self.jpg
   name: "Shuang Hu"
-  intro: "Good Good Study, Day Day up! Nothing Is Impossible"
+  intro: "Nothing Is Impossible"
   # 更多图标可从 https://hexo.fluid-dev.com/docs/icon/ 查找，`class` 代表图标的 css class，添加 `qrcode` 后，图标不再是链接而是悬浮二维码
   # More icons can be found from https://hexo.fluid-dev.com/docs/en/icon/  `class` is the css class of the icon. If adding `qrcode`, The icon is no longer a link, but a hovering QR code
   icons:

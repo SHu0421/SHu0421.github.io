@@ -1,8 +1,9 @@
 ---
 layout: blog
-title: scheduler_ralated
+title: scheduler_related
 date: 2021-11-12 10:04:52
 tags: scheduler
+index_img: https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302
 ---
 
 调度需要关注的问题/或者目标：提高资源利用率，负载均衡，用户的优先级和公平性

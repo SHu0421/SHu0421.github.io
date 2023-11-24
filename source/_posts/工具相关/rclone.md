@@ -3,7 +3,8 @@ title: rclone
 categories:
   - 工具相关
 date: 2021-11-08 21:39:25
-tags:
+tags: rclone
+index_img: https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302
 ---
 
 ### 从google drive中下载文件的两种方法

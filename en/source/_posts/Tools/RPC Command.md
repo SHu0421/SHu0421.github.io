@@ -1,9 +1,10 @@
 ---
 title: RPC Command
-tags: Tools
+tags: rpc
 categories:
   - Tools
 date: 2023-07-24 16:40:54
+index_img: https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302
 ---
 
 

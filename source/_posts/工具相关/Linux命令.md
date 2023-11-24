@@ -2,7 +2,8 @@
 layout: blog
 title: Linux命令
 date: 2021-11-11 09:52:14
-tags: Linux command
+tags: Linux
+index_img: https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302
 ---
 
 #### rename

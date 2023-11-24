@@ -3,7 +3,8 @@ title: RPC related
 categories:
   - 工具相关
 date: 2021-12-03 10:01:07
-tags:
+tags: rpc
+index_img: https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302
 ---
 
 gRPC 可以保证不同语言之间的通讯

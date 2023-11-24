@@ -1,9 +1,10 @@
 ---
 title: Build Anaconda Environment
-tags: Tools
+tags: anaconda
 categories:
   - Tools
 date: 2023-07-24 16:40:16
+index_img: https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302
 ---
 
 #### Problem description

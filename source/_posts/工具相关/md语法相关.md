@@ -1,9 +1,10 @@
 ---
 title: md语法相关
-tags: 'typora, md'
+tags: md语法
 categories:
   - 工具相关
 date: 2022-01-20 12:11:13
+index_img: https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302
 ---
 
 

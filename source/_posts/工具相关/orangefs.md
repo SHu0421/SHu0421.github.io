@@ -3,7 +3,8 @@ title: orangefs
 categories:
   - 工具相关
 date: 2021-12-01 15:54:01
-tags:
+tags: orangefs
+index_img: https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302
 ---
 
 ### orangefs

@@ -3,7 +3,8 @@ title: command-related
 categories:
   - 工具相关
 date: 2021-11-08 21:37:17
-tags:
+tags: linux
+index_img: https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302
 ---
 
 #### 1.让远程服务器节点使用本地节点的vpn进行翻墙， 适用于远程节点
