@@ -3,11 +3,11 @@
   <title>Hello World</title>
   
   
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="http://shu0421.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="http://shu0421.github.io/"/>
   <updated>2023-07-12T10:34:16.050Z</updated>
-  <id>http://example.com/</id>
+  <id>http://shu0421.github.io/</id>
   
   <author>
     <name>Shu</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>常见模板代码</title>
-    <link href="http://example.com/2022/08/21/autumn_recruit/%E7%BE%8E%E5%9B%A2/important/"/>
-    <id>http://example.com/2022/08/21/autumn_recruit/%E7%BE%8E%E5%9B%A2/important/</id>
+    <link href="http://shu0421.github.io/2022/08/21/autumn_recruit/%E7%BE%8E%E5%9B%A2/important/"/>
+    <id>http://shu0421.github.io/2022/08/21/autumn_recruit/%E7%BE%8E%E5%9B%A2/important/</id>
     <published>2022-08-21T13:05:07.000Z</published>
     <updated>2023-07-12T10:34:16.050Z</updated>
     
@@ -33,39 +33,17 @@
     
     
     
-    <category term="autumn_recruit" scheme="http://example.com/categories/autumn-recruit/"/>
+    <category term="autumn_recruit" scheme="http://shu0421.github.io/categories/autumn-recruit/"/>
     
-    <category term="美团" scheme="http://example.com/categories/autumn-recruit/%E7%BE%8E%E5%9B%A2/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>C#相关</title>
-    <link href="http://example.com/2022/06/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/C#/"/>
-    <id>http://example.com/2022/06/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/C#/</id>
-    <published>2022-06-13T02:52:09.000Z</published>
-    <updated>2023-07-12T11:36:14.861Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h3><p>菜鸟教程+ 微软C#官方文档<br><a href="https://www.runoob.com/csharp/csharp-indexer.html">https://www.runoob.com/csharp/csharp-indexer.html</a><br><a href="https://docs.microsoft.com/zh-cn/dotnet/csharp/tour-of-csharp/">https://docs.microsoft.com/zh-cn/dotnet/csharp/tour-of-csharp/</a></p><h3 id="目前进展"><a href="#目前进展" class="headerlink" title="目前进展"></a>目前进展</h3><p>下次从C# 高级特性开始看</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;相关资料&quot;&gt;&lt;a href=&quot;#相关资料&quot; class=&quot;headerlink&quot; title=&quot;相关资料&quot;&gt;&lt;/a&gt;相关资料&lt;/h3&gt;&lt;p&gt;菜鸟教程+ 微软C#官方文档&lt;br&gt;&lt;a href=&quot;https://www.runoob.com/csharp/cshar</summary>
-      
-    
-    
-    
-    <category term="项目相关" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/"/>
+    <category term="美团" scheme="http://shu0421.github.io/categories/autumn-recruit/%E7%BE%8E%E5%9B%A2/"/>
     
     
   </entry>
   
   <entry>
     <title>Hard题目集合</title>
-    <link href="http://example.com/2022/04/10/leetcode/hard%E9%A2%98%E7%9B%AE%E5%90%88%E9%9B%86/"/>
-    <id>http://example.com/2022/04/10/leetcode/hard%E9%A2%98%E7%9B%AE%E5%90%88%E9%9B%86/</id>
+    <link href="http://shu0421.github.io/2022/04/10/leetcode/hard%E9%A2%98%E7%9B%AE%E5%90%88%E9%9B%86/"/>
+    <id>http://shu0421.github.io/2022/04/10/leetcode/hard%E9%A2%98%E7%9B%AE%E5%90%88%E9%9B%86/</id>
     <published>2022-04-10T08:41:22.000Z</published>
     <updated>2023-07-10T10:36:19.531Z</updated>
     
@@ -81,15 +59,15 @@
     
     
     
-    <category term="leetcode" scheme="http://example.com/categories/leetcode/"/>
+    <category term="leetcode" scheme="http://shu0421.github.io/categories/leetcode/"/>
     
     
   </entry>
   
   <entry>
     <title>DP问题专栏</title>
-    <link href="http://example.com/2022/04/04/dp%E9%97%AE%E9%A2%98%E4%B8%93%E6%A0%8F/DAG+%E6%A0%91%E7%8A%B6+%E5%85%B6%E4%BB%96dp/"/>
-    <id>http://example.com/2022/04/04/dp%E9%97%AE%E9%A2%98%E4%B8%93%E6%A0%8F/DAG+%E6%A0%91%E7%8A%B6+%E5%85%B6%E4%BB%96dp/</id>
+    <link href="http://shu0421.github.io/2022/04/04/dp%E9%97%AE%E9%A2%98%E4%B8%93%E6%A0%8F/DAG+%E6%A0%91%E7%8A%B6+%E5%85%B6%E4%BB%96dp/"/>
+    <id>http://shu0421.github.io/2022/04/04/dp%E9%97%AE%E9%A2%98%E4%B8%93%E6%A0%8F/DAG+%E6%A0%91%E7%8A%B6+%E5%85%B6%E4%BB%96dp/</id>
     <published>2022-04-04T03:54:12.633Z</published>
     <updated>2023-07-12T10:34:45.675Z</updated>
     
@@ -107,15 +85,15 @@
     
     
     
-    <category term="dp问题专栏" scheme="http://example.com/categories/dp%E9%97%AE%E9%A2%98%E4%B8%93%E6%A0%8F/"/>
+    <category term="dp问题专栏" scheme="http://shu0421.github.io/categories/dp%E9%97%AE%E9%A2%98%E4%B8%93%E6%A0%8F/"/>
     
     
   </entry>
   
   <entry>
     <title>vscode 配置</title>
-    <link href="http://example.com/2022/02/25/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/vscode/"/>
-    <id>http://example.com/2022/02/25/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/vscode/</id>
+    <link href="http://shu0421.github.io/2022/02/25/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/vscode/"/>
+    <id>http://shu0421.github.io/2022/02/25/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/vscode/</id>
     <published>2022-02-25T01:45:56.000Z</published>
     <updated>2023-07-10T10:36:19.583Z</updated>
     
@@ -134,33 +112,9 @@
   </entry>
   
   <entry>
-    <title>Review Tips</title>
-    <link href="http://example.com/2022/02/23/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E9%9D%A2%E8%AF%95tips/"/>
-    <id>http://example.com/2022/02/23/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E9%9D%A2%E8%AF%95tips/</id>
-    <published>2022-02-23T08:00:36.000Z</published>
-    <updated>2022-03-01T05:52:34.744Z</updated>
-    
-    <content type="html"><![CDATA[<p>实习的时候应该怎么做：<br>写实习日记(internship log),记录你每天在工作中做了什么、遇到哪些困难、你是如何解决的;还可以写参加了哪些会议，你在会议上跟着大boss学到了什么(行业的观念，企业发展方向);还有自己悟出来的道理，比如做行业research时，从龙头公司入手而不是小虾米公司入手，这样更有效率。</p><p>各个案例支持各种结构化面试的答案，比如你如何克服困难。你可以描述实习中你面对大量数据，不会用excel软件整理数据，是如何自学“从入门到精通”的。于是乎简单的学用办公软件的打杂，也变得高端起来。</p><p>面试前好好想想你做过什么、写下来。最好回想一下这些事情，带你的师父教给你了什么?你犯了错误是如何改进的?往往你“犯错-被骂-修改”的这个过程，就是你迅速成长的过程。</p><p>有一种可能，就是实习真的啥也没做，在办公室呆了两个月!可是真正求职的时候，这两个月的办公室经验也是可以派得上用场的!辣么，如何把你什么都没干的实习，说得收获很大一样呢?<br>你可以结合自己的性格，以及在办公室/行业内所学所见，从侧面推荐自己。比如，你做了销售实习，你跟着你的师父去拜访客户，其实也不是你的事情，其实你们根本就吃了闭门羹，啥也没推销出去。可是这个时候，你可以说，你的实习，磨练了你的耐心和耐性、善于沟通、你知道销售工作的礼仪、你勇于尝试去啃难啃的客户和业务。</p><p>就是在一项简单的工作中也要有自己的想法和工作的处理方式，或许在整理资料这样的小事中你也有自己的经验，但是没有提炼成方法论。</p><p>总结：</p><ol><li>思考小事后面学到的方法，逻辑，展现自己的学习能力和潜力；提炼一套方法论</li><li>将每件小事写出自己学到了什么；将每件做对的事写出自己的之后如何经一部优化；自己做错的事，下次如何避免改进，进步；遇到困难如何解决</li><li>自学linux, 在pytorch官网上进行留言， 在stackoverflow上寻找答案；rpc自学，自学231n；了解了岗位和业务需求，从需求出发</li><li>项目优缺点</li></ol><p>项目如何包装：</p><p>遇到的最大挑战或者困难，令人印象深刻的项目或者工作经历<br>建议围绕“背景—我的定位—主要价值—当时挑战和我的解法”的框架展开，</p><p>目标检测任务：<br>困难：小目标，目标不均衡，漏检问题和精度较低<br>最开始学习和了解目标检测的时候，就要完成这个红绿灯交通标志模型的训练。为了完成这样一个任务，我需要快速上手使用公司内部的算法框架训练一个初步模型，同时通过阅读论文和源码了解目标检测模型训练的一些细节<br>在这个过程中因为最初上手公司算法框架和学习目标检测的原因，我也遇到了一些困难，比如最开始的模型训练精度非常差，于是我从数据的输入格式进行检验，从验证输入，到调试查看内部的输入输出是否正常，查找错误的原因，最后发现，因为算法框架内部存在一个错误，内部是硬编码的格式输入，使得传入的参数失效，因此输出结果错误；之后了解到主要还是由于公司并没有将数据处理这块代码进行统一规范化，导致不同人维护一个不同的代码repo，我从仓库里面拷贝的版本是已经过时的，因此在训练会出现这样一个错误。<br>除此之外，导致模型精度差的原因主要是由于数据中小目标和数据量差距大，有的类别数量本身就非常少，因此拉低整体训练精度，要解决这个问题，我主要是在模型训练方法进行了改进，我了解到多尺度的输入，以及FPN可以很好解决小目标的问题，focal loss可以解决样本不均衡的问题，因此在训练时候选择了多尺度输入方式，带有FPN网络和focal loss的损失函数来解决这些问题。之后精度上升到一个比较满意的阈值，但是还不够好。最后就是在一些参数的设定上进行微调，找到一个最佳的训练参数。这个我主要是通过先抓住影响精度几个重要参数值，然后在这几个参数上进行尝试调整，使用表格记录+控制变量方式搜索。最后达到一个较为满意的结果。但是我觉得在参数搜索这一块我还可以尝试一些自动化搜索的方式进行进一步优化。</p><p>个人研究方向的挑战：<br>样本重要性算法部分的设计：1）如何确定样本的动态变化重要性， 设计了一种基于历史值+异步更新的方式计算样本重要性； 2）缓存的设计主要不是我做的，但是主要的思路是小根堆，同时需要周期更新这个堆，因此样本重要性变化，可能会导致建立的堆无效，使用一种COW的思想，在重建堆的时候还是使用之前的重要性来置换，之后建好了再替换；cache size是一个需要在实验中验证的参数</p><p>将重要性采样算法引入IO为瓶颈的场景本身就是一个挑战，这主要是因为目前没有相关在重要性采样结合系统架构的研究工作，现在的算法主要还是关注计算减少量上减少。第二个就是样本的重要性本身就是动态变化的，如果要减少IO就只能尽可能少将数据取到内存进行计算，那么如何更新样本的重要性。这个问题第一个初步解决方案就是使用历史的重要性，就是将之前的重要性延迟更新，这样话的可以提前根据样本的重要性确定样本取不取，但是这种方式也是有局限的，也并没有解决本质问题，而且可能引入新的问题就是历史值使用多久，以及历史值的偏差对精度影响。因此我在此基础上进行改进，使用了一个在存储端计算的思想，就是利用在PFS中，利用近存储端的计算资源进行计算，保障了重要性实时性，同时为IO时间的减少提供了机会。当然这种方法，也会引入存储端模型同步和重要性同步的通信时间，但是通过理论实验数据证明，多数情况下这个时间比重复数据的传输时间小，因此是可以接受的。除此之外，为了解决针对IO的重要性算法适应范围窄的问题，我在此基础上设计了一个自适应选择算法框架，就是将现有的算法融合进来，通过profile确定瓶颈，然后选择对应最佳采样策略，使得算法使用更广。</p><p>难点：进行缓存设计的时候，如何让多进程访问缓存，以及在分布式场景中如何设计缓存<br>使用rpc进行存储和计算端进程之间的通信</p><p>毕业设计的挑战：<br>如何判断哪些参数是冗余的，因此可以删除，哪些是重要的，需要被保留。<br>保留精度敬克能不受影响，最大化压缩率<br>training，pruning，fine-tuning三段式<br>这个问题我主要是通过阅读大量相关文献，得到确定参数的一种常用方法，就是使用L1-正则，通过实验我认为这种方法是比较有效的，因此选用了这种方式；第二个就是参数删除的比例，这个我主要是通过敏感性分析的方式，通过固定其他层，调整某一层，查看设置不同比例对精度的影响来确定，然后predifined确定剪枝的参数；还有一种是automatic的方式，比如ADC（Automated deep compression）方法，根据不同需求（如保证精度还是限制计算量），利用强化学习来学习每一层最优的sparsity ratio</p><p>其他思考：<br>在裁剪后加入可以撤回的这个步骤，那么在精度影响较大的时候，仍然可以恢复回来 （mask/可以扩充的剪枝方案）<br>自动剪枝，使用强化学习<br>将精度、能量消耗和数据一起作为输入，一次裁剪得到多个合适模型<br><a href="https://cloud.tencent.com/developer/article/1631704">https://cloud.tencent.com/developer/article/1631704</a> 比较全面介绍+未来方向指明（2020）</p><p>NUS项目设计的挑战：<br>确定项目选题，也就是挖掘什么的之间关系是比较困难的，因为挖掘的内容一方面需要有心意，那么选择的可能是看似没有什么有关的项目，一方面就是如何天马星空，就可能最后面临失败的结果<br>因此选择的项目必须本身要具有研究的意义</p><h4 id="1-面试官在每个环节重点关注的点"><a href="#1-面试官在每个环节重点关注的点" class="headerlink" title="1. 面试官在每个环节重点关注的点"></a>1. 面试官在每个环节重点关注的点</h4><p>问项目：是否真实，表达能力<br>要把细节表达清楚，而不是面试官问啥答啥，因为对方不了解这个工作<br>日常多看一下工作中的难点与challenges，变为自己的</p><p>做算法：<br>正确的思路<br>corner case（易错点）的设计情况，要设想各种可能的情况（一面的面试官比较关注corner case，二面面试官和三面面试官都比较时空复杂度）<br>    corner case的设计：<br>    有重复无重复元素<br>    奇数还是偶数<br>    是否需要解决输入空格<br>    是否需要解决输入有溢出或者最后的结果有溢出<br>    是否需要担心输入包括0 或者负数<br>    空链表<br>    栈是否为空<br>    空/非法/正负/溢出</p><p>沟通能力：做算法时要多沟通细节，沟通自己不懂的地方<br>代码风格</p><p><a href="https://gxin.yuque.com/docs/share/5eb3fa50-61f3-4b41-ad02-8d88ca29a1d1#">https://gxin.yuque.com/docs/share/5eb3fa50-61f3-4b41-ad02-8d88ca29a1d1?#</a> 别人的整理，重点！！！！</p><p>为什么想要加入这个公司</p><p>在面试得时候一定要思路清晰，在没有想清楚之前不要轻易开口</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;实习的时候应该怎么做：&lt;br&gt;写实习日记(internship log),记录你每天在工作中做了什么、遇到哪些困难、你是如何解决的;还可以写参加了哪些会议，你在会议上跟着大boss学到了什么(行业的观念，企业发展方向);还有自己悟出来的道理，比如做行业research时，从</summary>
-      
-    
-    
-    
-    <category term="项目相关" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/"/>
-    
-    
-    <category term="review tips" scheme="http://example.com/tags/review-tips/"/>
-    
-  </entry>
-  
-  <entry>
     <title>多线程</title>
-    <link href="http://example.com/2022/01/26/leetcode/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/"/>
-    <id>http://example.com/2022/01/26/leetcode/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</id>
+    <link href="http://shu0421.github.io/2022/01/26/leetcode/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/"/>
+    <id>http://shu0421.github.io/2022/01/26/leetcode/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</id>
     <published>2022-01-26T04:19:28.000Z</published>
     <updated>2022-03-02T03:53:22.049Z</updated>
     
@@ -174,17 +128,17 @@
     
     
     
-    <category term="leetcode" scheme="http://example.com/categories/leetcode/"/>
+    <category term="leetcode" scheme="http://shu0421.github.io/categories/leetcode/"/>
     
     
-    <category term="多线程并发， 信号量， 互斥锁" scheme="http://example.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91%EF%BC%8C-%E4%BF%A1%E5%8F%B7%E9%87%8F%EF%BC%8C-%E4%BA%92%E6%96%A5%E9%94%81/"/>
+    <category term="多线程并发， 信号量， 互斥锁" scheme="http://shu0421.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91%EF%BC%8C-%E4%BF%A1%E5%8F%B7%E9%87%8F%EF%BC%8C-%E4%BA%92%E6%96%A5%E9%94%81/"/>
     
   </entry>
   
   <entry>
     <title>分布式训练</title>
-    <link href="http://example.com/2022/01/26/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83/"/>
-    <id>http://example.com/2022/01/26/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83/</id>
+    <link href="http://shu0421.github.io/2022/01/26/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83/"/>
+    <id>http://shu0421.github.io/2022/01/26/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83/</id>
     <published>2022-01-26T02:50:50.000Z</published>
     <updated>2022-02-14T10:03:35.528Z</updated>
     
@@ -198,15 +152,15 @@
     
     
     
-    <category term="工具相关" scheme="http://example.com/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/"/>
+    <category term="工具相关" scheme="http://shu0421.github.io/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/"/>
     
     
   </entry>
   
   <entry>
     <title>md语法相关</title>
-    <link href="http://example.com/2022/01/20/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/md%E8%AF%AD%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
-    <id>http://example.com/2022/01/20/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/md%E8%AF%AD%E6%B3%95%E7%9B%B8%E5%85%B3/</id>
+    <link href="http://shu0421.github.io/2022/01/20/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/md%E8%AF%AD%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
+    <id>http://shu0421.github.io/2022/01/20/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/md%E8%AF%AD%E6%B3%95%E7%9B%B8%E5%85%B3/</id>
     <published>2022-01-20T04:11:13.000Z</published>
     <updated>2022-02-14T10:03:35.528Z</updated>
     
@@ -230,17 +184,17 @@
     
     
     
-    <category term="工具相关" scheme="http://example.com/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/"/>
+    <category term="工具相关" scheme="http://shu0421.github.io/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/"/>
     
     
-    <category term="typora, md" scheme="http://example.com/tags/typora-md/"/>
+    <category term="typora, md" scheme="http://shu0421.github.io/tags/typora-md/"/>
     
   </entry>
   
   <entry>
     <title>系统设计相关题目</title>
-    <link href="http://example.com/2022/01/19/leetcode/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
-    <id>http://example.com/2022/01/19/leetcode/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</id>
+    <link href="http://shu0421.github.io/2022/01/19/leetcode/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
+    <id>http://shu0421.github.io/2022/01/19/leetcode/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</id>
     <published>2022-01-19T06:09:24.000Z</published>
     <updated>2022-04-12T12:52:07.484Z</updated>
     
@@ -254,15 +208,15 @@
     
     
     
-    <category term="leetcode" scheme="http://example.com/categories/leetcode/"/>
+    <category term="leetcode" scheme="http://shu0421.github.io/categories/leetcode/"/>
     
     
   </entry>
   
   <entry>
     <title>Zplot画图相关知识点</title>
-    <link href="http://example.com/2022/01/04/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/zplot/"/>
-    <id>http://example.com/2022/01/04/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/zplot/</id>
+    <link href="http://shu0421.github.io/2022/01/04/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/zplot/"/>
+    <id>http://shu0421.github.io/2022/01/04/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/zplot/</id>
     <published>2022-01-04T08:04:52.000Z</published>
     <updated>2022-07-31T09:11:32.488Z</updated>
     
@@ -276,17 +230,17 @@
     
     
     
-    <category term="工具相关" scheme="http://example.com/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/"/>
+    <category term="工具相关" scheme="http://shu0421.github.io/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/"/>
     
     
-    <category term="zplot" scheme="http://example.com/tags/zplot/"/>
+    <category term="zplot" scheme="http://shu0421.github.io/tags/zplot/"/>
     
   </entry>
   
   <entry>
     <title>Anaconda环境搭建</title>
-    <link href="http://example.com/2021/12/15/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/anaconda%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80/"/>
-    <id>http://example.com/2021/12/15/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/anaconda%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80/</id>
+    <link href="http://shu0421.github.io/2021/12/15/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/anaconda%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80/"/>
+    <id>http://shu0421.github.io/2021/12/15/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/anaconda%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80/</id>
     <published>2021-12-15T06:48:24.000Z</published>
     <updated>2022-02-14T10:03:35.528Z</updated>
     
@@ -300,17 +254,17 @@
     
     
     
-    <category term="工具相关" scheme="http://example.com/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/"/>
+    <category term="工具相关" scheme="http://shu0421.github.io/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/"/>
     
     
-    <category term="conda environment" scheme="http://example.com/tags/conda-environment/"/>
+    <category term="conda environment" scheme="http://shu0421.github.io/tags/conda-environment/"/>
     
   </entry>
   
   <entry>
     <title>RPC related</title>
-    <link href="http://example.com/2021/12/03/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/rpc/"/>
-    <id>http://example.com/2021/12/03/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/rpc/</id>
+    <link href="http://shu0421.github.io/2021/12/03/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/rpc/"/>
+    <id>http://shu0421.github.io/2021/12/03/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/rpc/</id>
     <published>2021-12-03T02:01:07.000Z</published>
     <updated>2023-07-10T10:36:19.582Z</updated>
     
@@ -324,15 +278,15 @@
     
     
     
-    <category term="工具相关" scheme="http://example.com/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/"/>
+    <category term="工具相关" scheme="http://shu0421.github.io/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/"/>
     
     
   </entry>
   
   <entry>
     <title>orangefs</title>
-    <link href="http://example.com/2021/12/01/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/orangefs/"/>
-    <id>http://example.com/2021/12/01/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/orangefs/</id>
+    <link href="http://shu0421.github.io/2021/12/01/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/orangefs/"/>
+    <id>http://shu0421.github.io/2021/12/01/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/orangefs/</id>
     <published>2021-12-01T07:54:01.000Z</published>
     <updated>2022-02-14T10:03:35.528Z</updated>
     
@@ -347,39 +301,15 @@
     
     
     
-    <category term="工具相关" scheme="http://example.com/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>System Design</title>
-    <link href="http://example.com/2021/11/24/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/system%20design/"/>
-    <id>http://example.com/2021/11/24/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/system%20design/</id>
-    <published>2021-11-24T12:40:15.000Z</published>
-    <updated>2023-07-10T10:36:19.588Z</updated>
-    
-    <content type="html"><![CDATA[<p>lintcode</p><p>一致性hash 算法<br>分布式场景下</p><p>Grokking system design 和数据密集型应用系统设计这两份资料。<br>时间不够的话优先看 Grokking system design。重点是掌握系统设计题目的回答套路，如何一步一步地展开自己的系统设计思路以及和面试官提哪些问题来确定设计细节。一定要多和面试官沟通，多提问。</p><p>真想入门的话去买个aws solutions architect certificate的课程都比这个要靠谱…书籍的话DDIA(design data intensive application)也只是科普，真想稍微深入点的话先推荐两本书：microservices patterns、guide to reliable distributed systems</p><p>需要注意的一些点：<br>  Ask before design. 问清楚再动手设计，不要一上来就冲着一个巨牛的方案去设计；<br>  No more no less. 不要总想着设计最牛的系统，要设计够用的系统；<br>  Work solution first. 先设计一个基本能工作的系统，然后再逐步优化；<br>  Analysis is important than solution. 系统设计没有标准答案，记住答案是没用的，通过分析过程展示知识储备，权衡各种设计方式的利弊。</p><p><a href="https://www.pramp.com/#/">https://www.pramp.com/#/</a> 系统设计模拟面试的网站</p><p><a href="https://www.1point3acres.com/bbs/thread-827136-1-1.html">https://www.1point3acres.com/bbs/thread-827136-1-1.html</a> 视频</p><p>问问题的顺序：</p><ol><li>需要设计哪些功能（也可以自己想），需要承受多大的访问量？</li><li>将核心功能拆分为细小的服务，并写出接口</li><li>每个服务选择合适的存储结构</li><li>权衡和扩展<br>1）系统的优化，新功能的拓展<br>2）系统的鲁棒性，如果系统奔溃了怎么办，服务请求量暴增怎么办</li></ol><h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><p>  分布式id生成器<br>  雪花算法：41时间戳+10为工作id+12为序列号</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;lintcode&lt;/p&gt;
-&lt;p&gt;一致性hash 算法&lt;br&gt;分布式场景下&lt;/p&gt;
-&lt;p&gt;Grokking system design 和数据密集型应用系统设计这两份资料。&lt;br&gt;时间不够的话优先看 Grokking system design。重点是掌握系统设计题目的回答套</summary>
-      
-    
-    
-    
-    <category term="项目相关" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/"/>
+    <category term="工具相关" scheme="http://shu0421.github.io/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/"/>
     
     
   </entry>
   
   <entry>
     <title>二叉树</title>
-    <link href="http://example.com/2021/11/23/leetcode/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    <id>http://example.com/2021/11/23/leetcode/%E4%BA%8C%E5%8F%89%E6%A0%91/</id>
+    <link href="http://shu0421.github.io/2021/11/23/leetcode/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    <id>http://shu0421.github.io/2021/11/23/leetcode/%E4%BA%8C%E5%8F%89%E6%A0%91/</id>
     <published>2021-11-23T02:27:56.000Z</published>
     <updated>2023-07-10T10:36:19.532Z</updated>
     
@@ -394,15 +324,15 @@
     
     
     
-    <category term="leetcode" scheme="http://example.com/categories/leetcode/"/>
+    <category term="leetcode" scheme="http://shu0421.github.io/categories/leetcode/"/>
     
     
   </entry>
   
   <entry>
     <title>链表</title>
-    <link href="http://example.com/2021/11/16/leetcode/%E9%93%BE%E8%A1%A8/"/>
-    <id>http://example.com/2021/11/16/leetcode/%E9%93%BE%E8%A1%A8/</id>
+    <link href="http://shu0421.github.io/2021/11/16/leetcode/%E9%93%BE%E8%A1%A8/"/>
+    <id>http://shu0421.github.io/2021/11/16/leetcode/%E9%93%BE%E8%A1%A8/</id>
     <published>2021-11-16T10:29:23.000Z</published>
     <updated>2023-07-10T10:36:19.576Z</updated>
     
@@ -418,15 +348,15 @@
     
     
     
-    <category term="leetcode" scheme="http://example.com/categories/leetcode/"/>
+    <category term="leetcode" scheme="http://shu0421.github.io/categories/leetcode/"/>
     
     
   </entry>
   
   <entry>
     <title>资源汇总</title>
-    <link href="http://example.com/2021/11/16/%E5%85%B6%E4%BB%96/%E5%90%84%E7%B1%BB%E8%B5%84%E6%BA%90/"/>
-    <id>http://example.com/2021/11/16/%E5%85%B6%E4%BB%96/%E5%90%84%E7%B1%BB%E8%B5%84%E6%BA%90/</id>
+    <link href="http://shu0421.github.io/2021/11/16/%E5%85%B6%E4%BB%96/%E5%90%84%E7%B1%BB%E8%B5%84%E6%BA%90/"/>
+    <id>http://shu0421.github.io/2021/11/16/%E5%85%B6%E4%BB%96/%E5%90%84%E7%B1%BB%E8%B5%84%E6%BA%90/</id>
     <published>2021-11-16T07:32:21.000Z</published>
     <updated>2023-07-10T10:36:19.579Z</updated>
     
@@ -441,15 +371,15 @@
     
     
     
-    <category term="其他" scheme="http://example.com/categories/%E5%85%B6%E4%BB%96/"/>
+    <category term="其他" scheme="http://shu0421.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/2021/11/13/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/hello-world/"/>
-    <id>http://example.com/2021/11/13/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/hello-world/</id>
+    <link href="http://shu0421.github.io/2021/11/13/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/hello-world/"/>
+    <id>http://shu0421.github.io/2021/11/13/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/hello-world/</id>
     <published>2021-11-13T12:26:46.510Z</published>
     <updated>2021-11-13T12:27:48.242Z</updated>
     
@@ -463,15 +393,15 @@
     
     
     
-    <category term="工具相关" scheme="http://example.com/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/"/>
+    <category term="工具相关" scheme="http://shu0421.github.io/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/"/>
     
     
   </entry>
   
   <entry>
     <title>基本神经网络相关问题</title>
-    <link href="http://example.com/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E5%9F%BA%E6%9C%AC%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%80%BB%E7%BB%93/"/>
-    <id>http://example.com/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E5%9F%BA%E6%9C%AC%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%80%BB%E7%BB%93/</id>
+    <link href="http://shu0421.github.io/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E5%9F%BA%E6%9C%AC%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%80%BB%E7%BB%93/"/>
+    <id>http://shu0421.github.io/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E5%9F%BA%E6%9C%AC%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%80%BB%E7%BB%93/</id>
     <published>2021-11-13T12:11:27.000Z</published>
     <updated>2023-07-10T10:36:19.588Z</updated>
     
@@ -488,8 +418,88 @@
     
     
     
-    <category term="项目相关" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/"/>
+    <category term="项目相关" scheme="http://shu0421.github.io/categories/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/"/>
     
+    
+  </entry>
+  
+  <entry>
+    <title>机器学习</title>
+    <link href="http://shu0421.github.io/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://shu0421.github.io/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</id>
+    <published>2021-11-13T12:11:16.000Z</published>
+    <updated>2021-11-13T12:27:48.243Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>xgboost与GDBT的区别</li></ol><p>xgboost属于GDBT的工程实现，但是相比于GDBT有更多的优化</p><ul><li>1.两者都是属于boosting方法，就是迭代串行求多个模型，每个模型不同权重，训练过程中样本也具有不同的权重</li><li>2.GDBT是使用多个决策树组成的，xgboost可以使用线性模型</li><li>3.xgboost使用了代价函数的一阶和二阶信息，同时可以用户自定义代价函数，同时xgboost在代价函数中加入了正则项，用于控制模型的复杂度</li><li>4.xgboost能够自动对缺失值进行处理</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;xgboost与GDBT的区别&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;xgboost属于GDBT的工程实现，但是相比于GDBT有更多的优化&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.两者都是属于boosting方法，就是迭代串行求多个模型，每个模型不同权重，训练过程中样本也具有不同的</summary>
+      
+    
+    
+    
+    <category term="项目相关" scheme="http://shu0421.github.io/categories/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/"/>
+    
+    
+    <category term="machine learning" scheme="http://shu0421.github.io/tags/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>编程语言</title>
+    <link href="http://shu0421.github.io/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    <id>http://shu0421.github.io/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</id>
+    <published>2021-11-13T12:11:07.000Z</published>
+    <updated>2023-07-10T10:36:19.589Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><ol><li><p>python GIL介绍</p></li><li><p>list tuple set的区别</p></li></ol><ol start="3"><li><p>python迭代器和生成器的区别是什么<br>生成器本质上还是一个迭代器，也是用在迭代操作中，因此它有和迭代器一样的特性，唯一的区别在于实现方式上不一样，后者更加简洁；<br>生成器只是在需要这个值再生成</p></li><li><p>迭代器<br>迭代器对象要求支持迭代器协议的对象。在Python中，支持迭代器协议就是实现对象的__iter__()和next()方法。<br>其中__iter__()方法返回迭代器对象本身；next()方法返回容器的下一个元素，在结尾时引发StopIteration异常。<br>iter是可迭代对象，可迭代对象才能调用next函数</p></li></ol><ol start="5"><li>生成器<br>生成器(generator)就是一个函数，它提供了一种实现迭代器协议的便捷方式。<br>生成器与普通函数的区别在于它包含 yield 表达式，并且不需要定义 <strong>iter</strong>()和__next__()。</li></ol><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><h5 id="1-vector"><a href="#1-vector" class="headerlink" title="1.vector"></a>1.vector</h5><p>find(vector.begin(), vector.end(), target_val)!=vector.end() find函数返回的是一个迭代器</p><p>vector.push_back(i)<br>vector.pop_back()</p><p>vec1.swap(vec2)//进行vector1和vector2的交换<br>vec2(vec1.begin(), vec1.begin()+4)表示截取vector的一部分，并赋值给vec2,注意后面的值表示vec不需要 也就是左闭右开模式</p><p>vector最后一个元素，vector.back()</p><p>vector.insert(vec.begin()+pos, target); // 将target元素插入到pos位置</p><p>auto pos=lower_bound(nums.begin(), nums.end(), target)<br>index = pos-nums.begin() //<br><font color="red">lower_bound返回的是大于等于目标函数的数， upper_bound返回的是大于目标函数的数</font></p><p>注意和set的lower_bound不一样的<br>set.lower_bound(targets) 返回一个迭代器</p><p>mp的lower_bound也是不一样的<br>auto iter = mp.lower_bound(val)</p><p>set和map中的元素都是排好序的</p><h5 id="2-unordered-set-my-set"><a href="#2-unordered-set-my-set" class="headerlink" title="2.unordered_set my_set"></a>2.unordered_set my_set</h5><p>my_set.find(target_value)!=my_set.end() or my_set.count(target_value)!=0<br>my_set.insert(value)<br>my_set.erase(value)A</p><p>unordered_set查找元素的两种方式：（1）umap.find(target)!=-1  (2) umap[target]<br>unordered_set在进行查找的时候可以直接使用unordered_set[target]即使是target不存在也不会报错，<br>但是在vector中查找某一个元素就需要vec.find(target)!=vec.end() </p><h5 id="3-priority-queue-queue"><a href="#3-priority-queue-queue" class="headerlink" title="3. priority_queue / queue"></a>3. priority_queue / queue</h5><p>q.push()<br>q.pop()</p><h5 id="4-set-insert-value-erase-value-push-pop"><a href="#4-set-insert-value-erase-value-push-pop" class="headerlink" title="4. set insert(value) erase(value) push pop"></a>4. set insert(value) erase(value) push pop</h5><p>遍历 for(auto iter=set.begin(); iter!=set.end(); iter++)</p><p>用vector里面的元素初始化set unordered_set<int> nums_set(nums1.begin(), nums1.end());//其中nums1是vector</int></p><h5 id="5-map"><a href="#5-map" class="headerlink" title="5.map"></a>5.map</h5><p>插入元素：map[key]=value; 或者map.insert(make_pair(key, value))<br>删除元素：map.erase(key)//注意不是remove</p><p>查找元素：map.find(key)</p><p>复制：hash.insert(hash1.begin(), hash1.end())<br>PS： vector的复制是 vec.assign(vec1.begin(), vec1.end())</p><h5 id="6-其他语法"><a href="#6-其他语法" class="headerlink" title="6.其他语法"></a>6.其他语法</h5><p>判断字符是字母：isalpha()</p><p>判断字符是数字：isdigit()</p><p>判断字符是字母或数字：isalnum()</p><p>同时注意c++中，字符用单引号表示，字符串用双引号表示</p><p>注意c++中只有数组能够使用memset，在vector中不能使用</p><h5 id="7-string"><a href="#7-string" class="headerlink" title="7.string"></a>7.string</h5><p>find函数 pos=s.find(target)  pos=s.find(target,0)<br>如果没有找到返回s.npos 或者string::npos</p><p>原地移除数组上的元素，我们说到了数组上的元素，不能真正的删除，只能覆盖。array.erase(i)的时间复杂度是O(n)</p><h5 id="8-set-数组-map的选择"><a href="#8-set-数组-map的选择" class="headerlink" title="8.set 数组 map的选择"></a>8.set 数组 map的选择</h5><p>主要是看数据的范围，如果数据返回不确定那么尽量选择map or set，如果确定是小写字母的话，也就是26个字母，可以使用数组<br>set包含 unordered_set（无序， 哈希表，不能重复， 查询和增删效率O(1)）, multiset（有序，红黑树，可以重复 O(nlogn)）, set(有序， 红黑树，不能重复， O(nlong))； map类似<br>三种都是只能erase和insert不能修改数值， map不能修改key但是可以修改value</p><h5 id="9-stack"><a href="#9-stack" class="headerlink" title="9. stack"></a>9. stack</h5><p>栈的底层实现可以是vector, dequeue, list<br>栈只能获取最后一个元素，无法直接获取第一个元素<br>top()    返回栈顶元素的引用，类型为 T&amp;，如果栈为空，返回值未定义<br>pop()    栈顶元素出栈<br>size()    返回栈中元素的个数<br>empty()    栈中没有元素时返回 true<br>emplace()    使用传入的参数调用构造函数，在栈顶生成对象<br>push(const T&amp; obj)    将对象副本压入栈顶，通过调用底层容器的 push_back() 函数实现<br>push(T&amp;&amp; obj)    以移动对象的方式将对象压入栈，通过调用底层容器的有右值引用参数的 push_back() 函数实现<br>swap(stack<T> &amp; other_stack)    将当前栈中的元素和参数中的元素交换，参数所包含元素的类型必须和当前栈的相同，对于 stack 对象有一个特例化的全局函数 swap() 可以使用</T></p><p>可以出一道面试题：栈里面的元素在内存中是连续分布的么？</p><p>这个问题有两个陷阱：<br>陷阱1：栈是容器适配器，底层容器使用不同的容器，导致栈内数据在内存中是不是连续分布。<br>陷阱2：缺省情况下，默认底层容器是deque，那么deque的在内存中的数据分布是什么样的呢？答案是：不连续的，下文也会提到deque。</p><h5 id="10-queue-队列"><a href="#10-queue-队列" class="headerlink" title="10.queue 队列"></a>10.queue 队列</h5><p>可以访问队列最后一个元素，但是无法pop最后一个元素<br>queue入队，如例：q.push(x); 将x 接到队列的末端。</p><p>queue出队，如例：q.pop(); 弹出队列的第一个元素，注意，并不会返回被弹出元素的值。</p><p>访问queue队首元素，如例：q.front()，即最早被压入队列的元素。</p><p>访问queue队尾元素，如例：q.back()，即最后被压入队列的元素。</p><p>判断queue队列空，如例：q.empty()，当队列空时，返回true。</p><h5 id="pair"><a href="#pair" class="headerlink" title="pair"></a>pair</h5><p>pair&lt;int, int&gt; 访问元素不是用下标而是用first second; 创建一个pair用pair&lt;int, int&gt; res = make_pair&lt;a, b&gt;<br>或者用括号 pair&lt;int, int&gt; b(1, 2);</p><h5 id="multiset-set"><a href="#multiset-set" class="headerlink" title="multiset/set"></a>multiset/set</h5><p>两者都是存储的重复的数据，不一样的是前者可以存储冗余的数据<br>删除一个数<br>c1.erase(c1.find(x))//删除一个x<br>c1.erase(x)//删除所有x元素</p><h5 id="新建一个未知长度的数组"><a href="#新建一个未知长度的数组" class="headerlink" title="新建一个未知长度的数组"></a>新建一个未知长度的数组</h5><p>int *queue;<br>queue=new int[k+1] 主要是用于类构建动态数组的这种情况</p><h4 id="向上取整"><a href="#向上取整" class="headerlink" title="向上取整"></a>向上取整</h4><p>(x+(b-1))/b*b</p><h4 id="malloc和new的区别"><a href="#malloc和new的区别" class="headerlink" title="malloc和new的区别"></a>malloc和new的区别</h4><p><img src="/.io//image-20220122202312622.png" alt="image-20220122202312622"></p><h4 id="hashMap原理"><a href="#hashMap原理" class="headerlink" title="hashMap原理"></a>hashMap原理</h4>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;python&quot;&gt;&lt;a href=&quot;#python&quot; class=&quot;headerlink&quot; title=&quot;python&quot;&gt;&lt;/a&gt;python&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;python GIL介绍&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;list tuple set的</summary>
+      
+    
+    
+    
+    <category term="项目相关" scheme="http://shu0421.github.io/categories/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/"/>
+    
+    
+    <category term="python, C++" scheme="http://shu0421.github.io/tags/python-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>笔试</title>
+    <link href="http://shu0421.github.io/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E7%AC%94%E8%AF%95/"/>
+    <id>http://shu0421.github.io/2021/11/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E7%AC%94%E8%AF%95/</id>
+    <published>2021-11-13T12:10:47.000Z</published>
+    <updated>2023-07-10T10:36:19.589Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://github.com/lcylmhlcy/Awesome-algorithm-interview/blob/master/README.md#1-interview-1">Awesome algorithm interview</a></p><h4 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h4><p>TCP连接为什么要三次握手，TCP关闭为什么要4次挥手？<br>三次握手是为了防止服务器资源的浪费，因为如何是两次的话，如果客户端发送请求连接，但是不发送请求数据，就可能造成服务器端口占用，资源被浪费；四次回收是因为客户端和服务器可以各自关闭，比如客户端告诉服务器FIN，表示自己不发送数据，但是仍然可以接收数据，因此服务器可以继续发送，服务器将数据发送完了之后，再发出关闭信号，因此四次挥手允许客户端和服务器各自分别关闭</p><h4 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h4><h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><p>搜索github 上面的面试八股文</p><p><a href="https://github.com/cosen1024/Java-Interview">https://github.com/cosen1024/Java-Interview</a> java面试小抄书</p><p>JVM内存结构，什么是hash 冲突，如何解决</p><p>语言/数据结构/操作系统/网络/分布式/系统设计</p><p>考研408</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://github.com/lcylmhlcy/Awesome-algorithm-interview/blob/master/README.md#1-interview-1&quot;&gt;Awesome algorithm interview&lt;/a&gt;&lt;/p</summary>
+      
+    
+    
+    
+    <category term="项目相关" scheme="http://shu0421.github.io/categories/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/"/>
+    
+    
+    <category term="八股文" scheme="http://shu0421.github.io/tags/%E5%85%AB%E8%82%A1%E6%96%87/"/>
     
   </entry>
   

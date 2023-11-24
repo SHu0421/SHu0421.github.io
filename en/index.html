@@ -1,0 +1,864 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="这是我的第一篇博客">
+  <meta name="author" content="huhu">
+  <meta name="keywords" content="">
+  <meta name="description" content="这是我的第一篇博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hello World">
+<meta property="og:description" content="这是我的第一篇博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="huhu">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>Hello World</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hello World" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 80vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>HU&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg-shouye.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Good Good Study, Day Day up!">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/08/21/autumn_recruit/%E7%BE%8E%E5%9B%A2/important/" target="_self">
+          <img src="/img/post_default_side.jpeg" srcset="/img/loading.gif" lazyload alt="常见模板代码">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/08/21/autumn_recruit/%E7%BE%8E%E5%9B%A2/important/" target="_self">
+          常见模板代码
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/08/21/autumn_recruit/%E7%BE%8E%E5%9B%A2/important/" target="_self">
+          
+          
+            
+          
+          12345678#include&lt;iostream&gt;#include&lt;unordered_map&gt;#include&lt;vector&gt;using namespace std;int main()&#123;    cout&lt;&lt;&quot;hello world&quot;&lt;&lt;endl;    return 0;&#125;
+
+处理字符串的输入
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-21 21:05" pubdate>
+              2022-08-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/autumn-recruit/">autumn_recruit</a>
+            
+              <a href="/categories/autumn-recruit/%E7%BE%8E%E5%9B%A2/">美团</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/06/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/C#/" target="_self">
+          <img src="/img/post_default_side.jpeg" srcset="/img/loading.gif" lazyload alt="C#相关">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/06/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/C#/" target="_self">
+          C#相关
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/06/13/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/C#/" target="_self">
+          
+          
+            
+          
+          相关资料菜鸟教程+ 微软C#官方文档https://www.runoob.com/csharp/csharp-indexer.htmlhttps://docs.microsoft.com/zh-cn/dotnet/csharp/tour-of-csharp/
+目前进展下次从C# 高级特性开始看
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-06-13 10:52" pubdate>
+              2022-06-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/">项目相关</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/04/10/leetcode/hard%E9%A2%98%E7%9B%AE%E5%90%88%E9%9B%86/" target="_self">
+          <img src="/img/post_default_side.jpeg" srcset="/img/loading.gif" lazyload alt="Hard题目集合">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/04/10/leetcode/hard%E9%A2%98%E7%9B%AE%E5%90%88%E9%9B%86/" target="_self">
+          Hard题目集合
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/04/10/leetcode/hard%E9%A2%98%E7%9B%AE%E5%90%88%E9%9B%86/" target="_self">
+          
+          
+            
+          
+          枚举+二分lc6040. 花园的最大总美丽值
+
+主要是在求partial的最小超时, 还有就是一个long long数据类型注意！！
+法一: 从右到左，先枚举完善花园数目，再计算不完善花园数据可以获得的最大解决方案：使用二分+前缀和来求增加后的最小值，而不是一个一个遍历(空间复杂度O(n))
+
+-法二: 如果是从左到右计算，可以将空间开销降到O(1)，先计算要让所有的花园变为完善花园还剩下的花的数
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-04-10 16:41" pubdate>
+              2022-04-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/04/04/dp%E9%97%AE%E9%A2%98%E4%B8%93%E6%A0%8F/DAG+%E6%A0%91%E7%8A%B6+%E5%85%B6%E4%BB%96dp/" target="_self">
+          <img src="/img/post_default_side.jpeg" srcset="/img/loading.gif" lazyload alt="DP问题专栏">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/04/04/dp%E9%97%AE%E9%A2%98%E4%B8%93%E6%A0%8F/DAG+%E6%A0%91%E7%8A%B6+%E5%85%B6%E4%BB%96dp/" target="_self">
+          DP问题专栏
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/04/04/dp%E9%97%AE%E9%A2%98%E4%B8%93%E6%A0%8F/DAG+%E6%A0%91%E7%8A%B6+%E5%85%B6%E4%BB%96dp/" target="_self">
+          
+          
+            
+          
+          DAG上的dp
+UVa 437 巴比伦塔 The Tower of Babylon
+这道题求最高的塔，其实就是一个记忆化dfs的过程一些需要注意的点：
+
+因为不可能出现一个立方体同时叠两次，因此不需要vis
+因为有三种叠法，所以需要3个方向
+因为最开始让谁做底部是不清楚的，所以使用循环遍历方法
+因为一个底确定之后的最高是确定的，因此使用记忆化搜索，避免重复计算
+对于这种题情况多，再加上dfs的题，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-04-04 11:54" pubdate>
+              2022-04-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/dp%E9%97%AE%E9%A2%98%E4%B8%93%E6%A0%8F/">dp问题专栏</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/02/25/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/vscode/" target="_self">
+          <img src="/img/post_default_side.jpeg" srcset="/img/loading.gif" lazyload alt="vscode 配置">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/25/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/vscode/" target="_self">
+          vscode 配置
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/02/25/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/vscode/" target="_self">
+          
+          
+            
+          
+          
+有关于在macos big sur上配置c/c++程序运行和调试详细步骤：注意需要安装codellbhttps://blog.csdn.net/weixin_44881648/article/details/111046381
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-25 09:45" pubdate>
+              2022-02-25
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/02/23/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E9%9D%A2%E8%AF%95tips/" target="_self">
+          <img src="/img/post_default_side.jpeg" srcset="/img/loading.gif" lazyload alt="Review Tips">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/23/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E9%9D%A2%E8%AF%95tips/" target="_self">
+          Review Tips
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/02/23/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/%E9%9D%A2%E8%AF%95tips/" target="_self">
+          
+          
+            
+          
+          实习的时候应该怎么做：写实习日记(internship log),记录你每天在工作中做了什么、遇到哪些困难、你是如何解决的;还可以写参加了哪些会议，你在会议上跟着大boss学到了什么(行业的观念，企业发展方向);还有自己悟出来的道理，比如做行业research时，从龙头公司入手而不是小虾米公司入手，这样更有效率。
+各个案例支持各种结构化面试的答案，比如你如何克服困难。你可以描述实习中你面对大量数据
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-23 16:00" pubdate>
+              2022-02-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/">项目相关</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/review-tips/">review tips</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/01/26/leetcode/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/" target="_self">
+          <img src="/img/post_default_side.jpeg" srcset="/img/loading.gif" lazyload alt="多线程">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/01/26/leetcode/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/" target="_self">
+          多线程
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/01/26/leetcode/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/" target="_self">
+          
+          
+            
+          
+          semaphore 信号量12345678910111213#include &lt;semaphore.h&gt;sem_t sem1;//进行变量申明sem_init(&amp;sem1, 1, 0); 第一个参数：指向的信号对象第二个参数：控制信号量的类型，如果其值为0，就表示信号量是当前进程的局部信号量，否则信号量就可以在多个进程间共享第三个参数：信号量sem的初始值sem_post(&a
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-26 12:19" pubdate>
+              2022-01-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91%EF%BC%8C-%E4%BF%A1%E5%8F%B7%E9%87%8F%EF%BC%8C-%E4%BA%92%E6%96%A5%E9%94%81/">多线程并发， 信号量， 互斥锁</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/01/26/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83/" target="_self">
+          <img src="/img/post_default_side.jpeg" srcset="/img/loading.gif" lazyload alt="分布式训练">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/01/26/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83/" target="_self">
+          分布式训练
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/01/26/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83/" target="_self">
+          
+          
+            
+          
+          资料：一个pytorch 分布式 单机多卡/多机多卡的例子https://github.com/lesliejackson/PyTorch-Distributed-Training
+常见分布式训练讲解，但是主要命令是启动单机多卡，而不是多机多卡 包括slum, apex, horovodhttps://github.com/tczhangzhi/pytorch-distributed 
+pytor
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-26 10:50" pubdate>
+              2022-01-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/">工具相关</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/01/20/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/md%E8%AF%AD%E6%B3%95%E7%9B%B8%E5%85%B3/" target="_self">
+          <img src="/img/post_default_side.jpeg" srcset="/img/loading.gif" lazyload alt="md语法相关">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/01/20/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/md%E8%AF%AD%E6%B3%95%E7%9B%B8%E5%85%B3/" target="_self">
+          md语法相关
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/01/20/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/md%E8%AF%AD%E6%B3%95%E7%9B%B8%E5%85%B3/" target="_self">
+          
+          
+            
+          
+          对代码块进行折叠
+
+  点击时的区域标题
+
+
+内容
+
+
+
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-20 12:11" pubdate>
+              2022-01-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/">工具相关</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/typora-md/">typora, md</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/01/19/leetcode/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" target="_self">
+          <img src="/img/post_default_side.jpeg" srcset="/img/loading.gif" lazyload alt="系统设计相关题目">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/01/19/leetcode/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" target="_self">
+          系统设计相关题目
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/01/19/leetcode/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" target="_self">
+          
+          
+            
+          
+          链接https://github.com/donnemartin/system-design-primer
+题型1.标准布隆过滤器hash函数的设置12345678910111213141516171819202122232425262728293031323334class HashFunction &#123;private:    int cap, seed;public:    HashF
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-19 14:09" pubdate>
+              2022-01-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#board">5</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

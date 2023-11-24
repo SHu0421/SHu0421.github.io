@@ -3,11 +3,10 @@ title: about
 date: 2021-11-08 15:30:16
 layout: about
 ---
+欢迎来到我的网页~ 我是Shuang Hu，一个热爱挑战、乐观生活的人 ^_^
 
-Hello, my name is Shuang Hu. I have graduated from Zhejiang University as a postgraduate in March, 2023. Now, I am working at my hometown Chongqing.
+我于2023年3月从浙江大学毕业，获得硕士学位。目前，在我的家乡重庆从事工作。我在深度学习和软件开发领域有两年的研究经验。在本科和研究生阶段，我完成了深度学习相关-模型训练和推理优化的项目，参与过课题组与阿里合作的资源池化项目，也曾在微软苏州M365完成3个月的暑期实习，通过上述实践，我不仅锻炼了自我的工程能力，积累了宝贵的知识技能，还提升了解决问题和团队合作能力。
 
-I have two-year research experience in the fields of Deep Learning and Software Development. I have worked on several projects in these areas (details in CV), and have gained valuable skills and knowledge along the way.
+对待学习和工作，我会尽全力将每件小事做到最好，也乐于接受新的挑战，因为我相信每个挑战都是成长和发展的机会。除了学习专业知识和技术，我喜欢通过培养其他兴趣爱好提高生活的幸福感，详情见爱好页，努力填坑ing ヾ(◍°∇°◍)ﾉﾞ。
 
-I am a passionate learner and always eager to expand my knowledge and skills. Besides, I also love to take on new challenges. I believe that every challenge presents an opportunity for growth and development, and I am always ready to step up and take on new tasks and responsibilities.
-
-Finally, I take pride in my work and am fully responsible for every task that I undertake. I expect to have a chance to work with you!
+最后，感谢您的访问，网页还在努力完善阶段，欢迎留言建议，期待能再次与您相遇~

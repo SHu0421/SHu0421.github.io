@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>Secret Page</title>
+    <link href="/en/2023/07/24/Tools/Secret%20Page/"/>
+    <url>/en/2023/07/24/Tools/Secret%20Page/</url>
+    
+    <content type="html"><![CDATA[<p>This is a page with lock</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Tools</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Zplot Usage</title>
+    <link href="/en/2023/07/24/Tools/Zplot%20Tool/"/>
+    <url>/en/2023/07/24/Tools/Zplot%20Tool/</url>
+    
+    <content type="html"><![CDATA[<h4 id="1-Zplot-folder-Contents"><a href="#1-Zplot-folder-Contents" class="headerlink" title="1. Zplot-folder Contents"></a>1. Zplot-folder Contents</h4><p>|–breakdown<br>    |–Makefile<br>    |–breakdown1.py<br>    |–breakdown1.data<br>    |–breakdown2.py<br>    |–breakdown2.data<br>|–eval_lineplot<br>    |–Makefile<br>|–…<br>|–makefig.sh</p><ol><li><p>You only need to run the ```makefig.sh`` file. If you want to modify the directory where all generated pdfs are located, directly modify makefig.sh</p></li><li><p>The aim of commands in <code>Makefile  </code> is mainly to run the current py file to generate the eps file, then use ps2pdf to convert it to pdf and use pdf2crop to crop the generated pdf file</p><p><strong>Note</strong>: Be sure to make the name of the python file same as the name of the data file, otherwise an error will occur.</p></li></ol><h4 id="2-prequisuite"><a href="#2-prequisuite" class="headerlink" title="2. prequisuite"></a>2. prequisuite</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install zplot <br><span class="hljs-comment">#due to the incompatibility between python2 and python3, there may be a list error. solution: just change the ListType in zplot.py to list.</span><br><br>sudo apt-get install texlive-extra-utils  <br></code></pre></td></tr></table></figure><h4 id="3-Analyse-Makefile"><a href="#3-Analyse-Makefile" class="headerlink" title="3. Analyse Makefile"></a>3. Analyse Makefile</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs bash">PY=python<br>EPS2PDF=ps2pdf<br>CROP=pdfcrop<br><br>SRC := $(wildcard *.py) <span class="hljs-comment">#list all py files</span><br>SRC := $(filter-out zplot.py, $(SRC))<br>EPS = $(patsubst %.py,%.eps,$(SRC))<br>PDF = $(patsubst %.py,%.pdf,$(SRC)) <span class="hljs-comment">#list all generated eps and pdf files</span><br><br>all: $(EPS) $(PDF)<br><br>%.eps: %.py  <span class="hljs-comment"># target file: source file</span><br>$(PY) $&lt; eps  <span class="hljs-comment">#$&lt; reprents source files  $@ represents target files; Official explanation: $&lt; represents the first dependent file, $@ represents the target set.</span><br><br>%.pdf: %.eps<br>$(EPS2PDF) $&lt;<br>$(CROP) <span class="hljs-variable">$@</span> <span class="hljs-variable">$@</span><br>rm -rf $&lt;<br><br>fig:<br><span class="hljs-comment"># mv -f *.pdf ../../../fig/ # move all the files to the image root directory</span><br>mv -f *.pdf ../../<br>rm -rf *.eps *.pdf<br></code></pre></td></tr></table></figure><p><a href="https://seisman.github.io/how-to-write-makefile/rules.html">Reference link for makefile syntax</a></p><h4 id="4-Analyse-makefig-sh"><a href="#4-Analyse-makefig-sh" class="headerlink" title="4. Analyse makefig.sh"></a>4. Analyse makefig.sh</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br>rm -rf *.pdf <span class="hljs-comment">#Before executing the generation, delete the previously generated pdf file, it should not be necessary</span><br><br><span class="hljs-keyword">for</span>  dir  <span class="hljs-keyword">in</span>  `find .  -name Makefile`  <span class="hljs-comment">#Find the dir which containis the Makefile</span><br><span class="hljs-keyword">do</span><br>path=`dirname <span class="hljs-variable">$dir</span>` <span class="hljs-comment">#find the path of above dir</span><br>    <span class="hljs-comment"># echo $path</span><br>    <span class="hljs-comment"># echo $dir</span><br><span class="hljs-keyword">if</span>  [ <span class="hljs-variable">$path</span>  !=  . ]<br><span class="hljs-keyword">then</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$path</span> <span class="hljs-comment">#print the path</span><br><span class="hljs-built_in">cd</span> <span class="hljs-variable">$path</span>  <br>make    <span class="hljs-comment">#run make and makefile command</span><br>make fig<br><span class="hljs-built_in">cd</span>  -<br><span class="hljs-keyword">fi</span><br><span class="hljs-keyword">done</span><br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Tools</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Tools</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>VSCode Related</title>
+    <link href="/en/2023/07/24/Tools/VSCode%20Related/"/>
+    <url>/en/2023/07/24/Tools/VSCode%20Related/</url>
+    
+    <content type="html"><![CDATA[<ol><li>Installing and configuring C/C++ programming tools on macOS Big Sur: Detailed Steps</li></ol><p>Notice that Codellb needs to be installed.</p><p><a href="https://blog.csdn.net/weixin_44881648/article/details/111046381">Reference Blog</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Tools</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Tools</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>RClone Comand</title>
+    <link href="/en/2023/07/24/Tools/RClone%20Command/"/>
+    <url>/en/2023/07/24/Tools/RClone%20Command/</url>
+    
+    <content type="html"><![CDATA[<h3 id="Download-Files-from-Google-Drive"><a href="#Download-Files-from-Google-Drive" class="headerlink" title="Download Files from Google Drive"></a>Download Files from Google Drive</h3><h4 id="METHOD-ONE-Using-rclone-to-mount-google-drive-as-a-remote-server"><a href="#METHOD-ONE-Using-rclone-to-mount-google-drive-as-a-remote-server" class="headerlink" title="METHOD ONE. Using rclone to mount google drive as a remote server"></a>METHOD ONE. Using rclone to mount google drive as a remote server</h4><p>Simple Steps：</p><ol><li><p>download clone:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget https://www.moerats.com/usr/shell/rclone_debian.sh &amp;&amp; bash rclone_debian.sh<br></code></pre></td></tr></table></figure></li><li><p>config rclone</p></li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rclone config<br></code></pre></td></tr></table></figure><ol start="3"><li>mount google drive by rclone</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#Create a new local folder, the path is determined by yourself, that is, the following LocalFolder</span><br>mkdir /root/GoogleDrive<br><span class="hljs-comment">#Mount as a disk, the following DriveName, Folder, LocalFolder parameters are replaced according to the instructions</span><br>rclone mount DriveName:Folder LocalFolder --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --<span class="hljs-built_in">umask</span> 000<br><br><span class="hljs-comment">#eg. DriveName:Folader ==&gt; GoogleDrive:/   LoacalFolder ==&gt; /data1/shu </span><br><br><span class="hljs-comment">#umount</span><br>fusermount -qzu &lt;<span class="hljs-built_in">local</span> path&gt;<br></code></pre></td></tr></table></figure><p><a href="https://www.moerats.com/archives/481/">Reference Materials</a> </p><h4 id="METHOD-TWO-download-single-file-from-google-drive-by-wget"><a href="#METHOD-TWO-download-single-file-from-google-drive-by-wget" class="headerlink" title="METHOD TWO.  download single file from google drive by wget"></a>METHOD TWO.  download single file from google drive by wget</h4><h5 id="1-download-small-files"><a href="#1-download-small-files" class="headerlink" title="1. download small files"></a>1. download small files</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget --no-check-certificate <span class="hljs-string">&#x27;https://docs.google.com/uc?export=download&amp;id=FILEID&#x27;</span> -O FILENAME<br><br><span class="hljs-comment">#add -r towards rar files</span><br>wget --no-check-certificate -r <span class="hljs-string">&#x27;https://docs.google.com/uc?export=download&amp;id=FILEID&#x27;</span> -O FILENAME<br></code></pre></td></tr></table></figure><h5 id="2-download-big-files"><a href="#2-download-big-files" class="headerlink" title="2. download big files"></a>2. download big files</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget --load-cookies /tmp/cookies.txt <span class="hljs-string">&quot;https://docs.google.com/uc?export=download&amp;confirm=<span class="hljs-subst">$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate &#x27;https://docs.google.com/uc?export=download&amp;id=FILEID&#x27; -O- | sed -rn &#x27;s/.*confirm=([0-9A-Za-z_]+)</span>.*/\1\n/p&#x27;)&amp;id=FILEID&quot;</span> -O FILENAME &amp;&amp; rm -rf /tmp/cookies.txt<br><br></code></pre></td></tr></table></figure><p><strong>Notice</strong>: The methods mentioned above are all downloaded files, not folders; the solution currently found towards folder is to use a loop.</p><p><a href="https://gist.github.com/iamtekeste/3cdfd0366ebfd2c0d805">Reference Materials</a> </p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Tools</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Tools</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>RPC Command</title>
+    <link href="/en/2023/07/24/Tools/RPC%20Command/"/>
+    <url>/en/2023/07/24/Tools/RPC%20Command/</url>
+    
+    <content type="html"><![CDATA[<h3 id="1-Compare-of-gRPC-and-Default-RPC-in-Pytorch"><a href="#1-Compare-of-gRPC-and-Default-RPC-in-Pytorch" class="headerlink" title="1. Compare of gRPC and Default RPC in Pytorch"></a>1. Compare of gRPC and Default RPC in Pytorch</h3><h6 id="gRPC-can-guarantee-communication-between-different-languages"><a href="#gRPC-can-guarantee-communication-between-different-languages" class="headerlink" title="gRPC can guarantee communication between different languages"></a>gRPC can guarantee communication between different languages</h6><p>Simple Steps to use gRPC:</p><ol><li>Write a .proto file to generate the source code of the specified language.</li><li>Write server code</li><li>write client code<br><a href="https://www.liwenzhou.com/posts/Go/gRPC/">An example of python client and go server</a></li></ol><h6 id="RPC-in-pytorch"><a href="#RPC-in-pytorch" class="headerlink" title="RPC in pytorch"></a>RPC in pytorch</h6><p>Methods provided in RPC in pytorch:<br>    - rpc_sync synchronous remote call: <code>rpc.rpc_sync</code><br>    - rpc_async asynchronous remote call: <code>rpc.rpc_async</code><br>    - remote asynchronous remote call: <code>rpc.remote</code></p><p>Simple Steps to use default RPC in Pytorch:</p><ol><li>initializes rpc by <code>rpc.init_rpc </code>, which needs to be initialized on both master and worker to facilitate subsequent communication</li><li>The worker side invokes <code>rpc.rpc_sync</code>  executed on the master</li></ol><h3 id="2-use-gRPC"><a href="#2-use-gRPC" class="headerlink" title="2. use gRPC"></a>2. use gRPC</h3><p><a href="https://grpc.io/docs/languages/python/quickstart/">Examples of using gRPC in python or go</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Tools</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Tools</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux Command</title>
+    <link href="/en/2023/07/24/Tools/Linux%20Command/"/>
+    <url>/en/2023/07/24/Tools/Linux%20Command/</url>
+    
+    <content type="html"><![CDATA[<h4 id="1-rename"><a href="#1-rename" class="headerlink" title="1. rename:"></a>1. rename:</h4><p>Modify the suffix in batches</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><br>rename s/\suffix1/\suffix/<span class="hljs-string">&#x27; *</span><br><span class="hljs-string"></span><br><span class="hljs-string">rename s/\suffix1/\suffix/&#x27;</span> **  <span class="hljs-comment"># recurse all subdirectories</span><br><br>example: rename <span class="hljs-string">&#x27;s/\.tar.gz.1/\.tar.gz/&#x27;</span> *<br></code></pre></td></tr></table></figure><h4 id="2-Manually-clear-the-cache"><a href="#2-Manually-clear-the-cache" class="headerlink" title="2. Manually clear the cache"></a>2. Manually clear the cache</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">methods to release buffer memory<br>1）clear pagecache<br>[root@backup ~]<span class="hljs-comment"># echo 1 &gt; /proc/sys/vm/drop_caches     or # sysctl -w vm.drop_caches=1</span><br> <br>2）clear dentries和inodes<br>[root@backup ~]<span class="hljs-comment"># echo 2 &gt; /proc/sys/vm/drop_caches     or # sysctl -w vm.drop_caches=2</span><br> <br>3）clear pagecache、dentries and inodes<br>[root@backup ~]<span class="hljs-comment"># echo 3 &gt; /proc/sys/vm/drop_caches     or # sysctl -w vm.drop_caches=3</span><br><br></code></pre></td></tr></table></figure><p>The above three methods are all ways to temporarily release the cache. To permanently release the cache, you need to configure <code>vm.drop_caches=1/2/3</code> in the <code>/etc/sysctl.conf   </code>file, then, use <code> sysctl -p</code>  to activate it!</p><p>In addition, you can use the <code>sync  </code> command to clean up the cache of file system. It can also clean up zombie objects and the memory they occupy</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@backup ~]<span class="hljs-comment"># sync</span><br></code></pre></td></tr></table></figure><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">Use <span class="hljs-keyword">scp </span>for file transfer <span class="hljs-keyword">and </span><span class="hljs-keyword">synchronization </span><span class="hljs-keyword">between </span>servers<br></code></pre></td></tr></table></figure><h4 id="3-Use-scp-to-transfer-files-and-synchronize-between-servers"><a href="#3-Use-scp-to-transfer-files-and-synchronize-between-servers" class="headerlink" title="3. Use scp to transfer files and synchronize between servers"></a>3. Use scp to transfer files and synchronize between servers</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rsync -r -P --rsh=ssh source_dir dest_dir(shu@10.5.26.19:/nfs/home/shu/hushuang-8a100)<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Tools</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Tools</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Build Anaconda Environment</title>
+    <link href="/en/2023/07/24/Tools/Anaconda/"/>
+    <url>/en/2023/07/24/Tools/Anaconda/</url>
+    
+    <content type="html"><![CDATA[<h4 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description"></a>Problem description</h4><p>A server already has a set-up environment, but it needs to be migrated to another server, or another user needs to access the same environment. If the other server does not have the anaconda environment installed, then it needs to be installed from scratch, and then migrated.</p><h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><ol><li>Install anaconda3<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># Download the anaconda3 installer using the following command:</span><br><span class="hljs-attribute">wget</span> https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda<span class="hljs-number">3</span>-<span class="hljs-number">5</span>.<span class="hljs-number">3</span>.<span class="hljs-number">1</span>-Linux-x<span class="hljs-number">86</span>_<span class="hljs-number">64</span>.sh<br><br><span class="hljs-comment">#Execute the downloaded set-up file using the following command:</span><br><span class="hljs-attribute">bash</span> Anaconda<span class="hljs-number">3</span>-<span class="hljs-number">5</span>.<span class="hljs-number">3</span>.<span class="hljs-number">1</span>-Linux-x<span class="hljs-number">86</span>_<span class="hljs-number">64</span>.sh<br></code></pre></td></tr></table></figure></li></ol><p>​        During the process, the user may need to choose between <code>no</code> or <code>yes</code>. in a         selection pop-up. By Default, it will choose <code>yes</code>. If <code>no</code> is selected, the user         can manually add the environment. (<a href="https://zhuanlan.zhihu.com/p/64930395">Reference Material</a>, you can also refer to         the method 2 in the following Step2: Activate environment)</p><ol start="2"><li><p>Activate environment<br> 2.1 method 1 ( invalid sometimes )</p><p> Open the <code>.bashrc</code> configuration file by using command<code>vim ~/.bashrc</code>. At the end of the file, add the following line:</p> <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">export PATH=<span class="hljs-regexp">/root/</span>xxx<span class="hljs-regexp">/anaconda3/</span>bin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure> <figure class="highlight plaintext"><figcaption><span>is the installation directory. Save the file and exit, then run source  command ```~/.bashrc``` to activate environment.</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs /root/xxx```"><br>2.2 method 2 (invalid)<br>Open profile by command```vi /etc/profile```. At the end, add:<br></code></pre></td></tr></table></figure><p> PATH=$PATH:/opt/anaconda3/bin<br> export PATH</p> <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">Save the file and <span class="hljs-keyword">exit</span>. Then, refresh the environment variables with:<br><br>```bash<br>source <span class="hljs-regexp">/etc/</span>profile<br>echo <span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure></li></ol><p>​                PS: If some problem reminder occor, use <code>sudo vi ~/.bashrc</code> to see                         whether the conda path is right.</p><ol start="3"><li><p>Anaconda Commands</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda list <span class="hljs-comment"># see the installation package</span><br>conda info --envs <span class="hljs-comment"># see the environment</span><br>conda activate XXX <span class="hljs-comment"># activate environment, XXX represent the environment name</span><br>python -V <span class="hljs-comment">#check python version</span><br><br><span class="hljs-comment"># remove the anaconda</span><br>rm -rf /root/xxx/anaconda<br></code></pre></td></tr></table></figure></li><li><p>migrate environment by<code> conda-pack</code></p><p>In the source machine:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda pack -n env-name --ignore-editable-packages<br><span class="hljs-comment">#important, error will occour without --ignore-editable-packages </span><br></code></pre></td></tr></table></figure><p>then we get an compressed package named env_name.tar.gz,</p><p>In the target machine:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ~/anaconda3/envs;<br>mkdir env_name;<br>tar -xzvf env_name.tar.gz -C /home/root_name/anaconda3/envs/env_name<br></code></pre></td></tr></table></figure><pre><code class="hljs">  4.  use the new environment</code></pre></li></ol><p>​                <code>source activate attnGAN</code></p><p>​                Notice that use command <code>conda activate</code> will cause error sometimes.                 <a href="https://blog.csdn.net/qq_43828332/article/details/114235922">Solution reference</a></p><h4 id="Reference-Materials"><a href="#Reference-Materials" class="headerlink" title="Reference Materials"></a>Reference Materials</h4><p>​    <a href="https://blog.csdn.net/lwgkzl/article/details/89329383">reference 1</a></p><p>​    <a href="https://www.jianshu.com/p/1fddd11bcd25">reference 2</a></p><p><a href="https://blog.csdn.net/ds1302__/article/details/120027173">    reference 3</a></p><h4 id="Related-Problems"><a href="#Related-Problems" class="headerlink" title="Related Problems"></a>Related Problems</h4><ol><li><p>Problem 1: run <code>conda info --envs</code>, get info <code>conda: command not found</code></p><p>Reason:  the ~/.bashrc file was not configured rightly.</p><p>Solution:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo vim ~/.bashrc<br><span class="hljs-comment"># add the following line at the end of the file</span><br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:/home/vincent/anaconda3/bin<br></code></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>Tools</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Tools</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hexo Notes</title>
+    <link href="/en/2023/07/24/Tools/Hexo-Notes/"/>
+    <url>/en/2023/07/24/Tools/Hexo-Notes/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h4 id="1-Quick-Start"><a href="#1-Quick-Start" class="headerlink" title="1. Quick Start"></a>1. Quick Start</h4><h5 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h5 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h5 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h5 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p><h4 id="2-Hexo-Theme-Change"><a href="#2-Hexo-Theme-Change" class="headerlink" title="2. Hexo Theme Change"></a>2. Hexo Theme Change</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs php">git <span class="hljs-keyword">clone</span> xxx.git themes/black-blue <br><br>vim _config.yml <span class="hljs-comment">//change theme to black-blue</span><br><br>npm install --save hexo-renderer-jade hexo-<span class="hljs-built_in">generator</span>-feed hexo-<span class="hljs-built_in">generator</span>-sitemap hexo-browsersync hexo-<span class="hljs-built_in">generator</span>-archive<br><br>hexo clean<br><br>hexo g<br><br>hexo s<br><br></code></pre></td></tr></table></figure><h4 id="3-Common-Hexo-Command"><a href="#3-Common-Hexo-Command" class="headerlink" title="3. Common Hexo Command"></a>3. Common Hexo Command</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. set up a blog in a special directory</span><br>hexo new blog -p leetcode/new_name.md<br><br><span class="hljs-comment"># 2. upload it to the github repo and deploy</span><br>sudo hexo d <br><br><span class="hljs-comment"># 3. generate static pages</span><br>hexo generate<br><br><span class="hljs-comment"># 4. run the server for webpages</span><br>hexo server<br><br><span class="hljs-comment"># 5. see in localhost</span><br>hexo clean &amp;&amp; hexo g &amp;&amp; hexo s<br></code></pre></td></tr></table></figure><h4 id="4-Reference-Materials"><a href="#4-Reference-Materials" class="headerlink" title="4. Reference Materials"></a>4. Reference Materials</h4><p><a href="https://juejin.cn/post/6978377036645531662">Build Hexo Blog in Mac</a><br><a href="https://hexo.fluid-dev.com/docs/guide/#%E6%96%87%E7%AB%A0%E5%9C%A8%E9%A6%96%E9%A1%B5%E7%9A%84%E5%B0%81%E9%9D%A2%E5%9B%BE">Hexo Reference Webpage</a></p><h4 id="5-Common-Questions"><a href="#5-Common-Questions" class="headerlink" title="5. Common Questions"></a>5. Common Questions</h4><ol><li>Q: The images can’t show in the articles or the main page</li></ol><p>​                 S: put the images in the path <code>/source/img </code> rather than <code>/img</code>, the main pages’ images too.</p><ol start="2"><li><p>Q: How to encrypt the articles</p><p>S: There are three methods</p><p><strong>Method 1</strong>: Set the encryption to a certain directory of articles.</p><pre><code class="hljs">First, set the encrypted tag name and password in the _config.yml file - &#123;name: tagName B, password: password B&#125;Second, In the corresponding article, set tags to tagName (the default is private) </code></pre><p>​    Finally, after deployment, you can only access these articles with tagName B with passward B</p><p>By this method, you can read the article on the webpage, but a password is required.</p><p><strong>Method 2</strong>: Set an article as hidden</p><p> If you set <code> hidden: true</code> at the top of the article, then, the article cannot be searched on the webpage.<br> View articles tagged hidden: <code>hexo hidden: list</code></p><p> <a href="https://github.com/prinsss/hexo-hide-posts">Refer github repo</a></p><p><strong>Method 3</strong> : Hide articles using draftbox, to see the articles by publishing<br><a href="https://blog.holic-x.com/wv-blog/post/6aa34fdd.html#hexo-butterfly-%E6%96%87%E7%AB%A0%E9%9A%90%E8%97%8F">How to realize draftbox</a></p></li><li><p>Q: Create double lauguage blog (Chinese and English)</p><p>A: Three methods:</p><ul><li><p>Double Repo, Deploy Twice <a href="https://youngforest.github.io/2021/09/07/Setup-English-blog/">Reference</a></p></li><li><p>One Repo, Deploy Once <a href="https://www.brando.dev/zh-hans/2021/01/03/%E8%AE%B0%E4%B8%80%E6%AC%A1-Hexo-%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E4%B8%8E%E5%A4%9A%E8%AF%AD%E8%A8%80%E7%AB%99%E7%82%B9%E6%94%B9%E9%80%A0/">Reference 1</a><br><a href="https://zhuanlan.zhihu.com/p/358599353">Reference 2</a></p></li><li><p>Using a special hexo theme which supports double lauguage. For example,  minos <a href="https://medium.com/learn-or-die/%E5%88%A9%E7%94%A8-hexo-%E4%BE%86%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B-%E5%A4%9A%E8%AA%9E%E7%B3%BB-%E9%83%A8%E8%90%BD%E6%A0%BC-4545cc6cdb6">Minos Reference</a><br>icarus:  <a href="https://github.com/ppoffice/hexo-theme-icarus/discussions/1046">github repo</a></p></li><li><p><a href="https://medium.com/learn-or-die/%E5%88%A9%E7%94%A8-hexo-%E4%BE%86%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B-%E5%A4%9A%E8%AA%9E%E7%B3%BB-%E9%83%A8%E8%90%BD%E6%A0%BC-4545cc6cdb6">Blog Example with Double Language</a></p></li></ul></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>Tools</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Tools</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
