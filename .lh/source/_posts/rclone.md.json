@@ -1,0 +1,126 @@
+{
+    "sourceFile": "source/_posts/rclone.md",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 27,
+            "patches": [
+                {
+                    "date": 1636378795069,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1636378819174,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,4 +4,6 @@\n tags:\n ---\n \n #### 远程服务器使用rclone挂载google drive (谷歌云端硬盘)\n+\n+1.使用\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1636378898587,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,5 +5,10 @@\n ---\n \n #### 远程服务器使用rclone挂载google drive (谷歌云端硬盘)\n \n-1.使用\n\\ No newline at end of file\n+1.使用\n+\n+\n+参考连接：\n+从google drive中使用wget下载单个文件\n+https://gist.github.com/iamtekeste/3cdfd0366ebfd2c0d805\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1636378928090,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,12 +3,15 @@\n date: 2021-11-08 21:39:25\n tags:\n ---\n \n+### 从google drive中下载文件的两种方法\n+\n #### 远程服务器使用rclone挂载google drive (谷歌云端硬盘)\n \n 1.使用\n \n \n 参考连接：\n\\ No newline at end of file\n 从google drive中使用wget下载单个文件\n-https://gist.github.com/iamtekeste/3cdfd0366ebfd2c0d805\n+https://gist.github.com/iamtekeste/3cdfd0366ebfd2c0d805\n+\n"
+                },
+                {
+                    "date": 1636378957697,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,12 +5,17 @@\n ---\n \n ### 从google drive中下载文件的两种方法\n \n-#### 远程服务器使用rclone挂载google drive (谷歌云端硬盘)\n+#### 1.让远程服务器使用rclone挂载google drive (谷歌云端硬盘)\n \n+\n+#### 2. 从google drive中使用wget下载单个文件 \n+参考链接\n+https://gist.github.com/iamtekeste/3cdfd0366ebfd2c0d805\n+\n 1.使用\n \n \n 参考连接：\n-从google drive中使用wget下载单个文件\n-https://gist.github.com/iamtekeste/3cdfd0366ebfd2c0d805\n+\n+\n"
+                },
+                {
+                    "date": 1636378968859,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,13 +9,12 @@\n #### 1.让远程服务器使用rclone挂载google drive (谷歌云端硬盘)\n \n \n #### 2. 从google drive中使用wget下载单个文件 \n-参考链接\n-https://gist.github.com/iamtekeste/3cdfd0366ebfd2c0d805\n+参考链接： https://gist.github.com/iamtekeste/3cdfd0366ebfd2c0d805\n \n-1.使用\n \n \n+\n 参考连接：\n \n \n"
+                },
+                {
+                    "date": 1636379044676,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,9 @@\n ### 从google drive中下载文件的两种方法\n \n #### 1.让远程服务器使用rclone挂载google drive (谷歌云端硬盘)\n \n+https://www.moerats.com/archives/481/\n \n #### 2. 从google drive中使用wget下载单个文件 \n 参考链接： https://gist.github.com/iamtekeste/3cdfd0366ebfd2c0d805\n \n"
+                },
+                {
+                    "date": 1636379056291,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,10 +7,11 @@\n ### 从google drive中下载文件的两种方法\n \n #### 1.让远程服务器使用rclone挂载google drive (谷歌云端硬盘)\n \n-https://www.moerats.com/archives/481/\n+参考链接： https://www.moerats.com/archives/481/\n \n+\n #### 2. 从google drive中使用wget下载单个文件 \n 参考链接： https://gist.github.com/iamtekeste/3cdfd0366ebfd2c0d805\n \n \n"
+                },
+                {
+                    "date": 1636379075251,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,12 @@\n ### 从google drive中下载文件的两种方法\n \n #### 1.让远程服务器使用rclone挂载google drive (谷歌云端硬盘)\n \n+简易步骤：\n+1. 下载rclone:\n+\n+\n 参考链接： https://www.moerats.com/archives/481/\n \n \n #### 2. 从google drive中使用wget下载单个文件 \n"
+                },
+                {
+                    "date": 1636379101862,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,10 +9,12 @@\n #### 1.让远程服务器使用rclone挂载google drive (谷歌云端硬盘)\n \n 简易步骤：\n 1. 下载rclone:\n+``` bash\n+wget https://www.moerats.com/usr/shell/rclone_debian.sh && bash rclone_debian.sh\n+```\n \n-\n 参考链接： https://www.moerats.com/archives/481/\n \n \n #### 2. 从google drive中使用wget下载单个文件 \n"
+                },
+                {
+                    "date": 1636379109737,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,8 +13,10 @@\n ``` bash\n wget https://www.moerats.com/usr/shell/rclone_debian.sh && bash rclone_debian.sh\n ```\n \n+2. \n+\n 参考链接： https://www.moerats.com/archives/481/\n \n \n #### 2. 从google drive中使用wget下载单个文件 \n"
+                },
+                {
+                    "date": 1636379143202,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,10 +13,14 @@\n ``` bash\n wget https://www.moerats.com/usr/shell/rclone_debian.sh && bash rclone_debian.sh\n ```\n \n-2. \n+2. rclone的配置\n \n+3.使用rclone进行google drive的挂载\n+\n+\n+\n 参考链接： https://www.moerats.com/archives/481/\n \n \n #### 2. 从google drive中使用wget下载单个文件 \n"
+                },
+                {
+                    "date": 1636379170570,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,8 +15,12 @@\n ```\n \n 2. rclone的配置\n \n+``` bash\n+rclone config\n+```\n+\n 3.使用rclone进行google drive的挂载\n \n \n \n"
+                },
+                {
+                    "date": 1636379198329,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,15 @@\n ```\n \n 3.使用rclone进行google drive的挂载\n \n+``` bash \n+#新建本地文件夹，路径自己定，即下面的LocalFolder\n+mkdir /root/GoogleDrive\n+#挂载为磁盘，下面的DriveName、Folder、LocalFolder参数根据说明自行替换\n+rclone mount DriveName:Folder LocalFolder --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000\n \n+```\n \n 参考链接： https://www.moerats.com/archives/481/\n \n \n"
+                },
+                {
+                    "date": 1636379208953,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n ``` bash \n #新建本地文件夹，路径自己定，即下面的LocalFolder\n mkdir /root/GoogleDrive\n #挂载为磁盘，下面的DriveName、Folder、LocalFolder参数根据说明自行替换\n-rclone mount DriveName:Folder LocalFolder --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000\n+rclone mount GoogleDrive: LocalFolder --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000\n \n ```\n \n 参考链接： https://www.moerats.com/archives/481/\n"
+                },
+                {
+                    "date": 1636379218631,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n ``` bash \n #新建本地文件夹，路径自己定，即下面的LocalFolder\n mkdir /root/GoogleDrive\n #挂载为磁盘，下面的DriveName、Folder、LocalFolder参数根据说明自行替换\n-rclone mount GoogleDrive: LocalFolder --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000\n+rclone mount GoogleDrive: Folder --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000\n \n ```\n \n 参考链接： https://www.moerats.com/archives/481/\n"
+                },
+                {
+                    "date": 1636379259933,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,10 +25,11 @@\n ``` bash \n #新建本地文件夹，路径自己定，即下面的LocalFolder\n mkdir /root/GoogleDrive\n #挂载为磁盘，下面的DriveName、Folder、LocalFolder参数根据说明自行替换\n-rclone mount GoogleDrive: Folder --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000\n+rclone mount DriveName:Folder LocalFolder --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000\n \n+#eg. DriveName: GoogleDrive:   Folder: /data1/shu \n ```\n \n 参考链接： https://www.moerats.com/archives/481/\n \n"
+                },
+                {
+                    "date": 1636379283256,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n mkdir /root/GoogleDrive\n #挂载为磁盘，下面的DriveName、Folder、LocalFolder参数根据说明自行替换\n rclone mount DriveName:Folder LocalFolder --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000\n \n-#eg. DriveName: GoogleDrive:   Folder: /data1/shu \n+#eg. DriveName:Folader ==> GoogleDrive:   LoacalFolder ==> /data1/shu \n ```\n \n 参考链接： https://www.moerats.com/archives/481/\n \n"
+                },
+                {
+                    "date": 1636379292108,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,7 +39,4 @@\n \n \n \n \n-参考连接：\n-\n-\n"
+                },
+                {
+                    "date": 1636379323940,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,8 +34,22 @@\n 参考链接： https://www.moerats.com/archives/481/\n \n \n #### 2. 从google drive中使用wget下载单个文件 \n+\n+1.下载小文件\n+\n+``` bash\n+\n+```\n+\n+2.下载大文件\n+\n+``` bash\n+\n+```\n+\n+\n 参考链接： https://gist.github.com/iamtekeste/3cdfd0366ebfd2c0d805\n \n \n \n"
+                },
+                {
+                    "date": 1636379335362,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -47,9 +47,11 @@\n ``` bash\n \n ```\n \n+PS:注意都是下载的文件，不是文件夹\n \n+\n 参考链接： https://gist.github.com/iamtekeste/3cdfd0366ebfd2c0d805\n \n \n \n"
+                },
+                {
+                    "date": 1636379379244,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -44,8 +44,9 @@\n \n 2.下载大文件\n \n ``` bash\n+wget --load-cookies /tmp/cookies.txt \"https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=FILEID' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\\1\\n/p')&id=FILEID\" -O FILENAME && rm -rf /tmp/cookies.txt\n \n ```\n \n PS:注意都是下载的文件，不是文件夹\n"
+                },
+                {
+                    "date": 1636379388000,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,9 +38,9 @@\n \n 1.下载小文件\n \n ``` bash\n-\n+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=FILEID' -O FILENAME\n ```\n \n 2.下载大文件\n \n"
+                },
+                {
+                    "date": 1636379471559,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,8 +39,11 @@\n 1.下载小文件\n \n ``` bash\n wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=FILEID' -O FILENAME\n+\n+#有的评论说针对rar文件需要加上-r\n+wget --no-check-certificate -r 'https://docs.google.com/uc?export=download&id=FILEID' -O FILENAME\n ```\n \n 2.下载大文件\n \n"
+                },
+                {
+                    "date": 1636379615342,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,9 +51,9 @@\n wget --load-cookies /tmp/cookies.txt \"https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=FILEID' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\\1\\n/p')&id=FILEID\" -O FILENAME && rm -rf /tmp/cookies.txt\n \n ```\n \n-PS:注意都是下载的文件，不是文件夹\n+PS:注意都是下载的文件，不是文件夹; folder目前周到的解决方案是使用循环\n \n \n 参考链接： https://gist.github.com/iamtekeste/3cdfd0366ebfd2c0d805\n \n"
+                },
+                {
+                    "date": 1636379691750,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,9 +51,9 @@\n wget --load-cookies /tmp/cookies.txt \"https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=FILEID' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\\1\\n/p')&id=FILEID\" -O FILENAME && rm -rf /tmp/cookies.txt\n \n ```\n \n-PS:注意都是下载的文件，不是文件夹; folder目前周到的解决方案是使用循环\n+PS:注意都是下载的文件，不是文件夹; folder目前找到的解决方案是使用循环\n \n \n 参考链接： https://gist.github.com/iamtekeste/3cdfd0366ebfd2c0d805\n \n"
+                },
+                {
+                    "date": 1636427155371,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,8 +28,12 @@\n #挂载为磁盘，下面的DriveName、Folder、LocalFolder参数根据说明自行替换\n rclone mount DriveName:Folder LocalFolder --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000\n \n #eg. DriveName:Folader ==> GoogleDrive:   LoacalFolder ==> /data1/shu \n+\n+#rclone取消挂载\n+#取消挂载\n+fusermount -qzu <本地路径>\n ```\n \n 参考链接： https://www.moerats.com/archives/481/\n \n"
+                },
+                {
+                    "date": 1636427174368,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,12 +27,11 @@\n mkdir /root/GoogleDrive\n #挂载为磁盘，下面的DriveName、Folder、LocalFolder参数根据说明自行替换\n rclone mount DriveName:Folder LocalFolder --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000\n \n-#eg. DriveName:Folader ==> GoogleDrive:   LoacalFolder ==> /data1/shu \n+#eg. DriveName:Folader ==> GoogleDrive:/   LoacalFolder ==> /data1/shu \n \n #rclone取消挂载\n-#取消挂载\n fusermount -qzu <本地路径>\n ```\n \n 参考链接： https://www.moerats.com/archives/481/\n"
+                }
+            ],
+            "date": 1636378795069,
+            "name": "Commit-0",
+            "content": "---\ntitle: rclone\ndate: 2021-11-08 21:39:25\ntags:\n---\n\n#### 远程服务器使用rclone挂载google drive (谷歌云端硬盘)\n"
+        }
+    ]
+}

@@ -41,6 +41,16 @@ hexo server
 hexo clean && hexo g && hexo s
 ```
 
+上传git上面的一系列命令
+hexo clean && hexo g && sudo hexo d
+
+#### hexo source文件上传， source 分支和master分支
+https://blog.csdn.net/itnerd/article/details/114274304 
+
+
+#### hexo+github私有仓库
+https://hexo.io/zh-cn/docs/github-pages.html#%E7%A7%81%E6%9C%89-Repository 
+
 #### 参考链接
 [Mac OS上搭建Hexo博客流程](https://juejin.cn/post/6978377036645531662)
 [配置指南](https://hexo.fluid-dev.com/docs/guide/#%E6%96%87%E7%AB%A0%E5%9C%A8%E9%A6%96%E9%A1%B5%E7%9A%84%E5%B0%81%E9%9D%A2%E5%9B%BE)

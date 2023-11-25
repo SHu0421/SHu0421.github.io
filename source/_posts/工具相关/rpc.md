@@ -63,6 +63,24 @@ go command not found
 go download超时解决：
 export GOPROXY=https://goproxy.cn
 
+go 软件的安装
+1. 直接使用 tar -C /usr/local -xzf go1.4.7.linux-amd64.tar.gz 解压到 local 目录 设置PATH，export PATH=$PATH:/usr/local/go/bin
+
+2. 假定你想要安装Go的目录为 $GO_INSTALL_DIR，后面替换为相应的目录路径。 解压缩tar.gz包到安装目录下：tar zxvf go1.14.7.linux-amd64.tar.gz -C $GO_INSTALL_DIR。
+设置PATH，export PATH=$PATH:$GO_INSTALL_DIR/go/bin
+
+如果修改用户环境变量：设置 vim ~/.bash_profile
+如果修改系统环境变量：设置 vim /etc/profile
+
+3. [go安装的三种方法](https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/01.1.md)
+
+
+4. go的插件在vscode命令行中显示失败 i/o time out
+解决方法：GO111MODULE=on GOPROXY=https://goproxy.cn,direct go install 
+
+5. vscode下载go 包的时候一个failed的解决方案（和第4个有点雷同）
+https://www.cnblogs.com/marshhu/p/11848020.html
+
 
 #### 使用python
 一个python小例子：https://grpc.io/docs/languages/python/quickstart/
