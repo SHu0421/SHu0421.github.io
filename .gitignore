@@ -6,8 +6,11 @@ node_modules
 .deploy_git
 .history
 .lh
+**/.history
+**/.lh
 .history/*
 .lh/*
+
 .deploy/
 .history/
 
@@ -16,4 +19,5 @@ node_modules
 *.log
 # node_modules/
 public/
-
+.note.txt.icloud
+.package.json.icloud
