@@ -1,0 +1,15 @@
+风格推荐：简单风格 nextT
+Fluid 目前选择风格
+
+ 例子可以参考
+https://liaoyq.club/archives/ 
+https://www.erenship.com/posts/40222.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93 
+
+https://fluid-dev.github.io/hexo-fluid-docs/guide/#%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90
+
+https://www.erenship.com/posts/40222.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93
+
+自定义字体
+random
+
+book主题
