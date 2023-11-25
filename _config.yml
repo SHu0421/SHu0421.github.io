@@ -104,10 +104,10 @@ theme: fluid
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
+# repo: https://github.com/SHu0421/SHu0421.github.io.git
 deploy:
   type: git
   repo: git@github.com:SHu0421/SHu0421.github.io.git
-  # repo: https://github.com/SHu0421/SHu0421.github.io.git
   branch: master
 
 server:

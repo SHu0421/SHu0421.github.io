@@ -72,14 +72,14 @@
   </url>
   
   <url>
-    <loc>http://shu0421.github.io/en/about/index.html</loc>
+    <loc>http://shu0421.github.io/en/favorite-language/index.html</loc>
     
     <lastmod>2023-11-24</lastmod>
     
   </url>
   
   <url>
-    <loc>http://shu0421.github.io/en/favorite-language/index.html</loc>
+    <loc>http://shu0421.github.io/en/about/index.html</loc>
     
     <lastmod>2023-11-24</lastmod>
     
@@ -93,6 +93,13 @@
     <priority>1.0</priority>
   </url>
 
+  
+  <url>
+    <loc>http://shu0421.github.io/en/tags/rclone/</loc>
+    <lastmod>2023-11-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
   
   <url>
     <loc>http://shu0421.github.io/en/tags/hexo/</loc>
@@ -109,7 +116,7 @@
   </url>
   
   <url>
-    <loc>http://shu0421.github.io/en/tags/rclone/</loc>
+    <loc>http://shu0421.github.io/en/tags/rpc/</loc>
     <lastmod>2023-11-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -117,13 +124,6 @@
   
   <url>
     <loc>http://shu0421.github.io/en/tags/linux/</loc>
-    <lastmod>2023-11-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://shu0421.github.io/en/tags/rpc/</loc>
     <lastmod>2023-11-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
