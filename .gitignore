@@ -3,4 +3,7 @@
 **/.deploy_git
 node_modules
 .deploy_git/*
-deploy_git
+.deploy_git
+.history
+.lh
+
