@@ -212,10 +212,6 @@ function Debouncer(callback) {
   this.callback = callback;
   this.ticking = false;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> b337a614aa153a8eac9c70879de3f4de4ab406ce
 Debouncer.prototype = {
   constructor: Debouncer,
 
