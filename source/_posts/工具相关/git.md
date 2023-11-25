@@ -8,8 +8,7 @@ tags:
 
 
 1. git pull超时，访问缓慢的解决方案
-参考链接：
-https://jasonkayzk.github.io/2019/10/10/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8Git%E6%97%B6push-pull%E8%B6%85%E6%97%B6-%E4%BB%A5%E5%8F%8AGithub%E8%AE%BF%E9%97%AE%E6%85%A2%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/
+[参考链接](https://jasonkayzk.github.io/2019/10/10/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8Git%E6%97%B6push-pull%E8%B6%85%E6%97%B6-%E4%BB%A5%E5%8F%8AGithub%E8%AE%BF%E9%97%AE%E6%85%A2%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/)
 
 git超时比较有用的命令：git config --global --add remote.origin.proxy "" 
 
@@ -57,5 +56,33 @@ https://blog.csdn.net/x763795151/article/details/114903758
 
 添加和删除可以合并为一个操作
 ‘’‘git remote set-url origin’‘’
+
+6. 使用git命令，如果回滚到上一次提交，删除```git add . 和git commit```的内容但是本地修改记录不变的话，使用```git reset --mixed version_num```
+```
+--mixed：为默认值，等同于git reset。作用为：将文件回退到工作区，此时会保留工作区中的文件，但会丢弃暂存区中的文件；
+--soft：作用为：将文件回退到暂存区，此时会保留工作区和暂存区中的文件（保留git add和git commit内容）；
+--hard：作用为：将文件回退到修改前，此时会丢弃工作区和暂存区中的文件；
+```
+
+
+7. git新建分支与合并
+```
+新建分支：
+  git checkout -a dev
+上传repo: 
+  git add .
+  git commit -m "first commit"
+  git push origin dev
+将source代码合并过来:
+  git checkout source
+  git pull 和远程分支同步
+  git checkout dev
+  git merge source # 合并完成后，可能需要解决冲突，然后再提交
+```
+
+  
+
+
+
 
 

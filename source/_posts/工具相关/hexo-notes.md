@@ -49,7 +49,7 @@ https://blog.csdn.net/itnerd/article/details/114274304
 
 
 #### hexo+github私有仓库
-https://hexo.io/zh-cn/docs/github-pages.html#%E7%A7%81%E6%9C%89-Repository 
+(参考链接)[https://hexo.io/zh-cn/docs/github-pages.html#%E7%A7%81%E6%9C%89-Repository]
 
 #### 参考链接
 [Mac OS上搭建Hexo博客流程](https://juejin.cn/post/6978377036645531662)
@@ -79,3 +79,24 @@ https://hexo.io/zh-cn/docs/github-pages.html#%E7%A7%81%E6%9C%89-Repository
 - 使用hexo具有中英文切换的主题 minos [参考链接](https://medium.com/learn-or-die/%E5%88%A9%E7%94%A8-hexo-%E4%BE%86%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B-%E5%A4%9A%E8%AA%9E%E7%B3%BB-%E9%83%A8%E8%90%BD%E6%A0%BC-4545cc6cdb6)
 icarus: 中英文文章会同时出现[github repo](https://github.com/ppoffice/hexo-theme-icarus/discussions/1046)
 - [搭建好的博客例子](https://medium.com/learn-or-die/%E5%88%A9%E7%94%A8-hexo-%E4%BE%86%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B-%E5%A4%9A%E8%AA%9E%E7%B3%BB-%E9%83%A8%E8%90%BD%E6%A0%BC-4545cc6cdb6)
+
+
+
+
+### 注意
+
+1. 只能使用https deploy, 使用git ssh key上传会报错，但是ssh -T github.com是成功返回的；
+
+2. source分支可以删除；开发在dev上，和仓库同步后，merge到master分支（在master分支执行命令```git merge dev```），使用run_cmd_d.sh进行提交部署；
+
+3. master分支提交的其实是blog/public里面的文件；hexo g是生成public文件，因此clean文件的时候没必要运行hexo g
+[hexo cli 源码/ hexo d 内部逻辑](https://blog.eson.org/pub/70d0eddc/)
+
+4. 每次push的时候一定要指定upstream， ```git push origin dev/master/source```
+
+
+
+
+### 未来优化的方向
+
+1. 随机图片同一个时刻返回相同，导致主页index_img都相同
