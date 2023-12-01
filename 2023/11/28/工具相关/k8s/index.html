@@ -1,0 +1,872 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/self.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Shu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="学习打算先学习k8s, 在hec06 hec07, hec08上面实验，然后再学习microk8s minik8s, minikube的方式进行kubenetes的学习 microk8s官方安装教程404 Page not found | Kubernetes 给kubectl改别名:sudo snap alias microk8s.kubectl kubectl  原生k8s平台的搭建在hec集">
+<meta property="og:type" content="article">
+<meta property="og:title" content="K8S学习">
+<meta property="og:url" content="http://shu0421.github.io/2023/11/28/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/k8s/index.html">
+<meta property="og:site_name" content="Hello World">
+<meta property="og:description" content="学习打算先学习k8s, 在hec06 hec07, hec08上面实验，然后再学习microk8s minik8s, minikube的方式进行kubenetes的学习 microk8s官方安装教程404 Page not found | Kubernetes 给kubectl改别名:sudo snap alias microk8s.kubectl kubectl  原生k8s平台的搭建在hec集">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-11-28T04:51:37.000Z">
+<meta property="article:modified_time" content="2023-11-29T02:21:21.320Z">
+<meta property="article:author" content="Shu">
+<meta property="article:tag" content="k8s">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>K8S学习 - Hello World</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4176555_qx6ctrgomb9.css">
+<link rel="stylesheet" href="/css/mac.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"shu0421.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":"UA-294899992-1","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"gtag":"G-MVXHSJJR3Q"},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hello World" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>HU&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-books"></i>
+                <span>爱好</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/favorite/">
+                    
+                    <span>概述</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/favorite-reading">
+                    
+                    <span>阅读</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/favorite-language/">
+                    
+                    <span>语言</span>
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="http://shu0421.github.io/en/">
+                <i class="iconfont icon-qiehuanyuyan"></i>
+                <span>English</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg-wenzhang-2.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="K8S学习"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-28 12:51" pubdate>
+          2023年11月28日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          6.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          20 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">K8S学习</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    <!-- compatible with older versions-->
+                    本文最后更新于：2023年11月29日 上午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="学习打算"><a href="#学习打算" class="headerlink" title="学习打算"></a>学习打算</h2><p>先学习k8s, 在hec06 hec07, hec08上面实验，然后再学习microk8s minik8s, minikube的方式进行kubenetes的学习</p>
+<h2 id="microk8s"><a href="#microk8s" class="headerlink" title="microk8s"></a>microk8s</h2><p>官方安装教程<br><a target="_blank" rel="noopener" href="https://kubernetes.io/zh/blog/2019/11/26/%E4%BD%BF%E7%94%A8-microk8s-%E5%9C%A8-linux-%E4%B8%8A%E6%9C%AC%E5%9C%B0%E8%BF%90%E8%A1%8C-kubernetes/">404 Page not found | Kubernetes</a></p>
+<p>给kubectl改别名:<br><code>sudo snap alias microk8s.kubectl kubectl</code> </p>
+<h2 id="原生k8s平台的搭建"><a href="#原生k8s平台的搭建" class="headerlink" title="原生k8s平台的搭建"></a>原生k8s平台的搭建</h2><h2 id="在hec集群上搭建过程"><a href="#在hec集群上搭建过程" class="headerlink" title="在hec集群上搭建过程"></a>在hec集群上搭建过程</h2><h3 id="1-安装kubelet-kubeadm-kubectl"><a href="#1-安装kubelet-kubeadm-kubectl" class="headerlink" title="1. 安装kubelet kubeadm kubectl"></a>1. 安装kubelet kubeadm kubectl</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><br>sudo apt-get update &amp;&amp; sudo apt-get install -y apt-transport-https curl<br><span class="hljs-comment"># curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - </span><br><span class="hljs-comment"># 上面那个命令要翻墙，因此先将apt-get.gpg下载下来，然后使用如下命令替换</span><br>sudo apt-key add apt-key.gpg<br>sudo sh -c <span class="hljs-string">&#x27;echo &quot;deb https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main&quot;&gt;/etc/apt/sources.list&#x27;</span><br><br>sudo add-apt-repository --remove  ppa:pascallj/docker.io-clone3 删除ppa<br>或者<span class="hljs-built_in">cd</span> /etc/apt/sources.list.d, 然后进行删除<br><br><span class="hljs-comment"># E: Package &#x27;socat&#x27;/&#x27;conntrack&#x27; has no installation candidate</span><br><span class="hljs-comment"># 在 https://launchpad.net/+search?field.text=conntrack+ppa&amp;field.actions.search=Search </span><br><span class="hljs-comment"># 网站上搜索 conntrack/ socat的 ppa源，然后使用命令, 添加ppa源： </span><br>sudo add-apt-repository ppa:ionel-mc/socat<br>sudo add-apt-repository ppa:brightbox/experimental <br><br>sudo apt-get update<br><br>sudo apt-get install conntrack<br>sudo apt-get install socat<br>sudo apt-get update &amp;&amp; sudo apt-get install docker.io<br><br><span class="hljs-comment"># 最后再运行下面的命令就不会报错了:</span><br>sudo apt-get install -y kubelet=1.15.1-00 kubeadm=1.15.1-00 kubectl=1.15.1-00<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="2-运行docker"><a href="#2-运行docker" class="headerlink" title="2. 运行docker"></a>2. 运行docker</h3><p>docker需要在每个节点都运行起来：<br>sudo systemctl start docker</p>
+<!-- 没有权限的解决方案 -->
+<p>sudo chmod a+rw /var/run/docker.sock</p>
+<h3 id="3-用-kubeadm-创建-Cluster"><a href="#3-用-kubeadm-创建-Cluster" class="headerlink" title="3. 用 kubeadm 创建 Cluster"></a>3. 用 kubeadm 创建 Cluster</h3><p>在master节点上运行：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">sudo kubeadm reset<br>sudo kubeadm init <span class="hljs-attribute">--apiserver-advertise-address</span>=10.5.26.67 <span class="hljs-attribute">--pod-network-cidr</span>=10.244.0.0/16 <span class="hljs-attribute">--image-repository</span>=registry.aliyuncs.com/google_containers <span class="hljs-attribute">--ignore-preflight-errors</span>=all<br></code></pre></td></tr></table></figure>
+
+<!-- 其他人的一个例子 -->
+
+ <!-- sudo kubeadm reset -->
+<!-- sudo kubeadm init \
+--apiserver-advertise-address=10.5.26.67 \
+--image-repository registry.aliyuncs.com/google_containers \
+--kubernetes-version v1.13.3 \
+--service-cidr=10.1.0.0/16 \
+--pod-network-cidr=10.244.0.0/16 \
+--ignore-preflight-errors=all
+-->
+<p>如果卡住，出现下列报警：[kubelet-check] Initial timeout of 40s passed.</p>
+<p>查看原因：<code>sudo journalctl -u kubelet tail -100f /var/log/messages|grep kub</code></p>
+<p>解决方法：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs awk">修改docker cgroup:<br>sudo vi <span class="hljs-regexp">/etc/</span>docker/daemon.json<br>&#123;<br>  <span class="hljs-string">&quot;exec-opts&quot;</span>: [<br>        <span class="hljs-string">&quot;native.cgroupdriver=systemd&quot;</span><br>  ],<br>  <span class="hljs-string">&quot;log-driver&quot;</span>: <span class="hljs-string">&quot;json-file&quot;</span>,<br>  <span class="hljs-string">&quot;log-opts&quot;</span>: &#123;<br>        <span class="hljs-string">&quot;max-size&quot;</span>: <span class="hljs-string">&quot;100m&quot;</span><br>  &#125;,<br>  <span class="hljs-string">&quot;storage-driver&quot;</span>: <span class="hljs-string">&quot;overlay2&quot;</span>,<br>  <span class="hljs-string">&quot;storage-opts&quot;</span>: [<br>        <span class="hljs-string">&quot;overlay2.override_kernel_check=true&quot;</span><br>  ],<br>  <span class="hljs-string">&quot;registry-mirrors&quot;</span> : [<br>        <span class="hljs-string">&quot;https://ot2k4d59.mirror.aliyuncs.com/&quot;</span><br>  ],<br>  <span class="hljs-string">&quot;graph&quot;</span>: <span class="hljs-string">&quot;/data/docker&quot;</span><br>&#125;<br>sudo systemctl daemon-reload<br>sudo systemctl restart docker <span class="hljs-regexp">//</span>重启docker<br>sudo iptables -F &amp;&amp; sudo iptables -t nat -F &amp;&amp; sudo iptables -t mangle -F &amp;&amp; sudo iptables -X<br>sudo swapoff -a<br>sudo systemctl restart kubelet<br></code></pre></td></tr></table></figure>
+<p>上述问题解决方案的参考链接：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/67606941/kubeadm-init-failing-while-initializing-a-kubernetes-cluster">kubeadm init failing while initializing a Kubernetes cluster - Stack Overflow</a></p>
+<h3 id="4-为master配置-kubectl"><a href="#4-为master配置-kubectl" class="headerlink" title="4. 为master配置 kubectl"></a>4. 为master配置 kubectl</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo mkdir -p <span class="hljs-variable">$HOME</span>/.kube<br>sudo cp -i <span class="hljs-regexp">/etc/</span>kubernetes<span class="hljs-regexp">/admin.conf $HOME/</span>.kube/config<br>sudo chown $(id -u):$(id -g) <span class="hljs-variable">$HOME</span><span class="hljs-regexp">/.kube/</span>config<br></code></pre></td></tr></table></figure>
+<p>  运行完这三句之后，<code>sudo kubectl version</code>显示正常结果</p>
+<h3 id="5-其他节点加入master节点"><a href="#5-其他节点加入master节点" class="headerlink" title="5. 其他节点加入master节点"></a>5. 其他节点加入master节点</h3><!-- 注意一定要保证服务器和客户端之间的kubectl版本一致
+sudo apt-get install -y kubelet=1.23.6-00 kubeadm=1.23.6-00 kubectl=1.23.6-00 -->
+
+<p>先初始化网络：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">kubectl apply -f https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/coreos/</span>flannel<span class="hljs-regexp">/master/</span>Documentation/kube-flannel.yml<br></code></pre></td></tr></table></figure>
+<p>最后得到的token:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs vim">sudo kubeadm <span class="hljs-keyword">join</span> <span class="hljs-number">10.5</span>.<span class="hljs-number">26.67</span>:<span class="hljs-number">6443</span> --token <span class="hljs-number">9</span>am4ce.fnycv1gi9gx7mbch \<br>    --discovery-token-<span class="hljs-keyword">ca</span>-cert-hash <span class="hljs-built_in">sha256</span>:<span class="hljs-number">3368</span>a9667447c72ab00404ce0ff9b4975e9402b1f86c9afce511d992ecfcd29e --ignore-preflight-errors=<span class="hljs-keyword">all</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="平台搭建问题及解决方案："><a href="#平台搭建问题及解决方案：" class="headerlink" title="平台搭建问题及解决方案："></a>平台搭建问题及解决方案：</h2><h3 id="1-kubeadm-join超时"><a href="#1-kubeadm-join超时" class="headerlink" title="1. kubeadm join超时"></a>1. kubeadm join超时</h3><p>一直join不了的解决方法和k8s master kubeadm init不了的解决方案相同，见”修改docker cgroup“</p>
+<p>一些误区：<br>节点之间不需要免密登录，也能进行kubectl的通信（kubeadm join）</p>
+<h3 id="2-建立镜像的时候出现docker-build-pip超时，使用国内源仍然无法解决"><a href="#2-建立镜像的时候出现docker-build-pip超时，使用国内源仍然无法解决" class="headerlink" title="2. 建立镜像的时候出现docker build pip超时，使用国内源仍然无法解决"></a>2. 建立镜像的时候出现docker build pip超时，使用国内源仍然无法解决</h3><p>解决方案：在docker build命令后面加上 –network=”host”</p>
+<h3 id="3-安装kubeflow"><a href="#3-安装kubeflow" class="headerlink" title="3.安装kubeflow"></a>3.安装kubeflow</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/368720477">轻量级Kubeflow模型训练 - 知乎</a><br>安装kubeflow遇到的问题：<br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/69054622/unable-to-install-crds-in-kubernetes-kind">Unable to install CRDs in kubernetes kind - Stack Overflow</a></p>
+<p>降级kubeadm的版本：sudo apt-get install kubeadm=1.20.4-00 kubectl=1.20.4-00 kubelet=1.20.4-00 -y –allow-downgrades 允许降低版本<br>在降低版本之后，需要重新进行kubeadm的init和join， 否则会导致kubectl 客户端和服务器版本不一致的问题</p>
+<h3 id="4-coredns-一直处在containerWaiting的状态"><a href="#4-coredns-一直处在containerWaiting的状态" class="headerlink" title="4. coredns 一直处在containerWaiting的状态"></a>4. coredns 一直处在containerWaiting的状态</h3><p><a target="_blank" rel="noopener" href="https://58jb.com/html/k8s_v1.20_coredns_error.html">https://58jb.com/html/k8s_v1.20_coredns_error.html</a><br>注意worker节点上面的10-canal.conflist和calico-kubeconfig删 也要删除！！！1</p>
+<p>// 这个链接没有尝试：<a target="_blank" rel="noopener" href="https://bbs.huaweicloud.com/forum/thread-60243-1-1.html">华为云论坛_云计算论坛_开发者论坛_技术论坛-华为云</a></p>
+<p>service/pytorch-operator created<br>deployment.apps/pytorch-operator created</p>
+<p>查看一个运行pod的镜像: kubectl edit pod pytorch-operator-7756f57455-6xj9g -n kubeflow</p>
+<h3 id="5-在安装pytorch-operator的时候出现镜像找不到"><a href="#5-在安装pytorch-operator的时候出现镜像找不到" class="headerlink" title="5.在安装pytorch operator的时候出现镜像找不到"></a>5.在安装pytorch operator的时候出现镜像找不到</h3><p>参考的安装目录： <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/368720477">轻量级Kubeflow模型训练 - 知乎</a><br>“${MANIFESTS_DIR}/pytorch-job/pytorch-operator/base/“ 里面deployment.yaml的镜像为<br>“registry.cn-shenzhen.aliyuncs.com/shikanon/kubeflow-images-public.pytorch-operator:v1.0.0-rc.0”</p>
+<p>主要参考的替换方法：<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/741640">kubeflow系列(一)：基于国内阿里云镜像解决kubeflow一键安装-阿里云开发者社区</a></p>
+<h3 id="6-现在创建了pytorch-job但是运行不起来，create-之后找不到"><a href="#6-现在创建了pytorch-job但是运行不起来，create-之后找不到" class="headerlink" title="6. 现在创建了pytorch job但是运行不起来，create 之后找不到"></a>6. 现在创建了pytorch job但是运行不起来，create 之后找不到</h3><p><a target="_blank" rel="noopener" href="https://github.com/kubeflow/pytorch-operator">GitHub - kubeflow/pytorch-operator: PyTorch on Kubernetes</a>（明天照着这个看看）</p>
+<ul>
+<li>执行以下命令，通过 kubectl 提交该 PyTorch Job：<br>kubectl create -f ./pytorch_job_mnist_nccl.yaml</li>
+<li>执行以下命令，查看该 PyTorch Job：<br>kubectl get -o yaml pytorchjobs pytorch-dist-mnist-nccl</li>
+<li>执行以下命令，查看 PyTorch 任务创建的相关 Pod：<br>kubectl get pods -l pytorch_job_name=pytorch-dist-mnist-nccl  </li>
+</ul>
+<h3 id="7-现在创建local-path-storage的时候遇到错误"><a href="#7-现在创建local-path-storage的时候遇到错误" class="headerlink" title="7. 现在创建local-path-storage的时候遇到错误"></a>7. 现在创建local-path-storage的时候遇到错误</h3><p>换了一个节点hec05,然后在每个节点按照 <a target="_blank" rel="noopener" href="https://bbs.huaweicloud.com/forum/thread-60243-1-1.html">华为云论坛_云计算论坛_开发者论坛_技术论坛-华为云</a> 运行命令就可以了<br>然后使用设置为default的local-path</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">kubectl patch storageclass <span class="hljs-keyword">local</span>-path -p &#x27;&#123;<span class="hljs-string">&quot;metadata&quot;</span>: &#123;<span class="hljs-string">&quot;annotations&quot;</span>:&#123;<span class="hljs-string">&quot;storageclass.kubernetes.io/is-default-class&quot;</span>:<span class="hljs-string">&quot;true&quot;</span>&#125;&#125;&#125;&#x27;<br></code></pre></td></tr></table></figure>
+
+<p>正确的解决的方法应该是每个节点都删除cth0, 主要命令见服务器上的run_update.sh脚本</p>
+<h3 id="8-下载kubeflow的时候cert-manager出现错误"><a href="#8-下载kubeflow的时候cert-manager出现错误" class="headerlink" title="8. 下载kubeflow的时候cert-manager出现错误"></a>8. 下载kubeflow的时候cert-manager出现错误</h3><!-- //下面这个解决方法是错误的，因为for flannel  you must pass 10.244.0.0/16!!!!1
+kubectl edit cm -n kube-system kube-flannel-cfg
+将10.244.0.0/16 改为 最开始kubeadm init的值--pod-network-cidr=192.168.0.0/16
+也可以通过下面命令查看 kubectl get nodes -o jsonpath='{.items[*].spec.podCIDR}' to get pod CIDR -->
+
+<p>正确的解决的方法应该是每个节点都删除cth0, 主要命令见服务器上的run_update.sh脚本， 同时设置–pod-network-cidr=10.244.0.0/16</p>
+<h3 id="9-ImageBackOff问题"><a href="#9-ImageBackOff问题" class="headerlink" title="9. ImageBackOff问题"></a>9. ImageBackOff问题</h3><p>在执行命令kfctl apply -f kfctl_k8s_istio.v1.2.0.yaml 因为需要下载许多的镜像，所以可能会导致ImageBackOff<br>因此至少需要100G的存储空间，同时需要借助阿里云的镜像来进行所有镜像的下载，然后再执行这个命令，主要参考下面两个链接<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/koukouwuwu/article/details/117016360">k8s中的kubeflow1.02安装过程记录_ZhuoJieTech的博客-CSDN博客</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_46595591/article/details/107765833">【最新】k8s中kubeflow(v1.0)部署全过程+踩坑全集（图文）_kubeflow踩坑-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/shikanon/kubeflow-manifests#%E5%AE%89%E8%A3%85kubeflow">GitHub - shikanon/kubeflow-manifests: kubeflow国内一键安装文件</a> 国内环境一键安装kubeflow1.3试试</p>
+<p>查看是否安装好: <code>kubectl -n kubeflow get all</code> </p>
+<h3 id="10-k8s可视化"><a href="#10-k8s可视化" class="headerlink" title="10.  k8s可视化"></a>10.  k8s可视化</h3><ul>
+<li><p>安装过程：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f4e35abe0462">helm3安装prometheus到K8s集群</a> 通过这个安装grafana和 prometheus<br>(主要安装命令见服务器 install_tools.sh)</p>
+</li>
+<li><p>遇到的问题：无法将localhost:9090添加到grafana的仪表盘</p>
+</li>
+<li><p>主要原因： prometheus开启的时候自环网络，<code>curl localhost:9090</code>成功；但是<code>curl 10.5.26.66:9090</code> 失败；所以用 <code>ssh -L 9090:127.0.0.1:9090 shu@10.5.26.66 -o ProxyCommand=&quot;ssh shu@10.5.26.19 -W %h:%p&quot; </code> 建立隧道也失败</p>
+</li>
+<li><p>解决方案：</p>
+<ol>
+<li>需要在你的prometheus.yml 文件 中监控的localhost 改为你的IP</li>
+<li>grafana改用brower模式，填入htpp://localhost:30090 （也就是prometheus的浏览器地址）</li>
+</ol>
+</li>
+</ul>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a target="_blank" rel="noopener" href="https://github.com/wenbin8/doc/blob/master/%E5%88%86%E5%B8%83%E5%BC%8F/CloudNative/Kubernetes/01-Kubernetes%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA.md">其他人搭建的过程，可借鉴</a></p>
+<h2 id="k8s-其他辅助功能"><a href="#k8s-其他辅助功能" class="headerlink" title="k8s 其他辅助功能"></a>k8s 其他辅助功能</h2><h2 id="1-查看日志"><a href="#1-查看日志" class="headerlink" title="1. 查看日志"></a>1. 查看日志</h2><p>看系统日志</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stata"><span class="hljs-keyword">cat</span> /<span class="hljs-keyword">var</span>/<span class="hljs-keyword">log</span>/messages<br></code></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs xml">用kubectl 查看日志<br><span class="hljs-comment">&lt;!-- 注意：使用Kubelet describe 查看日志，一定要带上 命名空间，否则会报如下错误[root@node2 ~]# kubectl describe pod coredns-6c65fc5cbb-8ntpvError from server (NotFound): pods &quot;coredns-6c65fc5cbb-8ntpv&quot; not found --&gt;</span><br><br>kubectl describe pod kubernetes-dashboard-849cd79b75-s2snt --namespace kube-system<br><br>kubectl logs -f pods/monitoring-influxdb-fc8f8d5cd-dbs7d -n kube-system<br><br>kubectl logs --tail 200 -f kube-apiserver -n kube-system |more<br><br>kubectl logs --tail 200 -f podname -n jenkins<br><br><br><br>用journalctl查看日志非常管用<br><br>journalctl -u kube-scheduler<br><br>journalctl -xefu kubelet  -n 10（主要是这个）<br><br>journalctl -u kube-apiserver<br><br><br>journalctl -u kubelet |tail<br><br>journalctl -xe<br><br><br>用docker查看日志<br><br>docker logs c36c56e4cfa3  (容器id)<br></code></pre></td></tr></table></figure>
+
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/" class="category-chain-item">工具相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/k8s/" class="print-no-link">#k8s</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>K8S学习</div>
+      <div>http://shu0421.github.io/2023/11/28/工具相关/k8s/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Shu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年11月28日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/11/29/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" title="hexo + github 博客搭建">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">hexo + github 博客搭建</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/11/25/dp%E9%97%AE%E9%A2%98%E4%B8%93%E6%A0%8F/DAG+%E6%A0%91%E7%8A%B6+%E5%85%B6%E4%BB%96dp/" title="DP问题专栏">
+                        <span class="hidden-mobile">DP问题专栏</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"H2RSYuSdiyJY9PtyUuEzMehk-gzGzoHsz","appKey":"VVHDe4hNQJHWFolrxe6l3FNA","path":"window.location.pathname","placeholder":"留下你的建议再离开~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

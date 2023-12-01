@@ -1,0 +1,809 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/self.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Shu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1. vscode调试的时候找不到路径 解决方案:在运行的python文件中添加sys.path，同时注意vscode调试的环境可以通过vscode界面最下面一栏进行替换12import syssys.path.append(&quot;&#x2F;root&#x2F;hushuang&#x2F;IS-code&quot;)  2. 程序运行的时候报错 no module named XXX 如果是引入了与当前包并行的其他包里">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见问题及解决方案">
+<meta property="og:url" content="http://shu0421.github.io/2021/11/11/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/index.html">
+<meta property="og:site_name" content="Hello World">
+<meta property="og:description" content="1. vscode调试的时候找不到路径 解决方案:在运行的python文件中添加sys.path，同时注意vscode调试的环境可以通过vscode界面最下面一栏进行替换12import syssys.path.append(&quot;&#x2F;root&#x2F;hushuang&#x2F;IS-code&quot;)  2. 程序运行的时候报错 no module named XXX 如果是引入了与当前包并行的其他包里">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302">
+<meta property="article:published_time" content="2021-11-11T08:48:29.000Z">
+<meta property="article:modified_time" content="2023-11-30T11:28:13.986Z">
+<meta property="article:author" content="Shu">
+<meta property="article:tag" content="vscode python">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>常见问题及解决方案 - Hello World</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_4176555_qx6ctrgomb9.css">
+<link rel="stylesheet" href="/css/mac.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"shu0421.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":"UA-294899992-1","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"gtag":"G-MVXHSJJR3Q"},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hello World" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>HU&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-books"></i>
+                <span>爱好</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/favorite/">
+                    
+                    <span>概述</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/favorite-reading">
+                    
+                    <span>阅读</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/favorite-language/">
+                    
+                    <span>语言</span>
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="http://shu0421.github.io/en/">
+                <i class="iconfont icon-qiehuanyuyan"></i>
+                <span>English</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg-wenzhang-2.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="常见问题及解决方案"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-11-11 16:48" pubdate>
+          2021年11月11日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          5.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          17 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">常见问题及解决方案</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    <!-- compatible with older versions-->
+                    本文最后更新于：2023年11月30日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="1-vscode调试的时候找不到路径"><a href="#1-vscode调试的时候找不到路径" class="headerlink" title="1. vscode调试的时候找不到路径"></a>1. vscode调试的时候找不到路径</h3><ul>
+<li>解决方案:在运行的python文件中添加sys.path，同时注意vscode调试的环境可以通过vscode界面最下面一栏进行替换<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elm"><span class="hljs-keyword">import</span> sys<br><span class="hljs-title">sys</span>.path.append(<span class="hljs-string">&quot;/root/hushuang/IS-code&quot;</span>)<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-程序运行的时候报错-no-module-named-XXX"><a href="#2-程序运行的时候报错-no-module-named-XXX" class="headerlink" title="2. 程序运行的时候报错 no module named XXX"></a>2. 程序运行的时候报错 no module named XXX</h3><ul>
+<li>如果是引入了与当前包并行的其他包里面的python文件，需要对文件使用setup tools进行打包，才能看到其他module里面的python文件<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs clean">setup.py<br>    <span class="hljs-keyword">from</span> setuptools <span class="hljs-keyword">import</span> setup, find_packages<br><br>    setup(<br>        name=<span class="hljs-string">&#x27;IO-aware Importance Sampling&#x27;</span>,               # 应用名<br>        version=<span class="hljs-string">&#x27;1.0&#x27;</span>,              # 版本号<br>        packages=find_packages(),   # 包括在安装包内的Python包<br>        include_package_data=<span class="hljs-literal">True</span>,   # 启用清单文件MANIFEST.<span class="hljs-keyword">in</span><br>        # exclude_package_date=&#123;<span class="hljs-string">&#x27;&#x27;</span>:[<span class="hljs-string">&#x27;.gitignore&#x27;</span>]&#125;,<br>        # install_requires=[          # 依赖列表<br>        #     <span class="hljs-string">&#x27;Flask&gt;=0.10&#x27;</span>,<br>        #     <span class="hljs-string">&#x27;Flask-SQLAlchemy&gt;=1.5,&lt;=2.1&#x27;</span><br>        # ]<br>    )<br><br>install.sh<br>    python setup.py <br><span class="hljs-comment">//生成的XXX.egg.info文件是和install.sh一个目录内， build文件夹 是和setup.py同一个目录内</span><br></code></pre></td></tr></table></figure></li>
+<li>在import的时候不能导入整个包名 比如IOAS/A/a.py 想要访问IOAS/B/b.py的函数时候，不能在a.py函数里面写 from IOAS.B.b import func_XXX; 正确应该是 from B.b import func_XXX; </li>
+</ul>
+<h3 id="3-vscode无法连接远程服务器，但是能够ssh"><a href="#3-vscode无法连接远程服务器，但是能够ssh" class="headerlink" title="3. vscode无法连接远程服务器，但是能够ssh"></a>3. vscode无法连接远程服务器，但是能够ssh</h3><p>解决方案：服务器/home目录满，清理之后就可以了<br>方法二：将~/.vscode-server 删除就可以了</p>
+<h3 id="4-python-出现no-module-find-XX"><a href="#4-python-出现no-module-find-XX" class="headerlink" title="4. python 出现no module find XX"></a>4. python 出现no module find XX</h3><p>一般是一个python文件引用了同一个文件夹里面另外一个python文件，解决方案就是添加一个setup文件，同时一定要注意install文件和setup文件要放在整个目录的最外层 IOAS里面包含的第一层</p>
+<p>如果出现函数参数和报错信息不一致的话，可能是因为setup安装了两个同名的文件，导致出错，使用pip unistall 自己的项目文件名称就可以了</p>
+<h3 id="5-在使用RPC的时候发现如下问题"><a href="#5-在使用RPC的时候发现如下问题" class="headerlink" title="5. 在使用RPC的时候发现如下问题"></a>5. 在使用RPC的时候发现如下问题</h3><blockquote>
+<p> uni_score_rref = rpc.rpc_async(“worker”, get_uni_sample_score_rref, args=(rank, uni_list_rref, model_param_rref, args, ))<br>  File “/nfs/home/shu/.local/lib/python3.6/site-packages/torch/distributed/rpc/api.py”, line 77, in wrapper<br>    return func(*args, **kwargs)<br>  File “/nfs/home/shu/.local/lib/python3.6/site-packages/torch/distributed/rpc/api.py”, line 635, in rpc_async<br>    return _invoke_rpc(to, func, RPCExecMode.ASYNC, args, kwargs)<br>  File “/nfs/home/shu/.local/lib/python3.6/site-packages/torch/distributed/rpc/api.py”, line 481, in _invoke_rpc<br>    PythonUDF(func, args, kwargs)<br>  File “/nfs/home/shu/.local/lib/python3.6/site-packages/torch/distributed/rpc/internal.py”, line 86, in serialize<br>    p.dump(obj)<br>TypeError: can’t pickle _thread.RLock objects</p>
+</blockquote>
+<p>解决：去掉调用rpc函数里面的args参数，因为args参数里面有一个logger 会导致报错</p>
+<h3 id="6-The-results-is-different-when-placing-rpc-aync-at-a-different-py-file"><a href="#6-The-results-is-different-when-placing-rpc-aync-at-a-different-py-file" class="headerlink" title="6. The results is different when placing rpc_aync at a different .py file"></a>6. The results is different when placing rpc_aync at a different .py file</h3><p>I want to execute a function at the worker side and return the results to the master. However, I find that the results is different when placing rpc_async at a different .py file</p>
+<h4 id="Method-1"><a href="#Method-1" class="headerlink" title="Method 1"></a>Method 1</h4><p>master.py:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">import</span> torch.distributed.rpc <span class="hljs-keyword">as</span> rpc<br><span class="hljs-keyword">from</span> torch.distributed.rpc <span class="hljs-keyword">import</span> RRef<br><span class="hljs-keyword">from</span> test <span class="hljs-keyword">import</span> sub_fun<br><br>os.environ[<span class="hljs-string">&#x27;MASTER_ADDR&#x27;</span>] = <span class="hljs-string">&#x27;10.5.26.19&#x27;</span><br>os.environ[<span class="hljs-string">&#x27;MASTER_PORT&#x27;</span>] = <span class="hljs-string">&#x27;5677&#x27;</span><br><br>rpc.init_rpc(<span class="hljs-string">&quot;master&quot;</span>, rank=<span class="hljs-number">0</span>, world_size=<span class="hljs-number">2</span>)<br>rref = torch.Tensor([<span class="hljs-number">0</span>])<br>sub_fun(rref)<br>rpc.shutdown()<br></code></pre></td></tr></table></figure>
+
+<p>test.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">f</span>(<span class="hljs-params">rref</span>):</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;function is executed on master&quot;</span>)<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sub_fun</span>(<span class="hljs-params">rref</span>):</span><br>x = rpc.rpc_async(<span class="hljs-string">&quot;worker&quot;</span>, f, args=(rref,))<br></code></pre></td></tr></table></figure>
+
+<p>worker.py:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">import</span> torch.distributed.rpc <span class="hljs-keyword">as</span> rpc<br><span class="hljs-keyword">from</span> torch.distributed.rpc <span class="hljs-keyword">import</span> RRef<br><br>os.environ[<span class="hljs-string">&#x27;MASTER_ADDR&#x27;</span>] = <span class="hljs-string">&#x27;10.5.26.19&#x27;</span><br>os.environ[<span class="hljs-string">&#x27;MASTER_PORT&#x27;</span>] = <span class="hljs-string">&#x27;5677&#x27;</span><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">f</span>(<span class="hljs-params">rref</span>):</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;function is executed on worker&quot;</span>)<br>rpc.init_rpc(<span class="hljs-string">&quot;worker&quot;</span>, rank=<span class="hljs-number">1</span>, world_size=<span class="hljs-number">2</span>)<br>rpc.shutdown()<br></code></pre></td></tr></table></figure>
+
+<p>I found that the output is “function is executed on master” at the worker side.</p>
+<h4 id="Method-2"><a href="#Method-2" class="headerlink" title="Method 2"></a>Method 2</h4><p>when I put the two functions: sub_fun and f in the master.py rather than the test.py, the result is “function is executed on worker”.</p>
+<p>Why the two ways output the different results. and how can I get the result 2 with the method 1.</p>
+<h3 id="7-args-删除里面的某个参数"><a href="#7-args-删除里面的某个参数" class="headerlink" title="7. args 删除里面的某个参数"></a>7. args 删除里面的某个参数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">logger_arg = args.logger<br><span class="hljs-keyword">del</span> <span class="hljs-built_in">vars</span>(args)[<span class="hljs-string">&#x27;logger&#x27;</span>]<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;--------args----------&#x27;</span>)<br><span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">list</span>(<span class="hljs-built_in">vars</span>(args).keys()):<br>    <span class="hljs-built_in">print</span>(k)<br>    <span class="hljs-comment"># print(&#x27;%s: %s&#x27; % (k, vars(args)[k]))</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;--------args----------\n&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="8-torch-distributed-rpc-rpc-aync"><a href="#8-torch-distributed-rpc-rpc-aync" class="headerlink" title="8. torch.distributed.rpc.rpc_aync"></a>8. torch.distributed.rpc.rpc_aync</h3><p>rref相关文档 <a target="_blank" rel="noopener" href="https://m.w3cschool.cn/pytorch/pytorch-cdva3buf.html">PyTorch 远程参考协议-PyTorch 中文教程-w3cschool</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/pytorch/pytorch/issues/26759">[RFC] RRef Protocol · Issue #26759 · pytorch/pytorch · GitHub</a></p>
+<h3 id="9-修改账户sudo权限"><a href="#9-修改账户sudo权限" class="headerlink" title="9. 修改账户sudo权限"></a>9. 修改账户sudo权限</h3><p>在有sudo权限的账户下执行 sudo visudo<br>并在下面添加以下权限<br><code>zhinengjisuan ALL=(ALL)     ALL</code></p>
+<h3 id="10-how-to-share-a-cache-among-multiple-subprocesses-when-using-PyTorch-DDP-training"><a href="#10-how-to-share-a-cache-among-multiple-subprocesses-when-using-PyTorch-DDP-training" class="headerlink" title="10. how to share a cache among multiple subprocesses when using PyTorch DDP training."></a>10. how to share a cache among multiple subprocesses when using PyTorch DDP training.</h3><p>I want to share a cache among multiple processes when using ddp training.<br>I found a potential solution is to use shared memory with torch.multiprocessing.<br>However, it is not convinient if I want to training on multiple nodes, thus I choose the method <code>torch.distributed.launch</code> rather than <code>mp.spwarn</code> to init DDP training.<br>The question is how can I share a cache among multiple subprocesses in the same node,  when using the method <code>torch.distributed.init_process_group</code>.<br>Supposed that there are N nodes, we should create N caches, and these subprocesses in the same node share one of the caches.</p>
+<p>Has someone encounter the same problem before?</p>
+<p>已解决:<br>mp.set_start_method(‘spawn’)</p>
+<h3 id="11-nfs-home-shu-local-lib-python3-6-site-packages-PIL-TiffImagePlugin-py-788-UserWarning-Corrupt-EXIF-data-Expecting-to-read-4-bytes-but-only-got-0"><a href="#11-nfs-home-shu-local-lib-python3-6-site-packages-PIL-TiffImagePlugin-py-788-UserWarning-Corrupt-EXIF-data-Expecting-to-read-4-bytes-but-only-got-0" class="headerlink" title="11. /nfs/home/shu/.local/lib/python3.6/site-packages/PIL/TiffImagePlugin.py:788: UserWarning: Corrupt EXIF data.  Expecting to read 4 bytes but only got 0."></a>11. /nfs/home/shu/.local/lib/python3.6/site-packages/PIL/TiffImagePlugin.py:788: UserWarning: Corrupt EXIF data.  Expecting to read 4 bytes but only got 0.</h3><p>  warnings.warn(str(msg))</p>
+<p>solution 1:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image<br><br>imageFolder = /Path/To/Image/Folder<br>listImages = os.listdir(imageFolder)<br><br><span class="hljs-keyword">for</span> img <span class="hljs-keyword">in</span> listImages:<br>    imgPath = os.path.join(imageFolder,img)<br>            <br>    <span class="hljs-keyword">try</span>:<br>        img = Image.<span class="hljs-built_in">open</span>(imgPath)<br>        exif_data = img._getexif()<br>    <span class="hljs-keyword">except</span> ValueError <span class="hljs-keyword">as</span> err:<br>        <span class="hljs-built_in">print</span>(err)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Error on image: &quot;</span>, img)<br></code></pre></td></tr></table></figure>
+
+<h3 id="12-8a100连接hec报错"><a href="#12-8a100连接hec报错" class="headerlink" title="12. 8a100连接hec报错"></a>12. 8a100连接hec报错</h3><blockquote>
+<p>Torch RPC Connection closed by peer<br>[W tensorpipe_agent.cpp:942] RPC agent for worker encountered error when sending outgoing request #0 to master: ECONNREFUSED: connection refused<br>[W tensorpipe_agent.cpp:942] RPC agent for worker encountered error when sending outgoing request #1 to master: ECONNREFUSED: connection refused</p>
+</blockquote>
+<p>真正的解决方案：<code>backend=rpc.BackendType.PROCESS_GROUP</code>，<br>不需要加其他的 <code>os.environ[&#39;TF_SOCKET_IFNAME&#39;] = &#39;ens3&#39;</code> 或者<code>os.environ[&#39;GLOO_SOCKET_IFNAME&#39;] = &#39;ens3&#39;</code></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/vscode-python/" class="print-no-link">#vscode python</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>常见问题及解决方案</div>
+      <div>http://shu0421.github.io/2021/11/11/工具相关/常见问题及解决方案/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Shu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年11月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/11/11/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/python%E7%9B%B8%E5%85%B3/" title="python相关">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">python相关</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/11/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3/Linux%E5%91%BD%E4%BB%A4/" title="Linux命令">
+                        <span class="hidden-mobile">Linux命令</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"H2RSYuSdiyJY9PtyUuEzMehk-gzGzoHsz","appKey":"VVHDe4hNQJHWFolrxe6l3FNA","path":"window.location.pathname","placeholder":"留下你的建议再离开~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
